@@ -17,7 +17,7 @@
       </counter>
       <counter>
         <item-type type-id="use-case" type="UmlUseCase" />
-        <value>18</value>
+        <value>19</value>
       </counter>
       <counter>
         <item-type type-id="collaboration" type="UmlCollaboration" />
@@ -31,11 +31,11 @@
       </counter>
       <counter>
         <item-type type-id="" type="UniversalConnector" />
-        <value>16</value>
+        <value>17</value>
       </counter>
       <counter>
         <item-type type-id="" type="AbstractElementGroup" />
-        <value>152</value>
+        <value>158</value>
       </counter>
       <counter>
         <item-type type-id="actor" type="UmlActor" />
@@ -43,11 +43,11 @@
       </counter>
       <counter>
         <item-type type-id="use-case" type="UmlUseCase" />
-        <value>19</value>
+        <value>20</value>
       </counter>
       <counter>
         <item-type type-id="relationship" type="UmlAssociation" />
-        <value>16</value>
+        <value>17</value>
       </counter>
       <counter>
         <item-type type-id="collaboration" type="UmlCollaboration" />
@@ -108,7 +108,7 @@
       </meta>
       <abstract-items />
       <sub-models />
-      <diagram type="uml-usecase" id="p0d604ba9db524b46b64fb6534f782fb5_718512215" name="UseCaseDiagram1" order-index="1" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-special-indicators="false" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false">
+      <diagram type="uml-usecase" id="p0d604ba9db524b46b64fb6534f782fb5_718512215" name="UseCaseDiagram1" order-index="1" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-special-indicators="false" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false" view-location="-4,-467">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -120,7 +120,7 @@
           </authors>
           <description />
           <creation-date>08/29/2018 13:08:40</creation-date>
-          <change-date>08/29/2018 13:35:52</change-date>
+          <change-date>08/29/2018 13:54:20</change-date>
           <revision-count>0</revision-count>
           <version />
         </meta>
@@ -854,10 +854,23 @@
               <end-role id="" name="" navigability="" association-type="association" visibility="private" />
             </relation>
           </item>
+          <item id="di325857981626920121" cid="UC019" type="use-case" name="S'abonner aux publications" style-class="" visibility="package" change-tracking-state="added" creator="P9bf0bc8c94b7403f835e1f15f2edad55" creation-date="08/29/2018 13:53:54">
+            <style class="default" />
+            <use-case>
+              <stakeholders />
+            </use-case>
+          </item>
+          <item id="di703380977840942462" cid="REL016" type="relationship" name="" style-class="" visibility="package" change-tracking-state="added" creator="P9bf0bc8c94b7403f835e1f15f2edad55" creation-date="08/29/2018 13:54:20" from="di856619203517325048" to="di325857981626920121">
+            <style class="default" />
+            <relation from="di856619203517325048" to="di325857981626920121">
+              <start-role id="" name="" navigability="" association-type="association" visibility="private" />
+              <end-role id="" name="" navigability="" association-type="association" visibility="private" />
+            </relation>
+          </item>
         </abstract-items>
         <layer name="Default" visible="true" enabled="true" locked="false">
           <item id="di465455847716849487" iid="5ec15899a88646c3ace0f0d59c69ae32" name="Element2" creation-date="08/29/2018 13:08:56" order-index="1" type="drawing-shape">
-            <layout ax="276" ay="-522" awidth="507" aheight="1245.5" x="276" y="-522" width="507" height="1245.5" />
+            <layout ax="276" ay="-629" awidth="507" aheight="1352.5" x="276" y="-629" width="507" height="1352.5" />
             <drawing-shape type="Rectangle" />
             <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;8;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
@@ -1043,6 +1056,19 @@
               </points>
             </layout>
             <relation from="di282475593378112630" from-iid="9a031480d9c94325974f9879baec0a2a" to="di282485676282721393" to-iid="0aa625b627c6455b9d32c8b31f7bc59f" />
+          </item>
+          <item id="di325857981626920121" iid="6d2ca0a3f227454b94b79c5bfdac8f2c" creation-date="08/29/2018 13:53:54" order-index="28" type="entity">
+            <layout ax="421" ay="-588" awidth="120" aheight="75" x="421" y="-588" width="120" height="75" />
+            <use-case />
+          </item>
+          <item id="di703380977840942462" iid="bed9bd30fb1f4bf98c60fa82d2dbc45e" creation-date="08/29/2018 13:54:20" order-index="29" type="relation">
+            <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="226" y1="-279" x2="421" y2="-550" start-border-pos="0.25" end-border-pos="0.873333333333333" name-position="0,0">
+              <points>
+                <point x="226" y="-279" />
+                <point x="421" y="-550" />
+              </points>
+            </layout>
+            <relation from="di856619203517325048" from-iid="0d5b6cba9a0a4674aaf25ae1f315e4d1" to="di325857981626920121" to-iid="6d2ca0a3f227454b94b79c5bfdac8f2c" />
           </item>
         </layer>
       </diagram>
