@@ -35,7 +35,7 @@
       </counter>
       <counter>
         <item-type type-id="" type="AbstractElementGroup" />
-        <value>99</value>
+        <value>103</value>
       </counter>
       <counter>
         <item-type type-id="shape" type="AbstractShapeItem" />
@@ -1280,7 +1280,7 @@ Accueil?
             </style>
           </item>
           <item id="di215353352551328920" iid="55af6f3cea3444dcbe80f9d1affc9444" creation-date="09/04/2018 08:32:21" order-index="28" type="entity">
-            <layout ax="1220" ay="809" awidth="120" aheight="75" x="1220" y="809" width="120" height="75" />
+            <layout ax="1169" ay="809" awidth="120" aheight="75" x="1169" y="809" width="120" height="75" />
             <use-case />
           </item>
         </layer>
