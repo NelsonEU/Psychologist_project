@@ -1,0 +1,17 @@
+alter table publications add column creationDate DATETIME;
+alter table publications add column modificationDate DATETIME;
+alter table publications add column deletionDate DATETIME;
+
+alter table requests add column creationDate DATETIME;
+alter table requests add column content VARCHAR(5000);
+
+alter table subsections add column name varchar(40);
+alter table subsections add column modificationDate DATETIME;
+
+alter table users add column creationDate DATETIME;
+alter table users add column modificationDate DATETIME;
+alter table users add column deletionDate DATETIME;
+
+alter table categories add column creationDate DATETIME;
+alter table categories add column modificationDate DATETIME;
+alter table categories add column deletionDate DATETIME;
