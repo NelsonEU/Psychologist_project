@@ -68,6 +68,8 @@
   <ItemGroup>
     <Content Include="Admin\Admin.aspx" />
     <Content Include="Admin\CSS\Admin.css" />
+    <Content Include="Admin\CSS\Banner.css" />
+    <Content Include="Admin\Images\stairs.jpg" />
     <Content Include="Admin\Javascript\Admin.js" />
     <Content Include="CSS\Base.css" />
     <Content Include="Javascripts\Script.js" />
@@ -136,7 +138,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51001</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
