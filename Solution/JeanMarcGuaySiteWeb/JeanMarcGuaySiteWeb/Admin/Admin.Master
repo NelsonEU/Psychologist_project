@@ -21,22 +21,43 @@
         <section id="banner">
             <img class="logoBanner" src="Images/logoOriginal2.png" />
             <div class="inner">
-                
+
                 <h1>Section Administrative</h1>
                 <p>
                     Accueil
                 </p>
             </div>
             <img class="imgBanner" src="Images/stairs.jpg"></img>
-            
+
 
             <div class="emptyBox"></div>
         </section>
-        <div class="container-fluid">
 
-            <!-- Menu -->
+
+        <!-- Menu -->
+        <nav class="navbar navbar-expand-lg navbar-light menu">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">Administration</a>
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Admin.aspx">Administration <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
+                    w
                 </div>
             </div>
 
