@@ -48,12 +48,12 @@ namespace BusinessLogic.Factories
 
         #endregion
 
-        #region getByEmail
+        #region GetByEmail
 
         /* Check if there is already a user associated with this email address */
         /* Returns user = null if no user is associated with this email  */
 
-        public User getByEmail(string email) 
+        public User GetByEmail(string email) 
         {
 
             //MySqlConnection cnn = new MySqlConnection(_cnnStr);
@@ -111,6 +111,64 @@ namespace BusinessLogic.Factories
 
         }
 
+        #endregion
+
+        #region Connexion
+        public User Connexion(string email, string password)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+            User user = new User();
+            CryptographyHelper ch = new CryptographyHelper();
+            string hashedPassword = ch.HashPassword(password);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT COUNT(*) FROM users WHERE deletionDate IS NULL AND email=@email AND password = @hashedPassword";
+                cmd.Parameters.AddWithValue("email", email);
+                cmd.Parameters.AddWithValue("password", hashedPassword);
+                int count = int.Parse(cmd.ExecuteScalar().ToString());
+                cmd.Dispose();
+
+                if (count >= 1)
+                {
+                    cmd.CommandText = "SELECT * FROM clients WHERE deletionDate ISNULL AND email=@email AND password=@hashedPassword";
+                    cmd.Parameters.AddWithValue("email", email);
+                    cmd.Parameters.AddWithValue("password", hashedPassword);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int _userId = (Int32)reader["user_id"];
+                        string _lastname = reader["lastname"].ToString();
+                        string _firstname = reader["firstname"].ToString();
+                        string _email = reader["email"].ToString();
+                        string _password = reader["password"].ToString();
+                        bool _admin = (bool)reader["admin"];
+                        bool _subscriber = (bool)reader["subscriber"];
+
+                        user.userId = _userId;
+                        user.lastname = _lastname;
+                        user.firstname = _firstname;
+                        user.password = _password;
+                        user.admin = _admin;
+                        user.subscriber = _subscriber;
+                    }
+                    reader.Close();
+                }
+                else
+                {
+                    user = null;
+                }
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return user;
+
+        }
         #endregion
     }
 }
