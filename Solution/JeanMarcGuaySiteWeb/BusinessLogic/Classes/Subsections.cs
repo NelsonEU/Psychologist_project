@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    class Subsections
+    public class Subsections
     {
 
         public int subsectionId { get; set; } //PK

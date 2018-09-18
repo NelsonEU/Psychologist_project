@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    class Request
+    public class Request
     {
 
         public int requestId { get; set; } //PK

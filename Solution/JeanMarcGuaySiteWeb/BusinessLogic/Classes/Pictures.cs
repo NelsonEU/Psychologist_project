@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    class Pictures
+    public class Pictures
     {
 
         public int pictureId { get; set; } //PK

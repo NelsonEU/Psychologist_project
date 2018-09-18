@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    class Availabilities
+    public class CategoriesPublications
     {
 
-        public int availabilityId { get; set; } //PK
-
-        public DateTime schedule { get; set; }
+        public int categoryId { get; set; } //PK FK
+        public int publicationId { get; set; } //PK FK
 
     }
 }

@@ -40,8 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Request.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Classes\Appointements.cs" />
+    <Compile Include="Classes\Availabilities.cs" />
+    <Compile Include="Classes\Categories.cs" />
+    <Compile Include="Classes\CategoriesPublications.cs" />
+    <Compile Include="Classes\Modules.cs" />
+    <Compile Include="Classes\Pictures.cs" />
+    <Compile Include="Classes\Publications.cs" />
+    <Compile Include="Classes\Request.cs" />
+    <Compile Include="Classes\Subsections.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    class Modules
+    public class Publications
     {
 
-        public int moduleId { get; set; } //PK
+        public int publicationId { get; set; } //PK
 
         public string title { get; set; } //VARCHAR(40)
-        public bool active { get; set; }
+        public string url { get; set; } //VARCHAR(150)
 
     }
 }
