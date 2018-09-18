@@ -13,7 +13,7 @@ namespace JeanMarcGuaySiteWeb
     public partial class WebForm1 : System.Web.UI.Page
     {
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
-        CryptographyHelper ch = new CryptographyHelper();
+        //CryptographyHelper ch = new CryptographyHelper();
         UserFactory userF = new UserFactory(cnnStr);
 
         protected void Page_Load(object sender, EventArgs e)

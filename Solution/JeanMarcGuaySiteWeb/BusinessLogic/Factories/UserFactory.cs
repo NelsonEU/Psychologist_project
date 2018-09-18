@@ -56,9 +56,10 @@ namespace BusinessLogic.Factories
         public User getByEmail(string email) 
         {
 
-            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+            //MySqlConnection cnn = new MySqlConnection(_cnnStr);
             User user = new User();
 
+            /*
             try
             {
                 cnn.Open();
@@ -103,8 +104,10 @@ namespace BusinessLogic.Factories
             {
                 cnn.Close();
             }
+            */
 
-            return user;
+            return null;
+           // return user;
 
         }
 
