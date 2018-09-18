@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    class Request
+    class Subsections
     {
 
-        public int requestId { get; set; } //PK
-        public int userId { get; set; } //FK
+        public int subsectionId { get; set; } //PK
+        public int moduleId { get; set; } //FK
 
+        public string name { get; set; } //VARCHAR(40)
         public string content { get; set; } //VARCHAR(5000)
 
     }

@@ -8,15 +8,15 @@ namespace BusinessLogic
 {
     class User
     {
-        public int userId { get; set; }
-        public string lastname { get; set; }
-        public string firstname { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
+
+        public int userId { get; set; } //PK
+
+        public string lastname { get; set; } //VARCHAR(40)
+        public string firstname { get; set; } //VARCHAR(40)
+        public string email { get; set; } //VARCHAR(50)
+        public string password { get; set; } //VARCHAR(150)
         public bool admin { get; set; }
         public bool subscriber { get; set; }
-        public DateTime creationDate { get; set; }
-        public DateTime modificationDate { get; set; }
-        public DateTime deletionDate { get; set; }
+
     }
 }
