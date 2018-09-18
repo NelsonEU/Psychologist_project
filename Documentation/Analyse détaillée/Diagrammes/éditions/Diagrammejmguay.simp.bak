@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sim-project version="11.50" multi-file="no" uid="simp5edb3ab4bacd45f8a0ce967ba2737381">
+<sim-project version="11.50" multi-file="no" uid="simp68411b84cc884cc6b55a1d1ff206a0d2">
   <meta>
     <name>Project</name>
     <authors> </authors>
@@ -37,10 +37,6 @@
         <item-type type-id="shape" type="AbstractShapeItem" />
         <value>2</value>
       </counter>
-      <counter>
-        <item-type type-id="" type="AbstractElementGroup" />
-        <value>23</value>
-      </counter>
     </entity-ids>
     <diagrams>
       <counter>
@@ -52,7 +48,7 @@
   </counters>
   <alias-groups />
   <management uid="" name="" task-id-sequence="0">
-    <working-schedule uid="ws-e8992297e7a64634a6f451e13cbf1e98" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+    <working-schedule uid="ws-d40d747a25074928bfdd62d893c11da5" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
     <persons>
       <person id="P91db82c6c67b4e11b6c78bbab9d681cc">
         <first-name />
@@ -62,7 +58,7 @@
         <phone-number />
         <description />
         <color>#00000000</color>
-        <working-schedule uid="ws-159012b9910c4afabd428811a051bd5c" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+        <working-schedule uid="ws-721170338b104ae588f016e0ada20b41" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
       </person>
     </persons>
     <teams />
@@ -72,7 +68,7 @@
     <tasks />
     <to-dos />
   </management>
-  <glossary id="glsr-faab2fbcf7fd474b83184545cad010c2" />
+  <glossary id="glsr-ba93cfe659b84f45bafba01d63f3a1eb" />
   <types default="UML">
     <type-sets>
       <type-set file="UmlTypes.xml" />
@@ -413,7 +409,7 @@ Accueil?
             </use-case>
           </item>
         </abstract-items>
-        <layer id="c14543c88bfe42a8b3e015505d458242" name="Default" visible="true" enabled="true" locked="false">
+        <layer id="98dd538baafb4069994a59854035547f" name="Default" visible="true" enabled="true" locked="false">
           <item id="di244641052482421845" iid="deb45a3c7a5541f3b8482c5b4148a4a3" creation-date="08/31/2018 15:39:47" order-index="0" type="entity">
             <layout ax="-48" ay="104" awidth="120" aheight="75" x="-48" y="104" width="120" height="75" />
             <use-case />
@@ -682,7 +678,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di490529919483966445" iid="b07a5c9e1ec648e0b474370f7f286008" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di585162371600489575" iid="b07a5c9e1ec648e0b474370f7f286008" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1420" ay="91.5" awidth="40" aheight="47" x="1420" y="91.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -723,7 +719,7 @@ Accueil?
           <item id="di353445217321257466" iid="4ff8515d00c0489c83e6de341129c6db" creation-date="09/04/2018 08:25:29" order-index="25" type="entity">
             <layout ax="735" ay="934" awidth="139" aheight="102" x="735" y="934" width="139" height="102" />
           </item>
-          <item id="di144663946355588528" iid="10edd357844b464a9382b6fb1ab93325" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di997315603639703536" iid="10edd357844b464a9382b6fb1ab93325" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="448" ay="88" awidth="40" aheight="47" x="448" y="88" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -757,7 +753,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di292431361364007137" iid="cff0f337ab3944e78c74412975ed13e8" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di818391199549242527" iid="cff0f337ab3944e78c74412975ed13e8" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="306" ay="223.5" awidth="40" aheight="47" x="306" y="223.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -791,7 +787,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di182249509571265294" iid="713e86c3172f4e30b66b4100770d746c" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di808706360343485571" iid="713e86c3172f4e30b66b4100770d746c" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="167" ay="343" awidth="40" aheight="47" x="167" y="343" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -825,7 +821,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di423452243296653279" iid="86de82169f5e42379826e842222f36d5" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di733623987513708856" iid="86de82169f5e42379826e842222f36d5" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="423" ay="366.5" awidth="40" aheight="47" x="423" y="366.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -866,7 +862,7 @@ Accueil?
           <item id="di476037726234624470" iid="cea105e2e41847e6a7ac9ed6e3defdee" creation-date="09/04/2018 08:27:11" order-index="26" type="entity">
             <layout ax="289.5" ay="914" awidth="307" aheight="87" x="289.5" y="914" width="307" height="87" />
           </item>
-          <item id="di862037943917953104" iid="3b81339f609d4475928230e20bd023d2" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di849959668856010470" iid="3b81339f609d4475928230e20bd023d2" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="849" ay="208" awidth="40" aheight="47" x="849" y="208" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -900,7 +896,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di301748403385782800" iid="3d5db11958f2435d8ac9180612fff257" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di793455768159354713" iid="3d5db11958f2435d8ac9180612fff257" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="650" ay="343" awidth="40" aheight="47" x="650" y="343" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -934,7 +930,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di530929962413456032" iid="00ace3ceb3f2462688201cdcc31f4250" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di908086895325717669" iid="00ace3ceb3f2462688201cdcc31f4250" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="846" ay="343" awidth="40" aheight="47" x="846" y="343" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -968,7 +964,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di463777832215803777" iid="2611fc9b3c4943bab31542e62efbaafa" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di262742667113281737" iid="2611fc9b3c4943bab31542e62efbaafa" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1012" ay="366.5" awidth="40" aheight="47" x="1012" y="366.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1002,7 +998,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di939615570347962105" iid="b31368165b924a40af350729c400eab6" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di119785853533370943" iid="b31368165b924a40af350729c400eab6" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1184" ay="352" awidth="40" aheight="47" x="1184" y="352" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1043,7 +1039,7 @@ Accueil?
           <item id="di901751356369313906" iid="405270ce6a1a4f95bf24cbdd685e6a0f" creation-date="09/04/2018 08:28:21" order-index="27" type="entity">
             <layout ax="972" ay="934" awidth="142" aheight="102" x="972" y="934" width="142" height="102" />
           </item>
-          <item id="di776306072307151956" iid="a8d06baee1d14130a30b2cd16ad578c5" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di960722806367740972" iid="a8d06baee1d14130a30b2cd16ad578c5" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1930" ay="118" awidth="40" aheight="47" x="1930" y="118" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1077,7 +1073,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di532601065648921077" iid="440417fb97194944b1828a436302507e" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di715144473423724662" iid="440417fb97194944b1828a436302507e" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1624" ay="290" awidth="40" aheight="47" x="1624" y="290" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1111,7 +1107,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di990291823915714350" iid="87be3cf74a9747519b5a37a26ac70d82" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di658879271398298481" iid="87be3cf74a9747519b5a37a26ac70d82" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1487" ay="375.5" awidth="40" aheight="47" x="1487" y="375.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1145,7 +1141,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di551872366888783763" iid="2b9824d9680845329181fac5e072b257" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di792751016451030590" iid="2b9824d9680845329181fac5e072b257" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1722" ay="413" awidth="40" aheight="47" x="1722" y="413" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1179,7 +1175,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di842409379141597404" iid="e8ba9e78915f4079861d4b814a381cc8" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di381369494737068014" iid="e8ba9e78915f4079861d4b814a381cc8" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1880" ay="268" awidth="40" aheight="47" x="1880" y="268" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1213,7 +1209,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di702843231591788925" iid="9db0f8fe1f6a4847bc936537dfbb9e31" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di742581516533300747" iid="9db0f8fe1f6a4847bc936537dfbb9e31" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="2110" ay="274.5" awidth="40" aheight="47" x="2110" y="274.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1247,7 +1243,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="di752456940777274779" iid="af27b17b04824baf9409b136a880f9ce" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di302470518688442571" iid="af27b17b04824baf9409b136a880f9ce" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="2303" ay="274.5" awidth="40" aheight="47" x="2303" y="274.5" width="40" height="47" />
             <custom-shape>
               <graphic>
