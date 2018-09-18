@@ -8,6 +8,7 @@
         <div class="row text-center">
             <div class="col-lg-12">
                 Default.aspx
+                <span id="test" runat="server"></span>
             </div>
         </div>
         

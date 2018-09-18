@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    public class CategoriesPublications
+    public class CategoriePublication
     {
 
         public int categoryId { get; set; } //PK FK
