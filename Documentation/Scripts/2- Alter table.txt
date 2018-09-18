@@ -4,6 +4,8 @@ alter table publications add column deletionDate DATETIME;
 
 alter table requests add column creationDate DATETIME;
 alter table requests add column content VARCHAR(5000);
+alter table requests drop column video_call;
+alter table requests drop column state;
 
 alter table subsections add column name varchar(40);
 alter table subsections add column modificationDate DATETIME;
