@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BusinessLogic;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -11,7 +12,8 @@ namespace JeanMarcGuaySiteWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ////////TEST/////////
+            Categories c = new Categories();
         }
     }
 }
