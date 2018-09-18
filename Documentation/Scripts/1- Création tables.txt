@@ -56,3 +56,17 @@ Create table Subsections(
     content VARCHAR(5000),
     PRIMARY KEY (subsection_id)
 );
+
+Create table Appointments(
+	appointment_id INT NOT NULL auto_increment,
+	user_id INT NOT NULL references Users(user_id),
+	availability_id INT NOT NULL references Availabilities(availability_id),
+	confirmed boolean NOT NULL DEFAULT 0,
+	message VARCHAR(500),
+	outdated boolean NOT NULL DEFAULT 0
+);
+
+Create table Availabilities(
+	availability_id INT NOT NULL auto_increment,
+	schedule DATETIME NOT NULL
+);
