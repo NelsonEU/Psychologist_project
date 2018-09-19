@@ -179,7 +179,7 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM users WHERE dateSuppression IS NULL ORDER BY lastname";
+                cmd.CommandText = "SELECT * FROM users WHERE deletionDate IS NULL ORDER BY lastname";
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -225,7 +225,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM users WHERE dateSuppression IS NULL AND user_id = @user_id";
+                cmd.CommandText = "SELECT * FROM users WHERE deletionDate IS NULL AND user_id = @user_id";
                 cmd.Parameters.AddWithValue("@user_id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -255,6 +255,26 @@ namespace BusinessLogic.Factories
 
             return user;
 
+        }
+        #endregion
+
+        #region Delete
+        public void delete(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "UPDATE user SET deletionDate = NOW() WHERE user_id=@id)";
+                cmd.Parameters.AddWithValue("@user_id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
         }
         #endregion
     }
