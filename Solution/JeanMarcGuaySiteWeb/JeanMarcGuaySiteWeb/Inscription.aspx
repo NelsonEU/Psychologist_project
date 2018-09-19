@@ -7,30 +7,43 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="inscription">
         <asp:Panel ID="panelInscription" runat="server" DefaultButton="submit">
-            <h3>Créer un compte</h3>
-            <label for="firstname">Votre prénom:</label>
-            <div>
-                <asp:TextBox runat="server" type="text" placeholder="Prénom" ID="firstname" name="firstname" required="required"></asp:TextBox>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                        <div class="card card-signin my-5">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <img class="mb-4" src="Images/logoOriginal.png" alt="" width="72" height="72" />
+                                </div>
+                                <h3 class="card-title text-center">Créer un compte</h3>
+                                <label for="firstname" class="sr-only mt-4">Votre prénom:</label>
+                                <div>
+                                    <asp:TextBox runat="server" class="form-control mt-4" type="text" placeholder="Prénom" ID="firstname" name="firstname" required="required"></asp:TextBox>
+                                </div>
+                                <label for="lastname" class="sr-only mt-2">Votre nom:</label>
+                                <div>
+                                    <asp:TextBox runat="server" class="form-control mt-2" type="text" placeholder="Nom" ID="lastname" name="lastname" required="required"></asp:TextBox>
+                                </div>
+                                <label for="email" class="sr-only mt-2">Votre adresse e-mail:</label>
+                                <div>
+                                    <asp:TextBox runat="server" class="form-control mt-2" type="email" placeholder="Adresse e-mail" ID="email" name="email" required="required"></asp:TextBox>
+                                </div>
+                                <label for="password" class="sr-only mt-2">Mot de passe:</label>
+                                <div>
+                                    <asp:TextBox runat="server" class="form-control mt-2" type="password" placeholder="Mot de passe" ID="password" name="password" required="required"></asp:TextBox>
+                                </div>
+                                <label for="password" class="sr-only mt-2">Confirmation du mot de passe:</label>
+                                <div>
+                                    <asp:TextBox runat="server" class="form-control mt-2" type="password" placeholder="Confirmation du mot de passe" ID="passwordConfirmation" name="password" required="required"></asp:TextBox>
+                                </div>
+                                <div runat="server" id="notification" visible="false">
+                                </div>
+                                <asp:Button ID="submit" class="mt-4 btn btn-lg btn-primary btn-block" Text="Se connecter" runat="server" OnClick="Submit_click" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <label for="lastname">Votre nom:</label>
-            <div>
-                <asp:TextBox runat="server" type="text" placeholder="Nom" ID="lastname" name="lastname" required="required"></asp:TextBox>
-            </div>
-            <label for="email">Votre adresse e-mail:</label>
-            <div>
-                <asp:TextBox runat="server" type="email" placeholder="E-mail" ID="email" name="email" required="required"></asp:TextBox>
-            </div>
-            <label for="password">Mot de passe:</label>
-            <div>
-                <asp:TextBox runat="server" type="password" placeholder="••••••••" ID="password" name="password" required="required"></asp:TextBox>
-            </div>
-            <label for="password">Confirmation du mot de passe:</label>
-            <div>
-                <asp:TextBox runat="server" type="password" ID="passwordConfirmation" name="password" required="required"></asp:TextBox>
-            </div>
-            <div runat="server" id="notification" visible="false">
-            </div>
-            <asp:Button ID="submit" Text="Se connecter" runat="server" OnClick="Submit_click" />
         </asp:Panel>
     </div>
 </asp:Content>

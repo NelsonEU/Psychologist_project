@@ -5,30 +5,40 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="text-center">
-        <div class="container">
-            <div class="login-form">
-                <asp:Panel ID="panelConnexion" runat="server" DefaultButton="submit">
+    <asp:panel id="panelConnexion" runat="server" defaultbutton="submit">
+          <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+              <div class="text-center">
                     <img class="mb-4" src="Images/logoOriginal.png" alt="" width="72" height="72" />
-                    <h3 class="h3 mb-3 font-weight-normal">Se connecter</h3>
-                    <label for="email" class="sr-only">Votre adresse e-mail:</label>
+                  </div>
+                    <h3 class="card-title text-center">Accéder à votre compte</h3>
+             
+                    <label for="email" class="sr-only mt-4">Votre adresse e-mail:</label>
                     <div>
-                        <asp:TextBox runat="server" class="form-control" type="email" placeholder="E-mail" ID="email" name="email" required="required"></asp:TextBox>
+                        <asp:TextBox runat="server" class="form-control mt-4" type="email" placeholder="Adresse e-mail" ID="email" name="email" required="required autofocus"></asp:TextBox>
                     </div>
-                    <label for="password" class="sr-only">Votre mot de passe:</label>
+                  
+              
+                    <label for="password" class="sr-only mt-2">Votre mot de passe:</label>
                     <div>
-                        <asp:TextBox runat="server" class="form-control" type="password" placeholder="••••••••" ID="password" name="password" required="required"></asp:TextBox>
+                        <asp:TextBox runat="server" class="form-control mt-2" type="password" placeholder="Mot de passe" ID="password" name="password" required="required"></asp:TextBox>
                     </div>
+                 
                     <div runat="server" id="notification" visible="false">
                     </div>
-                    <asp:Button ID="submit" class="btn btn-lg btn-primary btn-block" Text="Se connecter" runat="server" OnClick="Submit_click" />
-                    <div>
+                    <asp:Button ID="submit" class="mt-4 btn btn-lg btn-primary btn-block" Text="Se connecter" runat="server" OnClick="Submit_click" />
+                    <div class="mt-2 mb-3">
                         Pas encore de compte ? <a href="Inscription.aspx">Cliquez ici !</a>
                     </div>
-                </asp:Panel>
+              </div>
             </div>
-    </div>
-    </div>
+            </div>
+          </div>
+              </div>
+                </asp:panel>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
 </asp:Content>
