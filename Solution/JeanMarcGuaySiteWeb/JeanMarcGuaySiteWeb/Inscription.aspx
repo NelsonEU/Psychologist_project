@@ -29,7 +29,6 @@
                 <asp:TextBox runat="server" type="password" ID="passwordConfirmation" name="password" required="required"></asp:TextBox>
             </div>
             <div runat="server" id="notification" visible="false">
-                <p id="message"></p>
             </div>
             <asp:Button ID="submit" Text="Se connecter" runat="server" OnClick="Submit_click" />
         </asp:Panel>
