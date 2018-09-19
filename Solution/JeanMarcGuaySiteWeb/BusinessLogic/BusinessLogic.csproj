@@ -41,16 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Autres\EmailController.cs" />
     <Compile Include="Classes\Appointement.cs" />
     <Compile Include="Classes\Availability.cs" />
     <Compile Include="Classes\Category.cs" />
     <Compile Include="Classes\CategoryPublication.cs" />
+    <Compile Include="Autres\CryptographyHelper.cs" />
     <Compile Include="Classes\Module.cs" />
     <Compile Include="Classes\Picture.cs" />
     <Compile Include="Classes\Publication.cs" />
     <Compile Include="Classes\Request.cs" />
     <Compile Include="Classes\Subsection.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Factories\ModuleFactory.cs" />
     <Compile Include="Factories\UserFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
