@@ -18,3 +18,6 @@ alter table users add index UNIQUE (email);
 alter table categories add column creationDate DATETIME;
 alter table categories add column modificationDate DATETIME;
 alter table categories add column deletionDate DATETIME;
+
+alter table modules 
+ADD COLUMN modificationDate DATETIME;
