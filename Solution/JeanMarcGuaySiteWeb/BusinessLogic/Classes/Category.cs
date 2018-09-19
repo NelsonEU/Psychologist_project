@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    public class Subsections
+    public class Category
     {
 
-        public int subsectionId { get; set; } //PK
-        public int moduleId { get; set; } //FK
+        public int categoryId { get; set; } //PK
 
         public string name { get; set; } //VARCHAR(40)
-        public string content { get; set; } //VARCHAR(5000)
 
     }
 }

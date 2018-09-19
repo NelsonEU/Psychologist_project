@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,21 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Appointements.cs" />
-    <Compile Include="Classes\Availabilities.cs" />
-    <Compile Include="Classes\Categories.cs" />
-    <Compile Include="Classes\CategoriesPublications.cs" />
-    <Compile Include="Classes\Modules.cs" />
-    <Compile Include="Classes\Pictures.cs" />
-    <Compile Include="Classes\Publications.cs" />
+    <Compile Include="Classes\Appointement.cs" />
+    <Compile Include="Classes\Availability.cs" />
+    <Compile Include="Classes\Category.cs" />
+    <Compile Include="Classes\CategoryPublication.cs" />
+    <Compile Include="Classes\CryptographyHelper.cs" />
+    <Compile Include="Classes\Module.cs" />
+    <Compile Include="Classes\Picture.cs" />
+    <Compile Include="Classes\Publication.cs" />
     <Compile Include="Classes\Request.cs" />
-    <Compile Include="Classes\Subsections.cs" />
+    <Compile Include="Classes\Subsection.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Factories\UserFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
