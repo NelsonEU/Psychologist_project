@@ -45,7 +45,6 @@ namespace BusinessLogic.Factories
             }
 
         }
-
         #endregion
 
         #region GetByEmail
@@ -56,10 +55,9 @@ namespace BusinessLogic.Factories
         public User GetByEmail(string email) 
         {
 
-            //MySqlConnection cnn = new MySqlConnection(_cnnStr);
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
             User user = new User();
-
-            /*
+            
             try
             {
                 cnn.Open();
@@ -104,10 +102,8 @@ namespace BusinessLogic.Factories
             {
                 cnn.Close();
             }
-            */
-
-            return null;
-           // return user;
+            
+            return user;
 
         }
 
@@ -160,6 +156,97 @@ namespace BusinessLogic.Factories
                 {
                     user = null;
                 }
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return user;
+
+        }
+        #endregion
+
+        #region GetAll
+        public User[] GetAll()
+        {
+
+            List<User> userList = new List<User>();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM users WHERE dateSuppression IS NULL ORDER BY lastname";
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int _userId = (Int32)reader["user_id"];
+                    string _lastname = reader["lastname"].ToString();
+                    string _firstname = reader["firstname"].ToString();
+                    string _email = reader["email"].ToString();
+                    string _password = reader["password"].ToString();
+                    bool _admin = (bool)reader["admin"];
+                    bool _subscriber = (bool)reader["subscriber"];
+
+                    User user = new User();
+                    user.userId = _userId;
+                    user.lastname = _lastname;
+                    user.firstname = _firstname;
+                    user.password = _password;
+                    user.admin = _admin;
+                    user.subscriber = _subscriber;
+
+                    userList.Add(user);
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return userList.ToArray();
+
+        }
+        #endregion
+
+        #region Get
+        public User Get(int id)
+        {
+
+            User user = new User();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM users WHERE dateSuppression IS NULL AND user_id = @user_id";
+                cmd.Parameters.AddWithValue("@user_id", id);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int _userId = (Int32)reader["user_id"];
+                    string _lastname = reader["lastname"].ToString();
+                    string _firstname = reader["firstname"].ToString();
+                    string _email = reader["email"].ToString();
+                    string _password = reader["password"].ToString();
+                    bool _admin = (bool)reader["admin"];
+                    bool _subscriber = (bool)reader["subscriber"];
+
+                    user.userId = _userId;
+                    user.lastname = _lastname;
+                    user.firstname = _firstname;
+                    user.password = _password;
+                    user.admin = _admin;
+                    user.subscriber = _subscriber;
+                }
+                reader.Close();
             }
             finally
             {
