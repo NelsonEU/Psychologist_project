@@ -6,7 +6,22 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Factories
 {
-    class ModuleFactory
+    public class ModuleFactory
     {
+
+        /* Seulement GetAll et Update */
+
+        #region Constructeur
+        private string _cnnStr;
+        public ModuleFactory(string cnnStr)
+        {
+            _cnnStr = cnnStr;
+        }
+        #endregion
+
+        #region GetAll
+
+        #endregion
+
     }
 }
