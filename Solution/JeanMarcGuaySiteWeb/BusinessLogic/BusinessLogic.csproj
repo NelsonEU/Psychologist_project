@@ -45,7 +45,6 @@
     <Compile Include="Classes\Availability.cs" />
     <Compile Include="Classes\Category.cs" />
     <Compile Include="Classes\CategoryPublication.cs" />
-    <Compile Include="Classes\CryptographyHelper.cs" />
     <Compile Include="Classes\Module.cs" />
     <Compile Include="Classes\Picture.cs" />
     <Compile Include="Classes\Publication.cs" />
