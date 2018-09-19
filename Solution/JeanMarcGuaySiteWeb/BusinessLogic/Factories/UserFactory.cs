@@ -24,6 +24,8 @@ namespace BusinessLogic.Factories
         {
 
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
+            CryptographyHelper ch = new CryptographyHelper();
+            string hashedPassword = ch.HashPassword(password);
 
             try
             {
@@ -33,7 +35,7 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@lastname", lastname);
                 cmd.Parameters.AddWithValue("@firstname", firstname);
                 cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@password", hashedPassword);
                 cmd.Parameters.AddWithValue("@admin", admin);
                 cmd.Parameters.AddWithValue("@subscriber", subscriber);
                 cmd.Parameters.AddWithValue("@creationDate", DateTime.Now);
@@ -269,6 +271,36 @@ namespace BusinessLogic.Factories
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = "UPDATE user SET deletionDate = NOW() WHERE user_id=@id)";
                 cmd.Parameters.AddWithValue("@user_id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
+        #region Update
+        public void Update(int id, string lastname, string firstname, string email, string password, bool admin, bool subscriber)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+            CryptographyHelper ch = new CryptographyHelper();
+            string hashedPassword = ch.HashPassword(password);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET lastname = @lastname, firstname = @firstname, email = @email, password = @password, admin = @admin, subscriber = @subscriber";
+
+                cmd.Parameters.AddWithValue("@lastname", lastname);
+                cmd.Parameters.AddWithValue("@firstname", firstname);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@password", hashedPassword);
+                cmd.Parameters.AddWithValue("@admin", admin);
+                cmd.Parameters.AddWithValue("@subscriber", subscriber);
+                cmd.Parameters.AddWithValue("@modificationDate", DateTime.Now);
+
                 cmd.ExecuteNonQuery();
             }
             finally
