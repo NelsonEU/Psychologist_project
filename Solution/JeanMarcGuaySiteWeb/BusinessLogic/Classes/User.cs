@@ -17,6 +17,7 @@ namespace BusinessLogic
         public string password { get; set; } //VARCHAR(150)
         public bool admin { get; set; }
         public bool subscriber { get; set; }
+        public bool activated { get; set; }
 
     }
 }

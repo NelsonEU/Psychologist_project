@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogic.Factories;
+using BusinessLogic.Autres;
 using BusinessLogic;
 
 namespace JeanMarcGuaySiteWeb
@@ -17,7 +18,7 @@ namespace JeanMarcGuaySiteWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["user"] != null)
+            if (Session["user"] != null)
             {
                 Response.Redirect("default.aspx");
             }
@@ -29,28 +30,43 @@ namespace JeanMarcGuaySiteWeb
             {
                 UserFactory uf = new UserFactory(cnnStr);
                 User user = uf.Connexion(email.Text, password.Text);
-                
-                if(user == null)
+
+                if (user == null)
                 {
                     //Email ou mot de passe incorrect
-                    notification.Visible = true;
+                    notification.Style.Add("color", "red");
                     notification.InnerText = "Adresse e-mail ou mot de passe incorrect";
+                    notification.Visible = true;
                 }
                 else
                 {
-                    //Connecté
-                    notification.Visible = true;
-                    notification.InnerText = "Connexion réussie";
-                    Response.Redirect("default.aspx");
+                    //User existe
+                    if (user.activated == false)
+                    {
+                        //Compte pas activé
+                        notification.Style.Add("color", "red");
+                        notification.InnerText = "Votre compte n'est pas activé. Un e-mail de confirmation vous a été renvoyé.";
+                        notification.Visible = true;
+                        EmailController ec = new EmailController();
+                        // ec.SendActivationMail(email.Text);
+                    }
+                    else
+                    {
+                        //Compte activé
+                        notification.InnerText = "Connexion réussie";
+                        notification.Visible = true;
+                        Response.Redirect("default.aspx");
+                    }
                 }
             }
-            else{
+            else
+            {
                 //Manque une info
                 notification.Visible = true;
                 notification.InnerText = "Veuillez remplir les deux champs";
 
             }
         }
-            
-    }  
+
+    }
 }

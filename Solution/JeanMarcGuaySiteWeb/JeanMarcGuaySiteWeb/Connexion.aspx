@@ -27,7 +27,7 @@
                         <asp:TextBox runat="server" class="form-control mt-2" type="password" placeholder="Mot de passe" ID="password" name="password" required="required"></asp:TextBox>
                     </div>
                  
-                    <div runat="server" id="notification" visible="false">
+                    <div runat="server" class="text-center mt-2" id="notification" visible="false">
                     </div>
                     <asp:Button ID="submit" class="mt-4 btn btn-lg btn-primary btn-block" Text="Se connecter" runat="server" OnClick="Submit_click" />
                     <div class="mt-2 mb-3">

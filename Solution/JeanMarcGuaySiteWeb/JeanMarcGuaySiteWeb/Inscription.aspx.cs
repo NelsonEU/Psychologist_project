@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogic.Factories;
+using BusinessLogic.Autres;
 using System.Configuration;
 using BusinessLogic;
 
@@ -27,14 +28,36 @@ namespace JeanMarcGuaySiteWeb
                 UserFactory uf = new UserFactory(cnnStr);
                 User user = uf.GetByEmail(email.Text);
 
-                if(user != null) {
+                if (user != null)
+                {
+                    notification.Style.Add("color", "red");
                     notification.InnerText = "Un compte existe déjà pour cette adresse e-mail";
+                    notification.Visible = true;
                 }
                 else
                 {
-                    uf.Add(lastname.Text, firstname.Text, email.Text, password.Text, false, false);
-                    notification.InnerText = "Compte crée !";
-                    notification.Visible = true;
+                    if (password.Text != passwordConfirmation.Text)
+                    {
+                        notification.Style.Add("color", "red");
+                        notification.InnerText = "Les deux mots de passe doivent être identiques";
+                        notification.Visible = true;
+                    }
+                    else if (password.Text.Length < 6)
+                    {
+                        notification.Style.Add("color", "red");
+                        notification.InnerText = "Le mot de passe doit contenir au moins 6 caractères";
+                        notification.Visible = true;
+                    }
+                    else
+                    {
+                        uf.Add(lastname.Text, firstname.Text, email.Text, password.Text, false, subscriber.Checked, false);
+                        notification.Style.Add("color", "green");
+                        notification.InnerText = "Bienvenue ! Un e-mail vous a été envoyé afin de confirmer votre inscription";
+                        notification.Visible = true;
+                        EmailController ec = new EmailController();
+                        // ec.SendActivationMail(email.Text);
+
+                    }
                 }
             }
         }

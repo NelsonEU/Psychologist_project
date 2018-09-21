@@ -36,9 +36,13 @@
                                 <div>
                                     <asp:TextBox runat="server" class="form-control mt-2" type="password" placeholder="Confirmation du mot de passe" ID="passwordConfirmation" name="password" required="required"></asp:TextBox>
                                 </div>
+                                <div class="form-group text-center mt-2">
+                                    <asp:Checkbox runat="server" tabindex="3" class="" name="subscriber" id="subscriber"/>
+                                    <label for="remember">S'abonner aux publications</label>
+                                </div>
                                 <div runat="server" id="notification" visible="false">
                                 </div>
-                                <asp:Button ID="submit" class="mt-4 btn btn-lg btn-primary btn-block" Text="Se connecter" runat="server" OnClick="Submit_click" />
+                                <asp:Button ID="submit" class="mt-3 btn btn-lg btn-primary btn-block" Text="S'inscrire" runat="server" OnClick="Submit_click" />
                             </div>
                         </div>
                     </div>
