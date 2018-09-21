@@ -74,6 +74,7 @@
     <Content Include="Admin\Javascript\Admin.js" />
     <Content Include="Connexion.aspx" />
     <Content Include="CSS\Base.css" />
+    <Content Include="Images\stairs.jpg" />
     <Content Include="Inscription.aspx" />
     <Content Include="Javascripts\Script.js" />
     <Content Include="packages.config" />
@@ -141,9 +142,7 @@
       <Name>BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>

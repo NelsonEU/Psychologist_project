@@ -32,5 +32,6 @@ namespace JeanMarcGuaySiteWeb.Admin
             rptModules.DataSource = rptModulesSource;
             rptModules.DataBind();
         }
+
     }
 }
