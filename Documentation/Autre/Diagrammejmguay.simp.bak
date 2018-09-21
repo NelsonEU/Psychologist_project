@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sim-project version="10.65" multi-file="no">
+<sim-project version="11.50" multi-file="no" uid="simp5edb3ab4bacd45f8a0ce967ba2737381">
   <meta>
     <name>Project</name>
     <authors> </authors>
@@ -34,12 +34,12 @@
         <value>12</value>
       </counter>
       <counter>
-        <item-type type-id="" type="AbstractElementGroup" />
-        <value>103</value>
-      </counter>
-      <counter>
         <item-type type-id="shape" type="AbstractShapeItem" />
         <value>2</value>
+      </counter>
+      <counter>
+        <item-type type-id="" type="AbstractElementGroup" />
+        <value>23</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -51,7 +51,8 @@
     <fields />
   </counters>
   <alias-groups />
-  <management>
+  <management uid="" name="" task-id-sequence="0">
+    <working-schedule uid="ws-e8992297e7a64634a6f451e13cbf1e98" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
     <persons>
       <person id="P91db82c6c67b4e11b6c78bbab9d681cc">
         <first-name />
@@ -61,22 +62,23 @@
         <phone-number />
         <description />
         <color>#00000000</color>
+        <working-schedule uid="ws-159012b9910c4afabd428811a051bd5c" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
       </person>
     </persons>
+    <teams />
+    <sprints />
+    <projects />
+    <modules />
     <tasks />
-    <requirements />
-    <issues />
     <to-dos />
   </management>
-  <glossary />
+  <glossary id="glsr-faab2fbcf7fd474b83184545cad010c2" />
   <types default="UML">
     <type-sets>
       <type-set file="UmlTypes.xml" />
     </type-sets>
     <custom-types />
   </types>
-  <filters />
-  <macros />
   <items />
   <models>
     <model id="p1b758a0b7d254cf988f63363afaa1f0e_766231038" name="Model 1" namespace="" order-index="1">
@@ -92,7 +94,7 @@
       </meta>
       <abstract-items />
       <sub-models />
-      <diagram type="uml-usecase" id="p4e937189fbc54db8bfd72e7415f37a4a_825892588" name="UseCaseDiagram1" order-index="1" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-special-indicators="false" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false" view-location="-145,218" zoom="0.9">
+      <diagram type="uml-usecase" id="p4e937189fbc54db8bfd72e7415f37a4a_825892588" name="UseCaseDiagram1" order-index="1" uid="" show-id="false" show-name="true" show-parent-name="false" name-style="" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-special-indicators="false" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false" view-location="-145,218" zoom="0.9">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -411,7 +413,7 @@ Accueil?
             </use-case>
           </item>
         </abstract-items>
-        <layer name="Default" visible="true" enabled="true" locked="false">
+        <layer id="c14543c88bfe42a8b3e015505d458242" name="Default" visible="true" enabled="true" locked="false">
           <item id="di244641052482421845" iid="deb45a3c7a5541f3b8482c5b4148a4a3" creation-date="08/31/2018 15:39:47" order-index="0" type="entity">
             <layout ax="-48" ay="104" awidth="120" aheight="75" x="-48" y="104" width="120" height="75" />
             <use-case />
@@ -657,7 +659,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -680,7 +682,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="b07a5c9e1ec648e0b474370f7f286008" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di490529919483966445" iid="b07a5c9e1ec648e0b474370f7f286008" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1420" ay="91.5" awidth="40" aheight="47" x="1420" y="91.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -691,7 +693,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -721,7 +723,7 @@ Accueil?
           <item id="di353445217321257466" iid="4ff8515d00c0489c83e6de341129c6db" creation-date="09/04/2018 08:25:29" order-index="25" type="entity">
             <layout ax="735" ay="934" awidth="139" aheight="102" x="735" y="934" width="139" height="102" />
           </item>
-          <item id="" iid="10edd357844b464a9382b6fb1ab93325" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di144663946355588528" iid="10edd357844b464a9382b6fb1ab93325" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="448" ay="88" awidth="40" aheight="47" x="448" y="88" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -732,7 +734,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -755,7 +757,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="cff0f337ab3944e78c74412975ed13e8" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di292431361364007137" iid="cff0f337ab3944e78c74412975ed13e8" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="306" ay="223.5" awidth="40" aheight="47" x="306" y="223.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -766,7 +768,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -789,7 +791,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="713e86c3172f4e30b66b4100770d746c" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di182249509571265294" iid="713e86c3172f4e30b66b4100770d746c" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="167" ay="343" awidth="40" aheight="47" x="167" y="343" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -800,7 +802,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -823,7 +825,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="86de82169f5e42379826e842222f36d5" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di423452243296653279" iid="86de82169f5e42379826e842222f36d5" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="423" ay="366.5" awidth="40" aheight="47" x="423" y="366.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -834,7 +836,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -864,7 +866,7 @@ Accueil?
           <item id="di476037726234624470" iid="cea105e2e41847e6a7ac9ed6e3defdee" creation-date="09/04/2018 08:27:11" order-index="26" type="entity">
             <layout ax="289.5" ay="914" awidth="307" aheight="87" x="289.5" y="914" width="307" height="87" />
           </item>
-          <item id="" iid="3b81339f609d4475928230e20bd023d2" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di862037943917953104" iid="3b81339f609d4475928230e20bd023d2" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="849" ay="208" awidth="40" aheight="47" x="849" y="208" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -875,7 +877,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -898,7 +900,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="3d5db11958f2435d8ac9180612fff257" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di301748403385782800" iid="3d5db11958f2435d8ac9180612fff257" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="650" ay="343" awidth="40" aheight="47" x="650" y="343" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -909,7 +911,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -932,7 +934,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="00ace3ceb3f2462688201cdcc31f4250" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di530929962413456032" iid="00ace3ceb3f2462688201cdcc31f4250" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="846" ay="343" awidth="40" aheight="47" x="846" y="343" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -943,7 +945,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -966,7 +968,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="2611fc9b3c4943bab31542e62efbaafa" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di463777832215803777" iid="2611fc9b3c4943bab31542e62efbaafa" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1012" ay="366.5" awidth="40" aheight="47" x="1012" y="366.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -977,7 +979,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -1000,7 +1002,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="b31368165b924a40af350729c400eab6" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di939615570347962105" iid="b31368165b924a40af350729c400eab6" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1184" ay="352" awidth="40" aheight="47" x="1184" y="352" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1011,7 +1013,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -1041,7 +1043,7 @@ Accueil?
           <item id="di901751356369313906" iid="405270ce6a1a4f95bf24cbdd685e6a0f" creation-date="09/04/2018 08:28:21" order-index="27" type="entity">
             <layout ax="972" ay="934" awidth="142" aheight="102" x="972" y="934" width="142" height="102" />
           </item>
-          <item id="" iid="a8d06baee1d14130a30b2cd16ad578c5" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di776306072307151956" iid="a8d06baee1d14130a30b2cd16ad578c5" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1930" ay="118" awidth="40" aheight="47" x="1930" y="118" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1052,7 +1054,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -1075,7 +1077,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="440417fb97194944b1828a436302507e" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di532601065648921077" iid="440417fb97194944b1828a436302507e" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1624" ay="290" awidth="40" aheight="47" x="1624" y="290" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1086,7 +1088,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -1109,7 +1111,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="87be3cf74a9747519b5a37a26ac70d82" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di990291823915714350" iid="87be3cf74a9747519b5a37a26ac70d82" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1487" ay="375.5" awidth="40" aheight="47" x="1487" y="375.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1120,7 +1122,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -1143,7 +1145,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="2b9824d9680845329181fac5e072b257" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di551872366888783763" iid="2b9824d9680845329181fac5e072b257" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1722" ay="413" awidth="40" aheight="47" x="1722" y="413" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1154,7 +1156,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -1177,7 +1179,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="e8ba9e78915f4079861d4b814a381cc8" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di842409379141597404" iid="e8ba9e78915f4079861d4b814a381cc8" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="1880" ay="268" awidth="40" aheight="47" x="1880" y="268" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1188,7 +1190,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -1211,7 +1213,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="9db0f8fe1f6a4847bc936537dfbb9e31" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di702843231591788925" iid="9db0f8fe1f6a4847bc936537dfbb9e31" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="2110" ay="274.5" awidth="40" aheight="47" x="2110" y="274.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1222,7 +1224,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -1245,7 +1247,7 @@ Accueil?
               </alternate-styles>
             </style>
           </item>
-          <item id="" iid="af27b17b04824baf9409b136a880f9ce" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
+          <item id="di752456940777274779" iid="af27b17b04824baf9409b136a880f9ce" name="" creation-date="09/04/2018 08:23:46" order-index="24" type="custom-shape">
             <layout ax="2303" ay="274.5" awidth="40" aheight="47" x="2303" y="274.5" width="40" height="47" />
             <custom-shape>
               <graphic>
@@ -1256,7 +1258,7 @@ Accueil?
                 </elements>
               </graphic>
             </custom-shape>
-            <style style-name="" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
+            <style style-name="Custom Style" shadow-type="smooth" shadow-offset="1,1" shadow-color="#32000000" wrap-name-text="true" wrap-other-text="true" padding="1" margin="1" glow-color="#FF000000" accuracy="0.9">
               <text-style type="name" use-defaults="false" color="#FF000000" font="Verdana;10;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
               <text-style type="text" use-defaults="false" color="#FF000000" font="Verdana;9;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -1280,13 +1282,11 @@ Accueil?
             </style>
           </item>
           <item id="di215353352551328920" iid="55af6f3cea3444dcbe80f9d1affc9444" creation-date="09/04/2018 08:32:21" order-index="28" type="entity">
-            <layout ax="1169" ay="809" awidth="120" aheight="75" x="1169" y="809" width="120" height="75" />
+            <layout ax="1220" ay="809" awidth="120" aheight="75" x="1220" y="809" width="120" height="75" />
             <use-case />
           </item>
         </layer>
       </diagram>
     </model>
   </models>
-  <documents />
-  <document-templates />
 </sim-project>
