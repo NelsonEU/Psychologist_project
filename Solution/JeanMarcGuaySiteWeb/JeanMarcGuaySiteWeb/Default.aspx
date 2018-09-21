@@ -4,25 +4,25 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
 
-    <section id="banner">
-        <div class="inner">
-            <h1>Jean-Marc Guay</h1>
-            <p></p>
-        </div>
-        <img class="imgBanner" src="Images/DSC_2726.JPG"></img>
-    </section>
+    <div class="parallax-window" data-parallax="scroll" data-image-src="/Images/DSC_2726.JPG"></div>
 
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
-
         <div class="row text-center">
             <div class="col-lg-12">
                 Default.aspx
                 <span id="test" runat="server"></span>
             </div>
         </div>
-        
+
     </div>
 </asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
+
+    <script src="Javascripts/parallax.min.js"></script>
+
+</asp:Content>
+

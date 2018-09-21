@@ -79,6 +79,7 @@
     <Content Include="Images\DSC_2726.JPG" />
     <Content Include="Images\stairs.jpg" />
     <Content Include="Inscription.aspx" />
+    <Content Include="Javascripts\parallax.min.js" />
     <Content Include="Javascripts\Script.js" />
     <Content Include="packages.config" />
     <Content Include="Site.Master" />
