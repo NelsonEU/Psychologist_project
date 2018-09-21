@@ -2,6 +2,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
+<asp:Content ID="Content3" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
+
+    <section id="banner">
+        <div class="inner">
+            <h1>Jean-Marc Guay</h1>
+            <p></p>
+        </div>
+        <img class="imgBanner" src="Images/DSC_2726.JPG"></img>
+    </section>
+
+</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
 

@@ -6,6 +6,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1>Gestion des modules</h1>
+            <asp:Button ID="PublishButton" runat="server" Text="Save" onclick="SwitchSelectChanged" />
         </div>
     </div>
 
@@ -13,11 +14,7 @@
             <ItemTemplate>
                 <div class="row">
                     <div class="col-lg-12">
-                        <label class="switch">
-      <input class="switch-input" type="checkbox" />
-      <span class="switch-label" data-on="Activé" data-off="Désactivé"></span> <span class="switch-handle"></span> </label>
-                        <asp:Label runat="server" Text='<%# Eval("labelModule") %>' />
-                        <asp:Label runat="server" Text='<%# Eval("active") %>' />
+                        <asp:Label runat="server" class="switchLabel" data-id='<%# Eval("active") %>' Text='<%# Eval("labelModule") %>' />                     
                     </div>
                 </div>
             </ItemTemplate>

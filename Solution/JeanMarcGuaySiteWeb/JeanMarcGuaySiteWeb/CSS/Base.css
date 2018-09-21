@@ -1,6 +1,5 @@
 ﻿body {
 }
-
 .navbar-custom {
     background-color: #B0E0E6;
 }
@@ -8,4 +7,206 @@
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
         color: black;
+}
+
+.banner {
+    height: 150px;
+    position: relative;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #7cd7ff
+}
+
+.imgBanner {
+    position: absolute
+}
+/* Banner */
+#banner {
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    background-color: #111111;
+    color: rgba(255, 255, 255,0.9);
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    font-family: ;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    background-image: url("../../images/banner.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top: 0;
+    display: -ms-flexbox;
+    height: 200px;
+    min-height: 550px !important;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    height: 40px !important;
+    width: 100%;
+}
+
+    #banner a {
+        color: #ce1b28;
+    }
+
+    #banner h1, #banner h2, #banner h3, #banner h4, #banner h5, #banner h6 {
+        color: #ffffff;
+    }
+
+    #banner .inner {
+        width: 100%;
+        z-index: 2;
+    }
+
+    #banner > .inner > :last-child {
+        margin-bottom: 0;
+    }
+
+    #banner h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    #banner p {
+        font-size: 1.5rem;
+    }
+
+    #banner a {
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+    }
+
+        #banner a:hover {
+            color: #ffffff;
+        }
+
+    #banner .imgBanner {
+        -moz-transform: translateX(50%) translateY(50%);
+        -webkit-transform: translateX(50%) translateY(50%);
+        -ms-transform: translateX(50%) translateY(50%);
+        transform: translateX(50%) translateY(50%);
+        bottom: 50%;
+        height: auto;
+        min-height: 100%;
+        min-width: 100%;
+        overflow: hidden;
+        position: absolute;
+        right: 50%;
+        width: auto;
+    }
+
+    #banner:before {
+        -moz-transition: opacity 3s ease;
+        -webkit-transition: opacity 3s ease;
+        -ms-transition: opacity 3s ease;
+        transition: opacity 3s ease;
+        -moz-transition-delay: 1.25s;
+        -webkit-transition-delay: 1.25s;
+        -ms-transition-delay: 1.25s;
+        transition-delay: 1.25s;
+        background: #111111;
+        content: '';
+        display: block;
+        height: 100%;
+        left: 0;
+        opacity: 0.45;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    #banner:after {
+        background: linear-gradient(360deg, #6decf5 35%, #ffffff 085%);
+        content: ' ';
+        display: block;
+        height: 100%;
+        left: 0;
+        opacity: 0.4;
+        position: absolute;
+        top: 0;
+        webkit-linear-gradientidth: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+
+    #banner.small {
+        height: 30vh !important;
+        min-height: 30vh;
+    }
+
+.logoBanner {
+    z-index: 1;
+    max-height: 220px;
+    max-width: 220px;
+    float: left;
+}
+
+.emptyBox {
+    z-index: 1;
+    height: 220px;
+    width: 220px;
+    float: right;
+}
+
+@media screen and (max-width: 1280px) {
+    #banner video {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    #banner {
+        height: auto !important;
+        min-height: 0;
+        padding: 4rem 2rem 4rem 2rem;
+    }
+
+        #banner .inner {
+            width: 100%;
+        }
+
+        #banner h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0;
+        }
+
+        #banner p {
+            font-size: 1.25rem;
+        }
+
+        #banner br {
+            display: none;
+        }
+
+        #banner .button {
+            width: 100%;
+        }
+}
+
+@media screen and (max-width: 480px) {
+    #banner p {
+        font-size: 1rem;
+    }
+}
+
+/* Fonts */
+@font-face {
+    font-family: Polt;
+    src: url(Fonts/Polt-regular.otf);
+}
+@font-face {
+    font-family: Modernist;
+    src: url(Fonts/Sk-Modernist-regular.otf);
 }
