@@ -1,2 +1,11 @@
 ﻿body {
 }
+
+.navbar-custom {
+    background-color: #B0E0E6;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+        color: black;
+}
