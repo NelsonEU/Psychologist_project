@@ -22,6 +22,7 @@ namespace JeanMarcGuaySiteWeb
 
         protected void Submit_click(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("On arrive ici");
             if (!string.IsNullOrEmpty(email.Text) && !string.IsNullOrEmpty(password.Text) && !string.IsNullOrEmpty(passwordConfirmation.Text)
                 && !string.IsNullOrEmpty(firstname.Text) && !string.IsNullOrEmpty(lastname.Text))
             {
@@ -55,7 +56,7 @@ namespace JeanMarcGuaySiteWeb
                         notification.InnerText = "Bienvenue ! Un e-mail vous a été envoyé afin de confirmer votre inscription";
                         notification.Visible = true;
                         EmailController ec = new EmailController();
-                        // ec.SendActivationMail(email.Text);
+                        ec.SendActivationMail(email.Text);
 
                     }
                 }

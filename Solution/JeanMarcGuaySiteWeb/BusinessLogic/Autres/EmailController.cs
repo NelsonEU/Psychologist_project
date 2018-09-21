@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
+using System.IO;
 
 namespace BusinessLogic.Autres
 {
@@ -35,8 +36,20 @@ namespace BusinessLogic.Autres
         public void SendActivationMail(string email)
         {
             string subject = "Bienvenue !";
-            string body = "blabla";
-            SendMail(email, subject, body);
+            string body = CreateEmailBody(email);
+            System.Diagnostics.Debug.WriteLine(body);
+            //SendMail(email, subject, body);
+        }
+
+        private string CreateEmailBody(string email)
+        {
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader("ActivationEmail.html"))
+            {
+                body = reader.ReadToEnd();
+            }
+            body = body.Replace("{email}", email);
+            return body;
         }
 
 
