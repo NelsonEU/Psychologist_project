@@ -5,9 +5,22 @@
 
     <div class="row">
         <div class="col-lg-12">
-            fds
+            <h1>Gestion des modules</h1>
         </div>
     </div>
 
+        <asp:Repeater runat="server" ID="rptModules">
+            <ItemTemplate>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label class="switch">
+      <input class="switch-input" type="checkbox" />
+      <span class="switch-label" data-on="Activé" data-off="Désactivé"></span> <span class="switch-handle"></span> </label>
+                        <asp:Label runat="server" Text='<%# Eval("labelModule") %>' />
+                        <asp:Label runat="server" Text='<%# Eval("active") %>' />
+                    </div>
+                </div>
+            </ItemTemplate>
+    </asp:Repeater>
 
 </asp:Content>

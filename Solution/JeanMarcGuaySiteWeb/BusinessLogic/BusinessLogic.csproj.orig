@@ -46,7 +46,10 @@
     <Compile Include="Classes\Availability.cs" />
     <Compile Include="Classes\Category.cs" />
     <Compile Include="Classes\CategoryPublication.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="Autres\CryptographyHelper.cs" />
+>>>>>>> a6e36e5ff9188759517cd14ce7589e2cb066853f
     <Compile Include="Classes\Module.cs" />
     <Compile Include="Classes\Picture.cs" />
     <Compile Include="Classes\Publication.cs" />

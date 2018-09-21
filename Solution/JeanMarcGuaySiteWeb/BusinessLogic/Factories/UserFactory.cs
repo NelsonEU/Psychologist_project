@@ -73,7 +73,7 @@ namespace BusinessLogic.Factories
                 if(count >= 1)
                 {
                     MySqlCommand cmd2 = cnn.CreateCommand();
-                    cmd2.CommandText = "SELECT * FROM users WHERE dateSuppression IS NULL AND email=@email";
+                    cmd2.CommandText = "SELECT * FROM users WHERE deletionDate IS NULL AND email=@email";
                     cmd2.Parameters.AddWithValue("@email", email);
                     MySqlDataReader reader = cmd2.ExecuteReader();
                     while (reader.Read())
@@ -123,40 +123,14 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT COUNT(*) FROM users WHERE deletionDate IS NULL AND email=@email AND password = @hashedPassword";
-                cmd.Parameters.AddWithValue("email", email);
-                cmd.Parameters.AddWithValue("password", hashedPassword);
-                int count = int.Parse(cmd.ExecuteScalar().ToString());
-                cmd.Dispose();
-
-                if (count >= 1)
+                user = GetByEmail(email);
+                if (user != null)
                 {
-                    cmd.CommandText = "SELECT * FROM clients WHERE deletionDate ISNULL AND email=@email AND password=@hashedPassword";
-                    cmd.Parameters.AddWithValue("email", email);
-                    cmd.Parameters.AddWithValue("password", hashedPassword);
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    bool passwordValidate = ch.ValidateHashedPassword(password, user.password);
+                    if (!passwordValidate)
                     {
-                        int _userId = (Int32)reader["user_id"];
-                        string _lastname = reader["lastname"].ToString();
-                        string _firstname = reader["firstname"].ToString();
-                        string _email = reader["email"].ToString();
-                        string _password = reader["password"].ToString();
-                        bool _admin = (bool)reader["admin"];
-                        bool _subscriber = (bool)reader["subscriber"];
-
-                        user.userId = _userId;
-                        user.lastname = _lastname;
-                        user.firstname = _firstname;
-                        user.password = _password;
-                        user.admin = _admin;
-                        user.subscriber = _subscriber;
+                        user = null;
                     }
-                    reader.Close();
-                }
-                else
-                {
-                    user = null;
                 }
             }
             finally
