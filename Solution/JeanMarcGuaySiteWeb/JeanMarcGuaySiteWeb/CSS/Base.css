@@ -1,12 +1,18 @@
 ﻿body {
 }
 .navbar-custom {
-    background-color: #B0E0E6;
+    background-color: #ffffff;
 }
 
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
         color: black;
+}
+
+.navbar.stick {
+    position: fixed;
+    opacity: .85;
+    width: 100%;
 }
 
 .banner {
