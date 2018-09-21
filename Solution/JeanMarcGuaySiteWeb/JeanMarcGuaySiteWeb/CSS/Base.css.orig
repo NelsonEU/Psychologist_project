@@ -1,11 +1,28 @@
 ﻿body {
 }
+.navbar-custom {
+    background-color: #ffffff;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+        color: black;
+}
 <<<<<<< HEAD
-body {
+.parallax-window {
+    min-height: 400px;
+    background: transparent;
+}
+=======
+
+.navbar.stick {
+    position: fixed;
+    opacity: .85;
+    width: 100%;
 }
 
 .banner {
-    height: 40px;
+    height: 150px;
     position: relative;
     text-align: center;
     padding-top: 30px;
@@ -21,7 +38,7 @@ body {
     -ms-flex-align: center;
     -ms-flex-pack: center;
     background-color: #111111;
-    color: rgba(255, 255, 255,0.7);
+    color: rgba(255, 255, 255,0.9);
     -moz-align-items: center;
     -webkit-align-items: center;
     -ms-align-items: center;
@@ -30,6 +47,7 @@ body {
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
+    font-family: ;
     -moz-justify-content: center;
     -webkit-justify-content: center;
     -ms-justify-content: center;
@@ -41,7 +59,7 @@ body {
     border-top: 0;
     display: -ms-flexbox;
     height: 200px;
-    min-height: 200px !important;
+    min-height: 550px !important;
     overflow: hidden;
     position: relative;
     text-align: center;
@@ -121,12 +139,12 @@ body {
     }
 
     #banner:after {
-        background: linear-gradient(135deg, #6decf5 0%, #703a00 85%);
+        background: linear-gradient(360deg, #6decf5 35%, #ffffff 085%);
         content: ' ';
         display: block;
         height: 100%;
         left: 0;
-        opacity: 0.5;
+        opacity: 0.4;
         position: absolute;
         top: 0;
         webkit-linear-gradientidth: 100%;
@@ -194,14 +212,14 @@ body {
         font-size: 1rem;
     }
 }
-=======
 
-.navbar-custom {
-    background-color: #B0E0E6;
+/* Fonts */
+@font-face {
+    font-family: Polt;
+    src: url(Fonts/Polt-regular.otf);
 }
-
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-text {
-        color: black;
+@font-face {
+    font-family: Modernist;
+    src: url(Fonts/Sk-Modernist-regular.otf);
 }
->>>>>>> 7797f806ec14eec467bc95d20fb643034bdbd037
+>>>>>>> a9036f7fd9cbc38b9f457c24b0469404be961fb9
