@@ -4,11 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
     <link rel="stylesheet" href="CSS/Admin.css" />
     <link rel="stylesheet" href="CSS/Banner.css" />
+    <link rel="stylesheet" href="CSS/sb-admin.min.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -16,7 +17,7 @@
     <form id="form1" runat="server">
 
 
-        <!-- Banner -->
+        <!-- Banner 
 
         <section id="banner">
             <img class="logoBanner" src="Images/logoOriginal2.png" />
@@ -33,8 +34,59 @@
             <div class="emptyBox"></div>
         </section>
 
+            -->
 
-        <!-- Menu -->
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+            <a class="navbar-brand mr-1" href="#">Section administrative</a>
+
+            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+        </nav>
+
+
+        <div id="wrapper">
+            <!-- Side Bar -->
+            <ul class="sidebar navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onserverclick="OnClickUserManagement">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Gestion des rendez-vous</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onserverclick="OnClickUserManagement">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Nouvelle publication</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onserverclick="OnClickUserManagement">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Gestion des modules</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onserverclick="OnClickUserManagement">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Gestion des utilisateurs</span></a>
+                </li>
+            </ul>
+
+
+            <div id="content-wrapper">
+                <div class="container-fluid">
+
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Menu 
         <nav class="navbar navbar-expand-lg navbar-light menu">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -54,15 +106,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="container-fluid">
-
-
-            <div>
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
-            </div>
-
-        </div>
+        -->
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
