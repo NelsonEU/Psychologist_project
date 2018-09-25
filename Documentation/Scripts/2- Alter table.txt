@@ -21,3 +21,9 @@ alter table categories add column deletionDate DATETIME;
 
 alter table modules 
 ADD COLUMN modificationDate DATETIME;
+
+
+ALTER TABLE `prj-jmguay`.`subsections` 
+CHANGE COLUMN `name` `name` VARCHAR(40) NOT NULL ,
+ADD UNIQUE INDEX `name_UNIQUE` (`name` ASC);
+

@@ -18,3 +18,7 @@
     min-height: 400px;
     background: transparent;
 }
+.bannerCenter {
+    display: flex;
+    align-items: center;
+}

@@ -18,11 +18,9 @@ namespace JeanMarcGuaySiteWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string HashedPassword = ch.HashPassword(password.Text)
-            //if (userF.getByEmail(email.Text) == null)
-            //{
-            //    //userF.Add("TestLastName", "TestFirstName", "Test@test.test", "TestPassword", false, false);
-            //}           
+            SubsectionFactory subFact = new SubsectionFactory(cnnStr);
+            Subsection subsection = subFact.Get("test1");
+            subsection_1.InnerHtml = subsection.content;
         }
     }
 }

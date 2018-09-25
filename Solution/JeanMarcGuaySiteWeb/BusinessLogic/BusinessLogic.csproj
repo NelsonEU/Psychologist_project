@@ -54,6 +54,7 @@
     <Compile Include="Classes\Subsection.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Factories\ModuleFactory.cs" />
+    <Compile Include="Factories\SubsectionFactory.cs" />
     <Compile Include="Factories\UserFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
