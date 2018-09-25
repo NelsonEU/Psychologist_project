@@ -71,7 +71,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "UPDATE modules SET active = @active, modificationDate = NOW() WHERE module_id";
+                cmd.CommandText = "UPDATE modules SET active = @active, modificationDate = NOW() WHERE module_id = @module_id";
                 cmd.Parameters.AddWithValue("@module_id", id);
                 cmd.Parameters.AddWithValue("@active", active);
                 cmd.ExecuteNonQuery();

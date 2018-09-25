@@ -72,8 +72,10 @@
     <Content Include="Admin\Admin.aspx" />
     <Content Include="Admin\CSS\Admin.css" />
     <Content Include="Admin\CSS\Banner.css" />
+    <Content Include="Admin\CSS\sb-admin.min.css" />
     <Content Include="Admin\Images\stairs.jpg" />
     <Content Include="Admin\Javascript\Admin.js" />
+    <Content Include="Admin\UserManagement.aspx" />
     <Content Include="Connexion.aspx" />
     <Content Include="CSS\Base.css" />
     <Content Include="Images\DSC_2726.JPG" />
@@ -116,6 +118,13 @@
     </Compile>
     <Compile Include="Admin\Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserManagement.aspx.cs">
+      <DependentUpon>UserManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserManagement.aspx.designer.cs">
+      <DependentUpon>UserManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connexion.aspx.cs">
       <DependentUpon>Connexion.aspx</DependentUpon>
