@@ -3,22 +3,33 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Gestion des utilisateurs
-    </h1>
-
-    <div class="card-body">
-        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <div id="dataTable_filter" class="dataTables_filter">
-                        <label>Rechercher:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable" /></label>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Gestion des utilisateurs
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div id="dataTable_filter" class="dataTables_filter">
+                                <label>Rechercher:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable" /></label>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <asp:Table runat="server">
-                    </asp:Table>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div runat="server" visible="false" id="notif"></div>
+                            <asp:Table runat="server" ID="tabUsers" class="table table-bordered dataTable">
+                                <asp:TableHeaderRow>
+                                    <asp:TableHeaderCell>Prénom</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>Nom</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>E-mail</asp:TableHeaderCell>
+                                </asp:TableHeaderRow>
+                            </asp:Table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

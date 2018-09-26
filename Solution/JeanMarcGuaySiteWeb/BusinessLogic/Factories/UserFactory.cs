@@ -176,6 +176,7 @@ namespace BusinessLogic.Factories
                     user.userId = _userId;
                     user.lastname = _lastname;
                     user.firstname = _firstname;
+                    user.email = _email;
                     user.password = _password;
                     user.admin = _admin;
                     user.subscriber = _subscriber;
