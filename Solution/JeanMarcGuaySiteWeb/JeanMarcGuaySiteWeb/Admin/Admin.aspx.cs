@@ -13,25 +13,44 @@ namespace JeanMarcGuaySiteWeb.Admin
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
-            Module[] modules = moduleFactory.GetAll();
-            DataTable rptModulesSource = new DataTable();
-            rptModulesSource.Columns.AddRange(new DataColumn[2] { new DataColumn("labelModule"), new DataColumn("active") });
-            
-            if (modules.Length > 0)
+            if (!Page.IsPostBack)
             {
-                for (int i = 0; i < modules.Length; i++)
-                {
-                    rptModulesSource.Rows.Add(modules[i].title, modules[i].moduleId.ToString());
-                }
+                Module[] modules = moduleFactory.GetAll();
+                gridModules.DataSource = modules;
+                gridModules.DataBind();
             }
-
-            rptModules.DataSource = rptModulesSource;
-            rptModules.DataBind();
         }
+        protected void gridCategorie_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = int.Parse(e.CommandArgument.ToString());
+            int ID = (int)gridModules.DataKeys[index].Value; // value of the datakey
+            switch (e.CommandName)
+            {
+                case "Toggle":
+                    toggle(ID);
+                    break;
+            }
+        }
+
+        protected void toggle(int id)
+        {
+            Module module = moduleFactory.Get(id);
+            if(module.active == true)
+            {
+                moduleFactory.Update(id, false);
+            }
+            else
+            {
+                moduleFactory.Update(id, true);
+            }
+            
+        }
+
 
     }
 }

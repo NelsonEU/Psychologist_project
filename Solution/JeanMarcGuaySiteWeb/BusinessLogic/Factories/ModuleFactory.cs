@@ -84,5 +84,42 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+        #region Get
+        public Module Get(int id)
+        {
+
+            Module module = new Module();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM modules WHERE module_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int _id = (Int32)reader["module_id"];
+                    string _title = reader["title"].ToString();
+                    bool _active = (bool)reader["active"];
+
+                    module.moduleId = _id;
+                    module.title = _title;
+                    module.active = _active;
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return module;
+
+        }
+        #endregion
+
     }
 }
