@@ -250,7 +250,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "UPDATE user SET deletionDate = NOW() WHERE user_id=@id)";
+                cmd.CommandText = "UPDATE users SET deletionDate = NOW() WHERE user_id=@id)";
                 cmd.Parameters.AddWithValue("@user_id", id);
                 cmd.ExecuteNonQuery();
             }
