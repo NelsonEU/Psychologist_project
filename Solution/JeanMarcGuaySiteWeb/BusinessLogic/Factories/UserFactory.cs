@@ -176,6 +176,7 @@ namespace BusinessLogic.Factories
                     user.userId = _userId;
                     user.lastname = _lastname;
                     user.firstname = _firstname;
+                    user.email = _email;
                     user.password = _password;
                     user.admin = _admin;
                     user.subscriber = _subscriber;
@@ -250,7 +251,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "UPDATE user SET deletionDate = NOW() WHERE user_id=@id)";
+                cmd.CommandText = "UPDATE users SET deletionDate = NOW() WHERE user_id=@id)";
                 cmd.Parameters.AddWithValue("@user_id", id);
                 cmd.ExecuteNonQuery();
             }

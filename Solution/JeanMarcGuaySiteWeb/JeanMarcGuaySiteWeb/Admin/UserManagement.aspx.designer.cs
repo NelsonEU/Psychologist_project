@@ -11,5 +11,23 @@ namespace JeanMarcGuaySiteWeb.Admin {
     
     
     public partial class UserManagement {
+        
+        /// <summary>
+        /// Contrôle notif.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notif;
+        
+        /// <summary>
+        /// Contrôle tabUsers.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tabUsers;
     }
 }
