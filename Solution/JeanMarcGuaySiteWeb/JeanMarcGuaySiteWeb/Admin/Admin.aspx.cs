@@ -22,6 +22,7 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 Module[] modules = moduleFactory.GetAll();
                 gridModules.DataSource = modules;
+                
                 gridModules.DataBind();
             }
         }

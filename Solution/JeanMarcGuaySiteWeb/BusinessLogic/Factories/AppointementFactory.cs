@@ -27,9 +27,9 @@ namespace BusinessLogic.Factories
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = "INSERT INTO Appointements(user_id, availability_id, message) VALUES (@user_id, @availability_id, @message)";
-                cmd.Parameters.AddWithValue("user_id", user_id);
-                cmd.Parameters.AddWithValue("availability_id", availability_id);
-                cmd.Parameters.AddWithValue("message", message);
+                cmd.Parameters.AddWithValue("@user_id", user_id);
+                cmd.Parameters.AddWithValue("@availability_id", availability_id);
+                cmd.Parameters.AddWithValue("@message", message);
                 cmd.ExecuteNonQuery();
             }
             finally
@@ -53,7 +53,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Close();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "UPDATE appointments SET "
+                cmd.CommandText = "UPDATE appointments SET ";
             }
         }
         #endregion

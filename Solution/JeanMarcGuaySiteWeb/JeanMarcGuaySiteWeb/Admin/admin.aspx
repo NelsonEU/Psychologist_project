@@ -13,9 +13,9 @@
         <div class="col-lg-12">
             <asp:GridView ID="gridModules" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-hover dataTable" OnRowCommand="gridCategorie_RowCommand" DataKeyNames="moduleId">
                 <Columns>
-                    <asp:BoundField DataField="moduleId" HeaderText="Identifiant" SortExpression="id" ItemStyle-CssClass="hidden-field" HeaderStyle-CssClass="hidden-field" />
+                    <asp:BoundField DataField="moduleId" HeaderText="Identifiant" SortExpression="id" ItemStyle-CssClass="hidden-field" HeaderStyle-CssClass="hidden-field" Visible="False"/>
                     <asp:BoundField DataField="title" HeaderText="Titre" SortExpression="nom" />
-                    <asp:ButtonField CommandName="Toggle" Text="Activé" />
+                    <asp:ButtonField CommandName="Toggle" DataTextField="active" />
                 </Columns>
             </asp:GridView>
         </div>
