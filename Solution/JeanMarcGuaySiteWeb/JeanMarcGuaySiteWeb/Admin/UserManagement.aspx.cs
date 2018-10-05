@@ -33,16 +33,37 @@ namespace JeanMarcGuaySiteWeb.Admin
                     TableCell cellLastname = new TableCell();
                     TableCell cellFirstname = new TableCell();
                     TableCell cellEmail = new TableCell();
+                    TableCell cellSubscriber = new TableCell();
+                    TableCell cellAutorizhed = new TableCell();
                     TableCell cellSelect = new TableCell();
                     CheckBox cb = new CheckBox();
                     cb.ID = u.email;
-                    //AJOUTER ICI LE CHECKBOX DANS LA CELULLE
                     cellLastname.Text = u.lastname;
                     cellFirstname.Text = u.firstname;
                     cellEmail.Text = u.email;
+                    if (u.subscriber)
+                    {
+                        cellSubscriber.Text = "Oui";
+                    }
+                    else
+                    {
+                        cellSubscriber.Text = "Non";
+                    }
+                    if (u.authorized)
+                    {
+                        cellAutorizhed.Text = "Oui";
+                    }
+                    else
+                    {
+                        cellAutorizhed.Text = "Non";
+                    }
+                    cellSelect.Controls.Add(cb);
                     row.Cells.Add(cellFirstname);
                     row.Cells.Add(cellLastname);
                     row.Cells.Add(cellEmail);
+                    row.Cells.Add(cellSubscriber);
+                    row.Cells.Add(cellAutorizhed);
+                    row.Cells.Add(cellSelect);
                     tabUsers.Rows.Add(row);
                 }
                 tabUsers.Visible = true;

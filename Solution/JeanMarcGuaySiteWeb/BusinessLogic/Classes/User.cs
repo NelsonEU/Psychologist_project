@@ -18,6 +18,11 @@ namespace BusinessLogic
         public bool admin { get; set; }
         public bool subscriber { get; set; }
         public bool activated { get; set; }
+        public bool authorized { get; set; }
+        public DateTime birthday { get; set; }
+        public DateTime optIn { get; set; }
+        public DateTime optOut { get; set; }
+
 
     }
 }

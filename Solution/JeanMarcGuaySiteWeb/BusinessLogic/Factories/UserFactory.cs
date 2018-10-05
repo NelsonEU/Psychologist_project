@@ -20,7 +20,7 @@ namespace BusinessLogic.Factories
 
         #region Add
 
-        public void Add(string lastname, string firstname, string email, string password, bool admin, bool subscriber, bool activated)
+        public void Add(string lastname, string firstname, string email, string password, bool admin, bool subscriber, bool activated, DateTime birthday)
         {
 
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
@@ -31,7 +31,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "INSERT INTO users(lastname, firstname, email, password, admin, subscriber, activated , creationDate) VALUES (@lastname, @firstname, @email, @password, @admin, @subscriber, @activated , @creationDate)";
+                cmd.CommandText = "INSERT INTO users(lastname, firstname, email, password, admin, subscriber, activated , creationDate, birthday, opt_in) VALUES (@lastname, @firstname, @email, @password, @admin, @subscriber, @activated , @creationDate, @birthday, @opt_in)";
                 cmd.Parameters.AddWithValue("@lastname", lastname);
                 cmd.Parameters.AddWithValue("@firstname", firstname);
                 cmd.Parameters.AddWithValue("@email", email);
@@ -40,6 +40,15 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@subscriber", subscriber);
                 cmd.Parameters.AddWithValue("@activated", activated);
                 cmd.Parameters.AddWithValue("@creationDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("@birthday", birthday);
+                if (subscriber)
+                {
+                    cmd.Parameters.AddWithValue("@opt_in", DateTime.Now);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@opt_in", DBNull.Value);
+                }
                 cmd.ExecuteNonQuery();
             }
             finally
@@ -87,14 +96,34 @@ namespace BusinessLogic.Factories
                         bool _admin = (bool)reader["admin"];
                         bool _subscriber = (bool)reader["subscriber"];
                         bool _activated = (bool)reader["activated"];
+                        bool _authorized = (bool)reader["authorized"];
+                        DateTime _birthday = (DateTime)reader["birthday"];
+                        DateTime _optIn;
+                        try
+                        {
+                            _optIn = (DateTime)reader["opt_in"];
+                            user.optIn = _optIn;
+                        }
+                        catch (System.InvalidCastException) { }
+                        DateTime _optOut;
+                        try
+                        {
+                            _optOut = (DateTime)reader["opt_out"];
+                            user.optOut = _optOut;
+                        }
+                        catch (System.InvalidCastException) { }
 
                         user.userId = _userId;
                         user.lastname = _lastname;
                         user.firstname = _firstname;
                         user.password = _password;
+                        user.email = email;
                         user.admin = _admin;
                         user.subscriber = _subscriber;
                         user.activated = _activated;
+                        user.authorized = _authorized;
+                        user.birthday = _birthday;
+
                     }
                     reader.Close();
                 }
@@ -163,6 +192,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
+                    User user = new User();
                     int _userId = (Int32)reader["user_id"];
                     string _lastname = reader["lastname"].ToString();
                     string _firstname = reader["firstname"].ToString();
@@ -171,8 +201,24 @@ namespace BusinessLogic.Factories
                     bool _admin = (bool)reader["admin"];
                     bool _subscriber = (bool)reader["subscriber"];
                     bool _activated = (bool)reader["activated"];
+                    bool _authorized = (bool)reader["authorized"];
+                    DateTime _birthday = (DateTime)reader["birthday"];
+                    DateTime _optIn;
+                    try
+                    {
+                        _optIn = (DateTime)reader["opt_in"];
+                        user.optIn = _optIn;
+                    }
+                    catch (System.InvalidCastException) { }
+                    DateTime _optOut;
+                    try
+                    {
+                        _optOut = (DateTime)reader["opt_out"];
+                        user.optOut = _optOut;
+                    }
+                    catch (System.InvalidCastException) { }
 
-                    User user = new User();
+                    
                     user.userId = _userId;
                     user.lastname = _lastname;
                     user.firstname = _firstname;
@@ -181,6 +227,8 @@ namespace BusinessLogic.Factories
                     user.admin = _admin;
                     user.subscriber = _subscriber;
                     user.activated = _activated;
+                    user.authorized = _authorized;
+                    user.birthday = _birthday;
 
                     userList.Add(user);
                 }
@@ -221,6 +269,22 @@ namespace BusinessLogic.Factories
                     bool _admin = (bool)reader["admin"];
                     bool _subscriber = (bool)reader["subscriber"];
                     bool _activated = (bool)reader["activated"];
+                    bool _authorized = (bool)reader["authorized"];
+                    DateTime _birthday = (DateTime)reader["birthday"];
+                    DateTime _optIn;
+                    try
+                    {
+                        _optIn = (DateTime)reader["opt_in"];
+                        user.optIn = _optIn;
+                    }
+                    catch (System.InvalidCastException) { }
+                    DateTime _optOut;
+                    try
+                    {
+                        _optOut = (DateTime)reader["opt_out"];
+                        user.optOut = _optOut;
+                    }
+                    catch (System.InvalidCastException) { }
 
                     user.userId = _userId;
                     user.lastname = _lastname;
@@ -229,6 +293,8 @@ namespace BusinessLogic.Factories
                     user.admin = _admin;
                     user.subscriber = _subscriber;
                     user.activated = _activated;
+                    user.authorized = _authorized;
+                    user.birthday = _birthday;
                 }
                 reader.Close();
             }

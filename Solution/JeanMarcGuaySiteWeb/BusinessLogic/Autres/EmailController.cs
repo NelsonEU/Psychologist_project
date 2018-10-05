@@ -36,18 +36,19 @@ namespace BusinessLogic.Autres
         public void SendActivationMail(string email)
         {
             string subject = "Bienvenue !";
-            string body = CreateEmailBody(email);
-            System.Diagnostics.Debug.WriteLine(body);
+            //string body = CreateEmailBody(email);  
             //SendMail(email, subject, body);
         }
 
         private string CreateEmailBody(string email)
         {
             string body = string.Empty;
-            using (StreamReader reader = new StreamReader("ActivationEmail.html"))
+            /*
+            using StreamReader reader = new StreamReader("ActivationEmail.html"))
             {
                 body = reader.ReadToEnd();
             }
+            */
             body = body.Replace("{email}", email);
             return body;
         }

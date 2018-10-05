@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inscription.aspx.cs" Inherits="JeanMarcGuaySiteWeb.Inscription" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
@@ -48,11 +47,11 @@
                                 </div>
                                 <asp:Button ID="submit" class="mt-3 btn btn-lg btn-primary btn-block" Text="S'inscrire" runat="server" OnClick="Submit_click" />
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
-    </asp:Panel>
+        </asp:Panel>
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">

@@ -17,6 +17,9 @@
                                 <label>Rechercher:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable" /></label>
                             </div>
                         </div>
+                        <div class="col-sm-12 col-md-6">
+                            <asp:Button runat="server" Text="Autoriser"/>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
@@ -26,6 +29,9 @@
                                     <asp:TableHeaderCell>Prénom</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Nom</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>E-mail</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>Abonné</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>Autorisé*</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>Sélectionner</asp:TableHeaderCell>
                                 </asp:TableHeaderRow>
                             </asp:Table>
                         </div>
