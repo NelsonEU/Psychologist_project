@@ -10,7 +10,7 @@ namespace BusinessLogic
     {
 
         public int moduleId { get; set; } //PK
-
+        public string description { get; set; }
         public string title { get; set; } //VARCHAR(40)
         public bool active { get; set; }
 

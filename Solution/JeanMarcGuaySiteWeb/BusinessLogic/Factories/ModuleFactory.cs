@@ -39,12 +39,14 @@ namespace BusinessLogic.Factories
                 {
                     int _id = (Int32)reader["module_id"];
                     string _title = reader["title"].ToString();
+                    string _description = reader["description"].ToString();
                     bool _active = (bool)reader["active"];
 
                     Module module = new Module();
                     module.moduleId = _id;
                     module.title = _title;
                     module.active = _active;
+                    module.description = _description;
 
                     moduleList.Add(module);
                 }
@@ -103,10 +105,12 @@ namespace BusinessLogic.Factories
                 {
                     int _id = (Int32)reader["module_id"];
                     string _title = reader["title"].ToString();
+                    string _description = reader["description"].ToString();
                     bool _active = (bool)reader["active"];
 
                     module.moduleId = _id;
                     module.title = _title;
+                    module.description = _description;
                     module.active = _active;
                 }
                 reader.Close();

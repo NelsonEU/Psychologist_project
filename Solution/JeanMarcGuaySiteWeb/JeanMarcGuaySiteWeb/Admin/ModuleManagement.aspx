@@ -15,7 +15,8 @@
                 <Columns>
                     <asp:BoundField DataField="moduleId" HeaderText="Identifiant" SortExpression="id" ItemStyle-CssClass="hidden-field" HeaderStyle-CssClass="hidden-field" Visible="False"/>
                     <asp:BoundField DataField="title" HeaderText="Titre" SortExpression="nom" />
-                    <asp:CheckBoxField  DataField="active"/>
+                    <asp:BoundField DataField="description" HeaderText="Description" SortExpression="nom" />
+                    <asp:CheckBoxField DataField="active"/>
                     <asp:ButtonField CommandName="Toggle" DataTextField="active" />
                 </Columns>
             </asp:GridView>
