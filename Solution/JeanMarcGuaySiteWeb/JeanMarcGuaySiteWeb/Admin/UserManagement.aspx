@@ -9,16 +9,19 @@
             Gestion des utilisateurs
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive col-md-12">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <div class="row">
-                        <div class="col-sm-12 col-md-6">
+                        <div class="col-sm-12 col-md-10">
                             <div id="dataTable_filter" class="dataTables_filter">
                                 <label>Rechercher:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable" /></label>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6">
-                            <asp:Button runat="server" Text="Autoriser"/>
+                        <div class="col-sm-12 col-md-1">
+                            <asp:Button runat="server" Text="Autoriser" OnClick="Click_Authorized"/>
+                        </div>
+                        <div class="col-sm-12 col-md-1">
+                            <asp:Button runat="server" Text="Supprimer" OnClick="Click_Delete"/>
                         </div>
                     </div>
                     <div class="row">
