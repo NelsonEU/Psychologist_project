@@ -1,19 +1,6 @@
 ﻿body {
 }
-.navbar-custom {
-    background-color: #ffffff;
-}
 
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-text {
-        color: black;
-}
-
-.navbar.stick {
-    position: fixed;
-    opacity: .85;
-    width: 100%;
-}
 .parallax-window {
     min-height: 400px;
     background: transparent;
@@ -21,4 +8,8 @@
 .bannerCenter {
     display: flex;
     align-items: center;
+}
+
+#ContentPlaceHolder1_panelConnexion{
+    padding-top: 1rem;
 }

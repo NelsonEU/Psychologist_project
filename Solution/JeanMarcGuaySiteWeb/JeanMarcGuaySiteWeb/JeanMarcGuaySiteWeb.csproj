@@ -82,6 +82,7 @@
     <Content Include="Admin\Admin.aspx" />
     <Content Include="Admin\CSS\Admin.css" />
     <Content Include="Admin\CSS\Banner.css" />
+    <Content Include="CSS\Navbar.css" />
     <Content Include="Admin\CSS\sb-admin.min.css" />
     <Content Include="Admin\Images\stairs.jpg" />
     <Content Include="Admin\Javascript\Admin.js" />

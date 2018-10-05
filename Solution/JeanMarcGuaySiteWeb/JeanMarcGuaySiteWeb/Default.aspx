@@ -2,8 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
-
+<asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
     <div class="parallax-window bannerCenter" data-parallax="scroll" data-image-src="/Images/DSC_2726.JPG" ">
         <div class="container-fluid">
             <div class="row text-center text-black" >
@@ -14,11 +13,9 @@
         </div>
 
     </div>
-    
-
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
         <div id="subsection_1" runat="server">
 
