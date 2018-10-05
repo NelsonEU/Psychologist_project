@@ -13,21 +13,22 @@ namespace JeanMarcGuaySiteWeb.Admin
 {
     public partial class UserManagement : System.Web.UI.Page
     {
-        private string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        private static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        private UserFactory uf = new UserFactory(cnnStr);
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            UserFactory uf = new UserFactory(cnnStr);
             User[] allUsers = uf.GetAll();
-            if(allUsers.Length < 1)
+            if (allUsers.Length < 1)
             {
                 notif.InnerText = "Aucun utilisateur n'est inscrit sur le site.";
                 notif.Visible = true;
                 tabUsers.Visible = false;
             }
-            else{
-                foreach(User u in allUsers)
+            else
+            {
+                foreach (User u in allUsers)
                 {
                     TableRow row = new TableRow();
                     TableCell cellLastname = new TableCell();
@@ -37,7 +38,6 @@ namespace JeanMarcGuaySiteWeb.Admin
                     TableCell cellAutorizhed = new TableCell();
                     TableCell cellSelect = new TableCell();
                     CheckBox cb = new CheckBox();
-                    cb.ID = u.email;
                     cellLastname.Text = u.lastname;
                     cellFirstname.Text = u.firstname;
                     cellEmail.Text = u.email;
@@ -58,6 +58,8 @@ namespace JeanMarcGuaySiteWeb.Admin
                         cellAutorizhed.Text = "Non";
                     }
                     cellSelect.Controls.Add(cb);
+                    cellSelect.ID = u.email;
+                    cellSelect.CssClass = "selectUser";
                     row.Cells.Add(cellFirstname);
                     row.Cells.Add(cellLastname);
                     row.Cells.Add(cellEmail);
@@ -68,6 +70,36 @@ namespace JeanMarcGuaySiteWeb.Admin
                 }
                 tabUsers.Visible = true;
             }
+        }
+
+        protected void Click_Authorized(object sender, EventArgs e)
+        {
+            foreach (TableRow r in tabUsers.Rows)
+            {
+                foreach (TableCell c in r.Cells)
+                {
+                    if (c.CssClass == "selectUser" && ((CheckBox)c.Controls[0]).Checked)
+                    {
+                        uf.AuthorizeByEmail(c.ID);
+                    }
+                }
+            }
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void Click_Delete(object sender, EventArgs e)
+        {
+            foreach (TableRow r in tabUsers.Rows)
+            {
+                foreach (TableCell c in r.Cells)
+                {
+                    if (c.CssClass == "selectUser" && ((CheckBox)c.Controls[0]).Checked)
+                    {
+                        uf.DeleteByEmail(c.ID);
+                    }
+                }
+            }
+            Response.Redirect(Request.RawUrl);
         }
     }
 }
