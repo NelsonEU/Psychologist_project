@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using BusinessLogic;
 using BusinessLogic.Factories;
 using System.Configuration;
+using System.Web.UI.HtmlControls;
 
 namespace JeanMarcGuaySiteWeb.Admin
 {
@@ -19,30 +20,52 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+
+            Module[] modules = moduleFactory.GetAll();
+
+            foreach (Module m in modules)
             {
-                Module[] modules = moduleFactory.GetAll();
-                gridModules.DataSource = modules;
-                gridModules.DataBind();
+                TableRow row = new TableRow();
+                TableCell cellName= new TableCell();
+                TableCell cellDescription = new TableCell();
+                TableCell cellActive = new TableCell();
+                CheckBox cb = new CheckBox();
+
+                cellName.Text = m.title;
+                cellDescription.Text = m.description;
+                if (m.active == true)
+                {
+                    cb.Checked = true;          
+                }
+                cb.Attributes.Add("data-id", m.moduleId.ToString());
+                cb.AutoPostBack = true;
+                cb.InputAttributes.Add("class", "toggle");
+                cb.CheckedChanged += new System.EventHandler(cb_Changed);
+
+                cellActive.Controls.Add(cb);
+
+
+                row.Cells.Add(cellName);
+                row.Cells.Add(cellDescription);
+                row.Cells.Add(cellActive);
+
+                moduleTable.Rows.Add(row);
             }
+
         }
 
-        protected void gridCategorie_RowCommand(object sender, GridViewCommandEventArgs e)
+
+        protected void cb_Changed(object sender, EventArgs e)
         {
-            
-            int index = int.Parse(e.CommandArgument.ToString());
-            int ID = (int)gridModules.DataKeys[index].Value; // value of the datakey
-            switch (e.CommandName)
-            {
-                case "Toggle":
-                    toggle(ID);
-                    break;
-            }
+            CheckBox cb = (CheckBox)sender;
+            string id = cb.Attributes["data-id"];
+            toggle(Convert.ToInt32(id));
+
         }
+
 
         protected void toggle(int id)
         {
-
             Module module = moduleFactory.Get(id);
             if (module.active == true)
             {
@@ -54,8 +77,8 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
 
             Response.Redirect(Request.RawUrl);
-
         }
+
 
     }
 }

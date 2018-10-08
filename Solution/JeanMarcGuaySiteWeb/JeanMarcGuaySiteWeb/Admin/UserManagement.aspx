@@ -3,6 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <div class="row pb-3">
+        <div class="col-lg-12">
+            <h1>Gestion des utilisateurs</h1>
+        </div>
+    </div>
+
     <div class="card mb-3">
         <div class="card-header">
             <i class="fas fa-table"></i>
@@ -27,7 +34,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div runat="server" visible="false" id="notif"></div>
-                            <asp:Table runat="server" ID="tabUsers" class="table table-bordered dataTable">
+                            <asp:Table runat="server" ID="tabUsers" CssClass="table table-bordered dataTable">
                                 <asp:TableHeaderRow>
                                     <asp:TableHeaderCell>Prénom</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Nom</asp:TableHeaderCell>

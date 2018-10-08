@@ -80,8 +80,12 @@
   <ItemGroup>
     <Content Include="Accueil.aspx" />
     <Content Include="Admin\Admin.aspx" />
+    <Content Include="Admin\AppointmentManagement.aspx" />
+    <Content Include="Admin\AvailabilityManagement.aspx" />
     <Content Include="Admin\CSS\Admin.css" />
-    <Content Include="Admin\CSS\Banner.css" />
+    <Content Include="Admin\CSS\Switch.css" />
+    <Content Include="Admin\DocumentManagement.aspx" />
+    <Content Include="Admin\RequestManagement.aspx" />
     <Content Include="CSS\Navbar.css" />
     <Content Include="Admin\CSS\sb-admin.min.css" />
     <Content Include="Admin\Images\stairs.jpg" />
@@ -131,12 +135,40 @@
     <Compile Include="Admin\Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AppointmentManagement.aspx.cs">
+      <DependentUpon>AppointmentManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AppointmentManagement.aspx.designer.cs">
+      <DependentUpon>AppointmentManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AvailabilityManagement.aspx.cs">
+      <DependentUpon>AvailabilityManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AvailabilityManagement.aspx.designer.cs">
+      <DependentUpon>AvailabilityManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DocumentManagement.aspx.cs">
+      <DependentUpon>DocumentManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DocumentManagement.aspx.designer.cs">
+      <DependentUpon>DocumentManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\ModuleManagement.aspx.cs">
       <DependentUpon>ModuleManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\ModuleManagement.aspx.designer.cs">
       <DependentUpon>ModuleManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RequestManagement.aspx.cs">
+      <DependentUpon>RequestManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\RequestManagement.aspx.designer.cs">
+      <DependentUpon>RequestManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\UserManagement.aspx.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>

@@ -3,23 +3,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="row">
+    <div class="row pb-3">
         <div class="col-lg-12">
-            <h1>Gestion des modules</h1>
-            
+            <h1>Gestion des modules</h1>            
         </div>
     </div>
     <div class="row">
         <div class="col-lg-8">
-            <asp:GridView ID="gridModules" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-hover dataTable" OnRowCommand="gridCategorie_RowCommand" DataKeyNames="moduleId">
-                <Columns>
-                    <asp:BoundField DataField="moduleId" HeaderText="Identifiant" SortExpression="id" ItemStyle-CssClass="hidden-field" HeaderStyle-CssClass="hidden-field" Visible="False"/>
-                    <asp:BoundField DataField="title" HeaderText="Titre" SortExpression="nom" />
-                    <asp:BoundField DataField="description" HeaderText="Description" SortExpression="nom" />
-                    <asp:CheckBoxField DataField="active"/>
-                    <asp:ButtonField CommandName="Toggle" DataTextField="active" />
-                </Columns>
-            </asp:GridView>
+            <asp:Table runat="server" id="moduleTable"  CssClass="table table-bordered table-hover dataTable">
+                <asp:TableHeaderRow>
+                    <asp:TableHeaderCell>Nom du module</asp:TableHeaderCell>
+                    <asp:TableHeaderCell>Description</asp:TableHeaderCell>
+                    <asp:TableHeaderCell>Actif</asp:TableHeaderCell>
+                </asp:TableHeaderRow>
+            </asp:Table>
         </div>
     </div>
 
