@@ -100,7 +100,6 @@
     <Content Include="Images\stairs.jpg" />
     <Content Include="Inscription.aspx" />
     <Content Include="Javascripts\Inscription.js" />
-    <Content Include="Javascripts\parallax.min.js" />
     <Content Include="Javascripts\Script.js" />
     <Content Include="packages.config" />
     <Content Include="Site.Master" />

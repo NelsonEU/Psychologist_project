@@ -5,9 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BusinessLogic;
-using BusinessLogic.Factories;
-using System.Configuration;
+
 
 namespace JeanMarcGuaySiteWeb.Admin
 {
@@ -16,7 +14,7 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
     }

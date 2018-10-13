@@ -13,3 +13,10 @@
 .divContent {
     padding-top: 105px;
 }
+.mainButton{
+    background-color:#4ac7b6;
+    color: white;
+}
+.mainButton:hover{
+    opacity:0.9;
+}

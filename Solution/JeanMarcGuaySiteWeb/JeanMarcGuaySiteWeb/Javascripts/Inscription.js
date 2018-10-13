@@ -2,6 +2,7 @@
     $("#birthday").datepicker({
         changeMonth: true,
         changeYear: true,
+        yearRange:  '-100:+0',
         closeText: 'Fermer',
         prevText: 'Précédent',
         nextText: 'Suivant',
@@ -13,5 +14,6 @@
         dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
         weekHeader: 'Sem.'
     }).attr('readonly', 'true');
+    
     
 });

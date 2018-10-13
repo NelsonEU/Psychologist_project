@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BusinessLogic;
+using BusinessLogic.Factories;
+using System.Configuration;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -11,20 +14,35 @@ namespace JeanMarcGuaySiteWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!Page.IsPostBack)
             {
-                
-                if (!string.IsNullOrEmpty(Request.QueryString["User"]))
+
+                if (Session["User"] != null)
                 {
-                    test.InnerText = Request.QueryString["User"];
+                    User user = (User)Session["User"];
+                    if (!string.IsNullOrEmpty(Request.QueryString["User"]) && user.userId.ToString() == Request.QueryString["User"]) /* Request.QueryString["User"] est est un id */
+                    { 
+                        //Tout est OK! rien à faire... 
+                    }
+                    else
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
                 }
-                else
+                else /* l'utilisateur n'est pas connecté */
                 {
                     Response.Redirect("Default.aspx");
                 }
-                
+
             }
 
         }
+
+        protected void buttonSubmitClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
+
     }
 }

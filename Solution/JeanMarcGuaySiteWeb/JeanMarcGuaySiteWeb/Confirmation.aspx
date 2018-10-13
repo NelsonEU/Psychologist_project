@@ -5,8 +5,16 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    Votre message a été envoyé!
-    <span id="test" runat="server"></span>
+    <div class="row text-center pt-3">
+        <div class="col-lg-12">
+            <h4>Le message à été envoyé!</h4>
+        </div>
+    </div>
+    <div class="row text-center pt-3">
+        <div class="col-md-2 offset-md-5">
+            <asp:Button ID="buttonSubmit" runat="server" Text="Retour à l'accueil" CssClass="form-control mainButton " OnClick="buttonSubmitClick" />
+        </div>
+    </div>
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
