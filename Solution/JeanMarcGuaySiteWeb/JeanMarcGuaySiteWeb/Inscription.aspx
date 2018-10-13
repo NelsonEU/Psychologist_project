@@ -30,7 +30,7 @@
                                 </div>
                                 <label for="email" class="sr-only mt-2">Votre date de naissance:</label>
                                 <div>
-                                    <asp:TextBox runat="server" class="form-control mt-2" ID="birthday" ClientIDMode="Static" name="birthday" AutoCompleteType="Disabled" required="required" type="text" placeholder="Date de naissance"></asp:TextBox>
+                                    <asp:TextBox runat="server" class="form-control mt-2" ID="birthday" ClientIDMode="Static" name="birthday" AutoCompleteType="Disabled" style="background:white;" required="required" type="text" placeholder="Date de naissance"></asp:TextBox>
                                 </div>
                                 <label for="password" class="sr-only mt-2">Mot de passe:</label>
                                 <div>
