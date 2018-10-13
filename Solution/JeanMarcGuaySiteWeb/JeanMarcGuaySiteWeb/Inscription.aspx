@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inscription.aspx.cs" Inherits="JeanMarcGuaySiteWeb.Inscription" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
 </asp:Content>
@@ -29,7 +30,7 @@
                                 </div>
                                 <label for="email" class="sr-only mt-2">Votre date de naissance:</label>
                                 <div>
-                                    <asp:TextBox runat="server" class="form-control mt-2" ID="birthday" name="birthday" required="required" type="text" placeholder="Date de naissance (ex: 20/01/1992)"></asp:TextBox>
+                                    <asp:TextBox runat="server" class="form-control mt-2" ID="birthday" ClientIDMode="Static" name="birthday" AutoCompleteType="Disabled" required="required" type="text" placeholder="Date de naissance"></asp:TextBox>
                                 </div>
                                 <label for="password" class="sr-only mt-2">Mot de passe:</label>
                                 <div>
@@ -55,4 +56,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="Javascripts/Inscription.js"></script>
 </asp:Content>

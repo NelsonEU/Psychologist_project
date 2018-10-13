@@ -10,6 +10,6 @@
     align-items: center;
 }
 
-#ContentPlaceHolder1_panelConnexion{
-    padding-top: 1rem;
+.divContent {
+    padding-top: 105px;
 }

@@ -13,7 +13,11 @@ namespace JeanMarcGuaySiteWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["User"] != null)
+            {
+                User user = (User)Session["User"];
+                connexionButton.InnerText = "Se Déconnecter";
+            }
         }
     }
 }
