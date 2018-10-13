@@ -1,15 +1,51 @@
 ﻿body {
 }
 
-.parallax-window {
-    min-height: 400px;
-    background: transparent;
-}
-.bannerCenter {
-    display: flex;
-    align-items: center;
+h1,h2,h3,h4,h5{
+    font-family: 'Montserrat';
+    font-weight: 400;
+    text-transform: uppercase;
 }
 
+.parallax-window{
+    min-height: 420px;
+    background: transparent;
+}
+
+
+.banner{
+    text-align:center;
+    position:relative;
+}
+
+.va-center{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    width: 50%;
+    height: 30%;
+    margin:auto;
+}
+
+.titleBanner{
+    font-family: 'Abril Fatface', cursive;
+}
+
+h1.titleBanner{
+    font-size: 50px;
+}
+
+
+.space-medium{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#accueil{
+    padding-top: 2.5rem;
+}
 #ContentPlaceHolder1_panelConnexion{
     padding-top: 1rem;
 }

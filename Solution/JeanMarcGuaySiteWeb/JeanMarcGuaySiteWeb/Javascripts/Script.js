@@ -18,6 +18,7 @@
         }
     };
 
+
     // run our function on load
     sticky_navigation();
 

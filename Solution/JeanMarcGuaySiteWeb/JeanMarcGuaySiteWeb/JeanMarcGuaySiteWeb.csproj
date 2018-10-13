@@ -94,6 +94,7 @@
     <Content Include="Admin\UserManagement.aspx" />
     <Content Include="Connexion.aspx" />
     <Content Include="CSS\Base.css" />
+    <Content Include="Images\banner.png" />
     <Content Include="Images\DSC_2726.JPG" />
     <Content Include="Images\stairs.jpg" />
     <Content Include="Inscription.aspx" />
