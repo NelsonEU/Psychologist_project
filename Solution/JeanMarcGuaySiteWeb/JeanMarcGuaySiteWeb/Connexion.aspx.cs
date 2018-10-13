@@ -18,8 +18,9 @@ namespace JeanMarcGuaySiteWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] != null)
+            if (Session["User"] != null)
             {
+                Session.Remove("User"); //Déconnexion
                 Response.Redirect("default.aspx");
             }
         }
@@ -53,9 +54,10 @@ namespace JeanMarcGuaySiteWeb
                     else
                     {
                         //Compte activé
-                        notification.InnerText = "Connexion réussie";
-                        notification.Visible = true;
-                        Response.Redirect("default.aspx");
+                        //notification.InnerText = "Connexion réussie";
+                        //notification.Visible = true;
+                        Session["User"] = user;
+                        Response.Redirect("Default.aspx"); //Renvois à la page d'ou il arrive
                     }
                 }
             }
@@ -63,7 +65,7 @@ namespace JeanMarcGuaySiteWeb
             {
                 //Manque une info
                 notification.Visible = true;
-                notification.InnerText = "Veuillez remplir les deux champs";
+                notification.InnerText = "Veuillez remplir tous les champs";
 
             }
         }

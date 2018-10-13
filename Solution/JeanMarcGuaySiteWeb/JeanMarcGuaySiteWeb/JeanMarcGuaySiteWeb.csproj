@@ -86,6 +86,8 @@
     <Content Include="Admin\CSS\Switch.css" />
     <Content Include="Admin\DocumentManagement.aspx" />
     <Content Include="Admin\RequestManagement.aspx" />
+    <Content Include="Confirmation.aspx" />
+    <Content Include="Contact.aspx" />
     <Content Include="CSS\Navbar.css" />
     <Content Include="Admin\CSS\sb-admin.min.css" />
     <Content Include="Admin\Images\stairs.jpg" />
@@ -98,7 +100,7 @@
     <Content Include="Images\DSC_2726.JPG" />
     <Content Include="Images\stairs.jpg" />
     <Content Include="Inscription.aspx" />
-    <Content Include="Javascripts\parallax.min.js" />
+    <Content Include="Javascripts\Inscription.js" />
     <Content Include="Javascripts\Script.js" />
     <Content Include="packages.config" />
     <Content Include="Site.Master" />
@@ -178,12 +180,26 @@
     <Compile Include="Admin\UserManagement.aspx.designer.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Confirmation.aspx.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Confirmation.aspx.designer.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Connexion.aspx.cs">
       <DependentUpon>Connexion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Connexion.aspx.designer.cs">
       <DependentUpon>Connexion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inscription.aspx.cs">
       <DependentUpon>Inscription.aspx</DependentUpon>

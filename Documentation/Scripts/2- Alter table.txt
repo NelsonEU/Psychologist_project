@@ -29,4 +29,9 @@ ADD UNIQUE INDEX `name_UNIQUE` (`name` ASC);
 ALTER TABLE `prj-jmguay`.`modules` 
 ADD COLUMN `description` VARCHAR(150) NULL AFTER `modificationDate`;
 
+ALTER TABLE `prj-jmguay`.`requests` 
+DROP COLUMN `video_call`,
+CHANGE COLUMN `state` `subject` VARCHAR(40) NOT NULL ,
+CHANGE COLUMN `content` `content` VARCHAR(5000) NOT NULL ;
+
 

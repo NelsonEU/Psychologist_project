@@ -11,8 +11,8 @@ namespace BusinessLogic
 
         public int requestId { get; set; } //PK
         public int userId { get; set; } //FK
-
         public string content { get; set; } //VARCHAR(5000)
+        public string subject { get; set; } //VARCHAR(40)
 
     }
 }
