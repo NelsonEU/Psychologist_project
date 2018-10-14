@@ -38,6 +38,41 @@
                 </div>
             </div>
         </div>
+        <div class="container-fluid bc-blue">
+            <div class="space-medium">
+                <div class="container">
+                    <div class="row pt-5">
+                        <h1>Approche preconisee</h1>
+                    </div>
+                    <div class="row">
+                        <p>
+                            L'approche preconisee au cabinet est celle d'une orientation integrative.<br />
+                            Celle-ci permet d'utiliser des outils d'approches combinees telles que:
+                        </p>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <ul>
+                                <li>Analytique</li>
+                                <li>Existentielle/humaniste</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <ul>
+                                <li>Systemique/interactionnelle</li>
+                                <li>Comportementale/cognitive</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="long-text">De part ses connaissances theoriques et ses experiences professionelles, les interventions sont toujours accomodees en fonction des problemes et des personnes qu'il rencontre.</p>
+                        <p>Le therapeute prendra en compte tant les spheres emotionnelles et cognitives que comportementales et sociales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">

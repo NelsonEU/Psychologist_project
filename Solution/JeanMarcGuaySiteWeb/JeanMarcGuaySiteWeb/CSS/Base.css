@@ -1,4 +1,5 @@
 ﻿body {
+   
 }
 
 h1,h2,h3,h4,h5{
@@ -7,9 +8,22 @@ h1,h2,h3,h4,h5{
     text-transform: uppercase;
 }
 
+
 .parallax-window{
     min-height: 420px;
     background: transparent;
+}
+
+.space-medium{
+    margin-bottom:80px;
+}
+
+.long-text{
+    padding-right:20%;
+}
+
+.bc-blue {
+    background-color: #eaf5f7;
 }
 
 
@@ -48,8 +62,9 @@ h1.titleBanner{
     background-color:#4ac7b6;
     color: white;
 }
-.mainButton:hover{
-    opacity:0.9;
+.mainButton:hover {
+        opacity: 0.9;
+}
 #ContentPlaceHolder1_panelConnexion{
     padding-top: 1rem;
 }
