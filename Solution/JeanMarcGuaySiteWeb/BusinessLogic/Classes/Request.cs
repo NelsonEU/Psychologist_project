@@ -13,6 +13,7 @@ namespace BusinessLogic
         public int userId { get; set; } //FK
         public string content { get; set; } //VARCHAR(5000)
         public string subject { get; set; } //VARCHAR(40)
+        public DateTime creationDate { get; set; } //DATETIME
 
     }
 }
