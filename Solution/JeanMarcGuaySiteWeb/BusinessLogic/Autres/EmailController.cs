@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using System.IO;
+using System.Reflection;
 
 namespace BusinessLogic.Autres
 {
@@ -20,37 +21,17 @@ namespace BusinessLogic.Autres
 
             MailMessage mail = new MailMessage();
             mail.To.Add(email);
-            mail.From = new MailAddress(WebsiteEmail);
+            mail.From = new MailAddress("cabinet.jmguay@gmail.com");
             mail.Subject = subject;
             mail.Body = body;
             mail.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
-            smtp.Credentials = new System.Net.NetworkCredential(WebsiteEmail, WebsiteEmailPassword);
+            smtp.Credentials = new System.Net.NetworkCredential("cabinet.jmguay@gmail.com", "jmguay&2018");
             smtp.Port = 587;
             smtp.EnableSsl = true;
             smtp.Send(mail);
 
-        }
-
-        public void SendActivationMail(string email)
-        {
-            string subject = "Bienvenue !";
-            //string body = CreateEmailBody(email);  
-            //SendMail(email, subject, body);
-        }
-
-        private string CreateEmailBody(string email)
-        {
-            string body = string.Empty;
-            /*
-            using StreamReader reader = new StreamReader("ActivationEmail.html"))
-            {
-                body = reader.ReadToEnd();
-            }
-            */
-            body = body.Replace("{email}", email);
-            return body;
         }
 
 

@@ -79,6 +79,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Accueil.aspx" />
+    <Content Include="Activation.aspx" />
+    <EmbeddedResource Include="ActivationEmail.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Admin\Admin.aspx" />
     <Content Include="Admin\AppointmentManagement.aspx" />
     <Content Include="Admin\AvailabilityManagement.aspx" />
@@ -123,6 +127,13 @@
     </Compile>
     <Compile Include="Accueil.aspx.designer.cs">
       <DependentUpon>Accueil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Activation.aspx.cs">
+      <DependentUpon>Activation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Activation.aspx.designer.cs">
+      <DependentUpon>Activation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>

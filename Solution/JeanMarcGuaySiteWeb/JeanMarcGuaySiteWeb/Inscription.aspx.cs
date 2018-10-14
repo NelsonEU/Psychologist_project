@@ -9,6 +9,7 @@ using BusinessLogic.Autres;
 using System.Configuration;
 using BusinessLogic;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -64,7 +65,13 @@ namespace JeanMarcGuaySiteWeb
                         notification.InnerText = "Bienvenue ! Un e-mail vous a été envoyé afin de confirmer votre inscription";
                         notification.Visible = true;
                         EmailController ec = new EmailController();
-                        ec.SendActivationMail(email.Text);
+                        string body = string.Empty;
+                        using (StreamReader reader = new StreamReader(Server.MapPath("~/ActivationEmail.html")))
+                        {
+                            body = reader.ReadToEnd();
+                        }
+                        body = body.Replace("{email}", email.Text);
+                        ec.SendMail(email.Text, "Bienvenue !", body);
 
                     }
                 }
