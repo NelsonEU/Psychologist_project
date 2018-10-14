@@ -1,15 +1,13 @@
-﻿body {
-
-}
-
+﻿
 h1,h2,h3,h4,h5{
     /*font-family: 'Montserrat';*/
     font-weight: 400;
     /*text-transform: uppercase;*/
-
-    
 }
 
+.container{
+    min-height:100%;
+}
 
 .parallax-window{
     min-height: 420px;
@@ -28,6 +26,14 @@ h1,h2,h3,h4,h5{
     background-color: #eaf5f7;
 }
 
+.footer{
+    text-align: center;
+    padding-top: 12px;
+    color: white;
+    bottom: 0;
+    height:50px;
+    background: linear-gradient(to right, rgba(55,120,155,1) 0%, rgba(64,163,206,1) 100%);
+}
 
 .banner{
     text-align:center;
@@ -38,12 +44,30 @@ h1,h2,h3,h4,h5{
     
 }
 
+.banner2{
+    text-align:center;
+    position:relative;
+    height:300px;
+    min-width:100%;
+    background-image: url('../Images/banner10.png');
+    
+}
+
 .va-center{
    padding-top:235px;
 }
 
+.va-center2{
+   padding-top:175px;
+}
+
 .titleBanner{
     font-family: 'Abril Fatface', cursive;
+}
+
+.titleBanner2{
+    font-family: Helvetica;
+    font-weight:bold;
 }
 
 #accueil{
@@ -58,12 +82,15 @@ h1.titleBanner{
     padding-top: 105px;
 }
 .mainButton{
-    background-color:#4ac7b6;
-    color: white;
+    color: #fff;
+    background-color: #41a1cc;
+    border-color: #45a8d4;
 }
 .mainButton:hover {
         opacity: 0.9;
+        color: #fff;
 }
 #ContentPlaceHolder1_panelConnexion{
     padding-top: 1rem;
 }
+

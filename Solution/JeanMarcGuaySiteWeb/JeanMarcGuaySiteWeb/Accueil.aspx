@@ -14,7 +14,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="accueil">
-        <div class="space-medium">
+        <div class="pb-5">
             <div class="container">
                 <div class="row pb-5">
                     <div class="col-md-12">
@@ -41,13 +41,13 @@
                         </ul>
                     </div>
                     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
-                        <a href="Connexion.aspx" class="btn btn-primary">En savoir plus</a>
+                        <a href="Connexion.aspx" class="btn mainButton">En savoir plus</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container-fluid bc-blue">
-            <div class="space-medium">
+            <div class="pb-5">
                 <div class="container">
                     <div class="row pt-5">
                         <h1>Approche preconisee</h1>
