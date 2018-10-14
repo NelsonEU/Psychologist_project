@@ -1,11 +1,13 @@
 ﻿body {
-   
+
 }
 
 h1,h2,h3,h4,h5{
-    font-family: 'Montserrat';
+    /*font-family: 'Montserrat';*/
     font-weight: 400;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
+
+    
 }
 
 
@@ -30,17 +32,14 @@ h1,h2,h3,h4,h5{
 .banner{
     text-align:center;
     position:relative;
+    height:500px;
+    min-width:100%;
+    background-image: url('../Images/banner10.png');
+    
 }
 
 .va-center{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left:0;
-    right:0;
-    width: 50%;
-    height: 30%;
-    margin:auto;
+   padding-top:235px;
 }
 
 .titleBanner{

@@ -1,8 +1,10 @@
 ﻿#mainNav {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    font-weight: 700;
-    font-family: Montserrat;
+    font-weight: 500;
+    /*font-family: Montserrat;*/
+    box-shadow: 4px 7px 31px -8px rgba(0,0,0,0.75);
+
 }
 
 #mainNav .navbar-brand {
@@ -74,5 +76,7 @@ li {
 
 
 #mainNav .navbar-nav li.nav-item a.nav-link {
-    color: slategrey;
+    /*color: slategrey;*/
+    color: #40add1;
+    font-family: Helvetica;
 }

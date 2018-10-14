@@ -24,7 +24,7 @@
                         Menu
           <i class="fas fa-bars"></i>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <div class="collapse navbar-collapse fixed-top" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item mx-0 mx-lg-1">
                                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Accueil.aspx">Accueil</a>
@@ -48,24 +48,16 @@
                     </div>
                 </div>
             </nav>
-            <div class="banner">
-                <div class="parallax-window banner" data-parallax="scroll" data-image-src="Images/banner10.png">
-                    <div class="va-center">
-                        <h1 class="titleBanner">Jean-Marc Guay</h1>
-                        <h5 class="titleBanner">Psychologue</h5>
-                    </div>
-                </div>
-            </div>
 
             <asp:ContentPlaceHolder ID="BannerPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
 
-            <div class="divContent">
+
 
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
 
-            </div>
+
 
 
         </div>
