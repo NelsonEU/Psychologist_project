@@ -12,9 +12,12 @@
             <h5>Bienvenue !</h5>
         </div>
         <div class="row">
-            <p>Vous pouvez des a present vous connecter:</p>
+            <p>Votre compte est maintenant activé.</p>
         </div>
         <div class="row">
+            <p>Vous pouvez des a present vous connecter:</p>
+        </div>
+        <div class="container">
             <a href="Connexion.aspx" class="btn btn-primary">Se connecter</a>
         </div>
     </div>
