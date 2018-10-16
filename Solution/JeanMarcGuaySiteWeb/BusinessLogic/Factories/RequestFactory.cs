@@ -99,7 +99,7 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM requests WHERE creationDate BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE()";
+                cmd.CommandText = "SELECT * FROM requests WHERE creationDate BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()";
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -143,7 +143,7 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM requests WHERE creationDate BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE()";
+                cmd.CommandText = "SELECT * FROM requests WHERE creationDate BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW()";
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())

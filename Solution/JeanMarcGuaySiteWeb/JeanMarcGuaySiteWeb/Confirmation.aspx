@@ -4,8 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <div class="row text-center pt-3">
+    
+    <div class="row text-center pt-3 paddingNav" >
         <div class="col-lg-12">
             <h4>Le message à été envoyé!</h4>
         </div>
