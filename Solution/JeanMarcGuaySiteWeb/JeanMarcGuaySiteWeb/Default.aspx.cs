@@ -20,7 +20,6 @@ namespace JeanMarcGuaySiteWeb
         {
             SubsectionFactory subFact = new SubsectionFactory(cnnStr);
             Subsection subsection = subFact.Get("test1");
-            subsection_1.InnerHtml = subsection.content;
         }
     }
 }

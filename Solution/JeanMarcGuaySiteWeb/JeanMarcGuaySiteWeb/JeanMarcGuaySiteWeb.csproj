@@ -78,7 +78,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Accueil.aspx" />
     <Content Include="Activation.aspx" />
     <EmbeddedResource Include="ActivationEmail.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -123,13 +122,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accueil.aspx.cs">
-      <DependentUpon>Accueil.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Accueil.aspx.designer.cs">
-      <DependentUpon>Accueil.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Activation.aspx.cs">
       <DependentUpon>Activation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

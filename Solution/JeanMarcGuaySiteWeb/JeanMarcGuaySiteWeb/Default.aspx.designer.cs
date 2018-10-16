@@ -11,14 +11,5 @@ namespace JeanMarcGuaySiteWeb {
     
     
     public partial class WebForm1 {
-        
-        /// <summary>
-        /// Contrôle subsection_1.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl subsection_1;
     }
 }
