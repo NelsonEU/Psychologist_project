@@ -106,6 +106,7 @@
     <Content Include="Javascripts\Inscription.js" />
     <Content Include="Javascripts\Script.js" />
     <Content Include="packages.config" />
+    <Content Include="Publications.aspx" />
     <Content Include="Services.aspx" />
     <Content Include="RendezVous.aspx" />
     <Content Include="Site.Master" />

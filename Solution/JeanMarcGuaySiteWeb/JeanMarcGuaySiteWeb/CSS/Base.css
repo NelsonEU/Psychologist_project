@@ -8,6 +8,9 @@ h1,h2,h3,h4,h5{
 .paddingNav {
     padding-top: 95px !important;
 }
+.paddingNav2 {
+    padding-top: 125px !important;
+}
 
 .container{
     min-height:100%;

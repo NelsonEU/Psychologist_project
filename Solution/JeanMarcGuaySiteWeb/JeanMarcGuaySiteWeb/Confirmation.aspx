@@ -5,12 +5,12 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-    <div class="row text-center pt-3 paddingNav" >
+    <div class="row text-center pt-3 paddingNav2" >
         <div class="col-lg-12">
             <h4>Le message à été envoyé!</h4>
         </div>
     </div>
-    <div class="row text-center pt-3">
+    <div class="row text-center pt-3 pb-5">
         <div class="col-md-2 offset-md-5">
             <asp:Button ID="buttonSubmit" runat="server" Text="Retour à l'accueil" CssClass="form-control mainButton " OnClick="buttonSubmitClick" />
         </div>

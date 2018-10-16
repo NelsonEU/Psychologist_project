@@ -10,6 +10,6 @@
 namespace JeanMarcGuaySiteWeb {
     
     
-    public partial class Publications {
+    public partial class Publications1 {
     }
 }
