@@ -5,20 +5,25 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container space-medium pt-4">
-        <div class="row">
-            <h1>Votre compte est actif !</h1>
+        <div class="row text-center paddingNav2">
+            <div class="col-lg-12">
+                <h1>Votre compte a été activé avec succès!</h1>
+            </div>
         </div>
-        <div class="row">
-            <h5>Bienvenue !</h5>
+        <div class="row text-center pt-5">
+            <div class="col-lg-12">
+                <h5>Bienvenue!</h5>
+            </div>
         </div>
-        <div class="row">
-            <p>Votre compte est maintenant activé.</p>
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <span>Vous pouvez maintenant vous connecter.</span>
+            </div>
         </div>
-        <div class="row">
-            <p>Vous pouvez des a present vous connecter:</p>
-        </div>
-        <div class="container">
-            <a href="Connexion.aspx" class="btn btn-primary">Se connecter</a>
+        <div class="row text-center pt-5">
+            <div class="col-lg-12">
+                <a href="Connexion.aspx" class="btn mainButton">Se connecter</a>
+            </div>
         </div>
     </div>
 </asp:Content>

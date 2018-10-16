@@ -1,23 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Services.aspx.cs" Inherits="JeanMarcGuaySiteWeb.Services" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
-    <div class="banner">
-        <div class="parallax-window banner-Resized" data-parallax="scroll" data-image-src="Images/banner3.png">
-            <div class="va-wide container">
-                    <h2 class="titleBanner">Mes Services</h2>
+
+    <div class="banner2">
+        <div class="va-center2">
+                <h1 class="titleBanner2">Services</h1>  
             </div>
-        </div>
     </div>
+
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <section class="ServiceSection">
         <div class="ServiceRowContainer">
             <div class="ServiceWrapCollumn">
                 <div class="ServiceCollumn col-sm-12">
                     <div class="ServiceCollumnContainer">
                         <div class="ServiceConsultSection">
-                            <div class="ServiceClearFix">
+                            <div class="ServiceClearFix pb-5">
                                 <!--Contenu Text -->
                                 <div class="ServiceContentCollumn col-md-7 col-sm-12 col-xs-12">
                                     <div class="ServiceInnerCollumn">
@@ -49,6 +52,8 @@
 
         </div>
     </section>
+
 </asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
 </asp:Content>

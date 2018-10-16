@@ -1,9 +1,36 @@
-﻿
+﻿html {
+  height: 100%;
+}
+
+
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+}
+
+.fullpage {
+  margin: 0 auto;
+  padding-top: 64px;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
 h1,h2,h3,h4,h5{
     /*font-family: 'Montserrat';*/
     font-weight: 400;
     /*text-transform: uppercase;*/
 }
+
+
 
 .paddingNav {
     padding-top: 95px !important;
@@ -71,7 +98,7 @@ h1,h2,h3,h4,h5{
 }
 
 .va-center2{
-   padding-top:175px;
+   padding-top:150px;
 }
 
 .va-wide {
