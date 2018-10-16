@@ -23,8 +23,8 @@ namespace BusinessLogic.Autres
             mail.To.Add(email);
             mail.From = new MailAddress("cabinet.jmguay@gmail.com");
             mail.Subject = subject;
-            mail.Body = body;
             mail.IsBodyHtml = true;
+            mail.Body = body;
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
             smtp.Credentials = new System.Net.NetworkCredential("cabinet.jmguay@gmail.com", "jmguay&2018");

@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using BusinessLogic.Factories;
 using BusinessLogic.Autres;
 using BusinessLogic;
+using System.IO;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -29,35 +30,52 @@ namespace JeanMarcGuaySiteWeb
         {
             if (!string.IsNullOrEmpty(email.Text) && !string.IsNullOrEmpty(password.Text))
             {
-                UserFactory uf = new UserFactory(cnnStr);
-                User user = uf.Connexion(email.Text, password.Text);
-
-                if (user == null)
+                if (email.Text.Length > 50 || password.Text.Length > 150)
                 {
-                    //Email ou mot de passe incorrect
                     notification.Style.Add("color", "red");
-                    notification.InnerText = "Adresse e-mail ou mot de passe incorrect";
+                    notification.InnerText = "Les données sont trop longues";
                     notification.Visible = true;
                 }
                 else
                 {
-                    //User existe
-                    if (user.activated == false)
+
+
+                    UserFactory uf = new UserFactory(cnnStr);
+                    User user = uf.Connexion(email.Text, password.Text);
+
+                    if (user == null)
                     {
-                        //Compte pas activé
+                        //Email ou mot de passe incorrect
                         notification.Style.Add("color", "red");
-                        notification.InnerText = "Votre compte n'est pas activé. Un e-mail de confirmation vous a été renvoyé.";
+                        notification.InnerText = "Adresse e-mail ou mot de passe incorrect";
                         notification.Visible = true;
-                        EmailController ec = new EmailController();
-                        // ec.SendActivationMail(email.Text);
                     }
                     else
                     {
-                        //Compte activé
-                        //notification.InnerText = "Connexion réussie";
-                        //notification.Visible = true;
-                        Session["User"] = user;
-                        Response.Redirect("Default.aspx"); //Renvois à la page d'ou il arrive
+                        //User existe
+                        if (user.activated == false)
+                        {
+                            //Compte pas activé
+                            notification.Style.Add("color", "red");
+                            notification.InnerText = "Votre compte n'est pas activé. Un e-mail de confirmation vous a été renvoyé.";
+                            notification.Visible = true;
+                            EmailController ec = new EmailController();
+                            string body = string.Empty;
+                            using (StreamReader reader = new StreamReader(Server.MapPath("~/ActivationEmail.html")))
+                            {
+                                body = reader.ReadToEnd();
+                            }
+                            body = body.Replace("{email}", email.Text);
+                            ec.SendMail(email.Text, "Bienvenue !", body);
+                        }
+                        else
+                        {
+                            //Compte activé
+                            //notification.InnerText = "Connexion réussie";
+                            //notification.Visible = true;
+                            Session["User"] = user;
+                            Response.Redirect("Default.aspx"); //Renvois à la page d'ou il arrive
+                        }
                     }
                 }
             }
@@ -65,6 +83,7 @@ namespace JeanMarcGuaySiteWeb
             {
                 //Manque une info
                 notification.Visible = true;
+                notification.Style.Add("color", "red");
                 notification.InnerText = "Veuillez remplir tous les champs";
 
             }
