@@ -1,8 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Accueil.aspx.cs" Inherits="JeanMarcGuaySiteWeb.Accueil" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
+    <div class="banner">
+        <div class="parallax-window banner" data-parallax="scroll" data-image-src="Images/banner3.png">
+            <div class="va-center">
+                    <h1 class="titleBanner">Jean-Marc Guay</h1>
+                <h5 class="titleBanner">Psychologue</h5>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="accueil">

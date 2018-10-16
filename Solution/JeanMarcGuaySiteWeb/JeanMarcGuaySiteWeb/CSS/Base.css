@@ -18,6 +18,12 @@ h1,h2,h3,h4,h5{
     position:relative;
 }
 
+.banner-Resized {
+    min-height: 280px;
+    background: transparent;
+    position:relative
+}
+
 .va-center{
     position: absolute;
     top: 0;
@@ -27,6 +33,14 @@ h1,h2,h3,h4,h5{
     width: 50%;
     height: 30%;
     margin:auto;
+}
+
+.va-wide {
+    position: static;
+    max-width: 1200px;
+    padding: 0px 15px;
+    margin: 10px;
+    justify-content: space-between;
 }
 
 .titleBanner{
@@ -53,3 +67,154 @@ h1.titleBanner{
 #ContentPlaceHolder1_panelConnexion{
     padding-top: 1rem;
 }
+
+.ServiceSection{
+clear: both;
+float: left;
+width: 100%;
+box-sizing: border-box;
+display: block;
+margin: 0px;
+padding: 0px;
+border: none;
+outline: none;
+font-size: 15px;
+color: #777777777;
+line-height:  1.8em;
+font-weight: 400;
+-webkit-font-smoothing: antialiased;
+font-family: inherit, sans-serif;
+background-color: #fff;
+-webkit-tap-highlight-color: rbga(0,0,0,0);
+}
+
+.ServiceRowContainer{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    display: block;
+    padding: 0px;
+    border: none;
+    outline: none;
+}
+
+.ServiceWrapCollumn{
+    margin-left: -15px;
+    margin-right: -15px;
+    clear: both;
+    display:block;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+}
+
+.ServiceCollumn{
+    clear: none;
+    padding-left: 0px !important;
+    padding-right: 0px!important;
+    min-height: 1px;
+    position: relative;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+}
+
+.ServiceCollumnContainer{
+    height: 100%;
+    clear: both;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+}
+
+.ServiceConsultSection{
+    position: relative;
+    padding: 100px 0px 80px;
+    display: block;
+    box-sizing: border-box;
+    margin: 0px;
+    border: none;
+    outline: none;
+}
+
+.ServiceClearfix {
+    display: block;
+    box-sizing: border-box;
+    margin: 0px;
+    border: none;
+    outline: none;
+    padding: 0px;
+    clear: both;
+    display: table;
+    content: " ";
+}
+
+.ServiceContentCollumn{
+    position: relative;
+    margin-bottom: 40px;
+    float: left;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    display: block;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline : none;
+}
+
+.ServiceInnerCollumn{
+    position: relative;
+    padding-top: 18px;
+    display:block;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+}
+
+.ServiceSecTitle{
+    margin-bottom: 20px;
+    display:block;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+}
+
+.ServiceText {
+    position: relative;
+    color: #797979;
+    font-size: 17px;
+    line-height: 1.8em;
+    margin-bottom: 35px;
+    display: block;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+
+
