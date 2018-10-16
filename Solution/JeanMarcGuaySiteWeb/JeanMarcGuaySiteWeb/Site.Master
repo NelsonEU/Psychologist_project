@@ -21,9 +21,9 @@
                         <img src="Images/logoOriginal.png" width="50" height="50" /></a>
                     <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         Menu
-          <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars"></i>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <div class="collapse navbar-collapse fixed-top" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item mx-0 mx-lg-1">
                                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Accueil.aspx">Accueil</a>
@@ -32,13 +32,13 @@
                                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Services.aspx">Services</a>
                             </li>
                             <li class="nav-item mx-0 mx-lg-1" runat="server" id="liPublication">
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Publications</a>
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Publications.aspx">Publications</a>
                             </li>
                             <li class="nav-item mx-0 mx-lg-1" runat="server" id="liContact">
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Contact</a>
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Contact.aspx">Contact</a>
                             </li>
                             <li class="nav-item mx-0 mx-lg-1" runat="server" id="liRendezVous">
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Rendez-vous</a>
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="RendezVous.aspx">Rendez-vous</a>
                             </li>
                             <li class="nav-item mx-0 mx-lg-1">
                                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Connexion.aspx" id="connexionButton" runat="server">Se connecter</a>
@@ -48,13 +48,25 @@
                 </div>
             </nav>
 
-            <asp:ContentPlaceHolder ID="BannerPlaceHolder" runat="server">
-            </asp:ContentPlaceHolder>
+            <div class="wrapper">
 
-            <div class="divContent">
+                <asp:ContentPlaceHolder ID="BannerPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
+
+                <div class="push"></div>
             </div>
+
+            <!-- Footer -->
+
+                <footer class="footer">                  
+                        <span>Jean-Marc Guay</span>                
+                </footer>
+
+
+
         </div>
     </form>
 
@@ -65,6 +77,7 @@
     <script src="Javascripts/Script.js"></script>
 
     <asp:ContentPlaceHolder ID="additionalJS" runat="server">
+        
     </asp:ContentPlaceHolder>
 </body>
 </html>
