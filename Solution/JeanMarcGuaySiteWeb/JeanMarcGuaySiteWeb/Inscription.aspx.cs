@@ -27,52 +27,61 @@ namespace JeanMarcGuaySiteWeb
             if (!string.IsNullOrEmpty(email.Text) && !string.IsNullOrEmpty(password.Text) && !string.IsNullOrEmpty(passwordConfirmation.Text)
                 && !string.IsNullOrEmpty(firstname.Text) && !string.IsNullOrEmpty(lastname.Text))
             {
-                UserFactory uf = new UserFactory(cnnStr);
-                User user = uf.GetByEmail(email.Text);
-
-                if (user != null)
+                if (email.Text.Length > 50 || lastname.Text.Length > 40 || firstname.Text.Length > 40 || password.Text.Length > 150 || passwordConfirmation.Text.Length > 150)
                 {
                     notification.Style.Add("color", "red");
-                    notification.InnerText = "Un compte existe déjà pour cette adresse e-mail";
+                    notification.InnerText = "Les données sont trop longues";
                     notification.Visible = true;
                 }
                 else
                 {
-                    System.Text.RegularExpressions.Regex regexDate = new Regex(@"^\d{2}/\d{2}/\d{4}$");
-                    if (!regexDate.IsMatch(birthday.Text))
+                    UserFactory uf = new UserFactory(cnnStr);
+                    User user = uf.GetByEmail(email.Text);
+
+                    if (user != null)
                     {
                         notification.Style.Add("color", "red");
-                        notification.InnerText = "La date de naissance doit correspondre à jj/mm/aaaa";
-                        notification.Visible = true;
-                    }
-                    else if (password.Text.Length < 6)
-                    {
-                        notification.Style.Add("color", "red");
-                        notification.InnerText = "Le mot de passe doit contenir au moins 6 caractères";
-                        notification.Visible = true;
-                    }
-                    else if (password.Text != passwordConfirmation.Text)
-                    {
-                        notification.Style.Add("color", "red");
-                        notification.InnerText = "Les deux mots de passe doivent être identiques";
+                        notification.InnerText = "Un compte existe déjà pour cette adresse e-mail";
                         notification.Visible = true;
                     }
                     else
                     {
-                        DateTime birthdayDate = Convert.ToDateTime(birthday.Text);
-                        uf.Add(lastname.Text, firstname.Text, email.Text, password.Text, false, subscriber.Checked, false, birthdayDate);
-                        notification.Style.Add("color", "green");
-                        notification.InnerText = "Bienvenue ! Un e-mail vous a été envoyé afin de confirmer votre inscription";
-                        notification.Visible = true;
-                        EmailController ec = new EmailController();
-                        string body = string.Empty;
-                        using (StreamReader reader = new StreamReader(Server.MapPath("~/ActivationEmail.html")))
+                        System.Text.RegularExpressions.Regex regexDate = new Regex(@"^\d{2}/\d{2}/\d{4}$");
+                        if (!regexDate.IsMatch(birthday.Text))
                         {
-                            body = reader.ReadToEnd();
+                            notification.Style.Add("color", "red");
+                            notification.InnerText = "La date de naissance doit correspondre à jj/mm/aaaa";
+                            notification.Visible = true;
                         }
-                        body = body.Replace("{email}", email.Text);
-                        ec.SendMail(email.Text, "Bienvenue !", body);
+                        else if (password.Text.Length < 6)
+                        {
+                            notification.Style.Add("color", "red");
+                            notification.InnerText = "Le mot de passe doit contenir au moins 6 caractères";
+                            notification.Visible = true;
+                        }
+                        else if (password.Text != passwordConfirmation.Text)
+                        {
+                            notification.Style.Add("color", "red");
+                            notification.InnerText = "Les deux mots de passe doivent être identiques";
+                            notification.Visible = true;
+                        }
+                        else
+                        {
+                            DateTime birthdayDate = Convert.ToDateTime(birthday.Text);
+                            uf.Add(lastname.Text, firstname.Text, email.Text, password.Text, false, subscriber.Checked, false, birthdayDate);
+                            notification.Style.Add("color", "green");
+                            notification.InnerText = "Bienvenue ! Un e-mail vous a été envoyé afin de confirmer votre inscription";
+                            notification.Visible = true;
+                            EmailController ec = new EmailController();
+                            string body = string.Empty;
+                            using (StreamReader reader = new StreamReader(Server.MapPath("~/ActivationEmail.html")))
+                            {
+                                body = reader.ReadToEnd();
+                            }
+                            body = body.Replace("{email}", email.Text);
+                            ec.SendMail(email.Text, "Bienvenue !", body);
 
+                        }
                     }
                 }
             }

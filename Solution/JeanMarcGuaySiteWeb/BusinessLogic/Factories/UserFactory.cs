@@ -370,6 +370,27 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+        #region ActivateByEmail
+        public void ActivateByEmail(string email)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET activated = true WHERE email=@email";
+                cmd.Parameters.AddWithValue("@email", email);
+
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
         #region Update
         public void Update(int id, string lastname, string firstname, string email, string password, bool admin, bool subscriber, bool activated)
         {

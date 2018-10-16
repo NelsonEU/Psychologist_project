@@ -10,6 +10,6 @@
 namespace JeanMarcGuaySiteWeb {
     
     
-    public partial class Accueil {
+    public partial class Services {
     }
 }

@@ -15,10 +15,9 @@
 <body class="home">
     <form id="form1" runat="server">
         <div>
-
             <nav class="navbar navbar-expand-lg bg-secondary text-uppercase navbar-shrink fixed-top navbar-sticky" id="mainNav">
                 <div class="container">
-                    <a class="navbar-brand js-scroll-trigger" href="Accueil.aspx">
+                    <a class="navbar-brand js-scroll-trigger"  href="Default.aspx">
                         <img src="Images/logoOriginal.png" width="50" height="50" /></a>
                     <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         Menu
@@ -27,10 +26,10 @@
                     <div class="collapse navbar-collapse fixed-top" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item mx-0 mx-lg-1">
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Accueil.aspx">Accueil</a>
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Default.aspx">Accueil</a>
                             </li>
                             <li class="nav-item mx-0 mx-lg-1">
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Services</a>
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Services.aspx">Services</a>
                             </li>
                             <li class="nav-item mx-0 mx-lg-1" runat="server" id="liPublication">
                                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Publications.aspx">Publications</a>
@@ -54,7 +53,6 @@
                 <asp:ContentPlaceHolder ID="BannerPlaceHolder" runat="server">
                 </asp:ContentPlaceHolder>
 
-
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
 
@@ -66,7 +64,6 @@
                 <footer class="footer">                  
                         <span>Jean-Marc Guay</span>                
                 </footer>
-
 
 
 

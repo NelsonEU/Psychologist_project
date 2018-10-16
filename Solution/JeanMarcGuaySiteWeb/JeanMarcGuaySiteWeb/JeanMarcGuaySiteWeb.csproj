@@ -78,7 +78,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Accueil.aspx" />
     <Content Include="Activation.aspx" />
     <EmbeddedResource Include="ActivationEmail.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -107,7 +106,7 @@
     <Content Include="Javascripts\Inscription.js" />
     <Content Include="Javascripts\Script.js" />
     <Content Include="packages.config" />
-    <Content Include="Publications.aspx" />
+    <Content Include="Services.aspx" />
     <Content Include="RendezVous.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Default.aspx" />
@@ -123,13 +122,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accueil.aspx.cs">
-      <DependentUpon>Accueil.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Accueil.aspx.designer.cs">
-      <DependentUpon>Accueil.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Activation.aspx.cs">
       <DependentUpon>Activation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -222,9 +214,16 @@
       <DependentUpon>Inscription.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services.aspx.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Publications.aspx.cs">
       <DependentUpon>Publications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Services.aspx.designer.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
     </Compile>
     <Compile Include="Publications.aspx.designer.cs">
       <DependentUpon>Publications.aspx</DependentUpon>
