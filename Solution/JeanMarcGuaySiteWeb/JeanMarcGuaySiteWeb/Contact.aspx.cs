@@ -6,7 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogic;
 using BusinessLogic.Factories;
+using BusinessLogic.Autres;
 using System.Configuration;
+using System.IO;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -53,10 +55,28 @@ namespace JeanMarcGuaySiteWeb
                 RequestFactory rf = new RequestFactory(cnnStr);
                 int id = user.userId;
 
-                //Ajout de la prise de contact dans la BD
+                // Ajout de la prise de contact dans la BD
                 rf.Add(id, subject, content);
 
-                //Redirection à une page de confirmation
+                // Envoi du Email
+                EmailController ec = new EmailController();
+                string body = string.Empty;
+                using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/ContactEmail.html")))
+                {
+                    body = reader.ReadToEnd();
+                }
+
+                body = body.Replace("{firstname}", user.firstname);
+                body = body.Replace("{lastname}", user.lastname);
+                body = body.Replace("{date}", DateTime.Now.ToString("dd-MM-yyyy"));
+                body = body.Replace("{email}", user.email);
+                body = body.Replace("{subject}", subject);
+                body = body.Replace("{content}", content);
+
+                /* Changer ce email */
+                ec.SendMail("flexonze@gmail.com", "Nouveau message de "+user.firstname + " " + user.lastname, body);
+
+                // Redirection à une page de confirmation
                 Response.Redirect("Confirmation.aspx?User=" + id);
             }
 

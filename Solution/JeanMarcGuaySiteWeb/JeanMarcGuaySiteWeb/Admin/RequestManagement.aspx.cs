@@ -55,26 +55,24 @@ namespace JeanMarcGuaySiteWeb.Admin
 
                 if (dictionaryUser.ContainsKey(request.userId))
                 {
-                User user = dictionaryUser[request.userId];
+                    User user = dictionaryUser[request.userId];
 
-                cellDate.Text = request.creationDate.ToString();
-                cellSujet.Text = request.subject;
-                cellContenu.Text = request.content;
-                cellNom.Text = user.lastname;
-                cellPrenom.Text = user.firstname;
-                cellEmail.Text = user.email;
+                    cellDate.Text = request.creationDate.ToString();
+                    cellSujet.Text = request.subject;
+                    cellContenu.Text = request.content;
+                    cellNom.Text = user.lastname;
+                    cellPrenom.Text = user.firstname;
+                    cellEmail.Text = user.email;
 
-                row.Cells.Add(cellDate);
-                row.Cells.Add(cellSujet);
-                row.Cells.Add(cellContenu);
-                row.Cells.Add(cellNom);
-                row.Cells.Add(cellPrenom);
-                row.Cells.Add(cellEmail);
-                
-                requestTable.Rows.Add(row);
+                    row.Cells.Add(cellDate);
+                    row.Cells.Add(cellSujet);
+                    row.Cells.Add(cellContenu);
+                    row.Cells.Add(cellNom);
+                    row.Cells.Add(cellPrenom);
+                    row.Cells.Add(cellEmail);
+                    
+                    requestTable.Rows.Add(row);
                 }
-                
-
             }
         }
 

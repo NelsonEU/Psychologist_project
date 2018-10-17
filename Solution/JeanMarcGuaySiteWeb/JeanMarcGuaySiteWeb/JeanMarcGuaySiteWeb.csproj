@@ -99,6 +99,9 @@
     <Content Include="Admin\UserManagement.aspx" />
     <Content Include="Connexion.aspx" />
     <Content Include="CSS\Base.css" />
+    <EmbeddedResource Include="Email\ContactEmail.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Images\banner.png" />
     <Content Include="Images\DSC_2726.JPG" />
     <Content Include="Images\stairs.jpg" />
