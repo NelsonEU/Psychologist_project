@@ -46,8 +46,9 @@ namespace JeanMarcGuaySiteWeb
                     if (user == null)
                     {
                         //Email ou mot de passe incorrect
+                        password.Text = "";
                         notification.Style.Add("color", "red");
-                        notification.InnerText = "Adresse e-mail ou mot de passe incorrect";
+                        notification.InnerText = "Adresse e-mail ou mot de passe incorrect";  
                         notification.Visible = true;
                     }
                     else

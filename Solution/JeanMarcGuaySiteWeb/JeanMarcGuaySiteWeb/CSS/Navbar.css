@@ -10,7 +10,6 @@
 
 #mainNav .navbar-brand {
         color: #fff;
-
 }
 
 .bg-secondary {
@@ -56,14 +55,17 @@
 
 .ml-auto, .mx-auto {
     margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .ml-0, .mx-0 {
     margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 .mr-0, .mx-0 {
     margin-right: 0 !important;
+    margin-left: 0 !important;
 }
 
 *, ::after, ::before {
@@ -75,9 +77,10 @@ li {
 }
 
 
-
 #mainNav .navbar-nav li.nav-item a.nav-link {
     /*color: slategrey;*/
     color: #40add1;
     font-family: Helvetica;
+}
+
 }

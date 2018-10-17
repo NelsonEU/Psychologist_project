@@ -91,6 +91,7 @@
     <Content Include="Admin\RequestManagement.aspx" />
     <Content Include="Confirmation.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="CSS\Carousel.css" />
     <Content Include="CSS\Navbar.css" />
     <Content Include="Admin\CSS\sb-admin.min.css" />
     <Content Include="Admin\Images\stairs.jpg" />
