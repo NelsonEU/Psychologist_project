@@ -1,21 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="JeanMarcGuaySiteWeb.WebForm1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
-        <div class="banner">
-           <div class="va-center">
-                <h1 class="titleBanner">Jean-Marc Guay</h1>
-                <h5 class="titleBanner">Psychologue</h5>
-            </div>
+    <div class="banner">
+        <div class="va-center">
+            <h1 class="titleBanner">Jean-Marc Guay</h1>
+            <h5 class="titleBanner">Psychologue</h5>
         </div>
+    </div>
 </asp:Content>
 
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-        <div id="accueil">
+    <div id="accueil">
         <div class="pb-5">
             <div class="container">
                 <div class="row pb-5">
@@ -79,6 +80,72 @@
                         <p class="long-text">De part ses connaissances theoriques et ses experiences professionelles, les interventions sont toujours accomodees en fonction des problemes et des personnes qu'il rencontre.</p>
                         <p>Le therapeute prendra en compte tant les spheres emotionnelles et cognitives que comportementales et sociales.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row blog">
+                <div class="col-md-12">
+                    <div id="blogCarousel" class="carousel slide" data-ride="carousel">
+
+                        <ol class="carousel-indicators">
+                            <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#blogCarousel" data-slide-to="1"></li>
+                        </ol>
+
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a href="#">
+                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="#">
+                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="#">
+                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--.row-->
+                            </div>
+                            <!--.item-->
+
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a href="#">
+                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="#">
+                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="#">
+                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--.row-->
+                            </div>
+                            <!--.item-->
+
+                        </div>
+                        <!--.carousel-inner-->
+                    </div>
+                    <!--.Carousel-->
                 </div>
             </div>
         </div>
