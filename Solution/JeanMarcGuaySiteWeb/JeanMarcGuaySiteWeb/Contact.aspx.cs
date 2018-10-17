@@ -48,6 +48,11 @@ namespace JeanMarcGuaySiteWeb
         {
             string subject = txtSubject.Text;
             string content = txtContent.Text;
+            
+            if (content.Length >= 500)
+            {
+                //notification.InnerText("500 caractères maximum!");
+            }
 
             if (!string.IsNullOrEmpty(subject) && !string.IsNullOrEmpty(content))
             {
@@ -74,7 +79,7 @@ namespace JeanMarcGuaySiteWeb
                 body = body.Replace("{content}", content);
 
                 /* Changer ce email */
-                ec.SendMail("flexonze@gmail.com", "Nouveau message de "+user.firstname + " " + user.lastname, body);
+                ec.SendMail("cabinet.jmguay@gmail.com", "Nouveau message de "+user.firstname + " " + user.lastname, body);
 
                 // Redirection à une page de confirmation
                 Response.Redirect("Confirmation.aspx?User=" + id);

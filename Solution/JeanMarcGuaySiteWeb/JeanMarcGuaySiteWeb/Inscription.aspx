@@ -46,7 +46,7 @@
                                 </div>
                                 <div runat="server" id="notification" visible="false">
                                 </div>
-                                <asp:Button ID="submit" class="mt-3 btn btn-lg btn-primary btn-block" Text="S'inscrire" runat="server" OnClick="Submit_click" />
+                                <asp:Button ID="submit" class="mt-3 btn btn-lg mainButton btn-block" Text="S'inscrire" runat="server" OnClick="Submit_click" />
                             </div>
                         </div>
                     </div>

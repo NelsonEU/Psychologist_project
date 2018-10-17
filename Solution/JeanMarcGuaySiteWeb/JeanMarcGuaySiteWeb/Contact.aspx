@@ -5,8 +5,7 @@
 
     <div class="banner2 pb-5">
         <div class="va-center2">
-                <h1 class="titleBanner2">Contactez moi</h1>
-              
+                <h1 class="titleBanner2">Contactez-moi!</h1>             
             </div>
     </div>
 
@@ -15,6 +14,16 @@
 
 
     <div class="container-fluid pt-5">
+        <div class="row pb-1 text-center">
+            <div class="col-md-8 offset-md-2">
+                <h3>Questions, commentaires, suggestions? N'hésitez pas à me contacter.</h3>
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col-md-8 offset-md-2 text-center">
+                <h5>Au besoin, je vous répondrai par courriel. Ce service est totalement confidentiel!</h5>
+            </div>
+        </div>
         <div class="row pb-3">
             <div class="col-md-8 offset-md-2">
                 <asp:TextBox runat="server" ID="txtSubject" class="form-control" MaxLength="40" placeholder="Sujet" required="required"></asp:TextBox>
@@ -22,12 +31,17 @@
         </div>
         <div class="row pb-3">
             <div class="col-md-8 offset-md-2">
-                <asp:TextBox ID="txtContent" TextMode="multiline" Columns="50" Rows="5" runat="server" MaxLength="500" placeholder="Message" class="form-control" Style="resize: none;" required="required" />
+                <asp:TextBox ID="txtContent" TextMode="multiline" Columns="50" Rows="5" runat="server" MaxLength="500" onkeyDown="checkTextAreaMaxLength(this,event,'500');" placeholder="Message" class="form-control" Style="resize: none;" required="required" />
             </div>
         </div>
         <div class="row pb-3">
             <div class="col-md-2 offset-md-5">
                 <asp:Button runat="server" ID="buttonSubmit" Text="Envoyer" OnClick="buttonSubmitClick" CssClass="form-control mainButton" />
+            </div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-md-2 offset-md-5" runat="server" id="notification">
+                
             </div>
         </div>
     </div>
