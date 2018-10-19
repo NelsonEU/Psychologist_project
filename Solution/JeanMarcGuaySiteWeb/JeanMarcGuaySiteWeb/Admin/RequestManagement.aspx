@@ -20,26 +20,55 @@
             <div class="col-lg-2 col-sm-6">
                 <asp:DropDownList runat="server" ID="DdlRange" OnSelectedIndexChanged="DdlRangeChanged" AutoPostBack="true"> 
                     <asp:ListItem Text="30 derniers jours" Value="mois"></asp:ListItem>
-                    <asp:ListItem Text="Cette semaine" Value="semaine"></asp:ListItem>
+                    <asp:ListItem Text="7 derniers jours" Value="semaine"></asp:ListItem>
                     <asp:ListItem Text="Tout" Value="tout"></asp:ListItem>
                 </asp:DropDownList>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
 
-                <asp:Table runat="server" id="requestTable" CssClass="table table-bordered table-hover dataTable">
-                    <asp:TableHeaderRow>
-                        <asp:TableHeaderCell>Date</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Sujet</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Contenu</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Nom</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Prénom</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Adresse email</asp:TableHeaderCell>
-                        
-                    </asp:TableHeaderRow>
-                </asp:Table>
+                <asp:Repeater ID="rptRequest" runat="server" OnItemCommand="rptRequest_ItemCommand">
+                    <ItemTemplate>
+
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <div class="divRequest">
+                                    <div class="row text-center divDate">
+                                        <div class="col-lg-12 col-sm-12 biggerText">
+                                            <span>Message de: <b> <%# Eval("Prenom") %> <%# Eval("Nom") %></b></span>
+                                            <asp:Button runat="server" Text="X" CommandName="Delete" class="buttonX" CommandArgument='<%# Eval("requestId") %>'/>
+                                        </div>
+                                    </div>
+                                    <div class="row text-center divInfo">
+                                        <div class="col-lg-6 text-left">
+                                            <span><%# Eval("Date") %></span>
+                                            
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12 text-right">
+                                            <span><%# Eval("Email") %></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row text-center divSujet">
+                                        <div class="col-lg-12">
+                                            <span><%# Eval("Sujet") %></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row text-center divContenu">
+                                        <div class="col-lg-12">
+                                            <span><%# Eval("Contenu") %></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </ItemTemplate>
+                </asp:Repeater>
 
             </div>
         </div>

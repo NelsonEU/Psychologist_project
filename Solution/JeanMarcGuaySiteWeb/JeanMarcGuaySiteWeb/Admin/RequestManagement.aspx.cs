@@ -8,6 +8,7 @@ using BusinessLogic;
 using BusinessLogic.Factories;
 using System.Configuration;
 using System.Linq;
+using System.Data;
 
 namespace JeanMarcGuaySiteWeb.Admin
 {
@@ -42,38 +43,18 @@ namespace JeanMarcGuaySiteWeb.Admin
         {
             /*Dictionnaire de User*/
             Dictionary<int, BusinessLogic.User> dictionaryUser = getDictionary();
-
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[7] { new DataColumn("Date"), new DataColumn("requestId"), new DataColumn("Sujet"), new DataColumn("Contenu"), new DataColumn("Prenom"), new DataColumn("Nom"), new DataColumn("Email")});
             foreach (Request request in requests)
             {
-                TableRow row = new TableRow();
-                TableCell cellDate = new TableCell();
-                TableCell cellSujet = new TableCell();
-                TableCell cellContenu = new TableCell();
-                TableCell cellNom = new TableCell();
-                TableCell cellPrenom = new TableCell();
-                TableCell cellEmail = new TableCell();
-
                 if (dictionaryUser.ContainsKey(request.userId))
                 {
                     User user = dictionaryUser[request.userId];
-
-                    cellDate.Text = request.creationDate.ToString();
-                    cellSujet.Text = request.subject;
-                    cellContenu.Text = request.content;
-                    cellNom.Text = user.lastname;
-                    cellPrenom.Text = user.firstname;
-                    cellEmail.Text = user.email;
-
-                    row.Cells.Add(cellDate);
-                    row.Cells.Add(cellSujet);
-                    row.Cells.Add(cellContenu);
-                    row.Cells.Add(cellNom);
-                    row.Cells.Add(cellPrenom);
-                    row.Cells.Add(cellEmail);
-                    
-                    requestTable.Rows.Add(row);
+                    dt.Rows.Add(request.creationDate.ToString(),request.requestId,request.subject,request.content, user.firstname, user.lastname, user.email);
                 }
             }
+            rptRequest.DataSource = dt;
+            rptRequest.DataBind();
         }
 
         protected Request[] getRequestArray(string ddlValue)
@@ -125,5 +106,24 @@ namespace JeanMarcGuaySiteWeb.Admin
             Request[] requests = getRequestArray(DdlRange.SelectedValue);
             Feed(requests);
         }
+
+        protected void rptRequest_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            switch (e.CommandName)
+            {
+                case "Delete":
+                    {
+                        RequestFactory rf = new RequestFactory(cnnStr);
+                        rf.delete(Convert.ToInt32(e.CommandArgument));
+                        Response.Redirect(Request.RawUrl);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }  
+            }
+        }
+
     }
 }

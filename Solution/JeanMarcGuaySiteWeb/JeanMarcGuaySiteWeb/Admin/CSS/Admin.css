@@ -1,3 +1,66 @@
-﻿.table td, .table th{
+﻿.table td, .table th {
     vertical-align:middle !important;
+}
+.divRequest {
+    margin: 15px;
+    width: 100%;
+}
+
+.divDate {
+    background-color: #212529;
+    color:white;
+    font-size: 10pt;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+    border-top: 1px solid black;
+}
+
+.divInfo {
+    background-color: #212529;
+    color:white;
+    font-size: 10pt;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+}
+
+.divSujet {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    background: linear-gradient(to right, rgba(147,206,222,1) 0%, rgba(73,165,191,1) 100%);
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+}
+
+.divContenu {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: black;
+    background-color: #ffffff;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+    border-bottom: 1px solid black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+.buttonX {
+    text-align: center;
+    background-color: #343a40;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    float: right;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 3px;
+}
+
+.buttonX:hover {
+    background-color: #535353;
+}
+.biggerText{
+    font-size:12pt;
 }
