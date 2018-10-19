@@ -16,7 +16,7 @@
 <body class="home">
     <form id="form1" runat="server">
 
-        <div class="fullpage">
+        <div class="fullpage"  style= "background: url(/Images/cream_dust.png) repeat 0 0;">
 
             <!-- NavBar -->
             <nav class="navbar navbar-expand-lg bg-secondary text-uppercase navbar-shrink fixed-top navbar-sticky" id="mainNav">
