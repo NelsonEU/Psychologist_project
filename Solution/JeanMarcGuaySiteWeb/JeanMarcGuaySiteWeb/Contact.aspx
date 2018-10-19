@@ -31,7 +31,17 @@
         </div>
         <div class="row pb-3">
             <div class="col-md-8 offset-md-2">
-                <asp:TextBox ID="txtContent" TextMode="multiline" Columns="50" Rows="5" runat="server" MaxLength="500" onkeyDown="checkTextAreaMaxLength(this,event,'500');" placeholder="Message" class="form-control" Style="resize: none;" required="required" />
+                <asp:TextBox ID="txtContent" TextMode="multiline" Columns="50" Rows="5" runat="server" MaxLength="500" ClientIDMode="Static" placeholder="Message" class="form-control" Style="resize: none;" required="required" />
+            </div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-md-8 offset-md-2 text-right" runat="server" id="nbCharacter">
+                <span id="characters"></span><span>/500</span>
+            </div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-md-2 offset-md-5 text-center" runat="server" id="notification">
+                
             </div>
         </div>
         <div class="row pb-3">
@@ -39,13 +49,10 @@
                 <asp:Button runat="server" ID="buttonSubmit" Text="Envoyer" OnClick="buttonSubmitClick" CssClass="form-control mainButton" />
             </div>
         </div>
-        <div class="row pb-3">
-            <div class="col-md-2 offset-md-5" runat="server" id="notification">
-                
-            </div>
-        </div>
+        
     </div>
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
+    <script src="Javascripts/Contact.js"></script>
 </asp:Content>
