@@ -30,7 +30,9 @@ h1,h2,h3,h4,h5{
     /*text-transform: uppercase;*/
 }
 
-
+.link-carousel {
+    color:black;
+}
 
 .paddingNav {
     padding-top: 95px !important;
@@ -53,11 +55,12 @@ h1,h2,h3,h4,h5{
 }
 
 .long-text{
-    padding-right:20%;
+    padding-right:10%;
 }
 
 .bc-blue {
-    background-color: #eaf5f7;
+    background-color: #0f3f54;
+    color: lightgrey;
 }
 
 .footer{
