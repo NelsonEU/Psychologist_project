@@ -5,5 +5,5 @@
 }(jQuery);
 
 $(document).ready(function () {
-    $("#tabUsers").DataTable();
+    $('.dataTable').DataTable();
 })

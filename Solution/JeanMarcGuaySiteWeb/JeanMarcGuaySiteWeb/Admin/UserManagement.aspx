@@ -11,30 +11,29 @@
     </div>
 
     <div class="card mb-3">
-        <div class="card-header">
-            <i class="fas fa-table"></i>
-            Gestion des utilisateurs
-        </div>
         <div class="card-body">
             <div class="table-responsive col-md-12">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-10">
-                            <div id="dataTable_filter" class="dataTables_filter">
-                                <label>Rechercher:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable" /></label>
-                            </div>
+                    <div class="row pb-1">
+                        <div class="col-sm-12 offset-md-10 col-md-2">
+                            <asp:button class=" btn btn-success" runat="server" text="Authoriser" onclick="Click_Authorized" ID="btnAuthoriser" />
                         </div>
-                        <div class="col-sm-12 col-md-1">
-                            <asp:Button runat="server" Text="Autoriser" OnClick="Click_Authorized"/>
+                    </div>
+                    <div class="row pb-2">
+                        <div class="col-sm-12 col-md-3">
+                                <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Rechercher"/>
                         </div>
-                        <div class="col-sm-12 col-md-1">
-                            <asp:Button runat="server" Text="Supprimer" OnClick="Click_Delete"/>
+                        <divl class="col-sm-12 col-md-2">
+                            <asp:button class="btn btn-secondary" runat="server" text="Rechercher"  ID="btnRechercher"/>
+                        </divl>
+                        <div class="col-sm-12 offset-md-5 col-md-2">
+                            <asp:button class="btn btn-danger" runat="server" text="Supprimer" onclick="Click_Delete" ID="btnSupprimer"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <div runat="server" visible="false" id="notif"></div>
-                            <asp:Table runat="server" ID="tabUsers" CssClass="table table-bordered dataTable">
+                            <asp:table runat="server" id="tabUsers" aria-describedby="dataTable_info" cssclass="table table-bordered dataTable">
                                 <asp:TableHeaderRow>
                                     <asp:TableHeaderCell>Prénom</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Nom</asp:TableHeaderCell>
@@ -43,7 +42,7 @@
                                     <asp:TableHeaderCell>Autorisé*</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Sélectionner</asp:TableHeaderCell>
                                 </asp:TableHeaderRow>
-                            </asp:Table>
+                            </asp:table>
                         </div>
                     </div>
                 </div>
