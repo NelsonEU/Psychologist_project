@@ -19,7 +19,7 @@
     <div id="accueil">
         <div class="container-fluid">
             <div class="pb-5">
-                <div class="container">
+                <div class="container biggerBox">
                     <div class="row pb-5">
                         <div class="col-md-12">
                             <div class="text-center">
@@ -72,7 +72,7 @@
         </div>
         <div class="container-fluid bc-blue">
             <div class="pb-5">
-                <div class="container">
+                <div class="container biggerBox">
                     <div class="row pt-5">
                         <h2>Approche preconisée</h2>
                     </div>
@@ -108,7 +108,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container biggerBox">
             <div class="row pt-5">
                 <h2>Publications</h2>
             </div>

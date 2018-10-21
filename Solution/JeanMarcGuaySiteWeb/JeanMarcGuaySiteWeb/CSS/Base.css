@@ -1,4 +1,8 @@
-﻿html {
+﻿p {
+    text-align:justify;
+}
+
+html {
   height: 100%;
 }
 
@@ -54,13 +58,18 @@ h1,h2,h3,h4,h5{
     margin-bottom:80px;
 }
 
+.biggerBox{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
 .long-text{
     padding-right:10%;
 }
 
 .bc-blue {
-    background-color: #0f3f54;
-    color: lightgrey;
+    color: white;
+    background: linear-gradient(to right, rgb(29, 98, 128) 0%, rgb(4, 23, 31) 100%);
 }
 
 .footer{
