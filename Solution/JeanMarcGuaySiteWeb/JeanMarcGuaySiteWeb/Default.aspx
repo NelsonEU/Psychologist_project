@@ -4,7 +4,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
-    <div class="banner">
+    <div class="banner shadow">
         <div class="va-center">
             <h1 class="titleBanner">Jean-Marc Guay</h1>
             <h5 class="titleBanner">Psychologue</h5>
