@@ -50,10 +50,10 @@ namespace JeanMarcGuaySiteWeb
             string subject = txtSubject.Text;
             string content = txtContent.Text;
             
-            if (content.Length >= 500)
+            if (content.Length > 500)
             {
                 notification.Style.Add("color", "red");
-                notification.InnerText = "500 caractères maximum!";
+                notification.InnerText = "Le nombre maximum de caractère à été atteint. Veuillez réduire la longueur de votre message.";
                 return;
             }
 
@@ -61,7 +61,7 @@ namespace JeanMarcGuaySiteWeb
             if (regex.IsMatch(content))
             {
                 notification.Style.Add("color", "red");
-                notification.InnerText = "Vérifiez votre texte";
+                notification.InnerText = "Le message actuel ne peux pas être envoyer. Veuillez vérifier votre message.";
                 return;
             }
 

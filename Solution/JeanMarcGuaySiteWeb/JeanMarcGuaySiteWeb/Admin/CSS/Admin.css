@@ -29,7 +29,8 @@
     padding-top: 5px;
     padding-bottom: 5px;
     font-weight: bold;
-    background: linear-gradient(to right, rgba(147,206,222,1) 0%, rgba(73,165,191,1) 100%);
+    background: linear-gradient(to right, rgb(29, 98, 128) 0%, rgb(4, 23, 31) 100%);
+    color:white;
     border-left: 1px black solid;
     border-right: 1px black solid;
 }
@@ -59,8 +60,31 @@
 }
 
 .buttonX:hover {
-    background-color: #535353;
+    background-color: #1d6280;
 }
 .biggerText{
     font-size:12pt;
+}
+.box-shadow{ 
+    box-shadow:0 0 90px 5px rgba(207,207,207,.8);
+}
+
+.box-admin {
+    margin:15px;
+    padding:15px;
+    text-align:center;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.box-admin:hover {
+    background-color:rgb(29,98,128,0.1);
+}
+
+.hidden{
+    display:none;
+}
+.highlightH4 {
+    color:#1d6280;
+    font-size:22pt;
 }

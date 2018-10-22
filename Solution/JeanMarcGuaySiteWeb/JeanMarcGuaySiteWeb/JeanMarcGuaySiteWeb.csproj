@@ -88,6 +88,7 @@
     <Content Include="Admin\CSS\Admin.css" />
     <Content Include="Admin\CSS\Switch.css" />
     <Content Include="Admin\DocumentManagement.aspx" />
+    <Content Include="Admin\Javascript\pageadmin.js" />
     <Content Include="Admin\RequestManagement.aspx" />
     <Content Include="Confirmation.aspx" />
     <Content Include="Contact.aspx" />

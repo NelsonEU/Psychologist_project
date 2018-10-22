@@ -1,6 +1,6 @@
 ﻿#mainNav {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    /*padding-top: 1rem;
+    padding-bottom: 1rem;*/
     font-weight: 500;
     /*font-family: Montserrat;*/
     box-shadow: 4px 7px 31px -8px rgba(0,0,0,0.75);
@@ -79,7 +79,7 @@ li {
 
 #mainNav .navbar-nav li.nav-item a.nav-link {
     /*color: slategrey;*/
-    color: #40add1;
+    color: #1d6280;
     font-family: Helvetica;
 }
 

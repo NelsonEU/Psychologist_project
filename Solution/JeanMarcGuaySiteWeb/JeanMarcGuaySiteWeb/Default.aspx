@@ -20,21 +20,21 @@
         <div class="container-fluid">
             <div class="pb-5">
                 <div class="container biggerBox">
-                    <div class="row pb-5">
+                   <!-- <div class="row pb-5">
                         <div class="col-md-12">
                             <div class="text-center">
                                 <h1>Cabinet de psychologie</h1>
                             </div>
                         </div>
+                    </div> -->
+                    <div class="row">
+                        <h2 class="underline1">À propos</h2>
+                    </div>
+                    <div class="row pt-3">
+                        <p>Membre de l'Ordre des Psychologues du Québec, Jean-Marc Guay est un psychologue clinicien de la région du Saguenay. En plus d'être practicien en programmation neuro-linguistique, il est également professeur de psychologie.</p>
                     </div>
                     <div class="row">
-                        <h2>A propos</h2>
-                    </div>
-                    <div class="row">
-                        <p>Membre de l'Ordre des Psychologues du Québec, Jean-Marc Guay est un psychologue clinicien de la région du Saguenay. En plus d'être practicien en programmation neuo-linguistique, il est également professeur de psychologie.</p>
-                    </div>
-                    <div class="row">
-                        <p>Vous trouverez sur ce site différentes informations concernant la psychotérapie ainsi que tous les services offerts par le psychologue. Les publications de Jean-Marc sont également mises à votre disposition et sont disponibles dans la section "Publications".</p>
+                        <p>Vous trouverez sur ce site différentes informations concernant la psychotérapie ainsi que tous les services offerts par le psychologue. Les publications de Jean-Marc sont également mises à votre disposition et sont disponibles dans la section « <a href="Publications.aspx">Publications</a> ».</p>
                     </div>
                     <div class="row">
                         <p>Vous êtes également invités à vous créer un compte sur le site. Cela vous permettra de pouvoir contacter le practicien et, si vous le souhaitez, de vous abonner à ses publications.</p>
@@ -74,9 +74,9 @@
             <div class="pb-5">
                 <div class="container biggerBox">
                     <div class="row pt-5">
-                        <h2>Approche preconisée</h2>
+                        <h2 class="underline2">Approche preconisée</h2>
                     </div>
-                    <div class="row">
+                    <div class="row pt-3">
                         <p>
                             L'approche preconisee au cabinet est celle d'une orientation integrative.<br />
                             Celle-ci permet d'utiliser des outils d'approches combinees telles que:
@@ -102,7 +102,7 @@
                         <p>Le therapeute prendra en compte tant les spheres emotionnelles et cognitives que comportementales et sociales.</p>
                     </div>
                     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
-                        <a href="Services.aspx" class="btn mainButton">En savoir plus</a>
+                        <a href="Services.aspx" class="btn mainButton2">En savoir plus</a>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
 
         <div class="container biggerBox">
             <div class="row pt-5">
-                <h2>Publications</h2>
+                <h2 class="underline1">Publications</h2>
             </div>
             <div class="carousel_categorie pt-3">
                 <div class="text-center text-secondary">

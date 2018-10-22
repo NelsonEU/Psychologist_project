@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
 
-    <div class="banner2 pb-5">
+    <div class="banner2 pb-5 shadow">
         <div class="va-center2">
                 <h1 class="titleBanner2">Contactez-moi!</h1>             
             </div>
@@ -45,8 +45,8 @@
             </div>
         </div>
         <div class="row pb-3">
-            <div class="col-md-2 offset-md-5">
-                <asp:Button runat="server" ID="buttonSubmit" Text="Envoyer" OnClick="buttonSubmitClick" CssClass="form-control mainButton" />
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                <asp:Button runat="server" ID="buttonSubmit" Text="Envoyer" OnClick="buttonSubmitClick" CssClass="btn mainButton pr-5 pl-5" />
             </div>
         </div>
         
