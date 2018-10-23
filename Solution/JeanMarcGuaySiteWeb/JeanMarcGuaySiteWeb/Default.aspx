@@ -4,7 +4,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
-    <div class="banner">
+    <div class="banner shadow">
         <div class="va-center">
             <h1 class="titleBanner">Jean-Marc Guay</h1>
             <h5 class="titleBanner">Psychologue</h5>
@@ -17,26 +17,47 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div id="accueil">
-        <div class="pb-5">
-            <div class="container">
-                <div class="row pb-5">
-                    <div class="col-md-12">
-                        <div class="text-center">
-                            <h1>Cabinet de psychologie</h1>
+        <div class="container-fluid">
+            <div class="pb-5">
+                <div class="container biggerBox">
+                   <!-- <div class="row pb-5">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <h1>Cabinet de psychologie</h1>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <h2 class="underline1">À propos</h2>
+                    </div>
+                    <div class="row pt-3">
+                        <p>Membre de l'Ordre des Psychologues du Québec, Jean-Marc Guay est un psychologue clinicien de la région du Saguenay. En plus d'être practicien en programmation neuro-linguistique, il est également professeur de psychologie.</p>
+                    </div>
+                    <div class="row">
+                        <p>Vous trouverez sur ce site différentes informations concernant la psychotérapie ainsi que tous les services offerts par le psychologue. Les publications de Jean-Marc sont également mises à votre disposition et sont disponibles dans la section « <a href="Publications.aspx">Publications</a> ».</p>
+                    </div>
+                    <div class="row">
+                        <p>Vous êtes également invités à vous créer un compte sur le site. Cela vous permettra de pouvoir contacter le practicien et, si vous le souhaitez, de vous abonner à ses publications.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
+                            <a href="Inscription.aspx" class="btn mainButton">Créer un compte</a>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!--
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
-                        <h2>A propos</h2>
                         <ul>
                             <li>Psychologue clinicien</li>
                             <li>Practicien en programmation neuro-linguistique</li>
                             <li>Professeur</li>
                         </ul>
                     </div>
+                    
+                    <h2>Mes services</h2>
                     <div class="col-md-6 col-sm-12">
-                        <h2>Mes services</h2>
                         <ul>
                             <li>Therapie breve et a long terme</li>
                             <li>Approche integrative</li>
@@ -46,16 +67,16 @@
                     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
                         <a href="Connexion.aspx" class="btn mainButton">En savoir plus</a>
                     </div>
-                </div>
-            </div>
+                </div> 
+                    -->
         </div>
         <div class="container-fluid bc-blue">
             <div class="pb-5">
-                <div class="container">
+                <div class="container biggerBox">
                     <div class="row pt-5">
-                        <h1>Approche preconisee</h1>
+                        <h2 class="underline2">Approche preconisée</h2>
                     </div>
-                    <div class="row">
+                    <div class="row pt-3">
                         <p>
                             L'approche preconisee au cabinet est celle d'une orientation integrative.<br />
                             Celle-ci permet d'utiliser des outils d'approches combinees telles que:
@@ -80,81 +101,59 @@
                         <p class="long-text">De part ses connaissances theoriques et ses experiences professionelles, les interventions sont toujours accomodees en fonction des problemes et des personnes qu'il rencontre.</p>
                         <p>Le therapeute prendra en compte tant les spheres emotionnelles et cognitives que comportementales et sociales.</p>
                     </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="container">
-            <div class="row blog">
-                <div class="col-md-12">
-                    <div id="blogCarousel" class="carousel slide" data-ride="carousel">
-
-                        <ol class="carousel-indicators">
-                            <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#blogCarousel" data-slide-to="1"></li>
-                        </ol>
-
-                        <!-- Carousel items -->
-                        <div class="carousel-inner">
-
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--.row-->
-                            </div>
-                            <!--.item-->
-
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width: 100%;">
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--.row-->
-                            </div>
-                            <!--.item-->
-
-                        </div>
-                        <!--.carousel-inner-->
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
+                        <a href="Services.aspx" class="btn mainButton2">En savoir plus</a>
                     </div>
-                    <!--.Carousel-->
                 </div>
             </div>
         </div>
+
+        <div class="container biggerBox">
+            <div class="row pt-5">
+                <h2 class="underline1">Publications</h2>
+            </div>
+            <div class="carousel_categorie pt-3">
+                <div class="text-center text-secondary">
+                    <asp:ImageButton runat="server" ImageUrl="Images/stress.jpg" class="imageCarousel mb-2" />
+                    <a class="link-carousel text-secondary" href="Publications.aspx">
+                        <h2>Stress</h2>
+                    </a>
+                </div>
+                <div class="text-center text-secondary">
+                    <asp:ImageButton runat="server" ImageUrl="Images/troubleSommeil.jpg" class="imageCarousel mb-2" />
+                    <a class="link-carousel text-secondary" href="Publications.aspx">
+                        <h2>Trouble du sommeil</h2>
+                    </a>
+                </div>
+                <div class="text-center text-secondary">
+                    <asp:ImageButton runat="server" ImageUrl="Images/phobie.jpg" class="imageCarousel mb-2" />
+                    <a class="link-carousel text-secondary" href="Publications.aspx">
+                        <h2>Phobie</h2>
+                    </a>
+                </div>
+                <div class="text-center text-secondary">
+                    <asp:ImageButton runat="server" ImageUrl="Images/depression.jpg" class="imageCarousel mb-2" />
+                    <a class="link-carousel text-secondary" href="Publications.aspx">
+                        <h2>Dépression</h2>
+                    </a>
+                </div>
+                <div class="text-center text-secondary">
+                    <asp:ImageButton runat="server" ImageUrl="Images/anxiete.jpg" class="imageCarousel mb-2" />
+                    <a class="link-carousel text-secondary" href="Publications.aspx">
+                        <h2>Anxiete</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
 
     </div>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
-
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="Javascripts/Carousel.js"></script>
     <script src="Javascripts/parallax.min.js"></script>
 
 </asp:Content>

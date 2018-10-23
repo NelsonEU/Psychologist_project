@@ -55,7 +55,7 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM requests";
+                cmd.CommandText = "SELECT * FROM requests WHERE deletionDate IS NULL ORDER BY creationDate DESC";
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -99,7 +99,7 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM requests WHERE creationDate BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()";
+                cmd.CommandText = "SELECT * FROM requests WHERE deletionDate IS NULL AND creationDate BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW() ORDER BY creationDate DESC";
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -143,7 +143,7 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM requests WHERE creationDate BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW()";
+                cmd.CommandText = "SELECT * FROM requests WHERE deletionDate IS NULL AND creationDate BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW() ORDER BY creationDate DESC";
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -172,6 +172,26 @@ namespace BusinessLogic.Factories
 
             return requestList.ToArray();
 
+        }
+        #endregion
+
+        #region Delete
+        public void delete(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "UPDATE requests SET deletionDate = NOW() WHERE request_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
         }
         #endregion
     }

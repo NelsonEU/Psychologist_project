@@ -9,6 +9,7 @@ using BusinessLogic.Factories;
 using BusinessLogic.Autres;
 using System.Configuration;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -49,9 +50,19 @@ namespace JeanMarcGuaySiteWeb
             string subject = txtSubject.Text;
             string content = txtContent.Text;
             
-            if (content.Length >= 500)
+            if (content.Length > 500)
             {
-                //notification.InnerText("500 caractères maximum!");
+                notification.Style.Add("color", "red");
+                notification.InnerText = "Le nombre maximum de caractère à été atteint. Veuillez réduire la longueur de votre message.";
+                return;
+            }
+
+            System.Text.RegularExpressions.Regex regex = new Regex(@"\w{26,}");
+            if (regex.IsMatch(content))
+            {
+                notification.Style.Add("color", "red");
+                notification.InnerText = "Le message actuel ne peux pas être envoyer. Veuillez vérifier votre message.";
+                return;
             }
 
             if (!string.IsNullOrEmpty(subject) && !string.IsNullOrEmpty(content))

@@ -88,10 +88,13 @@
     <Content Include="Admin\CSS\Admin.css" />
     <Content Include="Admin\CSS\Switch.css" />
     <Content Include="Admin\DocumentManagement.aspx" />
+    <Content Include="Admin\Javascript\pageadmin.js" />
     <Content Include="Admin\RequestManagement.aspx" />
     <Content Include="Confirmation.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="CSS\fonts\ajax-loader.gif" />
     <Content Include="CSS\Carousel.css" />
+    <Content Include="CSS\fonts\slick.svg" />
     <Content Include="CSS\Navbar.css" />
     <Content Include="Admin\CSS\sb-admin.min.css" />
     <Content Include="Admin\Images\stairs.jpg" />
@@ -103,13 +106,17 @@
     <EmbeddedResource Include="Email\ContactEmail.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="CSS\slick-theme.css" />
+    <Content Include="CSS\slick.css" />
     <Content Include="Images\banner.png" />
     <Content Include="Images\cream_dust.png" />
     <Content Include="Images\DSC_2726.JPG" />
     <Content Include="Images\stairs.jpg" />
     <Content Include="Inscription.aspx" />
+    <Content Include="Javascripts\Carousel.js" />
     <Content Include="Javascripts\Inscription.js" />
     <Content Include="Javascripts\Script.js" />
+    <Content Include="Javascripts\slick.min.js" />
     <Content Include="packages.config" />
     <Content Include="Publications.aspx" />
     <Content Include="Services.aspx" />
@@ -117,6 +124,9 @@
     <Content Include="Site.Master" />
     <Content Include="Default.aspx" />
     <Content Include="Admin\Admin.Master" />
+    <Content Include="CSS\fonts\slick.eot" />
+    <Content Include="CSS\fonts\slick.ttf" />
+    <Content Include="CSS\fonts\slick.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -57,6 +57,7 @@ namespace JeanMarcGuaySiteWeb
                         if (user.activated == false)
                         {
                             //Compte pas activé
+                            password.Text = "";
                             notification.Style.Add("color", "red");
                             notification.InnerText = "Votre compte n'est pas activé. Un e-mail de confirmation vous a été renvoyé.";
                             notification.Visible = true;

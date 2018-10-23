@@ -29,7 +29,7 @@
                  
                     <div runat="server" class="text-center mt-2" id="notification" visible="false">
                     </div>
-                    <asp:Button ID="submit" class="mt-4 btn btn-lg mainButton btn-block" Text="Se connecter" runat="server" OnClick="Submit_click" />
+                    <asp:Button ID="submit" class="mt-4 btn btn-lg mainButton2 btn-block" Text="Se connecter" runat="server" OnClick="Submit_click" />
                     <div class="mt-2 mb-3">
                         Pas encore de compte ? <a href="Inscription.aspx">Cliquez ici !</a>
                     </div>

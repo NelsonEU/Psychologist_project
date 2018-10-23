@@ -7,9 +7,10 @@
     <title>Jean-Marc Guay</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="CSS/slick-theme.css" />
     <link rel="stylesheet" href="CSS/Navbar.css" />
     <link rel="stylesheet" href="CSS/Base.css" />
-    <link rel="stylesheet" href="CSS/Carousel.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -57,22 +58,22 @@
 
             <!-- Contenu -->
 
-                <asp:ContentPlaceHolder ID="BannerPlaceHolder" runat="server">
-                </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="BannerPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
 
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
 
             <!-- Fin Contenu -->
 
 
-            <!-- Footer -->
+            <!-- Footer 
 
             <footer class="footer">
                 <span>Jean-Marc Guay</span>
             </footer>
 
-            <!-- Fin Footer -->
+             Fin Footer -->
 
         </div>
     </form>
@@ -82,9 +83,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="Javascripts/Script.js"></script>
-
     <asp:ContentPlaceHolder ID="additionalJS" runat="server">
-        
     </asp:ContentPlaceHolder>
 </body>
 </html>
