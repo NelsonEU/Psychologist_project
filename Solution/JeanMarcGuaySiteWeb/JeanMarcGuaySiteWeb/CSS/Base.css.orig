@@ -1,10 +1,64 @@
-﻿body {
+﻿p {
+    text-align:justify;
+}
+a {
+    color: #1d6280;
+}
+a:hover {
+    color: #1d6280;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+<<<<<<< HEAD
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+=======
+  height: 100%;
+  margin: 0;
+>>>>>>> ef4a938dcf06581e47ad9fe364db1e552087877f
+}
+
+
+.fullpage {
+  margin: 0 auto;
+  padding-top: 64px;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+
 h1,h2,h3,h4,h5{
-    font-family: 'Montserrat';
+    /*font-family: 'Montserrat';*/
     font-weight: 400;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
+}
+
+.link-carousel {
+    color:black;
+}
+
+.paddingNav {
+    padding-top: 95px !important;
+}
+.paddingNav2 {
+    padding-top: 125px !important;
+}
+
+.container{
+    min-height:100%;
 }
 
 .parallax-window{
@@ -12,25 +66,93 @@ h1,h2,h3,h4,h5{
     background: transparent;
 }
 
+.space-medium{
+    margin-bottom:80px;
+}
+
+.biggerBox{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.long-text{
+    padding-right:10%;
+}
+
+.bc-blue {
+    color: white;
+    background: linear-gradient(to right, rgb(29, 98, 128) 0%, rgb(4, 23, 31) 100%);
+}
+
+.footer{
+    text-align: center;
+    padding-top: 12px;
+    color: white;
+    bottom: 0;
+    height:50px;
+    background: linear-gradient(to right, rgba(55,120,155,1) 0%, rgba(64,163,206,1) 100%);
+}
 
 .banner{
     text-align:center;
     position:relative;
+    min-width:100%;
+    height:600px;
+    background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0,0.2)),url('../Images/banner14.jpg');
+}
+
+.banner2{
+    text-align:center;
+    position:relative;
+    height:300px;
+    min-width:100%;
+    background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0,0.2)),url('../Images/banner14.jpg');
+    
+}
+
+.banner-Resized {
+    min-height: 280px;
+    background: transparent;
+    position:relative
 }
 
 .va-center{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left:0;
-    right:0;
-    width: 50%;
-    height: 30%;
-    margin:auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.va-center2{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.va-wide {
+    position: static;
+    max-width: 1200px;
+    padding: 0px 15px;
+    margin: 10px;
+    justify-content: space-between;
 }
 
 .titleBanner{
-    font-family: 'Abril Fatface', cursive;
+    font-family: Helvetica;
+    font-weight:bold;
+}
+h5.titleBanner{
+    font-weight:inherit;
+}
+
+.titleBanner2{
+    font-family: Helvetica;
+    font-weight:bold;
 }
 
 #accueil{
@@ -38,18 +160,78 @@ h1,h2,h3,h4,h5{
 }
 
 h1.titleBanner{
-    font-size: 50px;
+    font-size: 65px;
+}
+h5.titleBanner{
+    font-size: 25px;
 }
 
 .divContent {
     padding-top: 105px;
 }
+
 .mainButton{
-    background-color:#4ac7b6;
-    color: white;
+    color: #1d6280;
+    background: #fff;
+    font-size:13pt;
+    font-weight:bold;
+    border:4px #1d6280 solid;
+    border-color: #1d6280;
+    padding:15px;
+    transition: 0.3s;
 }
-.mainButton:hover{
-    opacity:0.9;
+
+.mainButton:hover {
+    background: #1d6280;
+    color: #fff;
+}
+
+.mainButton2{
+    background: #1d6280;
+    color: #fff;
+    font-size:13pt;
+    font-weight:bold;
+    border:4px #1d6280 solid;
+    border-color: #1d6280;
+    padding:15px;
+    transition: 0.3s;
+}
+
+.mainButton2:hover {
+    opacity:0.8;
+    color: #fff;
+}
+
+.underline1{
+    border-bottom: solid 2px #1d6280;
+    padding-bottom: 10px;
+    padding-left: 2px;
+    padding-right: 25px;
+}
+
+.underline2{
+    border-bottom: solid 2px #fff;
+    padding-bottom: 10px;
+    padding-left: 2px;
+    padding-right: 25px;
+}
+
 #ContentPlaceHolder1_panelConnexion{
     padding-top: 1rem;
+}
+
+h1, h2, h3 {
+    text-shadow: 1px 1px 1px #ccc;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("http://wp2.commonsupport.com/newwp/mindron/wp-content/uploads/2018/02/services-14.jpg");
+    /* Set a specific height */
+    min-height: 500px;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

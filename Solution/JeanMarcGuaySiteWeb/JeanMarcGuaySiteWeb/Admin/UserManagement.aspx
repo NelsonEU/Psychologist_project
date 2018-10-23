@@ -16,24 +16,29 @@
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <div class="row pb-1">
                         <div class="col-sm-12 offset-md-10 col-md-2">
-                            <asp:button class=" btn btn-success" runat="server" text="Authoriser" onclick="Click_Authorized" ID="btnAuthoriser" />
+                            <asp:Button class=" btn btn-success" runat="server" Text="Authoriser" OnClick="Click_Authorized" ID="btnAuthoriser" />
                         </div>
                     </div>
                     <div class="row pb-2">
                         <div class="col-sm-12 col-md-3">
-                                <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Rechercher"/>
+                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Rechercher" id="researchUser" />
                         </div>
-                        <divl class="col-sm-12 col-md-2">
-                            <asp:button class="btn btn-secondary" runat="server" text="Rechercher"  ID="btnRechercher"/>
-                        </divl>
-                        <div class="col-sm-12 offset-md-5 col-md-2">
-                            <asp:button class="btn btn-danger" runat="server" text="Supprimer" onclick="Click_Delete" ID="btnSupprimer"/>
+                        <div class="col-sm-12 col-md-2">
+                            <asp:Button class="btn btn-secondary" runat="server" Text="Rechercher" ID="btnRechercher" />
+                        </div>
+                        <div class="col-sm-12 offset-md-3 col-md-2">
+                            <asp:Button class="btn btn-warning" runat="server" Text="Désauthoriser" OnClick="Click_Deauthorized" OnClientClick="ConfirmerDesauthorisation()" ID="btnDesauthoriser" />
+                        </div>
+                        <div class="col-sm-12 col-md-2">    
+                            <asp:Button class=" btn btn-danger" runat="server" Text="Supprimer" OnClick="Click_Delete" OnClientClick="ConfirmerSuppression()" ID="btnSupprimer" />
                         </div>
                     </div>
                     <div class="row">
+                        <div runat="server" visible="false" id="notif"></div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-12">
-                            <div runat="server" visible="false" id="notif"></div>
-                            <asp:table runat="server" id="tabUsers" aria-describedby="dataTable_info" cssclass="table table-bordered dataTable">
+                            <asp:Table runat="server" ID="tabUsers" aria-describedby="dataTable_info" CssClass="table table-bordered dataTable dataUsers">
                                 <asp:TableHeaderRow>
                                     <asp:TableHeaderCell>Prénom</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Nom</asp:TableHeaderCell>
@@ -42,7 +47,7 @@
                                     <asp:TableHeaderCell>Autorisé*</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Sélectionner</asp:TableHeaderCell>
                                 </asp:TableHeaderRow>
-                            </asp:table>
+                            </asp:Table>
                         </div>
                     </div>
                 </div>
@@ -52,4 +57,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="Javascript/Admin.js"></script>
 </asp:Content>

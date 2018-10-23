@@ -21,13 +21,6 @@
         <div class="container-fluid">
             <div class="pb-5">
                 <div class="container biggerBox">
-                   <!-- <div class="row pb-5">
-                        <div class="col-md-12">
-                            <div class="text-center">
-                                <h1>Cabinet de psychologie</h1>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="row">
                         <h2 class="underline1">À propos</h2>
                     </div>
@@ -48,29 +41,7 @@
                     </div>
                 </div>
             </div>
-            <!--
-                <div class="row">
-                    <div class="col-md-6 col-sm-12">
-                        <ul>
-                            <li>Psychologue clinicien</li>
-                            <li>Practicien en programmation neuro-linguistique</li>
-                            <li>Professeur</li>
-                        </ul>
-                    </div>
-                    
-                    <h2>Mes services</h2>
-                    <div class="col-md-6 col-sm-12">
-                        <ul>
-                            <li>Therapie breve et a long terme</li>
-                            <li>Approche integrative</li>
-                            <li>Developpement - Techniques - Comportement</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
-                        <a href="Connexion.aspx" class="btn mainButton">En savoir plus</a>
-                    </div>
-                </div> 
-                    -->
+
         </div>
         <div class="container-fluid bc-blue" id="divTrigger">
             <div class="pb-5">
