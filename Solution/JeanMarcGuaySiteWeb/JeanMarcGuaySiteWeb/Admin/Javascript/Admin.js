@@ -5,5 +5,44 @@
 }(jQuery);
 
 $(document).ready(function () {
-    $('.dataTable').DataTable();
+    $('#ContentPlaceHolder1_tabUsers').DataTable();
 })
+
+
+$('#researchUser').keydown(function () {
+    dataTableMaison();
+});
+
+$('#researchUser').on('paste', function () {
+    dataTableMaison();
+})
+
+
+function dataTableMaison() {
+
+} 
+
+
+function ConfirmerSuppression() {
+    var confirm_value = document.createElement("INPUT");
+    confirm_value.type = "hidden";
+    confirm_value.name = "confirm_delete";
+    if (confirm("Êtes-vous sur de vouloir supprimer ces utilisateurs ?")) {
+        confirm_value.value = "Oui";
+    } else {
+        confirm_value.value = "Non";
+    }
+    document.forms[0].appendChild(confirm_value);
+}
+
+function ConfirmerDesauthorisation() {
+    var confirm_value = document.createElement("INPUT");
+    confirm_value.type = "hidden";
+    confirm_value.name = "confirm_unauthorized";
+    if (confirm("Êtes-vous sur de vouloir désauthoriser ces utilisateurs ?")) {
+        confirm_value.value = "Oui";
+    } else {
+        confirm_value.value = "Non";
+    }
+    document.forms[0].appendChild(confirm_value);
+}
