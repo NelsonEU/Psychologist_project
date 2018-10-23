@@ -73,10 +73,8 @@ namespace JeanMarcGuaySiteWeb
                         else
                         {
                             //Compte activé
-                            //notification.InnerText = "Connexion réussie";
-                            //notification.Visible = true;
                             Session["User"] = user;
-                            Response.Redirect("Default.aspx"); //Renvois à la page d'ou il arrive
+                            Response.Redirect("Default.aspx"); //Renvoie à la page d'ou il arrive
                         }
                     }
                 }

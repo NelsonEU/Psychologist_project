@@ -8,6 +8,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogic;
 using System.Configuration;
+using BusinessLogic.Autres;
+using System.IO;
 
 namespace JeanMarcGuaySiteWeb.Admin
 {
@@ -80,7 +82,14 @@ namespace JeanMarcGuaySiteWeb.Admin
                 {
                     if (c.CssClass == "selectUser" && ((CheckBox)c.Controls[0]).Checked)
                     {
-                        uf.AuthorizeByEmail(c.ID);
+                        uf.AuthorizeByEmail(c.ID, true);
+                        EmailController ec = new EmailController();
+                        string body = string.Empty;
+                        using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/AuthorisationEmail.html")))
+                        {
+                            body = reader.ReadToEnd();
+                        }
+                        ec.SendMail(c.ID, "Cabinet Jean-Marc Guay", body);
                     }
                 }
             }
@@ -89,17 +98,43 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         protected void Click_Delete(object sender, EventArgs e)
         {
-            foreach (TableRow r in tabUsers.Rows)
+            string confirmValue = Request.Form["confirm_delete"];
+            if (confirmValue == "Oui")
             {
-                foreach (TableCell c in r.Cells)
+                foreach (TableRow r in tabUsers.Rows)
                 {
-                    if (c.CssClass == "selectUser" && ((CheckBox)c.Controls[0]).Checked)
+                    foreach (TableCell c in r.Cells)
                     {
-                        uf.DeleteByEmail(c.ID);
+                        if (c.CssClass == "selectUser" && ((CheckBox)c.Controls[0]).Checked)
+                        {
+                            uf.DeleteByEmail(c.ID);
+                        }
                     }
                 }
+
+                Response.Redirect(Request.RawUrl);
             }
-            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void Click_Deauthorized(object sender, EventArgs e)
+        {
+            string confirmValue = Request.Form["confirm_unauthorized"];
+            if (confirmValue == "Oui")
+            {
+                foreach (TableRow r in tabUsers.Rows)
+                {
+                    foreach (TableCell c in r.Cells)
+                    {
+                        if (c.CssClass == "selectUser" && ((CheckBox)c.Controls[0]).Checked)
+                        {
+                            uf.AuthorizeByEmail(c.ID, false);
+                        }
+                    }
+                }
+                Response.Redirect(Request.RawUrl);
+            }
         }
     }
+
+
 }

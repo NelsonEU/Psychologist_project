@@ -350,7 +350,7 @@ namespace BusinessLogic.Factories
         #endregion
 
         #region AuthorizeByEmail
-        public void AuthorizeByEmail(string email)
+        public void AuthorizeByEmail(string email, bool authorized)
         {
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
@@ -358,8 +358,9 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Update users SET authorized = true WHERE email=@email";
+                cmd.CommandText = "Update users SET authorized=@authorized WHERE email=@email";
                 cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@authorized", authorized);
 
                 cmd.ExecuteNonQuery();
             }
