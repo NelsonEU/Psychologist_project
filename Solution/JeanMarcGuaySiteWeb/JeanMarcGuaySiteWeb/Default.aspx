@@ -22,7 +22,7 @@
             <div class="pb-5">
                 <div class="container biggerBox">
                     <div class="row">
-                        <h2 class="underline1">À propos</h2>
+                        <h2 class="underline1" id="h2Apropos">À propos</h2>
                     </div>
 
                     <div class="row pt-3 divAnimation1">
@@ -76,7 +76,7 @@
                         <p>Le therapeute prendra en compte tant les spheres emotionnelles et cognitives que comportementales et sociales.</p>
                     </div>
                     <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
-                        <a href="Services.aspx" class="btn mainButton2 slow animated">En savoir plus</a>
+                        <a href="Services.aspx" id="btnEnSavoirPlus" class="btn mainButton2 slow animated">En savoir plus</a>
                     </div>
                         </div>
                 </div>
@@ -85,9 +85,9 @@
 
         <div class="container biggerBox">
             <div class="row pt-5">
-                <h2 class="underline1">Publications</h2>
+                <h2 class="underline1" id="h2Publications">Publications</h2>
             </div>
-            <div class="carousel_categorie pt-3">
+            <div id="carouselCategories" class="carousel_categorie pt-3">
                 <div class="text-center text-secondary">
                     <asp:ImageButton runat="server" ImageUrl="Images/stress.jpg" class="imageCarousel mb-2" />
                     <a class="link-carousel text-secondary" href="Publications.aspx">
