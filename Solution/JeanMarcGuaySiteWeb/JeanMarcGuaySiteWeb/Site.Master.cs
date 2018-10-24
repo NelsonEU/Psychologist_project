@@ -18,12 +18,17 @@ namespace JeanMarcGuaySiteWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            User user = null;
             /* Vérification de connexion */
             if (Session["User"] != null)
             {
-                User user = (User)Session["User"];
+                user = (User)Session["User"];
                 connexionButton.InnerText = "Se Déconnecter";
+            }
+
+            if (user == null || user.admin == false)
+            {
+                liAdmin.Visible = false;
             }
 
             /* Vérification des modules */

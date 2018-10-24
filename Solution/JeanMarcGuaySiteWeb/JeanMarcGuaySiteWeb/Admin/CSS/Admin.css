@@ -88,6 +88,10 @@
     color:#1d6280;
     font-size:22pt;
 }
+.linkRight {
+    width: 100%;
+    text-align: right;
+}
 
 @media only screen and (max-width: 600px) {
     alingSmall {
