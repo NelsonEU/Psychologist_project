@@ -10,26 +10,20 @@
         </div>
     </div>
 
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="table-responsive col-md-12">
+    <div class="mb-3">
+        <div class="card-body container-fluid">
+            <div class="">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                    <div class="row pb-1">
-                        <div class="col-sm-12 offset-md-10 col-md-2">
+                    <div class="form-row">
+                        <div class="col-lg-4 col-md-12 form-group">
+                            <input type="search" class="form-control" aria-controls="dataTable" placeholder="Rechercher" id="researchUser" /> 
+                        </div>
+                        <div class="col-lg-2 col-md-12 form-group">
+                            <asp:Button class="btn btn-secondary" runat="server" Text="Rechercher" ID="Button2"/>
+                        </div>
+                        <div class="col-lg-6 col-md-12 text-right">          
                             <asp:Button class=" btn btn-success" runat="server" Text="Authoriser" OnClick="Click_Authorized" ID="btnAuthoriser" />
-                        </div>
-                    </div>
-                    <div class="row pb-2">
-                        <div class="col-sm-12 col-md-3">
-                            <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Rechercher" id="researchUser" />
-                        </div>
-                        <div class="col-sm-12 col-md-2">
-                            <asp:Button class="btn btn-secondary" runat="server" Text="Rechercher" ID="btnRechercher" />
-                        </div>
-                        <div class="col-sm-12 offset-md-3 col-md-2">
                             <asp:Button class="btn btn-warning" runat="server" Text="Désauthoriser" OnClick="Click_Deauthorized" OnClientClick="ConfirmerDesauthorisation()" ID="btnDesauthoriser" />
-                        </div>
-                        <div class="col-sm-12 col-md-2">    
                             <asp:Button class=" btn btn-danger" runat="server" Text="Supprimer" OnClick="Click_Delete" OnClientClick="ConfirmerSuppression()" ID="btnSupprimer" />
                         </div>
                     </div>
@@ -58,5 +52,6 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="Javascript/Admin.js"></script>
 </asp:Content>
