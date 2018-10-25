@@ -109,6 +109,9 @@
     <Content Include="CSS\slick-theme.css" />
     <Content Include="CSS\slick.css" />
     <Content Include="Email\AuthorisationEmail.html" />
+    <EmbeddedResource Include="Email\ConfirmationContact.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Images\banner.png" />
     <Content Include="Images\cream_dust.png" />
     <Content Include="Images\DSC_2726.JPG" />

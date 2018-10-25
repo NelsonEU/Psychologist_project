@@ -74,7 +74,7 @@ namespace JeanMarcGuaySiteWeb
                 // Ajout de la prise de contact dans la BD
                 rf.Add(id, subject, content);
 
-                // Envoi du Email
+                // Envoi du Email a jmguay
                 EmailController ec = new EmailController();
                 string body = string.Empty;
                 using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/ContactEmail.html")))
@@ -89,8 +89,20 @@ namespace JeanMarcGuaySiteWeb
                 body = body.Replace("{subject}", subject);
                 body = body.Replace("{content}", content);
 
-                /* Changer ce email */
                 ec.SendMail("cabinet.jmguay@gmail.com", "Nouveau message de "+user.firstname + " " + user.lastname, body);
+                //
+
+                // Envoi du Email de confirmation d'envoi a l'utilisateur
+                EmailController ec2 = new EmailController();
+                string body2 = string.Empty;
+                using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/ConfirmationContact.html")))
+                {
+                    body2 = reader2.ReadToEnd();
+                }
+                body2 = body2.Replace("{date}", DateTime.Now.ToString("dd-MM-yyyy"));
+                body2 = body2.Replace("{subject}", subject);
+                body2 = body2.Replace("{content}", content);
+                ec2.SendMail(user.email, "JMGuay.ca - Confirmation de l'envoi du message [Message automatique]", body2);
 
                 // Redirection à une page de confirmation
                 Response.Redirect("Confirmation.aspx?User=" + id);
