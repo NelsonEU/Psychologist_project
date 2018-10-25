@@ -32,43 +32,46 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 foreach (User u in allUsers)
                 {
-                    TableRow row = new TableRow();
-                    TableCell cellLastname = new TableCell();
-                    TableCell cellFirstname = new TableCell();
-                    TableCell cellEmail = new TableCell();
-                    TableCell cellSubscriber = new TableCell();
-                    TableCell cellAutorizhed = new TableCell();
-                    TableCell cellSelect = new TableCell();
-                    CheckBox cb = new CheckBox();
-                    cellLastname.Text = u.lastname;
-                    cellFirstname.Text = u.firstname;
-                    cellEmail.Text = u.email;
-                    if (u.subscriber)
+                    if (!u.admin)
                     {
-                        cellSubscriber.Text = "Oui";
+                        TableRow row = new TableRow();
+                        TableCell cellLastname = new TableCell();
+                        TableCell cellFirstname = new TableCell();
+                        TableCell cellEmail = new TableCell();
+                        TableCell cellSubscriber = new TableCell();
+                        TableCell cellAutorizhed = new TableCell();
+                        TableCell cellSelect = new TableCell();
+                        CheckBox cb = new CheckBox();
+                        cellLastname.Text = u.lastname;
+                        cellFirstname.Text = u.firstname;
+                        cellEmail.Text = u.email;
+                        if (u.subscriber)
+                        {
+                            cellSubscriber.Text = "Oui";
+                        }
+                        else
+                        {
+                            cellSubscriber.Text = "Non";
+                        }
+                        if (u.authorized)
+                        {
+                            cellAutorizhed.Text = "Oui";
+                        }
+                        else
+                        {
+                            cellAutorizhed.Text = "Non";
+                        }
+                        cellSelect.Controls.Add(cb);
+                        cellSelect.ID = u.email;
+                        cellSelect.CssClass = "selectUser";
+                        row.Cells.Add(cellFirstname);
+                        row.Cells.Add(cellLastname);
+                        row.Cells.Add(cellEmail);
+                        row.Cells.Add(cellSubscriber);
+                        row.Cells.Add(cellAutorizhed);
+                        row.Cells.Add(cellSelect);
+                        tabUsers.Rows.Add(row);
                     }
-                    else
-                    {
-                        cellSubscriber.Text = "Non";
-                    }
-                    if (u.authorized)
-                    {
-                        cellAutorizhed.Text = "Oui";
-                    }
-                    else
-                    {
-                        cellAutorizhed.Text = "Non";
-                    }
-                    cellSelect.Controls.Add(cb);
-                    cellSelect.ID = u.email;
-                    cellSelect.CssClass = "selectUser";
-                    row.Cells.Add(cellFirstname);
-                    row.Cells.Add(cellLastname);
-                    row.Cells.Add(cellEmail);
-                    row.Cells.Add(cellSubscriber);
-                    row.Cells.Add(cellAutorizhed);
-                    row.Cells.Add(cellSelect);
-                    tabUsers.Rows.Add(row);
                 }
                 tabUsers.Visible = true;
             }
