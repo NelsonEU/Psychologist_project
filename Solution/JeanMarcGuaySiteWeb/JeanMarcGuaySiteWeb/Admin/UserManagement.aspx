@@ -18,10 +18,7 @@
                         <div class="col-lg-4 col-md-12 form-group">
                             <input type="search" class="form-control" aria-controls="dataTable" placeholder="Rechercher" id="researchUser" /> 
                         </div>
-                        <div class="col-lg-2 col-md-12 form-group">
-                            <asp:Button class="btn btn-secondary" runat="server" Text="Rechercher" ID="Button2"/>
-                        </div>
-                        <div class="col-lg-6 col-md-12 text-right">          
+                        <div class="offset-lg-2 col-lg-6 col-md-12 text-right">          
                             <asp:Button class=" btn btn-success" runat="server" Text="Authoriser" OnClick="Click_Authorized" ID="btnAuthoriser" />
                             <asp:Button class="btn btn-warning" runat="server" Text="Désauthoriser" OnClick="Click_Deauthorized" OnClientClick="ConfirmerDesauthorisation()" ID="btnDesauthoriser" />
                             <asp:Button class=" btn btn-danger" runat="server" Text="Supprimer" OnClick="Click_Delete" OnClientClick="ConfirmerSuppression()" ID="btnSupprimer" />
@@ -52,6 +49,6 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script src="Javascript/Admin.js"></script>
 </asp:Content>

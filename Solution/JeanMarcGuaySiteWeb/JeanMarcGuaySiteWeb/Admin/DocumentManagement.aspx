@@ -16,6 +16,17 @@
     <div id="PageContent" runat="server">
 
         Le contenu de cette page ici!
+        <!--
+        <div class="card mb-3">
+            <div class="card-header">
+                Ajouter une nouvelle publication
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+
+            -->
 
     </div>
 
