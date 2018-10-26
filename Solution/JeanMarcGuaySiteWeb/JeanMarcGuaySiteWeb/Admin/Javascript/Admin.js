@@ -4,12 +4,7 @@
     }), t("body.fixed-nav .sidebar").on("mousewheel DOMMouseScroll wheel", function (e) { if (768 < $window.width()) { var o = e.originalEvent, t = o.wheelDelta || -o.detail; this.scrollTop += 30 * (t < 0 ? 1 : -1), e.preventDefault() } }), t(document).scroll(function () { 100 < t(this).scrollTop() ? t(".scroll-to-top").fadeIn() : t(".scroll-to-top").fadeOut() }), t(document).on("click", "a.scroll-to-top", function (e) { var o = t(this); t("html, body").stop().animate({ scrollTop: t(o.attr("href")).offset().top }, 1e3, "easeInOutExpo"), e.preventDefault() })
 }(jQuery);
 
-$(document).ready(function () {
-    $('#ContentPlaceHolder1_tabUsers').DataTable();
-})
-
-
-$('#researchUser').keydown(function () {
+$('#researchUser').keyup(function () {
     dataTableMaison();
 });
 
@@ -19,6 +14,19 @@ $('#researchUser').on('paste', function () {
 
 
 function dataTableMaison() {
+    var val = $('#researchUser').val().toLowerCase();
+    val = val.replace(/\s/g, '');
+    var regex = new RegExp('\\w*' + val + '\\w*');
+    var usersArray = $('#ContentPlaceHolder1_tabUsers tbody tr');
+    var arrayLength = usersArray.length;
+    for (var i = 1; i < arrayLength; i++) {
+        var line = usersArray[i].innerText.toLowerCase();
+        if (!regex.test(line)) {
+            usersArray[i].style.display = "none";
+        } else {
+            usersArray[i].style.display = "table-row";
+        } 
+    }
 
 } 
 
