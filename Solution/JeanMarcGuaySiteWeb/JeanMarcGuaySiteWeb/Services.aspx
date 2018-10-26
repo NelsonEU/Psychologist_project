@@ -36,59 +36,48 @@
                     <img class="shadow img-thumbnail" id="h2Apropos" src="http://wp2.commonsupport.com/newwp/mindron/wp-content/uploads/2018/02/about.jpg" alt="">
                 </div>
                 </div>
+              <div  id="paraTrigger"></div>
             </div>
         </div>
     </section>
 
     <!-- Contenu Parralax -->
     <section>
-        <div  id="paraTrigger"></div>
         <div class="pb-5 container-fluid bc-blue biggerBox">
-            <div class="container">
+            <div class="container divAnimation3" style="opacity: 0;">
                 <div class="row">
                     <!-- Texte -->
-                    <div class="col-md-6 offset-md-6 divAnimation3">
+                    <div class="col-md-6 offset-md-6">
                         <div>
                             <div class="col-md-11" style="padding: 0px 0px 0px 0px;">
                                 <h2 class="underline2">N'attendez pas pour consulter</h2>
                             </div>
                         </div>
                         <p>La plus grande marque de respect que vous pouvez porter à votre égard est de reconnaître que vous avez besoin d'aide. Le plus beau geste d'amour pour soi et pour les siens est de se donner la liberté de mettre de son côté toutes les chances de s’en sortir.</p>
-                        <p>
+                        <p id="ImgTrigger">
                             D’une certaine façon, attendre à la dernière minute revient à épuiser les forces disponibles qui pourraient être utilisées en psychothérapie et servir à prévenir une détresse psychologique.
                         </p>
                     </div>
                 </div>
-
+               <div  id="paraTrigger2"></div>
             </div>
         </div>
     </section>
 
     <!-- Contenu Approche -->
     <section>
-        <div class="pb-5">
-            <div class="container">
-                <!-- Images -->
-                <div class="row pb-3" style="height: 374px; max-width: 800px; margin-top: 40px;">
-                    <!-- Image 1 -->
-                    <div class="col-md-9" style="height: inherit">
-                        <img class="img-fluid shadow" src="http://wp2.commonsupport.com/newwp/mindron/wp-content/uploads/2018/02/services-13.jpg " alt="">
-                    </div>
-                    <!-- Image 2 -->
-                    <div class="col-md-3" style="height: inherit">
-                        <img style="height: inherit" class="shadow" src="http://wp2.commonsupport.com/newwp/mindron/wp-content/uploads/2018/02/services-14.jpg" alt="">
-                    </div>
-                </div>
-
+       
+    </section>
                 <!-- Texte -->
+                <!--
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 divAnimation6">
                         <div>
-                            <div class="col-md-4" style="padding: 0px 0px 0px 0px;">
+                            <div class="col-md-4 " style="padding: 0px 0px 0px 0px;">
                                 <h2 class="underline1">Approche Préconisé</h2>
                             </div>
                         </div> 
-                        <div class="row pt-3 slow" style="padding-right: 15px;
+                        <div class="row pt-3 slow " style="padding-right: 15px;
     padding-left: 15px;">
                             <p>
                                 Le thérapeute adapte ses interventions en fonction des problèmes et des personnes qu’il rencontre<br />
@@ -119,12 +108,28 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- Première Rencontre -->
     <section>
         <div class="pb-5">
+             <div class="pb-5">
             <div class="container">
+                <!-- Images -->
+                <div class="row pb-3" style="height: 374px; max-width: 800px; margin-top: 40px;">
+                    <!-- Image 1 -->
+                    <div class="col-md-9 divAnimation4" style="height: inherit;">
+                        <img class="img-fluid shadow" src="http://wp2.commonsupport.com/newwp/mindron/wp-content/uploads/2018/02/services-13.jpg " alt="">
+                    </div>
+                    <!-- Image 2 -->
+                    <div class="col-md-3 divAnimation5" style="height: inherit;">
+                        <img style="height: inherit" class="shadow" src="http://wp2.commonsupport.com/newwp/mindron/wp-content/uploads/2018/02/services-14.jpg" alt="">
+                    </div>
+                    <div id="paraTrigger3"></div>
+                </div>
+                </div>
+            </div>
+            <div class="container divAnimation6">
                 <div class="row pb-3">
                     <div class="col-md-12">
                         <div class="col-md-5" style="padding: 0px 0px 0px 0px;">
