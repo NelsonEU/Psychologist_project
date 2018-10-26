@@ -21,6 +21,10 @@ function dataTableMaison() {
     var arrayLength = usersArray.length;
     for (var i = 1; i < arrayLength; i++) {
         var line = usersArray[i].innerText.toLowerCase();
+        line = line.replace(/\s/g, '');
+        if (i == 1) {
+            console.log(line);
+        }
         if (!regex.test(line)) {
             usersArray[i].style.display = "none";
         } else {
