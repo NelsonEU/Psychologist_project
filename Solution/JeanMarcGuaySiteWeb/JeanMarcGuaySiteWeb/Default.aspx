@@ -36,7 +36,7 @@
                     </div>
                     <div class="row pt-3 divAnimation1">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
-                            <a href="Inscription.aspx" id="btnTrigger" class="btn mainButton">Créer un compte</a>
+                            <a href="Inscription.aspx" class="btn mainButton">Créer un compte</a>
                         </div>
                     </div>
                 </div>
