@@ -39,6 +39,8 @@ function ConfirmerSuppression() {
     var confirm_value = document.createElement("INPUT");
     confirm_value.type = "hidden";
     confirm_value.name = "confirm_delete";
+
+    
     if (confirm("Êtes-vous sur de vouloir supprimer ces utilisateurs ?")) {
         confirm_value.value = "Oui";
     } else {
@@ -51,10 +53,9 @@ function ConfirmerDesauthorisation() {
     var confirm_value = document.createElement("INPUT");
     confirm_value.type = "hidden";
     confirm_value.name = "confirm_unauthorized";
-    if (confirm("Êtes-vous sur de vouloir désauthoriser ces utilisateurs ?")) {
-        confirm_value.value = "Oui";
-    } else {
-        confirm_value.value = "Non";
-    }
+
+    swal({
+        title: 'Êtes-vous sur de vouloir désauthoriser ces utilisateurs ?'
+    })
     document.forms[0].appendChild(confirm_value);
 }
