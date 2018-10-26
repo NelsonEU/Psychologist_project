@@ -110,6 +110,7 @@
     <Content Include="CSS\slick.css" />
     <Content Include="Email\AuthorisationEmail.html" />
     <Content Include="Images\banner.png" />
+    <Content Include="Images\blue-check-mark-png-md.png" />
     <Content Include="Images\cream_dust.png" />
     <Content Include="Images\DSC_2726.JPG" />
     <Content Include="Images\stairs.jpg" />
