@@ -34,4 +34,7 @@ DROP COLUMN `video_call`,
 CHANGE COLUMN `state` `subject` VARCHAR(40) NOT NULL ,
 CHANGE COLUMN `content` `content` VARCHAR(5000) NOT NULL ;
 
+ALTER TABLE `prj-jmguay`.`users` 
+ADD COLUMN `token` VARCHAR(40) NULL AFTER `authorized`;
+
 

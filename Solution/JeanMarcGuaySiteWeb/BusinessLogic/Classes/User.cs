@@ -22,6 +22,7 @@ namespace BusinessLogic
         public DateTime birthday { get; set; }
         public DateTime optIn { get; set; }
         public DateTime optOut { get; set; }
+        public string token { get; set; } //VARCHAR(40)
 
 
     }

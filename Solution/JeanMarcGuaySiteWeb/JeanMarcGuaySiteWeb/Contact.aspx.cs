@@ -36,10 +36,14 @@ namespace JeanMarcGuaySiteWeb
             if (Session["User"] != null)
             {
                 user = (User)Session["User"];
+                divConnexion.Visible = false;
+                divContact.Visible = true;
             }
             else
             {
-                Response.Redirect("Connexion.aspx");
+                divConnexion.Visible = true;
+                divContact.Visible = false;
+                //Response.Redirect("Connexion.aspx");
             }
             // ------------------------------------------------------- //
 

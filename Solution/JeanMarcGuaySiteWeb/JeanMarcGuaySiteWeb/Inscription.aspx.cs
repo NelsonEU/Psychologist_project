@@ -10,6 +10,8 @@ using System.Configuration;
 using BusinessLogic;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -68,7 +70,8 @@ namespace JeanMarcGuaySiteWeb
                         else
                         {
                             DateTime birthdayDate = Convert.ToDateTime(birthday.Text);
-                            uf.Add(lastname.Text, firstname.Text, email.Text, password.Text, false, subscriber.Checked, false, birthdayDate);
+                            string token = rndToken(40);
+                            uf.Add(lastname.Text, firstname.Text, email.Text, password.Text, false, subscriber.Checked, false, birthdayDate, token);
                             notification.Style.Add("color", "green");
                             notification.InnerText = "Bienvenue ! Un e-mail vous a été envoyé afin de confirmer votre inscription";
                             notification.Visible = true;
@@ -79,6 +82,7 @@ namespace JeanMarcGuaySiteWeb
                                 body = reader.ReadToEnd();
                             }
                             body = body.Replace("{email}", email.Text);
+                            body = body.Replace("{token}", token);
                             ec.SendMail(email.Text, "Bienvenue !", body);
 
                         }
@@ -86,5 +90,25 @@ namespace JeanMarcGuaySiteWeb
                 }
             }
         }
+
+        protected static string rndToken(int length)
+        {
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                byte[] uintBuffer = new byte[sizeof(uint)];
+
+                while (length-- > 0)
+                {
+                    rng.GetBytes(uintBuffer);
+                    uint num = BitConverter.ToUInt32(uintBuffer, 0);
+                    res.Append(valid[(int)(num % (uint)valid.Length)]);
+                }
+            }
+
+            return res.ToString();
+        }
+
     }
 }

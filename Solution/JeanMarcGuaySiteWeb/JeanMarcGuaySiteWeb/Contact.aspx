@@ -5,15 +5,45 @@
 
     <div class="banner2 pb-5 shadow">
         <div class="va-center2">
-                <h1 class="titleBanner2">Contactez-moi!</h1>             
-            </div>
+            <h1 class="titleBanner2">Contactez-moi</h1>
+        </div>
     </div>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <div class="container-fluid pt-5" runat="server" id="divConnexion">
+        <div class="row pb-1 text-center pb-3">
+            <div class="col-md-8 offset-md-2">
+                <div class="row pb-5">
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                        <h3>Vous devez être connecté(e) pour avoir accès à cette fonctionnalité.</h3>
+                    </div>
+                </div>
 
-    <div class="container-fluid pt-5">
+                <div class="row pb-3">
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                        <a href="connexion.aspx" class="btn mainButton pr-5 pl-5">Se connecter</a>
+                    </div>
+                </div>
+
+                <div class="row pb-3">
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                        <h5>&boxh;&boxh;&boxh;&nbsp; Ou &nbsp;&boxh;&boxh;&boxh;</h5>
+                    </div>
+                </div>
+
+                <div class="row pb-3">
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                        <a href="inscription.aspx" class="btn mainButton pr-5 pl-5">S'inscrire</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid pt-5" runat="server" id="divContact">
         <div class="row pb-1 text-center">
             <div class="col-md-8 offset-md-2">
                 <h3>Questions, commentaires, suggestions? N'hésitez pas à me contacter.</h3>

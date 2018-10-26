@@ -13,6 +13,24 @@ namespace JeanMarcGuaySiteWeb {
     public partial class Contact {
         
         /// <summary>
+        /// Contrôle divConnexion.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divConnexion;
+        
+        /// <summary>
+        /// Contrôle divContact.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divContact;
+        
+        /// <summary>
         /// Contrôle txtSubject.
         /// </summary>
         /// <remarks>

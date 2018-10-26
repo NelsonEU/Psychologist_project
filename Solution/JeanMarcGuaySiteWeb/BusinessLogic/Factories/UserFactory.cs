@@ -20,7 +20,7 @@ namespace BusinessLogic.Factories
 
         #region Add
 
-        public void Add(string lastname, string firstname, string email, string password, bool admin, bool subscriber, bool activated, DateTime birthday)
+        public void Add(string lastname, string firstname, string email, string password, bool admin, bool subscriber, bool activated, DateTime birthday, string token)
         {
 
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
@@ -31,7 +31,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "INSERT INTO users(lastname, firstname, email, password, admin, subscriber, activated , creationDate, birthday, opt_in) VALUES (@lastname, @firstname, @email, @password, @admin, @subscriber, @activated , @creationDate, @birthday, @opt_in)";
+                cmd.CommandText = "INSERT INTO users(lastname, firstname, email, password, admin, subscriber, activated , creationDate, birthday, opt_in, token) VALUES (@lastname, @firstname, @email, @password, @admin, @subscriber, @activated , @creationDate, @birthday, @opt_in, @token)";
                 cmd.Parameters.AddWithValue("@lastname", lastname);
                 cmd.Parameters.AddWithValue("@firstname", firstname);
                 cmd.Parameters.AddWithValue("@email", email);
@@ -49,6 +49,7 @@ namespace BusinessLogic.Factories
                 {
                     cmd.Parameters.AddWithValue("@opt_in", DBNull.Value);
                 }
+                cmd.Parameters.AddWithValue("@token", token);
                 cmd.ExecuteNonQuery();
             }
             finally
@@ -112,6 +113,7 @@ namespace BusinessLogic.Factories
                             user.optOut = _optOut;
                         }
                         catch (System.InvalidCastException) { }
+                        string _token = reader["token"].ToString();
 
                         user.userId = _userId;
                         user.lastname = _lastname;
@@ -123,6 +125,7 @@ namespace BusinessLogic.Factories
                         user.activated = _activated;
                         user.authorized = _authorized;
                         user.birthday = _birthday;
+                        user.token = _token;
 
                     }
                     reader.Close();

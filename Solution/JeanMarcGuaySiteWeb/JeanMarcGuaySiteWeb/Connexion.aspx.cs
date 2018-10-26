@@ -63,11 +63,12 @@ namespace JeanMarcGuaySiteWeb
                             notification.Visible = true;
                             EmailController ec = new EmailController();
                             string body = string.Empty;
-                            using (StreamReader reader = new StreamReader(Server.MapPath("~/ActivationEmail.html")))
+                            using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/ActivationEmail.html")))
                             {
                                 body = reader.ReadToEnd();
                             }
                             body = body.Replace("{email}", email.Text);
+                            body = body.Replace("{token}", user.token);
                             ec.SendMail(email.Text, "Bienvenue !", body);
                         }
                         else

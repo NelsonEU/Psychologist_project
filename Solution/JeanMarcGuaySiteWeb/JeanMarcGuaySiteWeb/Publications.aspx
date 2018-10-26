@@ -2,10 +2,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
+
+    <div class="banner2 pb-5 shadow">
+        <div class="va-center2">
+            <h1 class="titleBanner2">Publications</h1>
+        </div>
+    </div>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="pb-5 text-center" style="padding-top:125px;">
+    <div class=" text-center pt-1 pb-1">
         <span><b>Cette section est en cours de développement</b></span>
     </div>
 

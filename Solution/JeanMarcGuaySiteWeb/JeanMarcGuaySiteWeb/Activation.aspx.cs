@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.Factories;
+using BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -15,11 +16,20 @@ namespace JeanMarcGuaySiteWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Request.QueryString["email"] != null)
+            if(Request.QueryString["email"] != null && Request.QueryString["tkn"] != null)
             {
                 string email = Request.QueryString["email"];
+                string token = Request.QueryString["tkn"];
                 UserFactory uf = new UserFactory(cnnStr);
-                uf.ActivateByEmail(email);
+                User u = uf.GetByEmail(email);
+                if (u != null)
+                {
+                    if (u.token == token)
+                    {
+                        uf.ActivateByEmail(email);
+                    }
+                }
+                
             }
         }
     }
