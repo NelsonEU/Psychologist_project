@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using BusinessLogic;
 using BusinessLogic.Factories;
 using System.Configuration;
+using System.IO;
 
 namespace JeanMarcGuaySiteWeb.Admin
 {
@@ -33,5 +34,33 @@ namespace JeanMarcGuaySiteWeb.Admin
 
             //
         }
+
+        protected void UploadButton_Click(object sender, EventArgs e)
+        {
+            if (fileUpload.HasFile)
+            {
+                try
+                {
+                    if (fileUpload.PostedFile.ContentType == "application/pdf")
+                    {
+                        if (fileUpload.PostedFile.ContentLength < 102400)
+                        {
+                            string filename = Path.GetFileName(fileUpload.FileName);
+                            fileUpload.SaveAs(Server.MapPath("~/admin/pdf/") + filename);
+                            StatusLabel.Text = "Upload status: File uploaded!";
+                        }
+                        else
+                            StatusLabel.Text = "Upload status: The file has to be less than 100 kb!";
+                    }
+                    else
+                        StatusLabel.Text = "Upload status: Only JPEG files are accepted!";
+                }
+                catch (Exception ex)
+                {
+                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                }
+            }
+        }
+
     }
 }

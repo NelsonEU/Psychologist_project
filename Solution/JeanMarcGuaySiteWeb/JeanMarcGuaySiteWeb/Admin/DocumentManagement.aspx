@@ -15,7 +15,9 @@
 
     <div id="PageContent" runat="server">
 
-        Le contenu de cette page ici!
+        <asp:FileUpload id="fileUpload" runat="server"/>
+        <asp:Button runat="server" id="UploadButton" text="Upload" onclick="UploadButton_Click" />
+        <asp:Label runat="server" id="StatusLabel" text="Upload status: " />
         <!--
         <div class="card mb-3">
             <div class="card-header">
