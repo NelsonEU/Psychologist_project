@@ -14,12 +14,7 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div id="accueil" style="width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
-    overflow-y: auto;">
+    <div id="service">
         
     <!-- Contenu Intro Consulter -->
     <section>
