@@ -86,6 +86,7 @@
     <Content Include="Admin\AppointmentManagement.aspx" />
     <Content Include="Admin\AvailabilityManagement.aspx" />
     <Content Include="Admin\CSS\Admin.css" />
+    <Content Include="Admin\CSS\alertify.min.css" />
     <Content Include="Admin\CSS\Switch.css" />
     <Content Include="Admin\DocumentManagement.aspx" />
     <Content Include="Admin\Javascript\pageadmin.js" />
@@ -132,6 +133,7 @@
     <Content Include="CSS\fonts\slick.eot" />
     <Content Include="CSS\fonts\slick.ttf" />
     <Content Include="CSS\fonts\slick.woff" />
+    <Content Include="Admin\Javascript\alertify.min.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

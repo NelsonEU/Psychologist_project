@@ -88,37 +88,8 @@
             <div class="row pt-5">
                 <h2 class="underline1" id="h2Publications">Publications</h2>
             </div>
-            <div id="carouselCategories" class="carousel_categorie pt-3">
-                <div class="text-center text-secondary">
-                    <asp:ImageButton runat="server" ImageUrl="Images/stress.jpg" class="imageCarousel mb-2" />
-                    <a class="link-carousel text-secondary" href="Publications.aspx">
-                        <h2>Stress</h2>
-                    </a>
-                </div>
-                <div class="text-center text-secondary">
-                    <asp:ImageButton runat="server" ImageUrl="Images/troubleSommeil.jpg" class="imageCarousel mb-2" />
-                    <a class="link-carousel text-secondary" href="Publications.aspx">
-                        <h2>Trouble du sommeil</h2>
-                    </a>
-                </div>
-                <div class="text-center text-secondary">
-                    <asp:ImageButton runat="server" ImageUrl="Images/phobie.jpg" class="imageCarousel mb-2" />
-                    <a class="link-carousel text-secondary" href="Publications.aspx">
-                        <h2>Phobie</h2>
-                    </a>
-                </div>
-                <div class="text-center text-secondary">
-                    <asp:ImageButton runat="server" ImageUrl="Images/depression.jpg" class="imageCarousel mb-2" />
-                    <a class="link-carousel text-secondary" href="Publications.aspx">
-                        <h2>Dépression</h2>
-                    </a>
-                </div>
-                <div class="text-center text-secondary">
-                    <asp:ImageButton runat="server" ImageUrl="Images/anxiete.jpg" class="imageCarousel mb-2" />
-                    <a class="link-carousel text-secondary" href="Publications.aspx">
-                        <h2>Anxiete</h2>
-                    </a>
-                </div>
+            <div id="carouselCategories" class="carousel_categorie pt-3" runat="server">
+
             </div>
         </div>
 

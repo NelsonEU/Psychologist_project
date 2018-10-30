@@ -49,6 +49,6 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     <script src="Javascript/Admin.js"></script>
 </asp:Content>
