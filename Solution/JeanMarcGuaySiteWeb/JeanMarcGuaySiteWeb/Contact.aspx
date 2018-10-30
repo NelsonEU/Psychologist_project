@@ -59,13 +59,13 @@
                 <asp:TextBox runat="server" ID="txtSubject" class="form-control" MaxLength="40" placeholder="Sujet" required="required"></asp:TextBox>
             </div>
         </div>
-        <div class="row pb-3">
+        <div class="row">
             <div class="col-md-8 offset-md-2">
                 <asp:TextBox ID="txtContent" TextMode="multiline" Columns="50" Rows="5" runat="server" MaxLength="500" ClientIDMode="Static" placeholder="Message" class="form-control" Style="resize: none;" required="required" />
             </div>
         </div>
         <div class="row ">
-            <div class="col-md-8 offset-md-2 text-right">
+            <div class="col-md-8 offset-md-2 text-right form-text text-muted">
                 <span>*Votre nom et courriel seront inscrits automatiquement. </span>
             </div>
         </div>

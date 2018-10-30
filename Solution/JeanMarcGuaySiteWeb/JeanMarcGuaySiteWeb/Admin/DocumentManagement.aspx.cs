@@ -32,42 +32,62 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
             // ------------------------------------------------------- //
 
-            //
+            if (Request.QueryString["conf"] != null)
+            {
+                if (Request.QueryString["conf"] == "true")
+                {
+                    StatusLabel.Style.Add("color", "green");
+                    StatusLabel.Text = "Le fichier à été téléversé avec succès";
+                }
+            }
+
+                //Feed les catégories 
+                if (!Page.IsPostBack)
+            {
+                CategoryFactory cf = new CategoryFactory(cnnStr);
+                Category[] categories = cf.GetAll();
+
+                foreach (Category categorie in categories)
+                {
+                    DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
+                }
+            }
         }
 
         protected void UploadButton_Click(object sender, EventArgs e)
         {
-            if (fileUpload.HasFile)
+            try
             {
-                try
+                if (fileUpload.HasFile)
                 {
-                    if (fileUpload.HasFile)
+                    if (fileUpload.PostedFile.ContentType == "application/pdf")
                     {
-                        if (fileUpload.PostedFile.ContentType == "application/pdf")
-                        {
-                            string path = "~/admin/pdf/" + fileUpload.PostedFile.FileName;
-                            fileUpload.SaveAs(Server.MapPath(path));
-
-                            PublicationFactory pf = new PublicationFactory(cnnStr);
-                            pf.Add(1, txtTitle.Text, path);
-
-                            StatusLabel.Style.Add("color", "green");
-                            StatusLabel.Text = "Le fichier à été téléversé avec succès";
-                        }
-                        else
-                        {
-                            StatusLabel.Style.Add("color", "red");
-                            StatusLabel.Text = "Seulement les documents du format PDF sont acceptés";
-                        }
+                        string path = "~/admin/pdf/" + fileUpload.PostedFile.FileName;
+                        fileUpload.SaveAs(Server.MapPath(path));
+                        PublicationFactory pf = new PublicationFactory(cnnStr);
+                        pf.Add(Convert.ToInt32(DdlCategories.SelectedValue), txtTitle.Text, path);
+                        txtTitle.Text = "";
+                        Response.Redirect(Request.RawUrl + "?conf=true");
                     }
-                  
+                    else
+                    {
+                        StatusLabel.Style.Add("color", "red");
+                        StatusLabel.Text = "Seulement les documents du format PDF sont acceptés";
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    StatusLabel.Style.Add("color", "green");
-                    StatusLabel.Text = "Le fichier n'a pas pu être téléversé. L'erreur suivante s'est produite: " + ex.Message;
+                    StatusLabel.Style.Add("color", "red");
+                    StatusLabel.Text = "Veuillez insérer un ficher PDF";
                 }
             }
+            catch (Exception ex)
+            {
+                StatusLabel.Style.Add("color", "red");
+                StatusLabel.Text = "Le fichier n'a pas pu être téléversé. L'erreur suivante s'est produite: " + ex.Message;
+            }
+
+
         }
 
     }
