@@ -13,5 +13,9 @@ namespace BusinessLogic
 
         public string name { get; set; } //VARCHAR(40)
 
+        public string pictureUrl { get; set; } //VARCHAR (150)
+
+        public string urlRedirect { get; set; } //VARCHAR(30)
+
     }
 }
