@@ -14,6 +14,13 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <div id="accueil" style="width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    overflow-y: auto;">
+        
     <!-- Contenu Intro Consulter -->
     <section>
         <!-- Texte -->
@@ -63,7 +70,7 @@
                                 <li>Existentielle/humaniste</li>
                             </ul>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3" id="triggerPremiereRencontre">
                             <ul>
                                 <li>Systemique/interactionnelle</li>
                                 <li>Comportementale/cognitive</li>
@@ -72,7 +79,7 @@
                     </div>
                     <div class="row">
                         <p class="long-text">De part ses connaissances theoriques et ses experiences professionelles, les interventions sont toujours accomodees en fonction des problemes et des personnes qu'il rencontre.</p>
-                        <p id="triggerPremiereRencontre">Le therapeute prendra en compte tant les spheres emotionnelles et cognitives que comportementales et sociales.</p>
+                        <p">Le therapeute prendra en compte tant les spheres emotionnelles et cognitives que comportementales et sociales.</p>
                     </div>
                 </div>
             </div>
@@ -170,6 +177,7 @@
         <span>Jean-Marc Guay</span>
     </footer>
     <!-- Fin Footer -->
+    </div>
 
 </asp:Content>
 
