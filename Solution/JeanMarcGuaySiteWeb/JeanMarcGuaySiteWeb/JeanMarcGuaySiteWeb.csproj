@@ -119,6 +119,7 @@
     <Content Include="Images\DSC_2726.JPG" />
     <Content Include="Images\stairs.jpg" />
     <Content Include="Inscription.aspx" />
+    <Content Include="Javascripts\animation.js" />
     <Content Include="Javascripts\Carousel.js" />
     <Content Include="Javascripts\Inscription.js" />
     <Content Include="Javascripts\Script.js" />

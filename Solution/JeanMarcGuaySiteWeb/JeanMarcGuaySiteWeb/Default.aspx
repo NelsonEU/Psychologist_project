@@ -28,7 +28,7 @@
                     <div class="row pt-3 divAnimation1">
                         <p>Membre de l'Ordre des Psychologues du Québec, Jean-Marc Guay est un psychologue clinicien de la région du Saguenay. En plus d'être practicien en programmation neuro-linguistique, il est également professeur de psychologie.</p>
                     </div>
-                    <div class="row pt-3 divAnimation1">
+                    <div class="row pt-3 divAnimation1" id="paraTrigger">
                         <p>Vous trouverez sur ce site différentes informations concernant la psychotérapie ainsi que tous les services offerts par le psychologue. Les publications de Jean-Marc sont également mises à votre disposition et sont disponibles dans la section « <a href="Publications.aspx">Publications</a> ».</p>
                     </div>
                     <div class="row pt-3 divAnimation1">
@@ -44,49 +44,42 @@
 
         </div>
 
-        <div class="container-fluid bc-blue" id="divTrigger">
-            <div class="pb-5">
-                <div class="container biggerBox">
-                    <div class="row pt-5">
-                        <h2 class="underline2 animated" id="h2Approche">Approche preconisée</h2>
+         <div class="container-fluid bc-blue evenBiggerBox" id="evenBiggerBox">
+            <div class="container divAnimation3 animated slow">
+                <div class="row">
+                    <!-- Texte -->
+                    <div class="col-md-6">
+                        <div class="bigSquare">
+                            <div class="sq square1"></div>
+                            <br />
+                            <div class="sq square2"></div>
+                            <div class="sq square3"></div>
+                            <br />
+                            <div class="sq square4"></div>
+                            <div class="sq square5"></div>
+                            <div class="sq square6"></div>
+                        </div>
                     </div>
-                    <div class="animated animatedWA slow">
-                    <div class="row pt-3 slow">
+                    <div class="col-md-6">
+                        <div>
+                            <div class="col-md-11" style="padding: 0px 0px 0px 0px;">
+                                <h2 class="underline2">N'attendez pas pour consulter</h2>
+                            </div>
+                        </div>
+                        <p id="triggerAnimationCarousel" class="pt-3">La plus grande marque de respect que vous pouvez porter à votre égard est de reconnaître que vous avez besoin d'aide. Le plus beau geste d'amour pour soi et pour les siens est de se donner la liberté de mettre de son côté toutes les chances de s’en sortir.</p>
                         <p>
-                            L'approche preconisee au cabinet est celle d'une orientation integrative.<br />
-                            Celle-ci permet d'utiliser des outils d'approches combinees telles que:
+                            D’une certaine façon, attendre à la dernière minute revient à épuiser les forces disponibles qui pourraient être utilisées en psychothérapie et servir à prévenir une détresse psychologique.
                         </p>
-
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <ul>
-                                <li>Analytique</li>
-                                <li>Existentielle/humaniste</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-3">
-                            <ul>
-                                <li>Systemique/interactionnelle</li>
-                                <li>Comportementale/cognitive</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <p class="long-text">De part ses connaissances theoriques et ses experiences professionelles, les interventions sont toujours accomodees en fonction des problemes et des personnes qu'il rencontre.</p>
-                        <p>Le therapeute prendra en compte tant les spheres emotionnelles et cognitives que comportementales et sociales.</p>
-                    </div>
-                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
-                        <a href="Services.aspx" id="btnEnSavoirPlus" class="btn mainButton2 slow animated">En savoir plus</a>
-                    </div>
-                        </div>
                 </div>
+                <div id="paraTrigger2"></div>
             </div>
+            <div id="paraTrigger3"></div>
         </div>
 
         <div class="container biggerBox pb150">
             <div class="row pt-5">
-                <h2 class="underline1" id="h2Publications">Publications</h2>
+                <h2 class="underline1 animated slow" id="h2Publications">Publications</h2>
             </div>
             <div id="carouselCategories" class="carousel_categorie pt-3" runat="server">
 
@@ -107,6 +100,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="Javascripts/Carousel.js"></script>
     <script src="Javascripts/parallax.min.js"></script>
+    <script src="Javascripts/animation.js"></script>
 
 </asp:Content>
 

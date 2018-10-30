@@ -22,7 +22,7 @@
         <!-- Nav Bar -->
         <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-            <a class="navbar-brand mr-1" href="admin.aspx"><img src="../Images/logoOriginal.png" width="50" height="50" /> Section administrative</a>
+            <a class="navbar-brand mr-1" href="admin.aspx"><img src="../Images/logoOriginal.png" width="40" height="40" /> Section administrative</a>
             <div class="linkRight">
                 <a class="nav-link text-white" href="../default.aspx">Retour au site</a>
             </div>
