@@ -16,8 +16,8 @@
     <div id="PageContent" runat="server">
 
         <asp:FileUpload id="fileUpload" runat="server"/>
-        <asp:Button runat="server" id="UploadButton" text="Upload" onclick="UploadButton_Click" />
-        <asp:Label runat="server" id="StatusLabel" text="Upload status: " />
+        <asp:Button runat="server" id="UploadButton" text="Téléverser" onclick="UploadButton_Click" cssClass="btn btn-success"/>
+        <asp:Label runat="server" id="StatusLabel" text="" />
         <!--
         <div class="card mb-3">
             <div class="card-header">

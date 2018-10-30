@@ -45,6 +45,11 @@
 
             </div>
         </div>
+        <!-- Footer  -->
+        <footer class="footer absolute">
+            <span>Jean-Marc Guay</span>
+        </footer>
+        <!-- Fin Footer -->
     </div>
 
     <div class=" pb-5 text-center" style="padding-top:125px;" runat="server" id="divRenseignement">

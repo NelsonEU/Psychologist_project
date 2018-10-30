@@ -13,14 +13,15 @@ html {
 }
 
 body {
-  height: 100%;
-    margin: 0;
+   margin:0;
+   padding:0;
+   height:100%;
 }
 
 
 .fullpage {
   margin: 0 auto;
-  padding-top: 64px;
+  /*padding-top: 64px;*/
 }
 
 
@@ -58,6 +59,13 @@ h1,h2,h3,h4,h5{
     padding-top: 50px;
     padding-bottom: 50px;
 }
+.pb150{
+    padding-bottom:150px;
+}
+.evenBiggerBox{
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
 
 .long-text{
     padding-right:10%;
@@ -69,15 +77,16 @@ h1,h2,h3,h4,h5{
 }
 
 .footer {
+    width: 100%;
+    height: 60px;
     right: 0;
     bottom: 0;
     left: 0;
-    height: 50px;
     margin-top: -50px;
     text-align: center;
-    padding-top: 12px;
+    padding-top: 20px;
     color: white;
-    background: linear-gradient(to right, rgba(55,120,155,1) 0%, rgba(64,163,206,1) 100%);
+    background: linear-gradient(to right, rgb(29, 98, 128) 0%, rgb(15, 63, 84) 100%);
 }
 
 .banner{
@@ -221,4 +230,31 @@ h1, h2, h3 {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.absolute {
+    position:absolute !important;
+}
+
+/*Test animation Logo*/
+.bigSquare{
+	max-width:350px;
+	max-height:350px;
+	/*background-color:blue;*/
+	margin:5px;
+	padding:15px;
+}
+
+.sq {
+	width:80px;
+	height:80px;
+	border-radius: 5px;
+	background-color:white;
+	margin-right:3px;
+	display: inline-block;
+	transition: all .4s ease-in-out;
+}
+
+.middle {
+	vertical-align: middle;
+	display: table-cell;
 }

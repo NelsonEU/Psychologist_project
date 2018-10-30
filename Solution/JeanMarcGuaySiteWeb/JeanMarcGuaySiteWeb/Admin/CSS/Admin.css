@@ -3,15 +3,17 @@
 }
 .divRequest {
     margin: 15px;
+    margin-bottom:40px;
     width: 100%;
+    box-shadow:17px 4px 10px 0px rgba(0,0,0,0.75);
 }
 
 .divDate {
     background-color: #212529;
     color:white;
     font-size: 10pt;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    /*border-top-left-radius: 5px;
+    border-top-right-radius: 5px;*/
     border-left: 1px black solid;
     border-right: 1px black solid;
     border-top: 1px solid black;
@@ -29,7 +31,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     font-weight: bold;
-    background: linear-gradient(to right, rgb(29, 98, 128) 0%, rgb(4, 23, 31) 100%);
+    background: rgb(4, 23, 31);
     color:white;
     border-left: 1px black solid;
     border-right: 1px black solid;
@@ -41,11 +43,11 @@
     color: black;
     background-color: #ffffff;
     border-left: 1px black solid;
-    border-right: 1px black solid;
+    /*border-right: 1px black solid;*/
     border-bottom: 1px solid black;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-
+    min-height:75px;
+    /*border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;*/
 }
 .buttonX {
     text-align: center;

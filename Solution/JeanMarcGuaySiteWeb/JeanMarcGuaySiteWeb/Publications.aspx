@@ -16,6 +16,12 @@
         <span><b>Cette section est en cours de développement</b></span>
     </div>
 
+    <!-- Footer  -->
+    <footer class="footer absolute">
+        <span>Jean-Marc Guay</span>
+    </footer>
+    <!-- Fin Footer -->
+
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
 </asp:Content>

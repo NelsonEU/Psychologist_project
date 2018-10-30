@@ -5,6 +5,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        /* Sinon le menu est invisible sur cette page */
+        #mainNav{
+            background-color: rgb(255,255,255,0.9) !important;
+            box-shadow: 4px 7px 31px -8px rgba(0,0,0,0.75);
+        }
+        .nav-item a{
+            color:rgb(29, 98, 128) !important;
+        }
+    </style>
     <div class="inscription">
         <asp:Panel ID="panelInscription" runat="server" DefaultButton="submit">
             <div class="container">
@@ -30,7 +40,7 @@
                                 </div>
                                 <label for="birthday" class="sr-only mt-2">Votre date de naissance:</label>
                                 <div>
-                                    <asp:TextBox runat="server" class="form-control mt-2" ID="birthday" ClientIDMode="Static" name="birthday" AutoCompleteType="Disabled" style="background:white;" required="required" type="text" placeholder="Date de naissance"></asp:TextBox>
+                                    <asp:TextBox runat="server" class="form-control mt-2" ID="birthday" ClientIDMode="Static" name="birthday" AutoCompleteType="Disabled" Style="background: white;" required="required" type="text" placeholder="Date de naissance"></asp:TextBox>
                                 </div>
                                 <label for="password" class="sr-only mt-2">Mot de passe:</label>
                                 <div>
@@ -54,6 +64,11 @@
             </div>
         </asp:Panel>
     </div>
+    <!-- Footer  -->
+    <footer class="footer absolute">
+        <span>Jean-Marc Guay</span>
+    </footer>
+    <!-- Fin Footer -->
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

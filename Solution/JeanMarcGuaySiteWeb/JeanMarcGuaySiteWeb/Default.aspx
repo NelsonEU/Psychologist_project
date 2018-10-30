@@ -43,6 +43,7 @@
             </div>
 
         </div>
+
         <div class="container-fluid bc-blue" id="divTrigger">
             <div class="pb-5">
                 <div class="container biggerBox">
@@ -83,7 +84,7 @@
             </div>
         </div>
 
-        <div class="container biggerBox">
+        <div class="container biggerBox pb150">
             <div class="row pt-5">
                 <h2 class="underline1" id="h2Publications">Publications</h2>
             </div>
@@ -121,7 +122,11 @@
             </div>
         </div>
 
-
+        <!-- Footer  -->
+        <footer class="footer">
+            <span>Jean-Marc Guay</span>
+        </footer>
+        <!-- Fin Footer -->
 
     </div>
 </asp:Content>

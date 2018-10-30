@@ -71,7 +71,6 @@
         </div>
         <div class="row pb-3">
             <div class="col-md-2 offset-md-5 text-center" runat="server" id="notification">
-                
             </div>
         </div>
         <div class="row pb-3">
@@ -79,8 +78,13 @@
                 <asp:Button runat="server" ID="buttonSubmit" Text="Envoyer" OnClick="buttonSubmitClick" CssClass="btn mainButton pr-5 pl-5" />
             </div>
         </div>
-        
+
     </div>
+    <!-- Footer  -->
+    <footer class="footer absolute">
+        <span>Jean-Marc Guay</span>
+    </footer>
+    <!-- Fin Footer -->
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">

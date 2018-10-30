@@ -41,23 +41,30 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 try
                 {
-                    if (fileUpload.PostedFile.ContentType == "application/pdf")
+                    if (fileUpload.HasFile)
                     {
-                        if (fileUpload.PostedFile.ContentLength < 102400)
+                        if (fileUpload.PostedFile.ContentType == "application/pdf")
                         {
-                            string filename = Path.GetFileName(fileUpload.FileName);
-                            fileUpload.SaveAs(Server.MapPath("~/admin/pdf/") + filename);
-                            StatusLabel.Text = "Upload status: File uploaded!";
+                            string path = "~/admin/pdf/" + fileUpload.PostedFile.FileName;
+                            fileUpload.SaveAs(Server.MapPath(path));
+
+                            //sql here
+
+                            StatusLabel.Style.Add("color", "green");
+                            StatusLabel.Text = "Le fichier à été téléversé avec succès";
                         }
                         else
-                            StatusLabel.Text = "Upload status: The file has to be less than 100 kb!";
+                        {
+                            StatusLabel.Style.Add("color", "red");
+                            StatusLabel.Text = "Seulement les documents du format PDF sont acceptés";
+                        }
                     }
-                    else
-                        StatusLabel.Text = "Upload status: Only JPEG files are accepted!";
+                  
                 }
                 catch (Exception ex)
                 {
-                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                    StatusLabel.Style.Add("color", "green");
+                    StatusLabel.Text = "Le fichier n'a pas pu être téléversé. L'erreur suivante s'est produite: " + ex.Message;
                 }
             }
         }

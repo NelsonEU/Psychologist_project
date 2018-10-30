@@ -11,36 +11,17 @@
     <link rel="stylesheet" href="CSS/Admin.css" />
     <link rel="stylesheet" href="CSS/Switch.css" />
     <link rel="stylesheet" href="CSS/sb-admin.min.css" />
+    <link rel="icon" href="~/Images/favicon.ico" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
 
-
-        <!-- Banner 
-
-        <section id="banner">
-            <img class="logoBanner" src="Images/logoOriginal2.png" />
-            <div class="inner">
-
-                <h1>Section Administrative</h1>
-                <p>
-                    Accueil
-                </p>
-            </div>
-            <img class="imgBanner" src="Images/stairs.jpg"></img>
-
-
-            <div class="emptyBox"></div>
-        </section>
-
-            -->
-
         <!-- Nav Bar -->
         <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-            <a class="navbar-brand mr-1" href="admin.aspx">Section administrative</a>
+            <a class="navbar-brand mr-1" href="admin.aspx"><img src="../Images/logoOriginal.png" width="50" height="50" /> Section administrative</a>
             <div class="linkRight">
                 <a class="nav-link text-white" href="../default.aspx">Retour au site</a>
             </div>
@@ -90,7 +71,6 @@
             <div id="content-wrapper">
                 <div class="container-fluid">
 
-
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
 
@@ -98,28 +78,6 @@
             </div>
         </div>
 
-
-        <!-- Menu 
-        <nav class="navbar navbar-expand-lg navbar-light menu">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="#">Administration</a>
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Admin.aspx">Administration <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Disabled</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        -->
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
