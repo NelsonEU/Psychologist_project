@@ -67,7 +67,9 @@
     <Compile Include="Classes\Subsection.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Factories\AppointementFactory.cs" />
+    <Compile Include="Factories\CategoryFactory.cs" />
     <Compile Include="Factories\ModuleFactory.cs" />
+    <Compile Include="Factories\PublicationFactory.cs" />
     <Compile Include="Factories\RequestFactory.cs" />
     <Compile Include="Factories\SubsectionFactory.cs" />
     <Compile Include="Factories\UserFactory.cs" />

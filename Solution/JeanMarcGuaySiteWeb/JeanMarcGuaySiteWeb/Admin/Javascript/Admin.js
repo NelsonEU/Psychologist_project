@@ -54,8 +54,26 @@ function ConfirmerDesauthorisation() {
     confirm_value.type = "hidden";
     confirm_value.name = "confirm_unauthorized";
 
-    swal({
-        title: 'Êtes-vous sur de vouloir désauthoriser ces utilisateurs ?'
-    })
+    if (confirm("Êtes-vous sur de vouloir désauthoriser ces utilisateurs ?")) {
+        confirm_value.value = "Oui";
+    } else {
+        confirm_value.value = "Non";
+    }
+    /*
+    $.confirm({
+
+        title: 'Désauthorisation',
+        content: 'Êtes-vous sur de vouloir désauthoriser ces utilisateurs ?',
+        buttons: {
+            confirm: function () {
+                confirm_value.value = "Oui";
+            },
+            cancel: function () {
+                confirm_value.value = "Non";
+            }
+        }
+    });
+    event.preventDefault();
+    */
     document.forms[0].appendChild(confirm_value);
 }
