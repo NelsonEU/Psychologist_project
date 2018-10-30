@@ -54,5 +54,45 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+        #region GetAll
+        public Publication[] GetAll()
+        {
+        
+            List<Publication> publicationList = new List<Publication>();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+        
+            try
+            {
+                cnn.Open();
+        
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM publications WHERE deletionDate IS NULL";
+                MySqlDataReader reader = cmd.ExecuteReader();
+        
+                while (reader.Read())
+                {
+                    Publication publication = new Publication();
+                    int _publicationId = (Int32)reader["publication_id"];
+                    string _title = reader["title"].ToString();
+                    string _url = reader["url"].ToString();
+
+                    publication.publicationId = _publicationId;
+                    publication.title = _title;
+                    publication.url = _url;
+
+                    publicationList.Add(publication);
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        
+            return publicationList.ToArray();
+        
+        }
+        #endregion
+
     }
 }

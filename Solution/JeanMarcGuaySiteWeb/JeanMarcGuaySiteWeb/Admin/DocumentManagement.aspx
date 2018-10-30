@@ -58,6 +58,20 @@
 
         </div>
 
+        <div class="container-fluid">
+            <div class="row pt-5">
+                <div class="col-lg-10">
+                    <asp:Table runat="server" ID="publicationTable" CssClass="table table-bordered table-hover dataTable">
+                        <asp:TableHeaderRow>
+                            <asp:TableHeaderCell>Titre</asp:TableHeaderCell>
+                            <asp:TableHeaderCell>Télécharger</asp:TableHeaderCell>
+                            <asp:TableHeaderCell>Supprimer</asp:TableHeaderCell>
+                        </asp:TableHeaderRow>
+                    </asp:Table>
+                </div>
+            </div>
+        </div>
+
     </div>
 </asp:Content>
 

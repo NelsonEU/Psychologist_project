@@ -14,7 +14,7 @@ namespace JeanMarcGuaySiteWeb.Admin
     public partial class DocumentManagement : System.Web.UI.Page
     {
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
-
+        PublicationFactory pf = new PublicationFactory(cnnStr);
         protected void Page_Load(object sender, EventArgs e)
         {
             // -----------Vérification le l'état du module ----------- //
@@ -41,8 +41,8 @@ namespace JeanMarcGuaySiteWeb.Admin
                 }
             }
 
-                //Feed les catégories 
-                if (!Page.IsPostBack)
+            //Feed les catégories 
+            if (!Page.IsPostBack)
             {
                 CategoryFactory cf = new CategoryFactory(cnnStr);
                 Category[] categories = cf.GetAll();
@@ -52,6 +52,52 @@ namespace JeanMarcGuaySiteWeb.Admin
                     DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
                 }
             }
+
+            Publication[] publications = pf.GetAll();
+
+            foreach (Publication publication in publications)
+            {
+                TableRow row = new TableRow();
+                TableCell cellTitle = new TableCell();
+                TableCell cellTelecharger = new TableCell();
+                TableCell cellSupprimer = new TableCell();
+
+                cellTitle.Text = publication.title;
+
+                Button buttonDownload = new Button();
+                buttonDownload.Text = "Télécharger";
+                buttonDownload.Attributes.Add("class", "btn btn-success");
+                buttonDownload.Attributes.Add("data-id", publication.publicationId.ToString());
+                buttonDownload.Click += new EventHandler(btn_Telecharger_Click);
+                cellTelecharger.Controls.Add(buttonDownload);
+
+                Button buttonSupprimer = new Button();
+                buttonSupprimer.Text = "Supprimer";
+                buttonSupprimer.Attributes.Add("class", "btn btn-danger");
+                buttonSupprimer.Attributes.Add("data-id", publication.publicationId.ToString());
+                buttonSupprimer.Click += new EventHandler(btn_Supprimer_Click);
+                cellSupprimer.Controls.Add(buttonSupprimer);
+
+                row.Cells.Add(cellTitle);
+                row.Cells.Add(cellTelecharger);
+                row.Cells.Add(cellSupprimer);
+
+                publicationTable.Rows.Add(row);
+            }
+
+        }
+
+        private void btn_Telecharger_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            int id = Convert.ToInt32(button.Attributes["data-id"]);
+            //Telecharger ici :O
+        }
+        private void btn_Supprimer_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            int id = Convert.ToInt32(button.Attributes["data-id"]);
+            //Telecharger ici :O
         }
 
         protected void UploadButton_Click(object sender, EventArgs e)
@@ -63,8 +109,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                     if (fileUpload.PostedFile.ContentType == "application/pdf")
                     {
                         string path = "~/admin/pdf/" + fileUpload.PostedFile.FileName;
-                        fileUpload.SaveAs(Server.MapPath(path));
-                        PublicationFactory pf = new PublicationFactory(cnnStr);
+                        fileUpload.SaveAs(Server.MapPath(path));                       
                         pf.Add(Convert.ToInt32(DdlCategories.SelectedValue), txtTitle.Text, path);
                         txtTitle.Text = "";
                         Response.Redirect(Request.RawUrl + "?conf=true");
