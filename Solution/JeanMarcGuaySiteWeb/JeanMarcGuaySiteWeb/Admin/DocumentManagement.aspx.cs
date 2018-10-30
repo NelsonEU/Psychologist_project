@@ -48,7 +48,8 @@ namespace JeanMarcGuaySiteWeb.Admin
                             string path = "~/admin/pdf/" + fileUpload.PostedFile.FileName;
                             fileUpload.SaveAs(Server.MapPath(path));
 
-                            //sql here
+                            PublicationFactory pf = new PublicationFactory(cnnStr);
+                            pf.Add(1, txtTitle.Text, path);
 
                             StatusLabel.Style.Add("color", "green");
                             StatusLabel.Text = "Le fichier à été téléversé avec succès";

@@ -14,7 +14,7 @@
     </div>
 
     <div id="PageContent" runat="server">
-
+        <asp:TextBox ID="txtTitle" runat="server" MaxLength="500" ClientIDMode="Static" placeholder="Message" class="form-control" Style="resize: none;" required="required" />
         <asp:FileUpload id="fileUpload" runat="server"/>
         <asp:Button runat="server" id="UploadButton" text="Téléverser" onclick="UploadButton_Click" cssClass="btn btn-success"/>
         <asp:Label runat="server" id="StatusLabel" text="" />
