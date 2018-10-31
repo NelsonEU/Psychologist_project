@@ -52,7 +52,7 @@
         </div>
     </asp:Panel>
     <!-- Footer  -->
-    <footer class="footer absolute">
+    <footer class="footer fixed-bottom">
         <span>Jean-Marc Guay</span>
     </footer>
     <!-- Fin Footer -->

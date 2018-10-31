@@ -32,29 +32,41 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
             // ------------------------------------------------------- //
 
-            if (Request.QueryString["conf"] != null)
-            {
-                if (Request.QueryString["conf"] == "true")
-                {
-                    StatusLabel.Style.Add("color", "green");
-                    StatusLabel.Text = "Le fichier à été téléversé avec succès";
-                }
-            }
 
             //Feed les catégories 
             if (!Page.IsPostBack)
             {
                 CategoryFactory cf = new CategoryFactory(cnnStr);
                 Category[] categories = cf.GetAll();
-
+            
                 foreach (Category categorie in categories)
                 {
                     DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
                 }
+
+                Publication[] publications = pf.GetAll();
+                afficherTableau(publications);
             }
 
-            Publication[] publications = pf.GetAll();
+        }
 
+        protected void SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string categorie = DdlCategories.SelectedValue;
+
+            if (categorie == "Tous")
+            {
+                Publication[] publications = pf.GetAll();
+                afficherTableau(publications);
+            }
+            else
+            {
+
+            }
+        }
+
+        protected void afficherTableau( Publication[] publications)
+        {
             foreach (Publication publication in publications)
             {
                 TableRow row = new TableRow();
@@ -84,56 +96,22 @@ namespace JeanMarcGuaySiteWeb.Admin
 
                 publicationTable.Rows.Add(row);
             }
-
         }
 
-        private void btn_Telecharger_Click(object sender, EventArgs e)
+        protected void btn_Telecharger_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             int id = Convert.ToInt32(button.Attributes["data-id"]);
             //Telecharger ici :O
         }
-        private void btn_Supprimer_Click(object sender, EventArgs e)
+        protected void btn_Supprimer_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             int id = Convert.ToInt32(button.Attributes["data-id"]);
             //Telecharger ici :O
         }
 
-        protected void UploadButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (fileUpload.HasFile)
-                {
-                    if (fileUpload.PostedFile.ContentType == "application/pdf")
-                    {
-                        string path = "~/admin/pdf/" + fileUpload.PostedFile.FileName;
-                        fileUpload.SaveAs(Server.MapPath(path));                       
-                        pf.Add(Convert.ToInt32(DdlCategories.SelectedValue), txtTitle.Text, path);
-                        txtTitle.Text = "";
-                        Response.Redirect(Request.RawUrl + "?conf=true");
-                    }
-                    else
-                    {
-                        StatusLabel.Style.Add("color", "red");
-                        StatusLabel.Text = "Seulement les documents du format PDF sont acceptés";
-                    }
-                }
-                else
-                {
-                    StatusLabel.Style.Add("color", "red");
-                    StatusLabel.Text = "Veuillez insérer un ficher PDF";
-                }
-            }
-            catch (Exception ex)
-            {
-                StatusLabel.Style.Add("color", "red");
-                StatusLabel.Text = "Le fichier n'a pas pu être téléversé. L'erreur suivante s'est produite: " + ex.Message;
-            }
-
-
-        }
+       
 
     }
 }
