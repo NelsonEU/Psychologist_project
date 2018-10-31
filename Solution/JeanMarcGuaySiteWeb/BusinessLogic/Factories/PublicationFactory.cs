@@ -94,5 +94,47 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+        #region GetAllByCategoryId
+        public Publication[] GetAllByCategoryId(int categoryId)
+        {
+
+            List<Publication> publicationList = new List<Publication>();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM publications p, publicationscategories pc WHERE p.publication_id = pc.publication_id AND p.deletionDate IS NULL AND pc.category_id=@id;";
+                cmd.Parameters.AddWithValue("@id", categoryId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Publication publication = new Publication();
+                    int _publicationId = (Int32)reader["publication_id"];
+                    string _title = reader["title"].ToString();
+                    string _url = reader["url"].ToString();
+
+                    publication.publicationId = _publicationId;
+                    publication.title = _title;
+                    publication.url = _url;
+
+                    publicationList.Add(publication);
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return publicationList.ToArray();
+
+        }
+        #endregion
+
+
     }
 }

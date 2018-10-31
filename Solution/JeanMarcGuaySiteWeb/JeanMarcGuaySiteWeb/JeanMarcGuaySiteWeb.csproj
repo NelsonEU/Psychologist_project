@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activation.aspx" />
+    <Content Include="PublicationsCategorie.aspx" />
     <EmbeddedResource Include="Email\ActivationEmail.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -272,6 +273,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PublicationsCategorie.aspx.cs">
+      <DependentUpon>PublicationsCategorie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PublicationsCategorie.aspx.designer.cs">
+      <DependentUpon>PublicationsCategorie.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
