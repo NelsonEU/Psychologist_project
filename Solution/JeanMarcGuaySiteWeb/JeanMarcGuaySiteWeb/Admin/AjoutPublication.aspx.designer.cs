@@ -10,7 +10,7 @@
 namespace JeanMarcGuaySiteWeb.Admin {
     
     
-    public partial class DocumentManagement {
+    public partial class AjoutPublication {
         
         /// <summary>
         /// Contrôle ActivationValidation.
@@ -40,12 +40,39 @@ namespace JeanMarcGuaySiteWeb.Admin {
         protected global::System.Web.UI.WebControls.DropDownList DdlCategories;
         
         /// <summary>
-        /// Contrôle publicationTable.
+        /// Contrôle txtTitle.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table publicationTable;
+        protected global::System.Web.UI.WebControls.TextBox txtTitle;
+        
+        /// <summary>
+        /// Contrôle fileUpload.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
+        
+        /// <summary>
+        /// Contrôle UploadButton.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button UploadButton;
+        
+        /// <summary>
+        /// Contrôle StatusLabel.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StatusLabel;
     }
 }

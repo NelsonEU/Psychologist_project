@@ -84,6 +84,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Admin\Admin.aspx" />
+    <Content Include="Admin\AjoutPublication.aspx" />
     <Content Include="Admin\AppointmentManagement.aspx" />
     <Content Include="Admin\AvailabilityManagement.aspx" />
     <Content Include="Admin\CSS\Admin.css" />
@@ -167,6 +168,13 @@
     </Compile>
     <Compile Include="Admin\Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AjoutPublication.aspx.cs">
+      <DependentUpon>AjoutPublication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AjoutPublication.aspx.designer.cs">
+      <DependentUpon>AjoutPublication.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\AppointmentManagement.aspx.cs">
       <DependentUpon>AppointmentManagement.aspx</DependentUpon>
