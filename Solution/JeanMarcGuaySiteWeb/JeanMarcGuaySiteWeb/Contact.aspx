@@ -86,7 +86,7 @@
 
     </div>
     <!-- Footer  -->
-    <footer class="footer absolute">
+    <footer class="footer">
         <span>Jean-Marc Guay</span>
     </footer>
     <!-- Fin Footer -->
