@@ -3,6 +3,7 @@ using BusinessLogic.Factories;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,7 +27,16 @@ namespace JeanMarcGuaySiteWeb
             }
             // ------------------------------------------------------- //
 
-            int category = Int32.Parse(Request.QueryString["cat"]);
+            int category;
+            if (Request.QueryString["cat"] != null)
+            {
+               category = Int32.Parse(Request.QueryString["cat"]);
+            }
+            else
+            {
+                category = 1;
+            }
+            
             PublicationFactory pf = new PublicationFactory(cnnStr);
             Publication[] publications = pf.GetAllByCategoryId(category);
 
@@ -37,17 +47,17 @@ namespace JeanMarcGuaySiteWeb
 
             if(publications.Length < 1)
             {
-                tablePublications.Visible = false;
-                notif.Visible = true;
-                notif.InnerText = "Pas de publication pour cette catégorie";
+                divPublications.Visible = false;
+                divNotif.Visible = true;
             }
             else{
-                tablePublications.Visible = true;
-                notif.Visible = false;
+                divPublications.Visible = true;
+                divNotif.Visible = false;
                 HtmlTableRow headerRow = new HtmlTableRow();
                 HtmlTableCell cellTitre = new HtmlTableCell("th");
                 HtmlTableCell cellTelecharger = new HtmlTableCell("th");
                 cellTitre.InnerText = "Titre";
+                cellTitre.Attributes.Add("class", "col-8");
                 cellTelecharger.InnerText = "PDF";
                 headerRow.Cells.Add(cellTitre);
                 headerRow.Cells.Add(cellTelecharger);
@@ -58,15 +68,40 @@ namespace JeanMarcGuaySiteWeb
                     HtmlTableCell cellD = new HtmlTableCell("td");
                     HtmlTableCell cellT = new HtmlTableCell("td");
                     cellD.InnerText = p.title;
-                    cellT.InnerText = "Télécharger";
+                    cellD.Attributes.Add("class", "col-8");
+                    Button button = new Button();
+                    button.Text = "Télécharger";
+                    button.CssClass = "btn btn-primary";
+                    button.CommandName = "download";
+                    button.CommandArgument = p.url;
+                    button.Click += new EventHandler(Download_Click);
+                    cellT.Controls.Add(button);
                     row.Cells.Add(cellD);
                     row.Cells.Add(cellT);
                     tablePublications.Rows.Add(row);
                 }
             }
 
+        }
 
+        protected void Download_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if(btn.CommandName == "download")
+            {
+                string url = btn.CommandArgument.ToString();
+                System.Diagnostics.Debug.WriteLine(url);
+                FileInfo fileInfo = new FileInfo(url);
+                if (fileInfo.Exists)
+                {
+                    System.Diagnostics.Debug.WriteLine("Le fichier existe");
 
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("Le fichier existe");
+                }
+            }
         }
     }
 }
