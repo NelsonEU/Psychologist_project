@@ -96,16 +96,27 @@
 }
 
 .ajoutPublication{
-    box-shadow: 4px 4px 12px 0px rgba(0,0,0,0.75)
+    box-shadow: 4px 4px 12px 0px rgba(0,0,0,0.75);
 }
 
 .headerPublication{
     background-color: #f7f7f7;
+}
+.right{
+    text-align:right;
+}
+.trash {
+
 }
 
 @media only screen and (max-width: 600px) {
     alingSmall {
         text-align:center !important;
         margin:auto;
+    }
+}
+@media only screen and (max-width: 768px){
+    .right {
+        text-align: left;
     }
 }

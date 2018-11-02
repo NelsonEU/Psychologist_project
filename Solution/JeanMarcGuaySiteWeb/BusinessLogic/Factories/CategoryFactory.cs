@@ -17,7 +17,6 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
-
         #region GetAll
         public Category[] GetAll()
         {

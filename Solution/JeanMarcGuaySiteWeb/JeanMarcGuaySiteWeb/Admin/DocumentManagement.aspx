@@ -17,16 +17,16 @@
 
         <div class="container-fluid">
             <div class="row pb-2">
-                <div class="col-4 text-left">
+                <div class="col-lg-2 col-md-12 text-left">
                     <asp:DropDownList runat="server" ID="DdlCategories" AutoPostBack="true" onselectedindexchanged="SelectedIndexChanged"></asp:DropDownList>
                 </div>
-                <div class="col-4 text-right">
+                <div class="col-lg-4 offset-lg-2 col-md-12 right">
                     <a href="ajoutPublication.aspx">Ajouter une publication</a>
                 </div>
             </div>
             <div class="row">
-                <div class="col-8">
-                    <asp:Table runat="server" ID="publicationTable" CssClass="table table-bordered table-hover dataTable">
+                <div class="col-lg-8 col-md-12">
+                    <asp:Table runat="server" ID="publicationTable" CssClass="table table-bordered table-hover dataTable text-center">
                         <asp:TableHeaderRow>
                             <asp:TableHeaderCell>Titre</asp:TableHeaderCell>
                             <asp:TableHeaderCell>Télécharger</asp:TableHeaderCell>

@@ -54,6 +54,45 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+
+        #region Get
+        public Publication Get(int id)
+        {
+
+            Publication publication = new Publication();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM publications WHERE publication_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int _publicationId = (Int32)reader["publication_id"];
+                    string _title = reader["title"].ToString();
+                    string _url = reader["url"].ToString();
+
+                    publication.publicationId = _publicationId;
+                    publication.title = _title;
+                    publication.url = _url;
+
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return publication;
+
+        }
+        #endregion
+
         #region GetAll
         public Publication[] GetAll()
         {
@@ -135,6 +174,25 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+        #region Delete
+        public void delete(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "UPDATE Publications SET deletionDate = NOW() WHERE publication_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
 
     }
 }

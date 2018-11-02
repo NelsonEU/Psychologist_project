@@ -38,7 +38,8 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 CategoryFactory cf = new CategoryFactory(cnnStr);
                 Category[] categories = cf.GetAll();
-            
+
+                DdlCategories.Items.Add(new ListItem("Tous", "Tous"));
                 foreach (Category categorie in categories)
                 {
                     DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
@@ -46,6 +47,10 @@ namespace JeanMarcGuaySiteWeb.Admin
 
                 Publication[] publications = pf.GetAll();
                 afficherTableau(publications);
+            }
+            else
+            {
+                SelectedIndexChanged(null, null);
             }
 
         }
@@ -61,7 +66,8 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
             else
             {
-
+                Publication[] publications = pf.GetAllByCategoryId(Convert.ToInt32(categorie));
+                afficherTableau(publications);
             }
         }
 
@@ -84,8 +90,8 @@ namespace JeanMarcGuaySiteWeb.Admin
                 cellTelecharger.Controls.Add(buttonDownload);
 
                 Button buttonSupprimer = new Button();
+                buttonSupprimer.Attributes.Add("class", "btn btn-warning");
                 buttonSupprimer.Text = "Supprimer";
-                buttonSupprimer.Attributes.Add("class", "btn btn-danger");
                 buttonSupprimer.Attributes.Add("data-id", publication.publicationId.ToString());
                 buttonSupprimer.Click += new EventHandler(btn_Supprimer_Click);
                 cellSupprimer.Controls.Add(buttonSupprimer);
@@ -102,13 +108,28 @@ namespace JeanMarcGuaySiteWeb.Admin
         {
             Button button = (Button)sender;
             int id = Convert.ToInt32(button.Attributes["data-id"]);
-            //Telecharger ici :O
+            Publication publication = pf.Get(id);
+
+            Response.ContentType = "Application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + publication.title + ".pdf");
+            Response.TransmitFile(Server.MapPath(publication.url));
+            Response.End();
         }
         protected void btn_Supprimer_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             int id = Convert.ToInt32(button.Attributes["data-id"]);
-            //Telecharger ici :O
+            Publication publication = pf.Get(id);
+            pf.delete(id);
+            try
+            {
+                string FileToDelete = Server.MapPath(publication.url);
+                File.Delete(FileToDelete);
+            }
+            finally
+            {
+                Response.Redirect(Request.RawUrl);
+            }      
         }
 
        
