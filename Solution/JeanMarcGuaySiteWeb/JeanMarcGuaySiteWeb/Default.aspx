@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="row pt-3 divAnimation1">
-                        <p>Membre de l'Ordre des Psychologues du Québec, Jean-Marc Guay est un psychologue clinicien de la région du Saguenay. En plus d'être practicien en programmation neuro-linguistique, il est également professeur de psychologie.</p>
+                        <p>Membre de l'Ordre des Psychologues du Québec, Jean-Marc Guay est un psychologue clinicien de la région du Saguenay. En plus d'être praticien en programmation neuro-linguistique, il est également professeur de psychologie.</p>
                     </div>
                     <div class="row pt-3 divAnimation1" id="paraTrigger">
                         <p>Vous trouverez sur ce site différentes informations concernant la psychotérapie ainsi que tous les services offerts par le psychologue. Les publications de Jean-Marc sont également mises à votre disposition et sont disponibles dans la section « <a href="Publications.aspx">Publications</a> ».</p>

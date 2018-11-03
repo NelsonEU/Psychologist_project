@@ -17,7 +17,7 @@
         <div class="container" id="publications">
 
             <!-- Page Heading -->
-            <div class="row">
+            <div class="row pb-4">
                 <h2 class="underline1 m-4 text-left">Catégories
                 </h2>
             </div>

@@ -58,7 +58,7 @@ namespace JeanMarcGuaySiteWeb
                 HtmlTableCell cellTitre = new HtmlTableCell("th");
                 HtmlTableCell cellTelecharger = new HtmlTableCell("th");
                 cellTitre.InnerText = "Titre";
-                cellTitre.Attributes.Add("class", "col-8");
+                cellTitre.Attributes.Add("class", "col-8 align-middle");
                 cellTelecharger.InnerText = "PDF";
                 headerRow.Cells.Add(cellTitre);
                 headerRow.Cells.Add(cellTelecharger);
@@ -69,7 +69,7 @@ namespace JeanMarcGuaySiteWeb
                     HtmlTableCell cellD = new HtmlTableCell("td");
                     HtmlTableCell cellT = new HtmlTableCell("td");
                     cellD.InnerText = p.title;
-                    cellD.Attributes.Add("class", "col-8");
+                    cellD.Attributes.Add("class", "col-8 align-middle");
                     Button button = new Button();
                     button.Text = "Télécharger";
                     button.CssClass = "btn btn-primary";
