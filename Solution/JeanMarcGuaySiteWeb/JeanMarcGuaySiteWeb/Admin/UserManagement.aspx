@@ -29,7 +29,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <asp:Table runat="server" ID="tabUsers" aria-describedby="dataTable_info" CssClass="table table-bordered dataTable dataUsers">
+                            <asp:Table runat="server" ID="tabUsers" aria-describedby="dataTable_info" CssClass="table table-bordered table-hover dataTable dataUsers">
                                 <asp:TableHeaderRow>
                                     <asp:TableHeaderCell>Prénom</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Nom</asp:TableHeaderCell>
@@ -48,7 +48,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     <script src="Javascript/Admin.js"></script>
 </asp:Content>

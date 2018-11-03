@@ -15,6 +15,7 @@ namespace JeanMarcGuaySiteWeb
     public partial class WebForm2 : System.Web.UI.Page
     {
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        private PublicationFactory pf = new PublicationFactory(cnnStr);
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,7 +38,7 @@ namespace JeanMarcGuaySiteWeb
                 category = 1;
             }
             
-            PublicationFactory pf = new PublicationFactory(cnnStr);
+            
             Publication[] publications = pf.GetAllByCategoryId(category);
 
             CategoryFactory cf = new CategoryFactory(cnnStr);
@@ -73,7 +74,7 @@ namespace JeanMarcGuaySiteWeb
                     button.Text = "Télécharger";
                     button.CssClass = "btn btn-primary";
                     button.CommandName = "download";
-                    button.CommandArgument = p.url;
+                    button.CommandArgument = p.publicationId.ToString();
                     button.Click += new EventHandler(Download_Click);
                     cellT.Controls.Add(button);
                     row.Cells.Add(cellD);
@@ -89,18 +90,12 @@ namespace JeanMarcGuaySiteWeb
             Button btn = (Button)sender;
             if(btn.CommandName == "download")
             {
-                string url = btn.CommandArgument.ToString();
-                System.Diagnostics.Debug.WriteLine(url);
-                FileInfo fileInfo = new FileInfo(url);
-                if (fileInfo.Exists)
-                {
-                    System.Diagnostics.Debug.WriteLine("Le fichier existe");
-
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("Le fichier existe");
-                }
+                int pubId = Int32.Parse(btn.CommandArgument.ToString());
+                Publication publication = pf.Get(pubId);
+                string fileName = publication.title.Replace(" ","_");
+                Response.ContentType = "Application/pdf";
+                Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName + ".pdf"); 
+                Response.TransmitFile(Server.MapPath(publication.url));
             }
         }
     }
