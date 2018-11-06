@@ -32,14 +32,6 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
             // ------------------------------------------------------- //
 
-            if (Request.QueryString["conf"] != null)
-            {
-                if (Request.QueryString["conf"] == "true")
-                {
-                    StatusLabel.Style.Add("color", "green");
-                    StatusLabel.Text = "Le fichier à été téléversé avec succès";
-                }
-            }
 
             //Feed les catégories 
             if (!Page.IsPostBack)
@@ -47,14 +39,40 @@ namespace JeanMarcGuaySiteWeb.Admin
                 CategoryFactory cf = new CategoryFactory(cnnStr);
                 Category[] categories = cf.GetAll();
 
+                DdlCategories.Items.Add(new ListItem("Tous", "Tous"));
                 foreach (Category categorie in categories)
                 {
                     DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
                 }
+
+                Publication[] publications = pf.GetAll();
+                afficherTableau(publications);
+            }
+            else
+            {
+                SelectedIndexChanged(null, null);
             }
 
-            Publication[] publications = pf.GetAll();
+        }
 
+        protected void SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string categorie = DdlCategories.SelectedValue;
+
+            if (categorie == "Tous")
+            {
+                Publication[] publications = pf.GetAll();
+                afficherTableau(publications);
+            }
+            else
+            {
+                Publication[] publications = pf.GetAllByCategoryId(Convert.ToInt32(categorie));
+                afficherTableau(publications);
+            }
+        }
+
+        protected void afficherTableau( Publication[] publications)
+        {
             foreach (Publication publication in publications)
             {
                 TableRow row = new TableRow();
@@ -72,8 +90,8 @@ namespace JeanMarcGuaySiteWeb.Admin
                 cellTelecharger.Controls.Add(buttonDownload);
 
                 Button buttonSupprimer = new Button();
+                buttonSupprimer.Attributes.Add("class", "btn btn-warning");
                 buttonSupprimer.Text = "Supprimer";
-                buttonSupprimer.Attributes.Add("class", "btn btn-danger");
                 buttonSupprimer.Attributes.Add("data-id", publication.publicationId.ToString());
                 buttonSupprimer.Click += new EventHandler(btn_Supprimer_Click);
                 cellSupprimer.Controls.Add(buttonSupprimer);
@@ -84,56 +102,37 @@ namespace JeanMarcGuaySiteWeb.Admin
 
                 publicationTable.Rows.Add(row);
             }
-
         }
 
-        private void btn_Telecharger_Click(object sender, EventArgs e)
+        protected void btn_Telecharger_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             int id = Convert.ToInt32(button.Attributes["data-id"]);
-            //Telecharger ici :O
+            Publication publication = pf.Get(id);
+
+            Response.ContentType = "Application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + publication.title + ".pdf");
+            Response.TransmitFile(Server.MapPath(publication.url));
+            Response.End();
         }
-        private void btn_Supprimer_Click(object sender, EventArgs e)
+        protected void btn_Supprimer_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             int id = Convert.ToInt32(button.Attributes["data-id"]);
-            //Telecharger ici :O
-        }
-
-        protected void UploadButton_Click(object sender, EventArgs e)
-        {
+            Publication publication = pf.Get(id);
+            pf.delete(id);
             try
             {
-                if (fileUpload.HasFile)
-                {
-                    if (fileUpload.PostedFile.ContentType == "application/pdf")
-                    {
-                        string path = "~/admin/pdf/" + fileUpload.PostedFile.FileName;
-                        fileUpload.SaveAs(Server.MapPath(path));                       
-                        pf.Add(Convert.ToInt32(DdlCategories.SelectedValue), txtTitle.Text, path);
-                        txtTitle.Text = "";
-                        Response.Redirect(Request.RawUrl + "?conf=true");
-                    }
-                    else
-                    {
-                        StatusLabel.Style.Add("color", "red");
-                        StatusLabel.Text = "Seulement les documents du format PDF sont acceptés";
-                    }
-                }
-                else
-                {
-                    StatusLabel.Style.Add("color", "red");
-                    StatusLabel.Text = "Veuillez insérer un ficher PDF";
-                }
+                string FileToDelete = Server.MapPath(publication.url);
+                File.Delete(FileToDelete);
             }
-            catch (Exception ex)
+            finally
             {
-                StatusLabel.Style.Add("color", "red");
-                StatusLabel.Text = "Le fichier n'a pas pu être téléversé. L'erreur suivante s'est produite: " + ex.Message;
-            }
-
-
+                Response.Redirect(Request.RawUrl);
+            }      
         }
+
+       
 
     }
 }

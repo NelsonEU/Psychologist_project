@@ -54,6 +54,45 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+
+        #region Get
+        public Publication Get(int id)
+        {
+
+            Publication publication = new Publication();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM publications WHERE publication_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int _publicationId = (Int32)reader["publication_id"];
+                    string _title = reader["title"].ToString();
+                    string _url = reader["url"].ToString();
+
+                    publication.publicationId = _publicationId;
+                    publication.title = _title;
+                    publication.url = _url;
+
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return publication;
+
+        }
+        #endregion
+
         #region GetAll
         public Publication[] GetAll()
         {
@@ -91,6 +130,67 @@ namespace BusinessLogic.Factories
         
             return publicationList.ToArray();
         
+        }
+        #endregion
+
+        #region GetAllByCategoryId
+        public Publication[] GetAllByCategoryId(int categoryId)
+        {
+
+            List<Publication> publicationList = new List<Publication>();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM publications p, publicationscategories pc WHERE p.publication_id = pc.publication_id AND p.deletionDate IS NULL AND pc.category_id=@id;";
+                cmd.Parameters.AddWithValue("@id", categoryId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Publication publication = new Publication();
+                    int _publicationId = (Int32)reader["publication_id"];
+                    string _title = reader["title"].ToString();
+                    string _url = reader["url"].ToString();
+
+                    publication.publicationId = _publicationId;
+                    publication.title = _title;
+                    publication.url = _url;
+
+                    publicationList.Add(publication);
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return publicationList.ToArray();
+
+        }
+        #endregion
+
+        #region Delete
+        public void delete(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "UPDATE Publications SET deletionDate = NOW() WHERE publication_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
         }
         #endregion
 

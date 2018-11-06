@@ -79,10 +79,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activation.aspx" />
+    <Content Include="Javascripts\Publications.js" />
+    <Content Include="PublicationsCategorie.aspx" />
     <EmbeddedResource Include="Email\ActivationEmail.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Admin\Admin.aspx" />
+    <Content Include="Admin\AjoutPublication.aspx" />
     <Content Include="Admin\AppointmentManagement.aspx" />
     <Content Include="Admin\AvailabilityManagement.aspx" />
     <Content Include="Admin\CSS\Admin.css" />
@@ -166,6 +169,13 @@
     </Compile>
     <Compile Include="Admin\Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AjoutPublication.aspx.cs">
+      <DependentUpon>AjoutPublication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AjoutPublication.aspx.designer.cs">
+      <DependentUpon>AjoutPublication.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\AppointmentManagement.aspx.cs">
       <DependentUpon>AppointmentManagement.aspx</DependentUpon>
@@ -272,6 +282,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PublicationsCategorie.aspx.cs">
+      <DependentUpon>PublicationsCategorie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PublicationsCategorie.aspx.designer.cs">
+      <DependentUpon>PublicationsCategorie.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
