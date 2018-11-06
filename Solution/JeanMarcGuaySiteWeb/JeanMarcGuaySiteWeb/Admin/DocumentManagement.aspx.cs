@@ -36,10 +36,12 @@ namespace JeanMarcGuaySiteWeb.Admin
             //Feed les catégories 
             if (!Page.IsPostBack)
             {
-                publicationTable.Rows.Clear();
                 CategoryFactory cf = new CategoryFactory(cnnStr);
                 Category[] categories = cf.GetAll();
-
+                for (int i = 1; i < publicationTable.Rows.Count; i++)
+                {
+                    publicationTable.Rows.RemoveAt(i);
+                }
                 DdlCategories.Items.Add(new ListItem("Tous", "Tous"));
                 foreach (Category categorie in categories)
                 {
@@ -59,7 +61,10 @@ namespace JeanMarcGuaySiteWeb.Admin
         protected void SelectedIndexChanged(object sender, EventArgs e)
         {
             string categorie = DdlCategories.SelectedValue;
-            publicationTable.Rows.Clear();
+            for (int i = 1; i < publicationTable.Rows.Count; i++)
+            {
+                publicationTable.Rows.RemoveAt(i);
+            }
             if (categorie == "Tous")
             {
                 Publication[] publications = pf.GetAll();

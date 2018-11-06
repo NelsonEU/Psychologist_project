@@ -15,7 +15,7 @@
 
     <div id="PageContent" runat="server">
         <div class="container-fluid">
-            <a href="DocumentManagement.aspx">Retour</a>
+            <a href="DocumentManagement.aspx" class="lienAdmin">Retour</a>
             <div class="row">
                 <div class="col-8 border">
                     <div class="row text-center pt-4 ">

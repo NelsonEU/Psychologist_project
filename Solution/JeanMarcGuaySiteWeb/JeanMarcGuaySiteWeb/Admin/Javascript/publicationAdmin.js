@@ -1,17 +1,17 @@
-﻿$('#searchPublications').keyup(function () {
+﻿$('#researchUser').keyup(function () {
     dataTableMaison();
 });
 
-$('#searchPublications').on('paste', function () {
+$('#researchUser').on('paste', function () {
     dataTableMaison();
 })
 
 
 function dataTableMaison() {
-    var val = $('#searchPublications').val().toLowerCase();
+    var val = $('#researchUser').val().toLowerCase();
     val = val.replace(/\s/g, '');
     var regex = new RegExp('\\w*' + val + '\\w*');
-    var usersArray = $('#ContentPlaceHolder1_tablePublications tbody tr');
+    var usersArray = $('#ContentPlaceHolder1_publicationTable tbody tr');
     var arrayLength = usersArray.length;
     for (var i = 1; i < arrayLength; i++) {
         var line = usersArray[i].innerText.toLowerCase();
