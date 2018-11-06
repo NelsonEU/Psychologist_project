@@ -64,11 +64,6 @@
             </div>
         </asp:Panel>
     </div>
-    <!-- Footer  -->
-    <footer class="footer">
-        <span>Jean-Marc Guay</span>
-    </footer>
-    <!-- Fin Footer -->
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

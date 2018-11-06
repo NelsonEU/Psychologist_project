@@ -16,11 +16,7 @@
         </div>
     </div>
 
-    <!-- Footer  -->
-    <footer class="footer">
-        <span>Jean-Marc Guay</span>
-    </footer>
-    <!-- Fin Footer -->
+
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">

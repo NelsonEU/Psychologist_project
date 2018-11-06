@@ -86,11 +86,6 @@
             </div>
         </div>
 
-        <!-- Footer  -->
-        <footer class="footer">
-            <span>Jean-Marc Guay</span>
-        </footer>
-        <!-- Fin Footer -->
 
     </div>
 </asp:Content>
