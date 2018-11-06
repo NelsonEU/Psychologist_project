@@ -31,57 +31,83 @@ namespace JeanMarcGuaySiteWeb
             int category;
             if (Request.QueryString["cat"] != null)
             {
-               category = Int32.Parse(Request.QueryString["cat"]);
+                if(Int32.TryParse(Request.QueryString["cat"], out category))
+                {
+                    Publication[] publications = pf.GetAllByCategoryId(category);
+
+                    CategoryFactory cf = new CategoryFactory(cnnStr);
+                    Category cat = cf.GetCategoryById(category);
+
+                    if (cat.IsNull())
+                    {
+                        Response.Redirect("Publications.aspx");
+                    }
+
+                    titreCategorie.InnerText = cat.name;
+
+                    if (publications.Length < 1)
+                    {
+                        divPublications.Visible = false;
+                        divNotif.Visible = true;
+                    }
+                    else
+                    {
+                        divPublications.Visible = true;
+                        divNotif.Visible = false;
+                        string toAppend = string.Empty;
+
+                        foreach(Publication p in publications)
+                        {
+                            toAppend += "<div class=col-lg-6 embed-responsive><embed src=\"" + p.url + "\" type=\"application/pdf\"><div>" + p.title + "</div></div>";
+                        }
+
+                        
+
+                        publicationsPortfolio.InnerHtml = toAppend;
+                        /*
+                        divPublications.Visible = true;
+                        divNotif.Visible = false;
+                        HtmlTableRow headerRow = new HtmlTableRow();
+                        HtmlTableCell cellTitre = new HtmlTableCell("th");
+                        HtmlTableCell cellTelecharger = new HtmlTableCell("th");
+                        cellTitre.InnerText = "Titre";
+                        cellTitre.Attributes.Add("class", "col-8 align-middle");
+                        cellTelecharger.InnerText = "PDF";
+                        headerRow.Cells.Add(cellTitre);
+                        headerRow.Cells.Add(cellTelecharger);
+                        tablePublications.Rows.Add(headerRow);
+                        foreach (Publication p in publications)
+                        {
+                            HtmlTableRow row = new HtmlTableRow();
+                            HtmlTableCell cellD = new HtmlTableCell("td");
+                            HtmlTableCell cellT = new HtmlTableCell("td");
+                            cellD.InnerText = p.title;
+                            cellD.Attributes.Add("class", "col-8 align-middle");
+                            Button button = new Button();
+                            button.Text = "Télécharger";
+                            button.CssClass = "btn btn-primary";
+                            button.CommandName = "download";
+                            button.CommandArgument = p.publicationId.ToString();
+                            button.Click += new EventHandler(Download_Click);
+                            cellT.Controls.Add(button);
+                            row.Cells.Add(cellD);
+                            row.Cells.Add(cellT);
+                            tablePublications.Rows.Add(row);
+                        }
+                        */
+                    }
+
+                }
+                else{
+                    Response.Redirect("Publications.aspx");
+                }
             }
             else
             {
-                category = 1;
+                Response.Redirect("Publications.aspx");
             }
             
-            
-            Publication[] publications = pf.GetAllByCategoryId(category);
-
-            CategoryFactory cf = new CategoryFactory(cnnStr);
-            Category cat = cf.GetCategoryById(category);
-
-            titreCategorie.InnerText = cat.name;
-
-            if(publications.Length < 1)
-            {
-                divPublications.Visible = false;
-                divNotif.Visible = true;
-            }
-            else{
-                divPublications.Visible = true;
-                divNotif.Visible = false;
-                HtmlTableRow headerRow = new HtmlTableRow();
-                HtmlTableCell cellTitre = new HtmlTableCell("th");
-                HtmlTableCell cellTelecharger = new HtmlTableCell("th");
-                cellTitre.InnerText = "Titre";
-                cellTitre.Attributes.Add("class", "col-8 align-middle");
-                cellTelecharger.InnerText = "PDF";
-                headerRow.Cells.Add(cellTitre);
-                headerRow.Cells.Add(cellTelecharger);
-                tablePublications.Rows.Add(headerRow);
-                foreach (Publication p in publications)
-                {
-                    HtmlTableRow row = new HtmlTableRow();
-                    HtmlTableCell cellD = new HtmlTableCell("td");
-                    HtmlTableCell cellT = new HtmlTableCell("td");
-                    cellD.InnerText = p.title;
-                    cellD.Attributes.Add("class", "col-8 align-middle");
-                    Button button = new Button();
-                    button.Text = "Télécharger";
-                    button.CssClass = "btn btn-primary";
-                    button.CommandName = "download";
-                    button.CommandArgument = p.publicationId.ToString();
-                    button.Click += new EventHandler(Download_Click);
-                    cellT.Controls.Add(button);
-                    row.Cells.Add(cellD);
-                    row.Cells.Add(cellT);
-                    tablePublications.Rows.Add(row);
-                }
-            }
+           
 
         }
 

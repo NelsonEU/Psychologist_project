@@ -12,6 +12,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <div class="contact">
     <div class="container-fluid pt-5" runat="server" id="divConnexion">
         <div class="row pb-1 text-center pb-3">
             <div class="col-md-8 offset-md-2">
@@ -83,13 +84,8 @@
                 <asp:Button runat="server" ID="buttonSubmit" Text="Envoyer" OnClick="buttonSubmitClick" CssClass="btn mainButton pr-5 pl-5" />
             </div>
         </div>
-
+        </div>
     </div>
-    <!-- Footer  -->
-    <footer class="footer fixed-bottom">
-        <span>Jean-Marc Guay</span>
-    </footer>
-    <!-- Fin Footer -->
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
