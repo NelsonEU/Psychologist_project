@@ -16,21 +16,22 @@
                 <h2 class="underline1 m-4 text-left" id="titreCategorie" runat="server"></h2>
             </div>
             <div id="divNotif" runat="server">
-                <div class="row ml-1 mt-2 mb-2" runat="server">
-                    <div id="notif">
-                        Pas encore de publication pour cette catégorie
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="col-sm-2 mt-2 mb-1">
-                        <a href="Publications.aspx" class="btn btn-primary">Retour aux categories</a>
+                        <a href="Publications.aspx" class="btn mainButton3">Retour aux categories</a>
+                    </div>
+                </div>
+                <div class="row ml-1 mt-2 mb-2" runat="server">
+                    <div id="notif">
+                        <p>Il n'y a pas encore de publication pour cette catégorie</p>
                     </div>
                 </div>
             </div>
             <div id="divPublications" runat="server">
                 <div class="row mb-3">
                     <div class="col-sm-2 mb-1">
-                        <a href="Publications.aspx" class="btn btn-primary">Retour aux categories</a>
+                        <a href="Publications.aspx" class="btn mainButton3">Retour aux categories</a>
                     </div>
                     <div class="input-group stylish-input-group offset-sm-4 col-sm-6 col-xs-12">
                         <input type="text" class="form-control" placeholder="Rechercher" id="searchPublications" />

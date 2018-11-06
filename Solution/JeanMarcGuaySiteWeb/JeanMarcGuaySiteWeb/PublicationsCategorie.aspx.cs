@@ -58,7 +58,7 @@ namespace JeanMarcGuaySiteWeb
 
                         foreach(Publication p in publications)
                         {
-                            toAppend += "<div class=col-lg-6 embed-responsive><embed src=\"" + p.url + "\" type=\"application/pdf\"><div>" + p.title + "</div></div>";
+                            toAppend += "<div class=\"col-lg-6 pb-5 text-center\"><object data=\"" + p.url + "\" type=\"application/pdf\" style=\"width:80%; height:400px;\" class=\"box-shadow box-admin\"></object><div>" + p.title + "</div></div>";
                         }
 
                         
