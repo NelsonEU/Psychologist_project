@@ -41,4 +41,5 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
+    <script src="Javascript/Admin.js"></script>
 </asp:Content>
