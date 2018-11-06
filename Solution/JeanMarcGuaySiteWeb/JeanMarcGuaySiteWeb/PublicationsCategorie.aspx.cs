@@ -54,6 +54,19 @@ namespace JeanMarcGuaySiteWeb
                     {
                         divPublications.Visible = true;
                         divNotif.Visible = false;
+                        string toAppend = string.Empty;
+
+                        foreach(Publication p in publications)
+                        {
+                            toAppend += "<div class=col-lg-6 embed-responsive><embed src=\"" + p.url + "\" type=\"application/pdf\"><div>" + p.title + "</div></div>";
+                        }
+
+                        
+
+                        publicationsPortfolio.InnerHtml = toAppend;
+                        /*
+                        divPublications.Visible = true;
+                        divNotif.Visible = false;
                         HtmlTableRow headerRow = new HtmlTableRow();
                         HtmlTableCell cellTitre = new HtmlTableCell("th");
                         HtmlTableCell cellTelecharger = new HtmlTableCell("th");
@@ -81,7 +94,9 @@ namespace JeanMarcGuaySiteWeb
                             row.Cells.Add(cellT);
                             tablePublications.Rows.Add(row);
                         }
+                        */
                     }
+
                 }
                 else{
                     Response.Redirect("Publications.aspx");
