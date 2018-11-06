@@ -17,5 +17,16 @@ namespace BusinessLogic
 
         public string urlRedirect { get; set; } //VARCHAR(30)
 
+        public Boolean IsNull()
+        {
+            if (name == null && pictureUrl == null && urlRedirect == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
