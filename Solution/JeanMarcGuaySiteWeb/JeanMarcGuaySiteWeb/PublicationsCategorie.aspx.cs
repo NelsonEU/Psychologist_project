@@ -56,12 +56,14 @@ namespace JeanMarcGuaySiteWeb
                         divNotif.Visible = false;
                         string toAppend = string.Empty;
 
-                        foreach(Publication p in publications)
-                        {
-                            toAppend += "<div class=\"col-lg-6 pb-5 text-center\"><object data=\"" + p.url + "\" type=\"application/pdf\" style=\"width:80%; height:400px;\" class=\"box-shadow box-admin\"></object><div>" + p.title + "</div></div>";
-                        }
 
                         
+
+                        foreach(Publication p in publications)
+                        {
+                            
+                            toAppend += "<div class=\"col-lg-6 pb-5 text-center\"><div><h2>" + p.title + "</h2></div><object data=\"" + p.url + "\" type=\"application/pdf\" style=\"width:100%; height:300px;\" class=\"box-shadow box-admin\"></object></div>";
+                        }
 
                         publicationsPortfolio.InnerHtml = toAppend;
                         /*
@@ -111,8 +113,11 @@ namespace JeanMarcGuaySiteWeb
 
         }
 
-        protected void Download_Click(object sender, EventArgs e)
+        
+        public  void Download_Click(object sender, EventArgs e)
         {
+
+            
             Button btn = (Button)sender;
             if(btn.CommandName == "download")
             {
@@ -123,6 +128,8 @@ namespace JeanMarcGuaySiteWeb
                 Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName + ".pdf"); 
                 Response.TransmitFile(Server.MapPath(publication.url));
             }
+            
         }
+        
     }
 }
