@@ -15,17 +15,16 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
-      $(document).ready(function () {
+  $(document).ready(function () {
+
+      var day;
 
   $( function() {
-    var dialog, form,
- 
-      // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
-      emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-      name = $( "#name" ),
-      email = $( "#email" ),
-      password = $( "#password" ),
-      allFields = $( [] ).add( name ).add( email ).add( password ),
+      var dialog, form,
+
+      HeureDebut = $( "#hd" ),
+      HeureFin = $( "#hf" ),
+      allFields = $( [] ).add( HeureDebut ).add( HeureFin ),
       tips = $( ".validateTips" );
  
     function updateTips( t ) {
@@ -37,45 +36,16 @@
       }, 500 );
     }
  
-    function checkLength( o, n, min, max ) {
-      if ( o.val().length > max || o.val().length < min ) {
-        o.addClass( "ui-state-error" );
-        updateTips( "Length of " + n + " must be between " +
-          min + " and " + max + "." );
-        return false;
-      } else {
-        return true;
-      }
-    }
  
-    function checkRegexp( o, regexp, n ) {
-      if ( !( regexp.test( o.val() ) ) ) {
-        o.addClass( "ui-state-error" );
-        updateTips( n );
-        return false;
-      } else {
-        return true;
-      }
-    }
- 
-    function addUser() {
+    function addTimeDay() {
       var valid = true;
       allFields.removeClass( "ui-state-error" );
  
-      valid = valid && checkLength( name, "username", 3, 16 );
-      valid = valid && checkLength( email, "email", 6, 80 );
-      valid = valid && checkLength( password, "password", 5, 16 );
- 
-      valid = valid && checkRegexp( name, /^[a-z]([0-9a-z_\s])+$/i, "Username may consist of a-z, 0-9, underscores, spaces and must begin with a letter." );
-      valid = valid && checkRegexp( email, emailRegex, "eg. ui@jquery.com" );
-      valid = valid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
- 
+      //check if fields are not empty
+
       if ( valid ) {
-        $( "#users tbody" ).append( "<tr>" +
-          "<td>" + name.val() + "</td>" +
-          "<td>" + email.val() + "</td>" +
-          "<td>" + password.val() + "</td>" +
-        "</tr>" );
+        //Requete
+
         dialog.dialog( "close" );
       }
       return valid;
@@ -86,14 +56,14 @@
       height: 400,
       width: 350,
       modal: true,
-      buttons: {
-        "Create an account": addUser,
+        buttons: {
+            "Ajouter plage horraire": addTimeDay,
         Cancel: function() {
           dialog.dialog( "close" );
         }
       },
       close: function() {
-        form[ 0 ].reset();
+        //form[ 0 ].reset();
         allFields.removeClass( "ui-state-error" );
       }
     });
@@ -103,13 +73,20 @@
       addUser();
     });
  
-      $("#create-date").button().on("click", function () {
+      $(".create-date").button().on("click", function () {
         event.preventDefault();
       dialog.dialog( "open" );
     });
           });
-            } );
+            });
   </script>
+
+    <script>
+        function storeDay(clicked_id) {
+          day = clicked_id;
+          alert(day);
+      }
+    </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -186,27 +163,18 @@
         </div>
         -->
 
-    <div id="dialog-form" title="Create new user">
-    <p class="validateTips">All form fields are required.</p>
- 
+    <div id="dialog-form" title="Créer nouvelle disponibilité">
+
   <form>
     <fieldset>
-      <label for="name">Name</label>
-      <input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
- 
-      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <label for="hd">Heure début</label>
+      <input type="text" name="hd" id="hd" value="" class="text ui-widget-content ui-corner-all">
+      <label for="hf">Heure Fin</label>
+      <input type="text" name="hf" id="hf" value="" class="text ui-widget-content ui-corner-all">
       <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
     </fieldset>
   </form>
 </div>
-
-
-    <button id="create-date">+</button>
-
 
     <div class="row pb-3">
         <div class="col-lg-12">
@@ -220,7 +188,6 @@
 
     <div id="PageContent" runat="server">
 
-
         <div class="container-fluid pt-5" runat="server">
             <div class="row">
                 Disponibilité   
@@ -233,7 +200,7 @@
                 <div class="col-md-6" id="lundi">
                 </div>
                 <div class="col-md-1">
-                    <button id="create-avail-monday" class="ui-button ui-corner-all ui-widget" type="submit">+</button>
+                    <button onclick="storeDay(this.id)" id="monday" class="create-date ui-button ui-corner-all ui-widget">+</button>
                 </div>
             </div>
 
@@ -245,7 +212,7 @@
                 <div class="col-md-6" id="mardi">
                 </div>
                 <div class="col-md-1">
-                    <button id="create-avail-tuesday" class="btn btn-primary" type="submit">+</button>
+                    <button onclick="storeDay(this.id)" id="tuesday" class="create-date ui-button ui-corner-all ui-widget">+</button>
                 </div>
             </div>
 
@@ -257,7 +224,7 @@
                 <div class="col-md-6" id="mercredi">
                 </div>
                 <div class="col-md-1">
-                    <button id="create-avail-wednesday" class="btn btn-primary" type="submit">+</button>
+                    <button onclick="storeDay(this.id)" id="wednesday" class="create-date ui-button ui-corner-all ui-widget">+</button>
                 </div>
             </div>
 
@@ -269,7 +236,7 @@
                 <div class="col-md-6" id="jeudi">
                 </div>
                 <div class="col-md-1">
-                    <button id="create-avail-thursday" class="btn btn-primary" type="submit">+</button>
+                    <button onclick="storeDay(this.id)" id="thursday" class="create-date ui-button ui-corner-all ui-widget">+</button>
                 </div>
             </div>
 
@@ -281,7 +248,7 @@
                 <div class="col-md-6" id="vendredi">
                 </div>
                 <div class="col-md-1">
-                    <button id="create-avail-friday" class="btn btn-primary" type="submit">+</button>
+                    <button onclick="storeDay(this.id)" id="friday" class="create-date ui-button ui-corner-all ui-widget">+</button>
                 </div>
             </div>
         </div>
