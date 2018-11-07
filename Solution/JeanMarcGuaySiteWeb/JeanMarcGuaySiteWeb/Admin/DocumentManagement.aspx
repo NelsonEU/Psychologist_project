@@ -16,12 +16,17 @@
     <div id="PageContent" runat="server">
 
         <div class="container-fluid">
-            <div class="row pb-2">
+            <div class="row pb-3">
                 <div class="col-lg-2 col-md-12 text-left">
                     <asp:DropDownList runat="server" ID="DdlCategories" AutoPostBack="true" onselectedindexchanged="SelectedIndexChanged"></asp:DropDownList>
                 </div>
-                <div class="col-lg-4 offset-lg-2 col-md-12 right">
-                    <a href="ajoutPublication.aspx">Ajouter une publication</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-12 form-group">
+                    <input type="search" class="form-control" aria-controls="dataTable" placeholder="Rechercher" id="researchUser" />
+                </div>
+                <div class="col-lg-4 col-md-12 right">
+                    <a href="ajoutPublication.aspx" class="align-middle lienAdmin"><i class="fas fa-plus"></i> Ajouter une publication</a>
                 </div>
             </div>
             <div class="row">
@@ -41,4 +46,6 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
+    <script src="Javascript/Admin.js"></script>
+    <script src="Javascript/publicationAdmin.js"></script>
 </asp:Content>

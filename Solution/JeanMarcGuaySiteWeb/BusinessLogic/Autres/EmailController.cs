@@ -13,7 +13,7 @@ namespace BusinessLogic.Autres
     {
 
 
-        string WebsiteEmail { get; set; } // Mettre dans le fichier de config ?
+        string WebsiteEmail { get; set; }
         string WebsiteEmailPassword { get; set; }
 
         public void SendMail(string email, string subject, string body)

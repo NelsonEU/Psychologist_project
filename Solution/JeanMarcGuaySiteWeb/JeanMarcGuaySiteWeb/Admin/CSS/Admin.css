@@ -108,6 +108,12 @@
 .trash {
 
 }
+.lienAdmin{
+    color: #1d6280;
+}
+.lienAdmin:hover{
+    text-decoration:none;
+}
 
 @media only screen and (max-width: 600px) {
     alingSmall {

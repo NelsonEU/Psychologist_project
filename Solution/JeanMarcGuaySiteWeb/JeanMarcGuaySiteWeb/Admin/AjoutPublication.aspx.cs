@@ -63,7 +63,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                 {
                     if (fileUpload.PostedFile.ContentType == "application/pdf")
                     {
-                        string path = "~/admin/pdf/" + fileUpload.PostedFile.FileName;
+                        string path = "/admin/pdf/" + fileUpload.PostedFile.FileName;
                         fileUpload.SaveAs(Server.MapPath(path));
                         pf.Add(Convert.ToInt32(DdlCategories.SelectedValue), txtTitle.Text, path);
                         txtTitle.Text = "";

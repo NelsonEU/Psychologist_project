@@ -79,15 +79,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activation.aspx" />
+    <Content Include="Admin\Javascript\publicationAdmin.js" />
+    <Content Include="Admin\CSS\bootstrap-timepicker.css" />
+    <Content Include="Admin\Javascript\bootstrap-timepicker.js" />
+    <Content Include="Admin\Javascript\DateRangePicker.js" />
+    <Content Include="Javascripts\Publications.js" />
+    <Content Include="PublicationsCategorie.aspx" />
     <EmbeddedResource Include="Email\ActivationEmail.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Admin\Admin.aspx" />
+    <Content Include="Admin\AjoutPublication.aspx" />
     <Content Include="Admin\AppointmentManagement.aspx" />
     <Content Include="Admin\AvailabilityManagement.aspx" />
     <Content Include="Admin\CSS\Admin.css" />
+    <Content Include="Admin\CSS\alertify.min.css" />
     <Content Include="Admin\CSS\Switch.css" />
     <Content Include="Admin\DocumentManagement.aspx" />
+    <Content Include="Admin\Javascript\pageadmin.js" />
     <Content Include="Admin\RequestManagement.aspx" />
     <Content Include="Confirmation.aspx" />
     <Content Include="Contact.aspx" />
@@ -106,15 +115,19 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="CSS\slick-theme.css" />
+    <Content Include="CSS\slick.css" />
+    <Content Include="Email\AuthorisationEmail.html" />
+    <EmbeddedResource Include="Email\ConfirmationContact.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Images\banner.png" />
+    <Content Include="Images\blue-check-mark-png-md.png" />
+    <Content Include="Images\cream_dust.png" />
     <Content Include="Images\DSC_2726.JPG" />
     <Content Include="Images\stairs.jpg" />
     <Content Include="Inscription.aspx" />
-<<<<<<< HEAD
+    <Content Include="Javascripts\animation.js" />
     <Content Include="Javascripts\Carousel.js" />
-=======
-    <Content Include="Javascripts\Contact.js" />
->>>>>>> a763f4b071c0193786539d2452f4a35d6c58abe4
     <Content Include="Javascripts\Inscription.js" />
     <Content Include="Javascripts\Script.js" />
     <Content Include="Javascripts\slick.min.js" />
@@ -128,6 +141,7 @@
     <Content Include="CSS\fonts\slick.eot" />
     <Content Include="CSS\fonts\slick.ttf" />
     <Content Include="CSS\fonts\slick.woff" />
+    <Content Include="Admin\Javascript\alertify.min.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,6 +173,13 @@
     </Compile>
     <Compile Include="Admin\Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AjoutPublication.aspx.cs">
+      <DependentUpon>AjoutPublication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AjoutPublication.aspx.designer.cs">
+      <DependentUpon>AjoutPublication.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\AppointmentManagement.aspx.cs">
       <DependentUpon>AppointmentManagement.aspx</DependentUpon>
@@ -266,6 +287,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PublicationsCategorie.aspx.cs">
+      <DependentUpon>PublicationsCategorie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PublicationsCategorie.aspx.designer.cs">
+      <DependentUpon>PublicationsCategorie.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
@@ -273,7 +301,9 @@
       <Name>BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Admin\pdf\" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
