@@ -31,7 +31,19 @@ namespace JeanMarcGuaySiteWeb
             }
 
             carouselCategories.InnerHtml = toAppend;
-           
+
+            /*Verification de connexion pour afficher le bouton "Créer un compte"*/
+            if (Session["User"] != null)
+            {
+                divButtonCompte.Visible = false;
+                divButtonSavoir.Visible = true;       
+            }
+            else
+            {
+                divButtonCompte.Visible = true;
+                divButtonSavoir.Visible = false;
+            }
+
         }
     }
 }
