@@ -12,7 +12,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="publications">
         <div class="container mt-4 mb-4">
-            <div class="row">
+            <div class="row">              
                 <h2 class="underline1 m-4 text-left" id="titreCategorie" runat="server"></h2>
             </div>
             <div id="divNotif" runat="server">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <div class="row" id="publicationsPortfolio" runat="server">
+                <div class="row" id="publicationsPortfolio" runat="server" style="margin-top: 75px;">
                 </div>
                 <!--
             <table class="table table-hover" id="tablePublications" runat="server">

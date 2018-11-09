@@ -84,6 +84,7 @@
     <Content Include="Admin\Javascript\bootstrap-timepicker.js" />
     <Content Include="Admin\Javascript\DateRangePicker.js" />
     <Content Include="Desabonnement.aspx" />
+    <Content Include="CSS\footer-distributed.css" />
     <Content Include="Email\Notification.html" />
     <Content Include="Javascripts\Publications.js" />
     <Content Include="PublicationsCategorie.aspx" />

@@ -8,7 +8,7 @@
     <div class="banner shadow">
         <div class="va-center animated fadeIn slow">
             <h1 class="titleBanner">Jean-Marc Guay</h1>
-            <h5 class="titleBanner">Psychologue</h5>
+            <h5 class="titleBanner">Psychologue, M.A.Ps</h5>
         </div>
     </div>
 </asp:Content>
@@ -35,8 +35,11 @@
                         <p id="pTrigger">Vous êtes également invités à vous créer un compte sur le site. Cela vous permettra de pouvoir contacter le practicien et, si vous le souhaitez, de vous abonner à ses publications.</p>
                     </div>
                     <div class="row pt-3 divAnimation1">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
+                        <div runat="server" id="divButtonCompte" class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
                             <a href="Inscription.aspx" class="btn mainButton">Créer un compte</a>
+                        </div>
+                        <div runat="server" id="divButtonSavoir" class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
+                            <a href="Services.aspx" class="btn mainButton">En savoir plus</a>
                         </div>
                     </div>
                 </div>
@@ -77,7 +80,7 @@
             <div id="paraTrigger3"></div>
         </div>
 
-        <div class="container biggerBox pb150">
+        <div class="container biggerBox">
             <div class="row pt-5">
                 <h2 class="underline1 animated slow" id="h2Publications">Publications</h2>
             </div>
