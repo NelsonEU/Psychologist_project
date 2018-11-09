@@ -29,6 +29,7 @@ namespace JeanMarcGuaySiteWeb
             if (user == null || user.admin == false)
             {
                 liAdmin.Visible = false;
+                liFAdmin.Visible = false;
             }
 
             /* Vérification des modules */
@@ -42,16 +43,19 @@ namespace JeanMarcGuaySiteWeb
                 {
                     //Enlever Publications du menu
                     liRendezVous.InnerHtml = "";
+                    liFRdv.InnerHtml = "";
                 }
                 else if (module.moduleId == 2 && module.active == false) // Module id 2 = Module de prises de contact
                 {
                     //Enlever Contact du menu
                     liContact.InnerHtml = "";
+                    liFContact.InnerHtml = "";
                 }
                 else if (module.moduleId == 3 && module.active == false) // Module id 3 = Module des documents PDF
                 {
                     //Enlever Publications du menu
                     liPublication.InnerHtml = "";
+                    liFooterPublication.InnerHtml = "";
                 }
 
             }

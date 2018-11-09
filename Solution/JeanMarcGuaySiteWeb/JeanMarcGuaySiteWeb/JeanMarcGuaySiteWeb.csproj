@@ -83,6 +83,7 @@
     <Content Include="Admin\CSS\bootstrap-timepicker.css" />
     <Content Include="Admin\Javascript\bootstrap-timepicker.js" />
     <Content Include="Admin\Javascript\DateRangePicker.js" />
+    <Content Include="CSS\footer-distributed.css" />
     <Content Include="Javascripts\Publications.js" />
     <Content Include="PublicationsCategorie.aspx" />
     <EmbeddedResource Include="Email\ActivationEmail.html">

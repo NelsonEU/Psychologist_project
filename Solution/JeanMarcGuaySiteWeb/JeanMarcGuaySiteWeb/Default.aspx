@@ -8,7 +8,7 @@
     <div class="banner shadow">
         <div class="va-center animated fadeIn slow">
             <h1 class="titleBanner">Jean-Marc Guay</h1>
-            <h5 class="titleBanner">Psychologue</h5>
+            <h5 class="titleBanner">Psychologue, M.A.Ps</h5>
         </div>
     </div>
 </asp:Content>
@@ -80,7 +80,7 @@
             <div id="paraTrigger3"></div>
         </div>
 
-        <div class="container biggerBox pb150">
+        <div class="container biggerBox">
             <div class="row pt-5">
                 <h2 class="underline1 animated slow" id="h2Publications">Publications</h2>
             </div>
