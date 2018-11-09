@@ -83,6 +83,8 @@
     <Content Include="Admin\CSS\bootstrap-timepicker.css" />
     <Content Include="Admin\Javascript\bootstrap-timepicker.js" />
     <Content Include="Admin\Javascript\DateRangePicker.js" />
+    <Content Include="Desabonnement.aspx" />
+    <Content Include="Email\Notification.html" />
     <Content Include="Javascripts\Publications.js" />
     <Content Include="PublicationsCategorie.aspx" />
     <EmbeddedResource Include="Email\ActivationEmail.html">
@@ -243,6 +245,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Desabonnement.aspx.cs">
+      <DependentUpon>Desabonnement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Desabonnement.aspx.designer.cs">
+      <DependentUpon>Desabonnement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inscription.aspx.cs">
       <DependentUpon>Inscription.aspx</DependentUpon>

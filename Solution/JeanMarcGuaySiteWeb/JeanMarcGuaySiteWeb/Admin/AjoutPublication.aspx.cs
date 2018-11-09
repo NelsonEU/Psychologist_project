@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogic;
 using BusinessLogic.Factories;
+using BusinessLogic.Autres;
 using System.Configuration;
 using System.IO;
 
@@ -63,9 +64,44 @@ namespace JeanMarcGuaySiteWeb.Admin
                 {
                     if (fileUpload.PostedFile.ContentType == "application/pdf")
                     {
+                        StatusLabel.Style.Add("color", "black");
+                        StatusLabel.Text = "Transfert en cours";
+
+                        // Televersement du fichier
                         string path = "/admin/pdf/" + fileUpload.PostedFile.FileName;
                         fileUpload.SaveAs(Server.MapPath(path));
+
+                        // Ajout a la BD
                         pf.Add(Convert.ToInt32(DdlCategories.SelectedValue), txtTitle.Text, path);
+
+                        // Notification Email aux utilisateurs abonnées
+                        // -----------Vérification le l'état du module ----------- //
+                        ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
+                        Module m = moduleFactory.Get(4); /* Module id 4 = Module des abonnements */
+                        if (m.active != false)
+                        {
+                            UserFactory uf = new UserFactory(cnnStr);
+                            User[] users = uf.GetAllSubscribed();
+
+                            foreach (User u in users)
+                            {
+                                //Envoyer le email
+                                EmailController ec = new EmailController();
+                                string body = string.Empty;
+                                using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/Notification.html")))
+                                {
+                                    body = reader.ReadToEnd();
+                                }
+                                body = body.Replace("{date}", DateTime.Now.ToString("dd-MM-yyyy"));
+                                string desabonner = "http://localhost:51001/Desabonnement.aspx?email=" + u.email + "&tkn=" + u.token;
+                                body = body.Replace("{desabonner}", desabonner);
+
+                                ec.SendMail(u.email, "Nouvelle(s) publication(s) sur JMGuay.ca", body);
+                            }
+                        }                    
+                        // ------------------------------------------------------- //
+
+                        // Redirect
                         txtTitle.Text = "";
                         Response.Redirect(Request.RawUrl + "?conf=true");
                     }
