@@ -54,49 +54,25 @@ namespace JeanMarcGuaySiteWeb
                     {
                         divPublications.Visible = true;
                         divNotif.Visible = false;
-                        string toAppend = string.Empty;
-
-
-                        
+                                     
+                        HtmlGenericControl ht = publicationsPortfolio;
 
                         foreach(Publication p in publications)
                         {
-                            
-                            toAppend += "<div class=\"col-lg-6 pb-5 text-center\"><div><h2>" + p.title + "</h2></div><object data=\"" + p.url + "\" type=\"application/pdf\" style=\"width:100%; height:300px;\" class=\"box-shadow box-admin\"></object></div>";
-                        }
-
-                        publicationsPortfolio.InnerHtml = toAppend;
-                        /*
-                        divPublications.Visible = true;
-                        divNotif.Visible = false;
-                        HtmlTableRow headerRow = new HtmlTableRow();
-                        HtmlTableCell cellTitre = new HtmlTableCell("th");
-                        HtmlTableCell cellTelecharger = new HtmlTableCell("th");
-                        cellTitre.InnerText = "Titre";
-                        cellTitre.Attributes.Add("class", "col-8 align-middle");
-                        cellTelecharger.InnerText = "PDF";
-                        headerRow.Cells.Add(cellTitre);
-                        headerRow.Cells.Add(cellTelecharger);
-                        tablePublications.Rows.Add(headerRow);
-                        foreach (Publication p in publications)
-                        {
-                            HtmlTableRow row = new HtmlTableRow();
-                            HtmlTableCell cellD = new HtmlTableCell("td");
-                            HtmlTableCell cellT = new HtmlTableCell("td");
-                            cellD.InnerText = p.title;
-                            cellD.Attributes.Add("class", "col-8 align-middle");
+                            HtmlGenericControl newDiv = new HtmlGenericControl("div");
+                            HtmlGenericControl divPubli = new HtmlGenericControl("div");
                             Button button = new Button();
                             button.Text = "Télécharger";
-                            button.CssClass = "btn btn-primary";
+                            button.CssClass = "btn mainButton3";
                             button.CommandName = "download";
                             button.CommandArgument = p.publicationId.ToString();
                             button.Click += new EventHandler(Download_Click);
-                            cellT.Controls.Add(button);
-                            row.Cells.Add(cellD);
-                            row.Cells.Add(cellT);
-                            tablePublications.Rows.Add(row);
+                            newDiv.Attributes["class"] = "col-lg-6 pt-2 pb-5 text-center";
+                            divPubli.InnerHtml = "<div><h2>" + p.title + "</h2></div><object data=\"" + p.url + "\" type=\"application/pdf\" style=\"width:100%; height:300px;\" class=\"box-shadow box-admin\"></object>";                            newDiv.Controls.Add(divPubli);
+                            newDiv.Controls.Add(button);
+                            publicationsPortfolio.Controls.Add(newDiv);                          ;
+
                         }
-                        */
                     }
 
                 }
