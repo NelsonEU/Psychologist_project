@@ -152,6 +152,9 @@ h1,h2,h3,h4,h5{
 .inscription {
     padding-bottom: 200px;
 }
+.publications{
+    padding-bottom:200px;
+}
 
 #publications {
     padding-bottom: 200px;
@@ -184,6 +187,9 @@ h1,h2,h3,h4,h5{
     #publications {
         padding-bottom: 300px;
     }
+    .publications {
+        padding-bottom: 300px;
+    }
     #service {
         padding-bottom: 300px;
     }
@@ -213,6 +219,9 @@ h1,h2,h3,h4,h5{
     }
 
     #publications {
+        padding-bottom: 400px;
+    }
+    .publications {
         padding-bottom: 400px;
     }
 
