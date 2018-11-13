@@ -64,9 +64,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                 {
                     if (fileUpload.PostedFile.ContentType == "application/pdf")
                     {
-                        StatusLabel.Style.Add("color", "black");
-                        StatusLabel.Text = "Transfert en cours";
-
+                        UploadButton.Enabled = false;
                         // Televersement du fichier
                         string path = "/admin/pdf/" + fileUpload.PostedFile.FileName;
                         fileUpload.SaveAs(Server.MapPath(path));
@@ -97,13 +95,16 @@ namespace JeanMarcGuaySiteWeb.Admin
                                 body = body.Replace("{desabonner}", desabonner);
 
                                 ec.SendMail(u.email, "Nouvelle(s) publication(s) sur JMGuay.ca", body);
+
+                                //update le lastNotificationDate
+                                uf.notifyById(u.userId);
                             }
                         }                    
                         // ------------------------------------------------------- //
 
                         // Redirect
                         txtTitle.Text = "";
-                        Response.Redirect(Request.RawUrl + "?conf=true");
+                        Response.Redirect("AjoutPublication.aspx" + "?conf=true");
                     }
                     else
                     {

@@ -23,6 +23,7 @@ namespace BusinessLogic
         public DateTime optIn { get; set; }
         public DateTime optOut { get; set; }
         public string token { get; set; } //VARCHAR(40)
+        public DateTime lastNotificationDate { get; set; }
 
 
     }

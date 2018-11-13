@@ -219,9 +219,19 @@ namespace BusinessLogic.Factories
                         _optOut = (DateTime)reader["opt_out"];
                         user.optOut = _optOut;
                     }
+                    
+                    catch (System.InvalidCastException) { }
+                    string _token = reader["token"].ToString();
+                    DateTime _lastNotificationDate;
+                    try
+                    {
+                        _lastNotificationDate = (DateTime)reader["lastNotificationDate"];
+                        user.optOut = _lastNotificationDate;
+                    }
+
                     catch (System.InvalidCastException) { }
 
-                    
+
                     user.userId = _userId;
                     user.lastname = _lastname;
                     user.firstname = _firstname;
@@ -232,6 +242,7 @@ namespace BusinessLogic.Factories
                     user.activated = _activated;
                     user.authorized = _authorized;
                     user.birthday = _birthday;
+                    user.token = _token;
 
                     userList.Add(user);
                 }
@@ -259,7 +270,7 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM users WHERE deletionDate IS NULL AND subscriber = 1 AND opt_in IS NOT NULL AND opt_out IS NULL ORDER BY lastname";
+                cmd.CommandText = "SELECT * FROM users WHERE deletionDate IS NULL AND subscriber = 1 AND opt_in IS NOT NULL AND opt_out IS NULL AND (CURDATE() >= DATE_ADD(lastNotificationDate, INTERVAL +3 DAY) OR lastNotificationDate IS NULL) ORDER BY lastname";
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -288,6 +299,16 @@ namespace BusinessLogic.Factories
                         _optOut = (DateTime)reader["opt_out"];
                         user.optOut = _optOut;
                     }
+
+                    catch (System.InvalidCastException) { }
+                    string _token = reader["token"].ToString();
+                    DateTime _lastNotificationDate;
+                    try
+                    {
+                        _lastNotificationDate = (DateTime)reader["lastNotificationDate"];
+                        user.optOut = _lastNotificationDate;
+                    }
+
                     catch (System.InvalidCastException) { }
 
 
@@ -301,6 +322,7 @@ namespace BusinessLogic.Factories
                     user.activated = _activated;
                     user.authorized = _authorized;
                     user.birthday = _birthday;
+                    user.token = _token;
 
                     userList.Add(user);
                 }
@@ -356,17 +378,24 @@ namespace BusinessLogic.Factories
                         _optOut = (DateTime)reader["opt_out"];
                         user.optOut = _optOut;
                     }
+
                     catch (System.InvalidCastException) { }
+                    string _token = reader["token"].ToString();
+                    DateTime _lastNotificationDate = (DateTime)reader["lastNotificationDate"];
+
 
                     user.userId = _userId;
                     user.lastname = _lastname;
                     user.firstname = _firstname;
+                    user.email = _email;
                     user.password = _password;
                     user.admin = _admin;
                     user.subscriber = _subscriber;
                     user.activated = _activated;
                     user.authorized = _authorized;
                     user.birthday = _birthday;
+                    user.token = _token;
+                    user.lastNotificationDate = _lastNotificationDate;
                 }
                 reader.Close();
             }
@@ -483,6 +512,29 @@ namespace BusinessLogic.Factories
                 cnn.Close();
             }
         }
+        #endregion
+
+        #region notifyById
+
+        public void notifyById(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET lastNotificationDate = NOW() WHERE user_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+
         #endregion
 
         #region Update

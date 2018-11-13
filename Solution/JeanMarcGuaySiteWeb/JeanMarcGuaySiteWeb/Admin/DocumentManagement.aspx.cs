@@ -42,7 +42,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                 {
                     publicationTable.Rows.RemoveAt(i);
                 }
-                DdlCategories.Items.Add(new ListItem("Tous", "Tous"));
+                DdlCategories.Items.Add(new ListItem("Toutes", "Toutes"));
                 foreach (Category categorie in categories)
                 {
                     DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
@@ -65,7 +65,7 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 publicationTable.Rows.RemoveAt(i);
             }
-            if (categorie == "Tous")
+            if (categorie == "Toutes")
             {
                 Publication[] publications = pf.GetAll();
                 afficherTableau(publications);
@@ -96,7 +96,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                 cellTelecharger.Controls.Add(buttonDownload);
 
                 Button buttonSupprimer = new Button();
-                buttonSupprimer.Attributes.Add("class", "btn btn-warning btnSuppr");
+                buttonSupprimer.Attributes.Add("class", "btn btn-danger btnSuppr");
                 buttonSupprimer.Text = "Supprimer";
                 buttonSupprimer.Attributes.Add("data-id", publication.publicationId.ToString());
                 buttonSupprimer.Click += new EventHandler(btn_Supprimer_Click);

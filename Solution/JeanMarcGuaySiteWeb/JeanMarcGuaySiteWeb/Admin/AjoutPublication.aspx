@@ -41,12 +41,12 @@
                     </div>
                     <div class="row text-center">
                         <div class="col-12">
-                            <asp:Button runat="server" ID="UploadButton" Text="Téléverser" OnClick="UploadButton_Click" CssClass="btn btn-success" />
+                            <asp:Button runat="server" ID="UploadButton" Text="Téléverser"  OnClick="UploadButton_Click" onClientClick="lblChange()" CssClass="btn btn-success" />
                         </div>
                     </div>
                     <div class="row text-center pb-4">
                         <div class="col-12">
-                            <asp:Label runat="server" ID="StatusLabel" Text="" />
+                            <asp:Label runat="server" ID="StatusLabel" Text="" clientIdMode="Static"/>
                         </div>
                     </div>
                 </div>
@@ -57,4 +57,5 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
+    <script src="Javascript/publicationAdmin.js"></script>
 </asp:Content>

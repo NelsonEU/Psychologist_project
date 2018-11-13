@@ -27,3 +27,9 @@ function dataTableMaison() {
     }
 
 } 
+
+function lblChange() {
+    $('#StatusLabel').css('color', 'black');
+    $('#StatusLabel').text("Transfert en cours");
+
+}
