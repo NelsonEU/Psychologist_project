@@ -18,14 +18,20 @@
 
             <!-- Page Heading -->
             <div class="row pb-4">
-                <h2 class="underline1 m-4 text-left">Catégories
-                </h2>
+                    <h2 class="underline1 m-4 text-left">Catégories
+                    </h2>
+
             </div>
 
             <div class="row" id="categoriesPortfolio" runat="server">
             </div>
-            <!-- /.row -->
 
+            <!-- /.row -->
+            <div class="row pt-3">
+                <div class="col-lg-12 text-center">
+                    <asp:LinkButton runat="server" id="btnAbonnements" cssClass="btn mainButton2" OnClick="abonnementDesabonnement" AutoPostBack="true" ><i class="fas fa-bell"></i> S'abonner aux publications</asp:LinkButton>
+                </div>
+            </div>
 
         </div>
     </div>
