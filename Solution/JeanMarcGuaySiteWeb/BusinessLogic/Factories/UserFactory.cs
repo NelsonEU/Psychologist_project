@@ -514,6 +514,46 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+        #region OptOutById
+        public void OptOutById(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET subscriber = false, opt_out = NOW(), opt_in = NULL WHERE user_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
+        #region OptInById
+        public void OptInById(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET subscriber = True, opt_out = NULL, opt_in = Now() WHERE user_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
         #region notifyById
 
         public void notifyById(int id)
