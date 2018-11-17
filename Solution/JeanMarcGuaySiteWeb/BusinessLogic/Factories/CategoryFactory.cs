@@ -28,7 +28,7 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM categories";
+                cmd.CommandText = "SELECT * FROM categories WHERE deletionDate IS NULL";
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -68,7 +68,7 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM categories WHERE category_id=@id";
+                cmd.CommandText = "SELECT * FROM categories WHERE category_id=@id AND deletionDate IS NULL";
                 cmd.Parameters.AddWithValue("@id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -93,6 +93,73 @@ namespace BusinessLogic.Factories
 
             return category;
         }
+        #endregion
+
+        #region Add
+        public void Add(int category_id, string name, string url)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "INSERT INTO Categories(category_id, name, picture_url, creationDate) VALUES (@category_id, @name, @url, NOW())";
+                cmd.Parameters.AddWithValue("@category_id", category_id);
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@url", url);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
+        #region Delete
+        public void delete(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "UPDATE categories SET deletionDate = NOW() WHERE category_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
+        #region Count
+        public int Count()
+        {
+            int total;
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT COUNT(*) FROM categories WHERE deletionDate IS NULL";
+                total = (int)cmd.ExecuteScalar();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return total;
+        }
+
+
         #endregion
     }
 }

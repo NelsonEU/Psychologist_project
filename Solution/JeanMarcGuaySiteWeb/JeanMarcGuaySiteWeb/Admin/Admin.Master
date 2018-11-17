@@ -46,7 +46,7 @@
                         <span>Disponibilités</span></a>
                 </li>
                 <li class="nav-item">
-                    <a href="DocumentManagement.aspx" class="nav-link" onserverclick="OnClickUserManagement">
+                    <a href="PublicationsMenu.aspx" class="nav-link" onserverclick="OnClickUserManagement">
                         <span>Publications</span></a>
                 </li>
                 <li class="nav-item">

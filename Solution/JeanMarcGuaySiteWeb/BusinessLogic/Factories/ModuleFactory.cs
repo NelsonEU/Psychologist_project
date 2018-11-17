@@ -10,8 +10,6 @@ namespace BusinessLogic.Factories
     public class ModuleFactory
     {
 
-        /* Only GetAll et Update */
-
         #region Constructeur
         private string _cnnStr;
         public ModuleFactory(string cnnStr)

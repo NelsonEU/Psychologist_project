@@ -79,10 +79,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activation.aspx" />
+    <Content Include="Admin\AjoutCategorie.aspx" />
+    <Content Include="Admin\CategoryManagement.aspx" />
     <Content Include="Admin\Javascript\publicationAdmin.js" />
     <Content Include="Admin\CSS\bootstrap-timepicker.css" />
     <Content Include="Admin\Javascript\bootstrap-timepicker.js" />
     <Content Include="Admin\Javascript\DateRangePicker.js" />
+    <Content Include="Admin\Javascript\publicationMenu.js" />
+    <Content Include="Admin\PublicationsMenu.aspx" />
     <Content Include="Desabonnement.aspx" />
     <Content Include="CSS\footer-distributed.css" />
     <Content Include="Email\Notification.html" />
@@ -177,6 +181,13 @@
     <Compile Include="Admin\Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AjoutCategorie.aspx.cs">
+      <DependentUpon>AjoutCategorie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AjoutCategorie.aspx.designer.cs">
+      <DependentUpon>AjoutCategorie.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AjoutPublication.aspx.cs">
       <DependentUpon>AjoutPublication.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -198,6 +209,13 @@
     <Compile Include="Admin\AvailabilityManagement.aspx.designer.cs">
       <DependentUpon>AvailabilityManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\CategoryManagement.aspx.cs">
+      <DependentUpon>CategoryManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CategoryManagement.aspx.designer.cs">
+      <DependentUpon>CategoryManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\DocumentManagement.aspx.cs">
       <DependentUpon>DocumentManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -211,6 +229,13 @@
     </Compile>
     <Compile Include="Admin\ModuleManagement.aspx.designer.cs">
       <DependentUpon>ModuleManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PublicationsMenu.aspx.cs">
+      <DependentUpon>PublicationsMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PublicationsMenu.aspx.designer.cs">
+      <DependentUpon>PublicationsMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\RequestManagement.aspx.cs">
       <DependentUpon>RequestManagement.aspx</DependentUpon>

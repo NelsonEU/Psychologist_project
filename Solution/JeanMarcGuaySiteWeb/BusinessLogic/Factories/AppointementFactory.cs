@@ -39,7 +39,6 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
-        // Remove
         #region Delete
         public void delete(int id)
         {
@@ -57,6 +56,7 @@ namespace BusinessLogic.Factories
             }
         }
         #endregion
+
         // Connexion
         // Get
         // Update

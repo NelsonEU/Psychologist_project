@@ -76,11 +76,11 @@
     padding:15px;
     text-align:center;
     cursor: pointer;
-    transition: 0.4s;
+    transition: 0.2s;
 }
 
 .box-admin:hover {
-    background-color:rgb(29,98,128,0.1);
+    background-color:rgb(29,98,128,0.2);
 }
 
 .hidden{
