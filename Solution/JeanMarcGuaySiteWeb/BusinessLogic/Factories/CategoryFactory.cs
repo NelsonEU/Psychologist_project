@@ -37,12 +37,14 @@ namespace BusinessLogic.Factories
                     string _name = reader["name"].ToString();
                     string _pictureUrl = reader["picture_url"].ToString();
                     string _redirectUrl = reader["redirect_url"].ToString();
+                    string _pictureName = reader["pictureName"].ToString();
 
                     Category category = new Category();
                     category.categoryId = _id;
                     category.name = _name;
                     category.pictureUrl = _pictureUrl;
                     category.urlRedirect = _redirectUrl;
+                    category.pictureName = _pictureName;
 
                     categoryList.Add(category);
                 }
@@ -77,11 +79,13 @@ namespace BusinessLogic.Factories
                     string _name = reader["name"].ToString();
                     string _pictureUrl = reader["picture_url"].ToString();
                     string _redirectUrl = reader["redirect_url"].ToString();
+                    string _pictureName = reader["pictureName"].ToString();
 
                     category.categoryId = _id;
                     category.name = _name;
                     category.pictureUrl = _pictureUrl;
                     category.urlRedirect = _redirectUrl;
+                    category.pictureName = _pictureName;
 
                 }
                 reader.Close();
@@ -95,8 +99,52 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+        #region GetByFileName
+        //Vérifie si ce pdf à déjà été poster
+        public Category GetByFileName(string pictureName)
+        {
+
+            Category category = new Category();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM categories WHERE pictureName = @pictureName AND deletionDate IS NULL";
+                cmd.Parameters.AddWithValue("@pictureName", pictureName);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    int _id = (Int32)reader["category_id"];
+                    string _name = reader["name"].ToString();
+                    string _pictureUrl = reader["picture_url"].ToString();
+                    string _redirectUrl = reader["redirect_url"].ToString();
+                    string _pictureName = reader["pictureName"].ToString();
+
+                    category.categoryId = _id;
+                    category.name = _name;
+                    category.pictureUrl = _pictureUrl;
+                    category.urlRedirect = _redirectUrl;
+                    category.pictureName = _pictureName;
+
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return category;
+
+        }
+        #endregion
+
         #region Add
-        public void Add(int category_id, string name, string url)
+        public void Add(string name, string url, string pictureName)
         {
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
@@ -104,10 +152,10 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "INSERT INTO Categories(category_id, name, picture_url, creationDate) VALUES (@category_id, @name, @url, NOW())";
-                cmd.Parameters.AddWithValue("@category_id", category_id);
+                cmd.CommandText = "INSERT INTO Categories(name, picture_url, pictureName, creationDate) VALUES (@name, @url,@pictureName, NOW())";
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@url", url);
+                cmd.Parameters.AddWithValue("@pictureName", pictureName);
                 cmd.ExecuteNonQuery();
             }
             finally
@@ -149,7 +197,8 @@ namespace BusinessLogic.Factories
 
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = "SELECT COUNT(*) FROM categories WHERE deletionDate IS NULL";
-                total = (int)cmd.ExecuteScalar();
+                var varTotal = cmd.ExecuteScalar();
+                total = Convert.ToInt32(varTotal);
             }
             finally
             {

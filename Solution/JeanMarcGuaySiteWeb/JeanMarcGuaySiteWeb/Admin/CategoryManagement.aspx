@@ -14,7 +14,22 @@
     </div>
 
     <div id="PageContent" runat="server">
-        liste des catégories
+        <div class="row">
+            <div class="col-lg-8 col-md-12 right">
+                <a href="AjoutCategorie.aspx" class="align-middle lienAdmin"><i class="fas fa-plus"></i> Ajouter une catégorie</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <asp:Table runat="server" ID="categorieTable" CssClass="table table-bordered table-hover dataTable text-center">
+                    <asp:TableHeaderRow>
+                        <asp:TableHeaderCell>Titre</asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Image</asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Supprimer</asp:TableHeaderCell>
+                    </asp:TableHeaderRow>
+                </asp:Table>
+            </div>
+        </div>
     </div>
 
 </asp:Content>

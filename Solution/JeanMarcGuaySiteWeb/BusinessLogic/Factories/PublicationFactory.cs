@@ -19,7 +19,7 @@ namespace BusinessLogic.Factories
         #endregion
 
         #region Add
-        public void Add(int categoryId, string titre, string url)
+        public void Add(int categoryId, string titre, string url, string fileName)
         {
 
             MySqlConnection cnn = new MySqlConnection(_cnnStr);      
@@ -29,9 +29,10 @@ namespace BusinessLogic.Factories
                 //Requête 1:
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "INSERT INTO publications(title, url, creationDate) VALUES (@title, @url, @creationDate)";
+                cmd.CommandText = "INSERT INTO publications(title, url, fileName,creationDate) VALUES (@title, @url, @fileName, @creationDate)";
                 cmd.Parameters.AddWithValue("@title", titre);
                 cmd.Parameters.AddWithValue("@url", url);
+                cmd.Parameters.AddWithValue("@fileName", fileName);
                 cmd.Parameters.AddWithValue("@creationDate", DateTime.Now);
                 cmd.ExecuteNonQuery();
 
@@ -54,7 +55,6 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
-
         #region Get
         public Publication Get(int id)
         {
@@ -66,7 +66,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM publications WHERE publication_id = @id";
+                cmd.CommandText = "SELECT * FROM publications WHERE publication_id = @id AND deletionDate IS NULL";
                 cmd.Parameters.AddWithValue("@id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -75,10 +75,12 @@ namespace BusinessLogic.Factories
                     int _publicationId = (Int32)reader["publication_id"];
                     string _title = reader["title"].ToString();
                     string _url = reader["url"].ToString();
+                    string _fileName = reader["fileName"].ToString();
 
                     publication.publicationId = _publicationId;
                     publication.title = _title;
                     publication.url = _url;
+                    publication.fileName = _fileName;
 
                 }
                 reader.Close();
@@ -114,10 +116,12 @@ namespace BusinessLogic.Factories
                     int _publicationId = (Int32)reader["publication_id"];
                     string _title = reader["title"].ToString();
                     string _url = reader["url"].ToString();
+                    string _fileName = reader["fileName"].ToString();
 
                     publication.publicationId = _publicationId;
                     publication.title = _title;
                     publication.url = _url;
+                    publication.fileName = _fileName;
 
                     publicationList.Add(publication);
                 }
@@ -155,10 +159,12 @@ namespace BusinessLogic.Factories
                     int _publicationId = (Int32)reader["publication_id"];
                     string _title = reader["title"].ToString();
                     string _url = reader["url"].ToString();
+                    string _fileName = reader["fileName"].ToString();
 
                     publication.publicationId = _publicationId;
                     publication.title = _title;
                     publication.url = _url;
+                    publication.fileName = _fileName;
 
                     publicationList.Add(publication);
                 }
@@ -170,6 +176,47 @@ namespace BusinessLogic.Factories
             }
 
             return publicationList.ToArray();
+
+        }
+        #endregion
+
+        #region GetByFileName
+        //Vérifie si ce pdf à déjà été poster
+        public Publication GetByFileName(string fileName)
+        {
+
+            Publication publication = new Publication();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM publications WHERE fileName = @fileName AND deletionDate IS NULL";
+                cmd.Parameters.AddWithValue("@fileName", fileName);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int _publicationId = (Int32)reader["publication_id"];
+                    string _title = reader["title"].ToString();
+                    string _url = reader["url"].ToString();
+                    string _fileName = reader["fileName"].ToString();
+
+                    publication.publicationId = _publicationId;
+                    publication.title = _title;
+                    publication.url = _url;
+                    publication.fileName = _fileName;
+
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return publication;
 
         }
         #endregion

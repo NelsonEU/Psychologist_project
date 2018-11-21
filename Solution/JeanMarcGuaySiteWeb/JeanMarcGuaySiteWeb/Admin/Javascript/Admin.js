@@ -21,6 +21,22 @@ $(function () {
     });
 });
 
+$(function () {
+    $('.btnSupprCategorie').click(function () {
+        var confirm_value = document.createElement("INPUT");
+        confirm_value.type = "hidden";
+        confirm_value.name = "confirm_delete";
+
+
+        if (confirm("Êtes-vous sur de vouloir supprimer cette publication ?")) {
+            confirm_value.value = "Oui";
+        } else {
+            confirm_value.value = "Non";
+        }
+        document.forms[0].appendChild(confirm_value);
+    });
+});
+
 $('#researchUser').keyup(function () {
     dataTableMaison();
 });

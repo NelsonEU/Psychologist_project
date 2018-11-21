@@ -15,7 +15,7 @@
 
     <div id="PageContent" runat="server">
         <div class="container-fluid">
-            <a href="DocumentManagement.aspx" class="lienAdmin">Retour</a>
+            <a href="DocumentManagement.aspx" class="lienAdmin">Liste des publications</a>
             <div class="row">
                 <div class="col-8 border">
                     <div class="row text-center pt-4 ">
@@ -31,7 +31,7 @@
                     <div class="row text-center pb-4">
                         <div class="col-8 offset-2">
                             <label for="txtTitle" class="form-check-label">Titre:</label>
-                            <asp:TextBox ID="txtTitle" runat="server" MaxLength="500" ClientIDMode="Static" placeholder="Titre" class="form-control" Style="resize: none;" required="required" />
+                            <asp:TextBox ID="txtTitle" runat="server" MaxLength="40" ClientIDMode="Static" placeholder="Titre" class="form-control" Style="resize: none;" required="required" />
                         </div>
                     </div>
                     <div class="row text-center pb-4">
@@ -41,7 +41,7 @@
                     </div>
                     <div class="row text-center">
                         <div class="col-12">
-                            <asp:Button runat="server" ID="UploadButton" Text="Téléverser"  OnClick="UploadButton_Click" onClientClick="lblChange()" CssClass="btn btn-success" />
+                            <asp:Button runat="server" ID="UploadButton" Text="Téléverser" OnClick="UploadButton_Click" onClientClick="lblChange()" CssClass="btn btn-success" />
                         </div>
                     </div>
                     <div class="row text-center pb-4">

@@ -30,10 +30,16 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-lg-4 col-md-12 form-group">
+                    <span id="notification" runat="server" class="notification"></span>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-8 col-md-12">
                     <asp:Table runat="server" ID="publicationTable" CssClass="table table-bordered table-hover dataTable text-center">
                         <asp:TableHeaderRow>
                             <asp:TableHeaderCell>Titre</asp:TableHeaderCell>
+                            <asp:TableHeaderCell>Nom du fichier</asp:TableHeaderCell>
                             <asp:TableHeaderCell>Télécharger</asp:TableHeaderCell>
                             <asp:TableHeaderCell>Supprimer</asp:TableHeaderCell>
                         </asp:TableHeaderRow>

@@ -32,6 +32,13 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
             // ------------------------------------------------------- //
 
+            if (Request.QueryString["erreur"] != null)
+            {
+                if (Request.QueryString["erreur"] == "True")
+                {
+                    notification.InnerText = "Une erreur est survenue";
+                }
+            }
 
             //Feed les catégories 
             if (!Page.IsPostBack)
@@ -83,10 +90,12 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 TableRow row = new TableRow();
                 TableCell cellTitle = new TableCell();
+                TableCell cellFileName = new TableCell();
                 TableCell cellTelecharger = new TableCell();
                 TableCell cellSupprimer = new TableCell();
 
                 cellTitle.Text = publication.title;
+                cellFileName.Text = publication.fileName;
 
                 Button buttonDownload = new Button();
                 buttonDownload.Text = "Télécharger";
@@ -96,13 +105,14 @@ namespace JeanMarcGuaySiteWeb.Admin
                 cellTelecharger.Controls.Add(buttonDownload);
 
                 Button buttonSupprimer = new Button();
-                buttonSupprimer.Attributes.Add("class", "btn btn-danger btnSuppr");
+                buttonSupprimer.Attributes.Add("class", "btn btn-danger btnSupprCategorie");
                 buttonSupprimer.Text = "Supprimer";
                 buttonSupprimer.Attributes.Add("data-id", publication.publicationId.ToString());
                 buttonSupprimer.Click += new EventHandler(btn_Supprimer_Click);
                 cellSupprimer.Controls.Add(buttonSupprimer);
 
                 row.Cells.Add(cellTitle);
+                row.Cells.Add(cellFileName);
                 row.Cells.Add(cellTelecharger);
                 row.Cells.Add(cellSupprimer);
 
@@ -116,10 +126,17 @@ namespace JeanMarcGuaySiteWeb.Admin
             int id = Convert.ToInt32(button.Attributes["data-id"]);
             Publication publication = pf.Get(id);
 
-            Response.ContentType = "Application/pdf";
-            Response.AppendHeader("Content-Disposition", "attachment; filename=" + publication.title + ".pdf");
-            Response.TransmitFile(Server.MapPath(publication.url));
-            Response.End();
+            if (File.Exists(Server.MapPath(publication.url)))
+            {
+                Response.ContentType = "Application/pdf";
+                Response.AppendHeader("Content-Disposition", "attachment; filename=" + publication.title + ".pdf");
+                Response.TransmitFile(Server.MapPath(publication.url));
+                Response.End();
+            }
+            else
+            {
+                Response.Redirect(Request.RawUrl + "?erreur=True");
+            }
         }
         protected void btn_Supprimer_Click(object sender, EventArgs e)
         {
