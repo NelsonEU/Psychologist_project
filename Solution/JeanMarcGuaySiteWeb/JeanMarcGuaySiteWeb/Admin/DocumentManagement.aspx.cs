@@ -40,38 +40,32 @@ namespace JeanMarcGuaySiteWeb.Admin
                 }
             }
 
-            //Feed les catégories 
+            
             if (!Page.IsPostBack)
-            {
+            {   
+                //Feed le DDL des catégories 
                 CategoryFactory cf = new CategoryFactory(cnnStr);
                 Category[] categories = cf.GetAll();
-                for (int i = 1; i < publicationTable.Rows.Count; i++)
-                {
-                    publicationTable.Rows.RemoveAt(i);
-                }
                 DdlCategories.Items.Add(new ListItem("Toutes", "Toutes"));
                 foreach (Category categorie in categories)
                 {
                     DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
                 }
 
+                //Affiche toutes les publications par défaut
                 Publication[] publications = pf.GetAll();
                 afficherTableau(publications);
             }
             else
             {
-                SelectedIndexChanged(null, null);
+                //SelectedIndexChanged(null, null);
             }
 
         }
 
         protected void SelectedIndexChanged(object sender, EventArgs e)
         {
-            string categorie = DdlCategories.SelectedValue;
-            for (int i = 1; i < publicationTable.Rows.Count; i++)
-            {
-                publicationTable.Rows.RemoveAt(i);
-            }
+            string categorie = DdlCategories.SelectedValue;          
             if (categorie == "Toutes")
             {
                 Publication[] publications = pf.GetAll();
@@ -86,6 +80,10 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         protected void afficherTableau( Publication[] publications)
         {
+            for (int i = 1; i < publicationTable.Rows.Count; i++)
+            {
+                publicationTable.Rows.RemoveAt(i);
+            }
             foreach (Publication publication in publications)
             {
                 TableRow row = new TableRow();
@@ -105,7 +103,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                 cellTelecharger.Controls.Add(buttonDownload);
 
                 Button buttonSupprimer = new Button();
-                buttonSupprimer.Attributes.Add("class", "btn btn-danger btnSupprCategorie");
+                buttonSupprimer.Attributes.Add("class", "btn btn-danger btnSuppr");
                 buttonSupprimer.Text = "Supprimer";
                 buttonSupprimer.Attributes.Add("data-id", publication.publicationId.ToString());
                 buttonSupprimer.Click += new EventHandler(btn_Supprimer_Click);

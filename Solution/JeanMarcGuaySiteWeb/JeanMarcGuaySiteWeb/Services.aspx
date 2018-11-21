@@ -19,7 +19,7 @@
     <!-- Contenu Intro Consulter -->
     <section>
         <!-- Texte -->
-        <div style="margin-top: 40px;">
+        <div>
             <div class="container evenBiggerBox">
                 <div class="row">
                     <div class="col-lg-8">

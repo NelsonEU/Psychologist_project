@@ -22,7 +22,7 @@ namespace BusinessLogic.Factories
         public void Add(int categoryId, string titre, string url, string fileName)
         {
 
-            MySqlConnection cnn = new MySqlConnection(_cnnStr);      
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
             {
@@ -98,18 +98,18 @@ namespace BusinessLogic.Factories
         #region GetAll
         public Publication[] GetAll()
         {
-        
+
             List<Publication> publicationList = new List<Publication>();
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
-        
+
             try
             {
                 cnn.Open();
-        
+
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = "SELECT * FROM publications WHERE deletionDate IS NULL";
                 MySqlDataReader reader = cmd.ExecuteReader();
-        
+
                 while (reader.Read())
                 {
                     Publication publication = new Publication();
@@ -131,9 +131,9 @@ namespace BusinessLogic.Factories
             {
                 cnn.Close();
             }
-        
+
             return publicationList.ToArray();
-        
+
         }
         #endregion
 
@@ -232,6 +232,26 @@ namespace BusinessLogic.Factories
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = "UPDATE Publications SET deletionDate = NOW() WHERE publication_id=@id";
                 cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
+        #region DeleteByArray
+        public void DeleteByArray(string[] ids)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                string commande = "UPDATE Publications SET deletionDate = NOW() WHERE publication_id IN (" + String.Join(",", ids) + ")";
+                cmd.CommandText = commande;
                 cmd.ExecuteNonQuery();
             }
             finally

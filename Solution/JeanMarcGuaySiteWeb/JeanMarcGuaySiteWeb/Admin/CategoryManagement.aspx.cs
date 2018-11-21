@@ -17,6 +17,7 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
         CategoryFactory cf = new CategoryFactory(cnnStr);
+        int nbCategorie;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,6 +35,20 @@ namespace JeanMarcGuaySiteWeb.Admin
                 PageContent.Visible = true;
             }
             // ------------------------------------------------------- //
+
+            //afficher le nombre de catégories
+            nbCategorie = cf.Count();
+            lblNombreCategorie.Text = nbCategorie.ToString() + "/10";
+
+            //Request.QueryString
+            if (Request.QueryString["Conf"] != null)
+            {
+                if (Request.QueryString["Conf"] == "False")
+                {
+                    notification.Style.Add("color", "red");
+                    notification.Text = "Vous avez déjà atteint le nombre minimum de catégories";
+                }
+            }
 
             Category[] categories = cf.GetAll();
             afficherTableau(categories);
@@ -54,7 +69,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                 cellFileName.Text = categorie.pictureName;
 
                 Button buttonSupprimer = new Button();
-                buttonSupprimer.Attributes.Add("class", "btn btn-danger btnSuppr");
+                buttonSupprimer.Attributes.Add("class", "btn btn-danger btnSupprCategorie");
                 buttonSupprimer.Text = "Supprimer";
                 buttonSupprimer.Attributes.Add("data-id", categorie.categoryId.ToString());
                 buttonSupprimer.Click += new EventHandler(btn_Supprimer_Click);
@@ -70,24 +85,55 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         private void btn_Supprimer_Click(object sender, EventArgs e)
         {
-            //string confirmValue = Request.Form["confirm_delete"];
-            //if (confirmValue == "Oui")
-            //{
-                Button button = (Button)sender;
-                int id = Convert.ToInt32(button.Attributes["data-id"]);
-                Category category = cf.GetCategoryById(id);
-                cf.delete(id);
-                try
+            if (nbCategorie > 3)
+            {
+                string confirmValue = Request.Form["confirm_delete"];
+                if (confirmValue == "Oui")
                 {
-                    string FileToDelete = Server.MapPath(category.pictureUrl);
-                    File.Delete(FileToDelete);
-                }
-                finally
-                {
-                    Response.Redirect(Request.RawUrl);
-                }
-            //}
-        }
+                    Button button = (Button)sender;
+                    int id = Convert.ToInt32(button.Attributes["data-id"]);
+                    Category category = cf.GetCategoryById(id);
 
+                    try
+                    {
+                        //Supprimer l'image
+                        string FileToDelete = Server.MapPath(category.pictureUrl);
+                        File.Delete(FileToDelete);
+
+                        //Supprimer les publications de la catégorie
+                        PublicationFactory pf = new PublicationFactory(cnnStr);
+                        Publication[] publicationsASupprimer = pf.GetAllByCategoryId(id);
+                        string[] IDsToString = new string[publicationsASupprimer.Length];
+                        string[] PDFs = new string[publicationsASupprimer.Length];
+                        for (int i = 0; i < publicationsASupprimer.Length; i++)
+                        {
+                            IDsToString[i] = publicationsASupprimer[i].publicationId.ToString();
+                            PDFs[i] = publicationsASupprimer[i].url;
+                        }
+                        pf.DeleteByArray(IDsToString);
+
+                        //Supprimer les PDFs
+                        for (int j = 0; j < publicationsASupprimer.Length; j++)
+                        {
+                            string PDFtoDelete = Server.MapPath(PDFs[j]);
+                            File.Delete(PDFtoDelete);
+                        }
+
+                        //Supprime de la BD (deletionDate)
+                        cf.delete(id);
+
+                    }
+                    finally
+                    {
+                        Response.Redirect(Request.RawUrl);
+                    }
+                }
+            }
+            else
+            {
+                //On ne peux pas en supprimer plus car le nombre minimum de catégories est déja atteint.
+                Response.Redirect("CategoryManagement.aspx" + "?Conf=False");
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ $(function () {
         confirm_value.name = "confirm_delete";
 
 
-        if (confirm("Êtes-vous sur de vouloir supprimer cette publication ?")) {
+        if (confirm("Êtes-vous sur de vouloir supprimer cette publication?")) {
             confirm_value.value = "Oui";
         } else {
             confirm_value.value = "Non";
@@ -28,7 +28,7 @@ $(function () {
         confirm_value.name = "confirm_delete";
 
 
-        if (confirm("Êtes-vous sur de vouloir supprimer cette publication ?")) {
+        if (confirm("Tous les publications associées seront supprimées. Êtes-vous sur de vouloir supprimer cette catégorie? ")) {
             confirm_value.value = "Oui";
         } else {
             confirm_value.value = "Non";

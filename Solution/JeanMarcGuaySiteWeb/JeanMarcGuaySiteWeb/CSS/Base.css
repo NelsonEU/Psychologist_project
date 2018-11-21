@@ -309,7 +309,7 @@ h5.titleBanner{
     margin: 0px;
     overflow-x: hidden;
     overflow-y: auto;
-    padding-top: 2.5rem;
+    /*padding-top: 2.5rem;*/
 }
 
 h1.titleBanner{

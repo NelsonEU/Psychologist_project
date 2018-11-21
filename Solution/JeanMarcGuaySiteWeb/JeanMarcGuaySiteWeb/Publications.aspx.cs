@@ -37,17 +37,21 @@ namespace JeanMarcGuaySiteWeb
 
             // Bouton Abonnement
             btnAbonnements.Visible = false;
-            if (Session["User"] != null)
+            m = moduleFactory.Get(4);/* Module id 4 = Module des abonnements */
+            if (m.active == true)
             {
-                user = (User)Session["User"];
-                btnAbonnements.Visible = true;
-                if (user.subscriber)
+                if (Session["User"] != null)
                 {
-                    btnAbonnements.Text = "<i class='fas fa-bell-slash'></i> Se désabonner";
-                }
-                else
-                {
-                    btnAbonnements.Text = "<i class='fas fa-bell'></i> S'abonner aux publications";
+                    user = (User)Session["User"];
+                    btnAbonnements.Visible = true;
+                    if (user.subscriber)
+                    {
+                        btnAbonnements.Text = "<i class='fas fa-bell-slash'></i> Se désabonner";
+                    }
+                    else
+                    {
+                        btnAbonnements.Text = "<i class='fas fa-bell'></i> S'abonner aux publications";
+                    }
                 }
             }
 
