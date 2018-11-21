@@ -90,7 +90,9 @@
     <Content Include="Admin\PublicationsMenu.aspx" />
     <Content Include="Desabonnement.aspx" />
     <Content Include="CSS\footer-distributed.css" />
+    <Content Include="Email\ConfirmationRDV.html" />
     <Content Include="Email\Notification.html" />
+    <Content Include="Email\RefusRDV.html" />
     <Content Include="Javascripts\Publications.js" />
     <Content Include="PublicationsCategorie.aspx" />
     <EmbeddedResource Include="Email\ActivationEmail.html">

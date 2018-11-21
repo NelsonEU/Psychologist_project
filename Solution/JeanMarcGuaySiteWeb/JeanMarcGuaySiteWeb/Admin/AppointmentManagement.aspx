@@ -20,7 +20,7 @@
 
         <div class="card mb-3" runat="server" id="cardUnconfirmed">
             <div class="card-header">
-                <i class="fas fa-bullhorn"></i>    Rendez-vous en attente
+                <i class="fas fa-bullhorn"></i>Rendez-vous en attente
             </div>
             <div class="card-body container-fluid">
                 <div class="">
@@ -30,12 +30,15 @@
                                 <input type="search" class="form-control" aria-controls="dataTable" placeholder="Rechercher" id="researchUser" />
                             </div>
                             <div class="offset-lg-2 col-lg-6 col-md-12 text-right">
-                                <asp:Button class=" btn btn-danger" runat="server" Text="Refuser" ID="btnRefuser" />
-                                <asp:Button class=" btn btn-success" runat="server" Text="Confirmer" ID="btnConfirmer" />
+                                <asp:Button class=" btn btn-danger" runat="server" Text="Refuser" ID="btnRefuser" OnClick="Click_Refuse" />
+                                <asp:Button class=" btn btn-success" runat="server" Text="Confirmer" ID="btnConfirmer" OnClick="Click_Confirm" />
                             </div>
                         </div>
-                        <div class="row">
-                            <div runat="server" visible="false" id="notif"></div>
+                        <div class="row" runat="server" visible="false" id="notifConfirme">
+                            <div style="background-color: red">Les rendez-vous sélectionnés ont bien été confirmés.</div>
+                        </div>
+                        <div class="row" runat="server" visible="false" id="notifRefuse">
+                            <div style="background-color: red">Les rendez-vous sélectionnés ont bien été refusés.</div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
@@ -59,7 +62,7 @@
 
         <div class="card mb-3" runat="server" id="cardConfirmed">
             <div class="card-header">
-                <i class="fas fa-th-list"></i>  Rendez-vous planifiés
+                <i class="fas fa-th-list"></i>Rendez-vous planifiés
             </div>
             <div class="card-body container-fluid">
                 <div class="">
@@ -69,11 +72,11 @@
                                 <input type="search" class="form-control" aria-controls="dataTable" placeholder="Rechercher" id="researchConfirmed" />
                             </div>
                             <div class="offset-lg-2 col-lg-6 col-md-12 text-right">
-                                <asp:Button class=" btn btn-danger" runat="server" Text="Annuler" ID="btnAnnuler" />
+                                <asp:Button class=" btn btn-danger" runat="server" Text="Annuler" ID="btnAnnuler" OnClick="Click_Cancel" />
                             </div>
                         </div>
-                        <div class="row">
-                            <div runat="server" visible="false" id="Div2"></div>
+                        <div class="row" runat="server" visible="false" id="notifAnnule">
+                            <div style="background-color: red">Les rendez-vous sélectionnés ont bien été annulés.</div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
@@ -94,6 +97,8 @@
             </div>
 
         </div>
+
+        <div runat="server" id="notifNoRdv">Pas de rendez-vous à afficher</div>
 
     </div>
 

@@ -58,13 +58,22 @@ namespace JeanMarcGuaySiteWeb.Admin {
         protected global::System.Web.UI.WebControls.Button btnConfirmer;
         
         /// <summary>
-        /// Contrôle notif.
+        /// Contrôle notifConfirme.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notif;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notifConfirme;
+        
+        /// <summary>
+        /// Contrôle notifRefuse.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notifRefuse;
         
         /// <summary>
         /// Contrôle tabUnconfirmed.
@@ -94,13 +103,13 @@ namespace JeanMarcGuaySiteWeb.Admin {
         protected global::System.Web.UI.WebControls.Button btnAnnuler;
         
         /// <summary>
-        /// Contrôle Div2.
+        /// Contrôle notifAnnule.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notifAnnule;
         
         /// <summary>
         /// Contrôle tabConfirmed.
@@ -110,5 +119,14 @@ namespace JeanMarcGuaySiteWeb.Admin {
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tabConfirmed;
+        
+        /// <summary>
+        /// Contrôle notifNoRdv.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notifNoRdv;
     }
 }
