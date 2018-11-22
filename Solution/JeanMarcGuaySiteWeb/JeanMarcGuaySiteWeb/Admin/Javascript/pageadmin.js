@@ -9,7 +9,7 @@
     });
 
     $('#divPubli').click(function () {
-        document.location.replace('DocumentManagement.aspx');
+        document.location.replace('PublicationsMenu.aspx');
     });
 
     $('#divContact').click(function () {

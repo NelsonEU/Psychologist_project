@@ -67,6 +67,9 @@
 .biggerText{
     font-size:12pt;
 }
+.biggerbiggerText{
+    font-size:14pt;
+}
 .box-shadow{ 
     box-shadow:0 0 90px 5px rgba(207,207,207,.8);
 }
@@ -76,13 +79,15 @@
     padding:15px;
     text-align:center;
     cursor: pointer;
-    transition: 0.4s;
+    transition: 0.2s;
 }
 
 .box-admin:hover {
-    background-color:rgb(29,98,128,0.1);
+    background-color:rgb(29,98,128,0.2);
 }
-
+.mainAdminColor {
+    color: #1d6280;
+}
 .hidden{
     display:none;
 }
@@ -94,7 +99,13 @@
     width: 100%;
     text-align: right;
 }
-
+.notification{
+    color:red;
+    text-align:center;
+}
+.textSmaller {
+    font-size:11pt;
+}
 .ajoutPublication{
     box-shadow: 4px 4px 12px 0px rgba(0,0,0,0.75);
 }

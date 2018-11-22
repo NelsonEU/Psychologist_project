@@ -21,12 +21,12 @@
 
         <div class="col-md box-admin box-shadow" id="divPubli" runat="server" ClientIDMode="static">
             <h5>Gestion des <br /><span class="highlightH4">Publications</span></h5><br />
-            <p>Page permettant d’<b>Ajouter ou Supprimer</b> des documents de format PDF afin de les rendre accessibles à <b>tous</b> les utilisateurs. </p>
+            <p>Pages permettant d’<b>Ajouter ou Supprimer</b> des <b>documents de format PDF</b> afin de les rendre accessibles à tous les utilisateurs. Permet aussi de gérer les <b>catégories</b> </p>
         </div>
 
         <div class="col-md box-admin box-shadow" id="divContact" runat="server" ClientIDMode="static">
             <h5>Gestion des <br /><span class="highlightH4">Contacts</span></h5><br />
-            <p>Page permettant de <b>Visualiser</b> la liste des contacts récents</p>
+            <p>Page permettant de <b>Visualiser</b> la liste des <b>contacts</b> récents</p>
         </div>
 
         <div class="col-md box-admin box-shadow" id="divUtili" runat="server" ClientIDMode="static">

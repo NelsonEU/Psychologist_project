@@ -13,6 +13,7 @@ namespace BusinessLogic
 
         public string title { get; set; } //VARCHAR(40)
         public string url { get; set; } //VARCHAR(150)
+        public string fileName { get; set; } //VARCHAR(80)
 
     }
 }

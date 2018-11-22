@@ -40,6 +40,15 @@ namespace JeanMarcGuaySiteWeb.Admin {
         protected global::System.Web.UI.WebControls.DropDownList DdlCategories;
         
         /// <summary>
+        /// Contrôle notification.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notification;
+        
+        /// <summary>
         /// Contrôle publicationTable.
         /// </summary>
         /// <remarks>

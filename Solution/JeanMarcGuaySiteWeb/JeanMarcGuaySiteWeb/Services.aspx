@@ -19,11 +19,11 @@
     <!-- Contenu Intro Consulter -->
     <section>
         <!-- Texte -->
-        <div style="margin-top: 40px;">
+        <div>
             <div class="container evenBiggerBox">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="col-md-6 ">
+                        <div class="col-md-6 pl0">
                             <h2 class="underline1 animated slow fadeInRight" style="opacity: 0;">Pourquoi consulter?</h2>
                         </div>
                         <div class="pt-3 divAnimation2" style="opacity: 0;">

@@ -32,40 +32,41 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
             // ------------------------------------------------------- //
 
-
-            //Feed les catégories 
-            if (!Page.IsPostBack)
+            if (Request.QueryString["erreur"] != null)
             {
+                if (Request.QueryString["erreur"] == "True")
+                {
+                    notification.InnerText = "Une erreur est survenue";
+                }
+            }
+
+            
+            if (!Page.IsPostBack)
+            {   
+                //Feed le DDL des catégories 
                 CategoryFactory cf = new CategoryFactory(cnnStr);
                 Category[] categories = cf.GetAll();
-                for (int i = 1; i < publicationTable.Rows.Count; i++)
-                {
-                    publicationTable.Rows.RemoveAt(i);
-                }
-                DdlCategories.Items.Add(new ListItem("Tous", "Tous"));
+                DdlCategories.Items.Add(new ListItem("Toutes", "Toutes"));
                 foreach (Category categorie in categories)
                 {
                     DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
                 }
 
+                //Affiche toutes les publications par défaut
                 Publication[] publications = pf.GetAll();
                 afficherTableau(publications);
             }
             else
             {
-                SelectedIndexChanged(null, null);
+                //SelectedIndexChanged(null, null);
             }
 
         }
 
         protected void SelectedIndexChanged(object sender, EventArgs e)
         {
-            string categorie = DdlCategories.SelectedValue;
-            for (int i = 1; i < publicationTable.Rows.Count; i++)
-            {
-                publicationTable.Rows.RemoveAt(i);
-            }
-            if (categorie == "Tous")
+            string categorie = DdlCategories.SelectedValue;          
+            if (categorie == "Toutes")
             {
                 Publication[] publications = pf.GetAll();
                 afficherTableau(publications);
@@ -79,14 +80,20 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         protected void afficherTableau( Publication[] publications)
         {
+            for (int i = 1; i < publicationTable.Rows.Count; i++)
+            {
+                publicationTable.Rows.RemoveAt(i);
+            }
             foreach (Publication publication in publications)
             {
                 TableRow row = new TableRow();
                 TableCell cellTitle = new TableCell();
+                TableCell cellFileName = new TableCell();
                 TableCell cellTelecharger = new TableCell();
                 TableCell cellSupprimer = new TableCell();
 
                 cellTitle.Text = publication.title;
+                cellFileName.Text = publication.fileName;
 
                 Button buttonDownload = new Button();
                 buttonDownload.Text = "Télécharger";
@@ -96,13 +103,14 @@ namespace JeanMarcGuaySiteWeb.Admin
                 cellTelecharger.Controls.Add(buttonDownload);
 
                 Button buttonSupprimer = new Button();
-                buttonSupprimer.Attributes.Add("class", "btn btn-warning btnSuppr");
+                buttonSupprimer.Attributes.Add("class", "btn btn-danger btnSuppr");
                 buttonSupprimer.Text = "Supprimer";
                 buttonSupprimer.Attributes.Add("data-id", publication.publicationId.ToString());
                 buttonSupprimer.Click += new EventHandler(btn_Supprimer_Click);
                 cellSupprimer.Controls.Add(buttonSupprimer);
 
                 row.Cells.Add(cellTitle);
+                row.Cells.Add(cellFileName);
                 row.Cells.Add(cellTelecharger);
                 row.Cells.Add(cellSupprimer);
 
@@ -116,10 +124,17 @@ namespace JeanMarcGuaySiteWeb.Admin
             int id = Convert.ToInt32(button.Attributes["data-id"]);
             Publication publication = pf.Get(id);
 
-            Response.ContentType = "Application/pdf";
-            Response.AppendHeader("Content-Disposition", "attachment; filename=" + publication.title + ".pdf");
-            Response.TransmitFile(Server.MapPath(publication.url));
-            Response.End();
+            if (File.Exists(Server.MapPath(publication.url)))
+            {
+                Response.ContentType = "Application/pdf";
+                Response.AppendHeader("Content-Disposition", "attachment; filename=" + publication.title + ".pdf");
+                Response.TransmitFile(Server.MapPath(publication.url));
+                Response.End();
+            }
+            else
+            {
+                Response.Redirect(Request.RawUrl + "?erreur=True");
+            }
         }
         protected void btn_Supprimer_Click(object sender, EventArgs e)
         {

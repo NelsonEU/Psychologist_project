@@ -11,19 +11,20 @@ function dataTableMaison() {
     var val = $('#searchPublications').val().toLowerCase();
     val = val.replace(/\s/g, '');
     var regex = new RegExp('\\w*' + val + '\\w*');
-    var usersArray = $('#ContentPlaceHolder1_tablePublications tbody tr');
-    var arrayLength = usersArray.length;
-    for (var i = 1; i < arrayLength; i++) {
-        var line = usersArray[i].innerText.toLowerCase();
-        line = line.replace(/\s/g, '');
-        if (i == 1) {
-            console.log(line);
-        }
-        if (!regex.test(line)) {
-            usersArray[i].style.display = "none";
+    var divs = $('#ContentPlaceHolder1_publicationsPortfolio').children();
+    var divsNb = divs.length;
+    for (var i = 0; i < divsNb; i++) {
+        var titre = divs[i].children[0].children[0].textContent.toLowerCase();
+        titre = titre.replace(/\s/g, '');
+        if (!regex.test(titre)) {
+            divs[i].style.display = "none";
         } else {
-            usersArray[i].style.display = "table-row";
+            divs[i].style.display = "initial";
         }
     }
 
 } 
+
+function onClickDownload(id) {
+    alert(id);
+}

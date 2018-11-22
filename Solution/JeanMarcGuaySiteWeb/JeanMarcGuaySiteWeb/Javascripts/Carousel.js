@@ -2,7 +2,7 @@
     $('.carousel_categorie').slick({
         dots: true,
         arrows: true,
-        infinite: false,
+        infinite: true,
         speed: 300,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -22,7 +22,8 @@
                 breakpoint: 600,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    swipe: true
                 }
             },
             {

@@ -14,6 +14,7 @@ namespace JeanMarcGuaySiteWeb
 	public partial class Publications1 : System.Web.UI.Page
 	{
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        User user = null;
         protected void Page_Load(object sender, EventArgs e)
 		{
             // ----------- Vérification le l'état du module ----------- //
@@ -34,7 +35,50 @@ namespace JeanMarcGuaySiteWeb
                 toAppend += "<div class=\"col-lg-4 col-md-6 col-sm-6 col-xs-1 portfolio-item pb-4\"><div class=\"card h-100\"><a href=\""+ c.urlRedirect +"\"><img class=\"card-img-top\" src=\""+ c.pictureUrl + "\" alt=\"\"></a><div class=\"card-body\"><h4 class=\"card-title\"><a href=\""+ c.urlRedirect +"\" >"+ c.name +"</a></h4></div></div></div>";
             }
 
+            // Bouton Abonnement
+            btnAbonnements.Visible = false;
+            m = moduleFactory.Get(4);/* Module id 4 = Module des abonnements */
+            if (m.active == true)
+            {
+                if (Session["User"] != null)
+                {
+                    user = (User)Session["User"];
+                    btnAbonnements.Visible = true;
+                    if (user.subscriber)
+                    {
+                        btnAbonnements.Text = "<i class='fas fa-bell-slash'></i> Se désabonner";
+                    }
+                    else
+                    {
+                        btnAbonnements.Text = "<i class='fas fa-bell'></i> S'abonner aux publications";
+                    }
+                }
+            }
+
             categoriesPortfolio.InnerHtml = toAppend;
         }
+
+        protected void abonnementDesabonnement(object sender, EventArgs e)
+        {
+            UserFactory uf = new UserFactory(cnnStr);
+            if (user != null)
+            {
+                if (user.subscriber)
+                {
+                    uf.OptOutById(user.userId);
+                    user.subscriber = false;
+                    Session["User"] = user;
+                    btnAbonnements.Text = "<i class='fas fa-bell'></i> S'abonner aux publications";
+                }
+                else
+                {
+                    uf.OptInById(user.userId);
+                    user.subscriber = true;
+                    Session["User"] = user;
+                    btnAbonnements.Text = "<i class='fas fa-bell-slash'></i> Se désabonner";
+                }
+            }
+        }
+
     }
 }

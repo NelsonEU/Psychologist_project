@@ -65,6 +65,10 @@ h1,h2,h3,h4,h5{
 .pb150{
     padding-bottom:150px;
 }
+
+.pb200 {
+    padding-bottom:200px;
+}
 .evenBiggerBox{
     padding-top: 75px;
     padding-bottom: 75px;
@@ -79,25 +83,45 @@ h1,h2,h3,h4,h5{
     background: linear-gradient(to right, rgb(29, 98, 128) 0%, rgb(4, 23, 31) 100%);
 }
 
+
 .footer::before{
-    padding-bottom:50px;
+    padding-bottom:100px;
 }
+.imageCarousel{
+    width:375px;
+    height:375px;
+} 
 
 .footer {
-    position:absolute; 
+    position: absolute;
     bottom: 0;
     width: 100%;
-    height: 60px;
+
     /*
     right: 0;
     left: 0;
     margin-top: 0px;
+        padding-top: 30px;
         */
-    text-align: center;
-    padding-top: 20px;
     color: white;
     background: linear-gradient(to right, rgb(29, 98, 128) 0%, rgb(15, 63, 84) 100%);
 }
+
+#logoOPQ{
+
+    
+    width:188px;
+    height:60px;
+    margin-top:10px;
+
+    /* 100 32 */
+}
+
+#textFooter {
+    text-align: center;
+    margin-top:30px;
+}
+
 .embed-responsive {
     /*position: relative;
     display: block;*/
@@ -106,24 +130,112 @@ h1,h2,h3,h4,h5{
 }
 
 
+#accueil {
+    padding-top: 2.5rem;
+    padding-bottom: 200px;
+}
+
+.pl0{
+    padding-left:0;
+}
+
+
+.contact {
+    padding-bottom: 200px;
+}
+
+.rdv {
+    padding-bottom: 200px;
+}
+
+.connexion {
+    padding-bottom: 200px;
+}
+
+.inscription {
+    padding-bottom: 200px;
+}
+.publications{
+    padding-bottom:200px;
+}
+
+#publications {
+    padding-bottom: 200px;
+}
+#service {
+    padding-bottom: 120px;
+}
+
+
 
 @media screen and (max-width: 600px) {
     .contact {
-        padding-bottom: 75px;
+        padding-bottom: 400px;
     }
 
     .rdv {
-        padding-bottom: 75px;
+        padding-bottom: 400px;
     }
 
     .connexion {
-        padding-bottom: 75px;
+        padding-bottom: 400px;
     }
 
     .inscription {
-        padding-bottom: 75px;
+        padding-bottom: 400px;
     }
+    #accueil {
+        padding-bottom: 300px;
+    }
+    #publications {
+        padding-bottom: 300px;
+    }
+    .publications {
+        padding-bottom: 300px;
+    }
+    #service {
+        padding-bottom: 300px;
+    }
+
+
 }
+
+@media screen and (max-width: 400px) {
+    .contact {
+        padding-bottom: 400px;
+    }
+
+    .rdv {
+        padding-bottom: 400px;
+    }
+
+    .connexion {
+        padding-bottom: 400px;
+    }
+
+    .inscription {
+        padding-bottom: 400px;
+    }
+
+    #accueil {
+        padding-bottom: 400px;
+    }
+
+    #publications {
+        padding-bottom: 400px;
+    }
+    .publications {
+        padding-bottom: 400px;
+    }
+
+    #service {
+        padding-bottom: 400px;
+    }
+
+    
+}
+
+
 
 
 
@@ -189,18 +301,15 @@ h5.titleBanner{
     font-weight:bold;
 }
 
-#accueil{
-    padding-top: 2.5rem;
-}
+
 
 #service {
     width: 100%;
     height: 100%;
     margin: 0px;
-    padding: 0px;
     overflow-x: hidden;
     overflow-y: auto;
-    padding-top: 2.5rem;
+    /*padding-top: 2.5rem;*/
 }
 
 h1.titleBanner{

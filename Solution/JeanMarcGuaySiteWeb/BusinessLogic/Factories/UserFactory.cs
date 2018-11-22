@@ -219,9 +219,19 @@ namespace BusinessLogic.Factories
                         _optOut = (DateTime)reader["opt_out"];
                         user.optOut = _optOut;
                     }
+                    
+                    catch (System.InvalidCastException) { }
+                    string _token = reader["token"].ToString();
+                    DateTime _lastNotificationDate;
+                    try
+                    {
+                        _lastNotificationDate = (DateTime)reader["lastNotificationDate"];
+                        user.optOut = _lastNotificationDate;
+                    }
+
                     catch (System.InvalidCastException) { }
 
-                    
+
                     user.userId = _userId;
                     user.lastname = _lastname;
                     user.firstname = _firstname;
@@ -232,6 +242,87 @@ namespace BusinessLogic.Factories
                     user.activated = _activated;
                     user.authorized = _authorized;
                     user.birthday = _birthday;
+                    user.token = _token;
+
+                    userList.Add(user);
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return userList.ToArray();
+
+        }
+        #endregion
+
+        #region GetAllSubscribed
+        public User[] GetAllSubscribed()
+        {
+
+            List<User> userList = new List<User>();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM users WHERE deletionDate IS NULL AND subscriber = 1 AND opt_in IS NOT NULL AND opt_out IS NULL AND (CURDATE() >= DATE_ADD(lastNotificationDate, INTERVAL +3 DAY) OR lastNotificationDate IS NULL) ORDER BY lastname";
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    User user = new User();
+                    int _userId = (Int32)reader["user_id"];
+                    string _lastname = reader["lastname"].ToString();
+                    string _firstname = reader["firstname"].ToString();
+                    string _email = reader["email"].ToString();
+                    string _password = reader["password"].ToString();
+                    bool _admin = (bool)reader["admin"];
+                    bool _subscriber = (bool)reader["subscriber"];
+                    bool _activated = (bool)reader["activated"];
+                    bool _authorized = (bool)reader["authorized"];
+                    DateTime _birthday = (DateTime)reader["birthday"];
+                    DateTime _optIn;
+                    try
+                    {
+                        _optIn = (DateTime)reader["opt_in"];
+                        user.optIn = _optIn;
+                    }
+                    catch (System.InvalidCastException) { }
+                    DateTime _optOut;
+                    try
+                    {
+                        _optOut = (DateTime)reader["opt_out"];
+                        user.optOut = _optOut;
+                    }
+
+                    catch (System.InvalidCastException) { }
+                    string _token = reader["token"].ToString();
+                    DateTime _lastNotificationDate;
+                    try
+                    {
+                        _lastNotificationDate = (DateTime)reader["lastNotificationDate"];
+                        user.optOut = _lastNotificationDate;
+                    }
+
+                    catch (System.InvalidCastException) { }
+
+
+                    user.userId = _userId;
+                    user.lastname = _lastname;
+                    user.firstname = _firstname;
+                    user.email = _email;
+                    user.password = _password;
+                    user.admin = _admin;
+                    user.subscriber = _subscriber;
+                    user.activated = _activated;
+                    user.authorized = _authorized;
+                    user.birthday = _birthday;
+                    user.token = _token;
 
                     userList.Add(user);
                 }
@@ -287,17 +378,24 @@ namespace BusinessLogic.Factories
                         _optOut = (DateTime)reader["opt_out"];
                         user.optOut = _optOut;
                     }
+
                     catch (System.InvalidCastException) { }
+                    string _token = reader["token"].ToString();
+                    DateTime _lastNotificationDate = (DateTime)reader["lastNotificationDate"];
+
 
                     user.userId = _userId;
                     user.lastname = _lastname;
                     user.firstname = _firstname;
+                    user.email = _email;
                     user.password = _password;
                     user.admin = _admin;
                     user.subscriber = _subscriber;
                     user.activated = _activated;
                     user.authorized = _authorized;
                     user.birthday = _birthday;
+                    user.token = _token;
+                    user.lastNotificationDate = _lastNotificationDate;
                 }
                 reader.Close();
             }
@@ -393,6 +491,90 @@ namespace BusinessLogic.Factories
                 cnn.Close();
             }
         }
+        #endregion
+
+        #region OptOutByEmail
+        public void OptOutByEmail(string email)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET subscriber = false, opt_out = NOW(), opt_in = NULL WHERE email=@email";
+                cmd.Parameters.AddWithValue("@email", email);
+
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
+        #region OptOutById
+        public void OptOutById(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET subscriber = false, opt_out = NOW(), opt_in = NULL WHERE user_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
+        #region OptInById
+        public void OptInById(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET subscriber = True, opt_out = NULL, opt_in = Now() WHERE user_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
+        #region notifyById
+
+        public void notifyById(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET lastNotificationDate = NOW() WHERE user_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+
         #endregion
 
         #region Update

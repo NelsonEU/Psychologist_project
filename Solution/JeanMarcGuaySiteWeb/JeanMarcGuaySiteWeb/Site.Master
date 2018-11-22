@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="CSS/slick.css" />
     <link rel="stylesheet" type="text/css" href="CSS/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/footer-distributed.css" />
     <link rel="stylesheet" href="CSS/Navbar.css" />
     <link rel="stylesheet" href="CSS/Base.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
@@ -70,13 +71,53 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
 
-            <!-- Fin Contenu -->
 
-            <!-- Footer  -->
-            <footer class="footer">
-                <span>Jean-Marc Guay</span>
+            <footer class="footer footer-distributed bc-blue">
+
+                <div class="footer-right">
+
+
+                    
+                    <a href="https://www.ordrepsy.qc.ca/" id="logoOPQ"><img src="Images/logoOPQ2.jpg"  /></a>
+                    
+
+                    <!-- -
+                    <img ->src="Images/logoOPQ2.jpg" id="logoOPQ" />
+
+               - -->
+                </div>
+
+                <div class="footer-left">
+
+                    <p class="footer-links">
+                        <a href="Default.aspx">Accueil</a>
+                        ·
+				
+                        <a href="Services.aspx">Services</a>
+                        <span runat="server" id="liFooterPublication">·
+                        <a href="Publications.aspx" runat="server">Publications</a>
+                        </span>
+                        <span runat="server" id="liFContact">·
+                        <a href="Contact.aspx" >Contact</a>
+                        </span>
+                        <span runat="server" id="liFRdv">·
+                        <a href="RendezVous.aspx" >Rendez-vous</a>
+                        </span>
+
+				        <span runat="server" id="liFAdmin">·
+                        <a href="admin/admin.aspx" >Administration</a>
+                        </span>
+				
+
+                        ·
+				
+                        <a href="Connexion.aspx">Se connecter</a>
+                    </p>
+
+                    <p>Jean-Marc Guay, M.A.Ps &copy; 2018</p>
+                </div>
+
             </footer>
-            <!-- Fin Footer -->
 
         </div>
     </form>

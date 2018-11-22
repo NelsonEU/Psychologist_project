@@ -1,0 +1,5 @@
+ALTER TABLE `prj-jmguay`.`users` 
+ADD COLUMN `lastNotificationDate` DATETIME NULL DEFAULT NULL AFTER `token`;
+
+ALTER TABLE `prj-jmguay`.`categories` 
+ADD COLUMN `pictureName` VARCHAR(80) NULL AFTER `redirect_url`;
