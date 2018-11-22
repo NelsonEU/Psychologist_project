@@ -11,7 +11,10 @@ namespace BusinessLogic
 
         public int availabilityId { get; set; } //PK
 
-        public DateTime schedule { get; set; }
+        public DateTime strdt { get; set; } //heure debut
 
+        public DateTime enddt { get; set; } //Heure fin 
+
+        public string day; 
     }
 }

@@ -82,6 +82,7 @@
     <Content Include="Admin\AjoutCategorie.aspx" />
     <Content Include="Admin\CategoryManagement.aspx" />
     <Content Include="Admin\Javascript\categorieAdmin.js" />
+    <Content Include="Admin\Javascript\jquery.timepicker.min.js" />
     <Content Include="Admin\Javascript\publicationAdmin.js" />
     <Content Include="Admin\CSS\bootstrap-timepicker.css" />
     <Content Include="Admin\Javascript\bootstrap-timepicker.js" />
