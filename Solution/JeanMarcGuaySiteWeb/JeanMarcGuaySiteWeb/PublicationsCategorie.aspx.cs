@@ -38,7 +38,7 @@ namespace JeanMarcGuaySiteWeb
                     CategoryFactory cf = new CategoryFactory(cnnStr);
                     Category cat = cf.GetCategoryById(category);
 
-                    if (cat.IsNull())
+                    if (cat.name == null && cat.pictureUrl == null)
                     {
                         Response.Redirect("Publications.aspx");
                     }

@@ -19,16 +19,19 @@
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 800,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
+                    infinite:true,
                     swipe: true
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
+                    infinite: true,
+                    swipe:true,
                     slidesToShow: 1,
                     slidesToScroll: 1
                 }

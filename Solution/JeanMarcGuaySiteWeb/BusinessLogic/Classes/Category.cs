@@ -15,13 +15,13 @@ namespace BusinessLogic
 
         public string pictureUrl { get; set; } //VARCHAR (150)
 
-        public string urlRedirect { get; set; } //VARCHAR(30)
+        //public string urlRedirect { get; set; } //VARCHAR(30)
 
         public string pictureName { get; set; } //VARCHAR(80)
 
         public Boolean IsNull()
         {
-            if (name == null && pictureUrl == null && urlRedirect == null)
+            if (name == null && pictureUrl == null)
             {
                 return true;
             }

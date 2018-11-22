@@ -36,14 +36,14 @@ namespace BusinessLogic.Factories
                     int _id = (Int32)reader["category_id"];
                     string _name = reader["name"].ToString();
                     string _pictureUrl = reader["picture_url"].ToString();
-                    string _redirectUrl = reader["redirect_url"].ToString();
+                    //string _redirectUrl = reader["redirect_url"].ToString();
                     string _pictureName = reader["pictureName"].ToString();
 
                     Category category = new Category();
                     category.categoryId = _id;
                     category.name = _name;
                     category.pictureUrl = _pictureUrl;
-                    category.urlRedirect = _redirectUrl;
+                    //category.urlRedirect = _redirectUrl;
                     category.pictureName = _pictureName;
 
                     categoryList.Add(category);
@@ -78,13 +78,13 @@ namespace BusinessLogic.Factories
                     int _id = (Int32)reader["category_id"];
                     string _name = reader["name"].ToString();
                     string _pictureUrl = reader["picture_url"].ToString();
-                    string _redirectUrl = reader["redirect_url"].ToString();
+                    //string _redirectUrl = reader["redirect_url"].ToString();
                     string _pictureName = reader["pictureName"].ToString();
 
                     category.categoryId = _id;
                     category.name = _name;
                     category.pictureUrl = _pictureUrl;
-                    category.urlRedirect = _redirectUrl;
+                    //category.urlRedirect = _redirectUrl;
                     category.pictureName = _pictureName;
 
                 }
@@ -121,13 +121,13 @@ namespace BusinessLogic.Factories
                     int _id = (Int32)reader["category_id"];
                     string _name = reader["name"].ToString();
                     string _pictureUrl = reader["picture_url"].ToString();
-                    string _redirectUrl = reader["redirect_url"].ToString();
+                    //string _redirectUrl = reader["redirect_url"].ToString();
                     string _pictureName = reader["pictureName"].ToString();
 
                     category.categoryId = _id;
                     category.name = _name;
                     category.pictureUrl = _pictureUrl;
-                    category.urlRedirect = _redirectUrl;
+                    //category.urlRedirect = _redirectUrl;
                     category.pictureName = _pictureName;
 
                 }

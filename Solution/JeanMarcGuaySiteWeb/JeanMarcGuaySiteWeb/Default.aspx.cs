@@ -27,7 +27,7 @@ namespace JeanMarcGuaySiteWeb
             
             foreach(Category c in categories)
             {
-                toAppend += "<div class=\"text-center text-secondary\"><a href=\"" + c.urlRedirect + "\"><img src=\"" + c.pictureUrl + "\" class=\"imageCarousel mb-2\" /></a><a class=\"link-carousel text-secondary\" href=\"" + c.urlRedirect + "\"> <h2>" + c.name + "</h2></a></div>";
+                toAppend += "<div class=\"text-center text-secondary\"><a href=\"PublicationsCategorie.aspx?cat=" + c.categoryId + "\"><img src=\"" + c.pictureUrl + "\" class=\"imageCarousel mb-2\" /></a><a class=\"link-carousel text-secondary\" href=\"PublicationsCategorie.aspx?cat=" + c.categoryId + "\"> <h2>" + c.name + "</h2></a></div>";
             }
 
             carouselCategories.InnerHtml = toAppend;
