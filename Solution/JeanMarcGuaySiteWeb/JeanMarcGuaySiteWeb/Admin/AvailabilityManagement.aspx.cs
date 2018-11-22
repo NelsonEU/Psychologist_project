@@ -13,6 +13,7 @@ namespace JeanMarcGuaySiteWeb.Admin
     public partial class AvailabilityManagement : System.Web.UI.Page
     {
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        private AvailabilityFactory uf = new AvailabilityFactory(cnnStr);
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,6 +33,22 @@ namespace JeanMarcGuaySiteWeb.Admin
             // ------------------------------------------------------- //
 
             //
+        }
+
+        protected void Submit_click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void invisButton_Click(object sender, EventArgs e)
+        {
+            string day = hdnLabelState.Value;
+
+            //verfications
+             //if not blank (btw jdois les rendre read only)
+             //if (StartA <= EndB) and (EndA >= StartB) BAD
+             //Else
+            uf.Add(dayl1.Value, Convert.ToDateTime(time1l1.Value), Convert.ToDateTime(time2l1.Value)); 
         }
     }
 }

@@ -79,10 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activation.aspx" />
+    <Content Include="Admin\CSS\jquery.timepicker.min.css" />
+    <Content Include="Admin\Javascript\Availability.js" />
+    <Content Include="Admin\Javascript\bootstrap-datepicker.js" />
+    <Content Include="Admin\Javascript\jquery.timepicker.min.js" />
     <Content Include="Admin\Javascript\publicationAdmin.js" />
     <Content Include="Admin\CSS\bootstrap-timepicker.css" />
-    <Content Include="Admin\Javascript\bootstrap-timepicker.js" />
-    <Content Include="Admin\Javascript\DateRangePicker.js" />
     <Content Include="Javascripts\Publications.js" />
     <Content Include="PublicationsCategorie.aspx" />
     <EmbeddedResource Include="Email\ActivationEmail.html">
