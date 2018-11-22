@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autres\EmailController.cs" />
+    <Compile Include="Autres\ImageQualityController.cs" />
     <Compile Include="Classes\Appointement.cs" />
     <Compile Include="Classes\Availability.cs" />
     <Compile Include="Classes\Category.cs" />
