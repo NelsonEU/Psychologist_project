@@ -8,6 +8,7 @@ using BusinessLogic;
 using BusinessLogic.Factories;
 using BusinessLogic.Autres;
 using System.Configuration;
+using System.Drawing;
 using System.IO;
 
 namespace JeanMarcGuaySiteWeb.Admin
@@ -81,11 +82,17 @@ namespace JeanMarcGuaySiteWeb.Admin
                                 {
                                     // Televersement de l'image
                                     string path = "/Images/" + fileUpload.PostedFile.FileName;
-                                    fileUpload.SaveAs(Server.MapPath(path));
+
+                                    Bitmap imgBitmap = new Bitmap(fileUpload.PostedFile.InputStream);
+
+                                    ImageQualityController iqc = new ImageQualityController();
+                                    iqc.Save(imgBitmap, 500, 500, 80, Server.MapPath(path));
+                                    //fileUpload.SaveAs(Server.MapPath(path));
 
                                     //Ajout à la BD
                                     cf.Add(txtTitle.Text, path, fileUpload.PostedFile.FileName);
 
+                                    
                                     //Redirection
                                     Response.Redirect("AjoutCategorie.aspx" + "?Conf=True");
                                 }
