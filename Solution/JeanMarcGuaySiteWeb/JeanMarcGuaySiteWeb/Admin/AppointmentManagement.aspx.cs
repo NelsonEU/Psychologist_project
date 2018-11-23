@@ -51,7 +51,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                     int userId = a.userId;
                     User user = uf.Get(userId);
 
-                    DateTime dateTime = availability.schedule;
+                    DateTime dateTime = availability.strdt;
                     if (dateTime.CompareTo(DateTime.Now) < 0)
                     {
                         af.outdate(a.appointementId);
@@ -110,7 +110,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                     int userId = a.userId;
                     User user = uf.Get(userId);
                     
-                    DateTime dateTime = availability.schedule;
+                    DateTime dateTime = availability.strdt;
                     if (dateTime.CompareTo(DateTime.Now) < 0)
                     {
                         af.outdate(a.appointementId);
@@ -195,7 +195,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                             body = reader2.ReadToEnd();
                         }
                         body = body.Replace("{user}", user.firstname);
-                        body = body.Replace("{date}", availability.schedule.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));        
+                        body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));        
                         ec.SendMail(user.email, "JMGuay.ca - Confirmation du rendez-vous [Message automatique]", body);
 
                     }
@@ -230,7 +230,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                             body = reader2.ReadToEnd();
                         }
                         body = body.Replace("{user}", user.firstname);
-                        body = body.Replace("{date}", availability.schedule.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+                        body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
                         ec.SendMail(user.email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
                     }
                 }
@@ -263,7 +263,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                             body = reader2.ReadToEnd();
                         }
                         body = body.Replace("{user}", user.firstname);
-                        body = body.Replace("{date}", availability.schedule.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+                        body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
                         ec.SendMail(user.email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
                     }
                 }
