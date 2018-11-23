@@ -16,7 +16,9 @@ namespace JeanMarcGuaySiteWeb.Admin
     public partial class AjoutCategorie : System.Web.UI.Page
     {
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        static int imageQuality = Convert.ToInt32(ConfigurationManager.AppSettings["imageQuality"]);
         CategoryFactory cf = new CategoryFactory(cnnStr);
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -86,8 +88,11 @@ namespace JeanMarcGuaySiteWeb.Admin
                                     Bitmap imgBitmap = new Bitmap(fileUpload.PostedFile.InputStream);
 
                                     ImageQualityController iqc = new ImageQualityController();
-                                    iqc.Save(imgBitmap, 500, 500, 80, Server.MapPath(path));
-                                    //fileUpload.SaveAs(Server.MapPath(path));
+
+                                    int targetWidth = imgBitmap.Width > 500 ? 500 : imgBitmap.Width;
+                                    int targetHeight = imgBitmap.Height > 500 ? 500 : imgBitmap.Height;
+
+                                    iqc.Save(imgBitmap, targetWidth, targetHeight, imageQuality, Server.MapPath(path));
 
                                     //Ajout à la BD
                                     cf.Add(txtTitle.Text, path, fileUpload.PostedFile.FileName);

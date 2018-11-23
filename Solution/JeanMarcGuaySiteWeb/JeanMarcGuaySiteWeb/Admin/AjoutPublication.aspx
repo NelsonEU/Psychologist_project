@@ -36,7 +36,7 @@
                     </div>
                     <div class="row text-center pb-4">
                         <div class="col-12">
-                            <asp:FileUpload ID="fileUpload" runat="server" />
+                            <asp:FileUpload ID="fileUpload" runat="server" style="margin:auto"/>
                         </div>
                     </div>
                     <div class="row text-center">

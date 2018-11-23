@@ -402,7 +402,10 @@ h1, h2, h3 {
     cursor: pointer;
     transition: 0.4s;
 }
-
+.card-img-top {
+    width:375px;
+    height:375px;
+}
 .parallax {
     /* The image used */
     background-image: url("http://wp2.commonsupport.com/newwp/mindron/wp-content/uploads/2018/02/services-14.jpg");
