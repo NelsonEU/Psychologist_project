@@ -62,23 +62,22 @@ function dataTableMaison() {
             usersArray[i].style.display = "none";
         } else {
             usersArray[i].style.display = "table-row";
-        } 
+        }
     }
 
-} 
+}
 
 
 function ConfirmerSuppression() {
     var confirm_value = document.createElement("INPUT");
     confirm_value.type = "hidden";
     confirm_value.name = "confirm_delete";
-
-    
     if (confirm("Êtes-vous sur de vouloir supprimer ces utilisateurs ?")) {
         confirm_value.value = "Oui";
     } else {
         confirm_value.value = "Non";
     }
+ 
     document.forms[0].appendChild(confirm_value);
 }
 
@@ -92,22 +91,49 @@ function ConfirmerDesauthorisation() {
     } else {
         confirm_value.value = "Non";
     }
-    /*
-    $.confirm({
+    document.forms[0].appendChild(confirm_value);
+}
 
-        title: 'Désauthorisation',
-        content: 'Êtes-vous sur de vouloir désauthoriser ces utilisateurs ?',
-        buttons: {
-            confirm: function () {
-                confirm_value.value = "Oui";
-            },
-            cancel: function () {
-                confirm_value.value = "Non";
-            }
-        }
-    });
-    event.preventDefault();
-    */
+
+
+function ConfirmerRDV() {
+
+    var confirm_value = document.createElement("INPUT");
+    confirm_value.type = "hidden";
+    confirm_value.name = "confirm_rdv";
+
+    if (confirm("Êtes-vous sur de vouloir confirmer ce(s) rendez-vous ?")) {
+        confirm_value.value = "Oui";
+    } else {
+        confirm_value.value = "Non";
+    }
+    document.forms[0].appendChild(confirm_value);
+
+}
+
+function RefuserRDV() {
+    var confirm_value = document.createElement("INPUT");
+    confirm_value.type = "hidden";
+    confirm_value.name = "refuse_rdv";
+
+    if (confirm("Êtes-vous sur de vouloir refuser ce(s) rendez-vous ?")) {
+        confirm_value.value = "Oui";
+    } else {
+        confirm_value.value = "Non";
+    }
+    document.forms[0].appendChild(confirm_value);
+}
+
+function AnnulerRDV() {
+    var confirm_value = document.createElement("INPUT");
+    confirm_value.type = "hidden";
+    confirm_value.name = "cancel_rdv";
+
+    if (confirm("Êtes-vous sur de vouloir annuler ce(s) rendez-vous ?")) {
+        confirm_value.value = "Oui";
+    } else {
+        confirm_value.value = "Non";
+    }
     document.forms[0].appendChild(confirm_value);
 }
 

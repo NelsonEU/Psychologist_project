@@ -10,15 +10,15 @@
         </div>
     </div>
 
-    <div class="mb-3">
+    <div class="card mb-3">
         <div class="card-body container-fluid">
             <div class="">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <div class="form-row">
                         <div class="col-lg-4 col-md-12 form-group">
-                            <input type="search" class="form-control" aria-controls="dataTable" placeholder="Rechercher" id="researchUser" /> 
+                            <input type="search" class="form-control" aria-controls="dataTable" placeholder="Rechercher" id="researchUser" />
                         </div>
-                        <div class="offset-lg-2 col-lg-6 col-md-12 text-right">          
+                        <div class="offset-lg-2 col-lg-6 col-md-12 text-right">
                             <asp:Button class=" btn btn-success" runat="server" Text="Authoriser" OnClick="Click_Authorized" ID="btnAuthoriser" />
                             <asp:Button class="btn btn-warning" runat="server" Text="Désauthoriser" OnClick="Click_Deauthorized" OnClientClick="ConfirmerDesauthorisation()" ID="btnDesauthoriser" />
                             <asp:Button class=" btn btn-danger" runat="server" Text="Supprimer" OnClick="Click_Delete" OnClientClick="ConfirmerSuppression()" ID="btnSupprimer" />
@@ -48,5 +48,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     <script src="Javascript/Admin.js"></script>
 </asp:Content>
