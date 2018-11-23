@@ -80,7 +80,7 @@
             <div id="paraTrigger3"></div>
         </div>
 
-        <div class="container biggerBox">
+        <div class="container biggerBox" runat="server" id="divCarousel">
             <div class="row pt-5">
                 <h2 class="underline1 animated slow" id="h2Publications">Publications</h2>
             </div>
@@ -89,6 +89,11 @@
             </div>
         </div>
 
+        <!--
+        <div class="container biggerBox" runat="server" id="divNonCarousel">
+
+        </div>
+        -->
 
     </div>
 </asp:Content>

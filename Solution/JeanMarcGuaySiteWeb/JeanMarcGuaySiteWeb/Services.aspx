@@ -148,7 +148,7 @@
         <div class="container evenBiggerBox">
             <div class="row pb-5">
                 <div class="col-md-12">
-                    <div id="PremiereRencontreHead" class="col-md-5 animated slow" style="padding: 0px 0px 0px 0px;">
+                    <div id="PremiereRencontreHead" class="col-md-4 animated slow" style="padding: 0px 0px 0px 0px;">
                         <h2 class="underline1">Première rencontre</h2>
                     </div>
                     <div class="pt-3 animated slow" id="premiereRencontre">

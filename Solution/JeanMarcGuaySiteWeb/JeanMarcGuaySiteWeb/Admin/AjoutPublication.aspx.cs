@@ -62,6 +62,7 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         protected void UploadButton_Click(object sender, EventArgs e)
         {
+            UploadButton.Enabled = false;
             try
             {
                 if (fileUpload.HasFile)
@@ -150,6 +151,10 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 StatusLabel.Style.Add("color", "red");
                 StatusLabel.Text = "Le fichier n'a pas pu être téléversé. L'erreur suivante s'est produite: " + ex.Message;
+            }
+            finally
+            {
+                UploadButton.Enabled = true;
             }
 
 
