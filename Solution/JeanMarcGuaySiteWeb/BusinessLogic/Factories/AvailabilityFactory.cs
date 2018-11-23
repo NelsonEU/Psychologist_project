@@ -101,5 +101,41 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+        #region GetById
+        public Availability GetById(int id)
+        {
+
+            Availability availability = new Availability();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM availabilities WHERE Availability_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int _availabilityId = (Int32)reader["Availability_id"];
+                    DateTime time1 = (DateTime)reader["Start_time"];
+                    DateTime time2 = (DateTime)reader["End_time"];
+                    availability.availabilityId = _availabilityId;
+                    availability.strdt = time1;
+                    availability.enddt = time2;
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+
+            return availability;
+        }
+        #endregion
     }
+
 }
+
