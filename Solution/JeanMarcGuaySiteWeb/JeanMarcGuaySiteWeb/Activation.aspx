@@ -4,6 +4,19 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <style>
+        /* Sinon le menu est invisible sur cette page */
+        #mainNav {
+            background-color: rgb(255,255,255,0.9) !important;
+            box-shadow: 4px 7px 31px -8px rgba(0,0,0,0.75);
+        }
+
+        .nav-item a {
+            color: rgb(29, 98, 128) !important;
+        }
+    </style>
+
     <div class="container space-medium pt-4">
         <div class="row text-center paddingNav2">
             <div class="col-lg-12">

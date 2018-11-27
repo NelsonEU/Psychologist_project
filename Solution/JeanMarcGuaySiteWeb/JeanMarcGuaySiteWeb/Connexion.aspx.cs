@@ -69,7 +69,7 @@ namespace JeanMarcGuaySiteWeb
                             }
                             body = body.Replace("{email}", email.Text);
                             body = body.Replace("{token}", user.token);
-                            ec.SendMail(email.Text, "Bienvenue !", body);
+                            ec.SendMail(email.Text, "Bienvenue!", body);
                         }
                         else
                         {

@@ -35,8 +35,5 @@ namespace BusinessLogic.Autres
             smtp.Send(mail);
 
         }
-
-
-
     }
 }

@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-        <style>
+    <style>
         /* Sinon le menu est invisible sur cette page */
         #mainNav {
             background-color: rgb(255,255,255,0.9) !important;

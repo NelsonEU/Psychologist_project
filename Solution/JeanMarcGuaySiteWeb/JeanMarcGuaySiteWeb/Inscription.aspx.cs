@@ -81,8 +81,11 @@ namespace JeanMarcGuaySiteWeb
                             {
                                 body = reader.ReadToEnd();
                             }
-                            body = body.Replace("{email}", email.Text);
-                            body = body.Replace("{token}", token);
+                            string strPathAndQuery = HttpContext.Current.Request.Url.PathAndQuery;
+                            string strUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(strPathAndQuery, "/");
+                            string lienActivation = strUrl + "Activation.aspx" + "?email=" + email.Text + "&tkn=" + token;
+
+                            body = body.Replace("{lienActivation}", lienActivation);
                             ec.SendMail(email.Text, "Bienvenue !", body);
 
                         }
