@@ -78,9 +78,9 @@ namespace BusinessLogic.Factories
                 while (reader.Read())
                 {
                     int _id = (Int32)reader["availability_id"];
-                    string _day = reader["name"].ToString();
-                    DateTime _strdt = Convert.ToDateTime(reader["strdt"]);
-                    DateTime _enddt = Convert.ToDateTime(reader["enddt"]);
+                    string _day = reader["day"].ToString();
+                    DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
+                    DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
 
                     Availability availability = new Availability();
                     availability.availabilityId = _id;
@@ -135,6 +135,68 @@ namespace BusinessLogic.Factories
             return availability;
         }
         #endregion
+
+        #region checkifexit
+        public bool checkifvalid(string Day, DateTime strtd, DateTime enddt)
+        {
+            List<Availability> availabilityList = new List<Availability>();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM availabilities WHERE day=@day ";
+
+                cmd.Parameters.AddWithValue("@day", Day);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int _id = (Int32)reader["availability_id"];
+                    string _day = reader["day"].ToString();
+                    DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
+                    DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
+
+                    Availability availability = new Availability();
+                    availability.availabilityId = _id;
+                    availability.day = _day;
+                    availability.strdt = _strdt;
+                    availability.enddt = _enddt;
+
+                    availabilityList.Add(availability);
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            bool legit = true;
+            if (strtd > enddt)
+            {
+                legit = false;
+            }
+
+            if (legit)
+            {
+                foreach (Availability av in availabilityList)
+                {
+                    //if (StartA <= EndB) and (EndA >= StartB) BAD
+
+
+                    if (strtd <= av.enddt && enddt >= av.strdt)
+                    {
+                        legit = false;
+                    }
+                }
+            }
+            return legit;
+        }
+        #endregion
+
     }
 
 }
