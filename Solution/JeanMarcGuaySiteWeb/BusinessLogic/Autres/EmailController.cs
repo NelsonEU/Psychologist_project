@@ -27,7 +27,7 @@ namespace BusinessLogic.Autres
             mail.Body = body;
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
-            smtp.Credentials = new System.Net.NetworkCredential("cabinet.jmguay@gmail.com", "jmguay&2018");
+            smtp.Credentials = new System.Net.NetworkCredential("cabinet.jmguay@gmail.com", "Jmguay2018!");
             smtp.Port = 587;
             smtp.EnableSsl = true;
             smtp.Send(mail);

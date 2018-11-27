@@ -198,33 +198,49 @@ namespace JeanMarcGuaySiteWeb.Admin
                 AppointementFactory af = new AppointementFactory(cnnStr);
                 UserFactory uf = new UserFactory(cnnStr);
                 AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
+                List<String> listId = new List<String>();
                 foreach (TableRow row in tabUnconfirmed.Rows)
                 {
                     foreach (TableCell cell in row.Cells)
                     {
                         if (cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
                         {
-                            //On le confirme
-                            Appointement appointement = af.Get(Int32.Parse(cell.ID));
-                            af.confirm(appointement.appointementId);
-                            User user = uf.Get(appointement.userId);
-                            Availability availability = avf.GetById(appointement.availabilityId);
-
-                            //On envoie un mail de confirmation
-                            // Envoi du Email de confirmation d'envoi a l'utilisateur
-                            EmailController ec = new EmailController();
-                            string body = string.Empty;
-                            using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/ConfirmationRDV.html")))
-                            {
-                                body = reader2.ReadToEnd();
-                            }
-                            body = body.Replace("{user}", user.firstname);
-                            body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
-                            ec.SendMail(user.email, "JMGuay.ca - Confirmation du rendez-vous [Message automatique]", body);
-
+                            listId.Add(cell.ID);
                         }
                     }
                 }
+                String[] tabId = listId.ToArray();
+                if(tabId.Length > 0)
+                {
+                    af.confirmByArray(tabId);
+                    User[] tabUsers = uf.GetAll();
+                    Dictionary<int, User> mapUser = new Dictionary<int, User>();
+                    foreach(User u in tabUsers)
+                    {
+                        mapUser.Add(u.userId, u);
+                    }
+                    Availability[] tabAvailability = avf.GetAll();
+                    Dictionary<int, Availability> mapAvailability = new Dictionary<int, Availability>();
+                    foreach (Availability a in tabAvailability)
+                    {
+                        mapAvailability.Add(a.availabilityId, a);
+                    }                  
+                    Appointement[] tabAppointments = af.GetByArray(tabId);
+                    foreach(Appointement a in tabAppointments)
+                    {
+                        //On envoie un mail de confirmation
+                        EmailController ec = new EmailController();
+                        string body = string.Empty;
+                        using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/ConfirmationRDV.html")))
+                        {
+                            body = reader2.ReadToEnd();
+                        }
+                        body = body.Replace("{user}", mapUser[a.userId].firstname);
+                        body = body.Replace("{date}", mapAvailability[a.availabilityId].strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+                        ec.SendMail(mapUser[a.userId].email, "JMGuay.ca - Confirmation du rendez-vous [Message automatique]", body);
+                    }
+                }
+
             }
             Response.Redirect(Request.RawUrl + "?notif=confirm");
         }
@@ -239,31 +255,20 @@ namespace JeanMarcGuaySiteWeb.Admin
                 AppointementFactory af = new AppointementFactory(cnnStr);
                 UserFactory uf = new UserFactory(cnnStr);
                 AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
+                List<String> listId = new List<String>();
                 foreach (TableRow row in tabUnconfirmed.Rows)
                 {
                     foreach (TableCell cell in row.Cells)
                     {
                         if (cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
                         {
-
-                            //On le refuse
-                            Appointement appointement = af.Get(Int32.Parse(cell.ID));
-                            af.delete(Int32.Parse(cell.ID));
-                            User user = uf.Get(appointement.userId);
-                            Availability availability = avf.GetById(appointement.availabilityId);
-                            //On envoie un mail (REFUS)
-                            EmailController ec = new EmailController();
-                            string body = string.Empty;
-                            using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/RefusRDV.html")))
-                            {
-                                body = reader2.ReadToEnd();
-                            }
-                            body = body.Replace("{user}", user.firstname);
-                            body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
-                            ec.SendMail(user.email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
+                            listId.Add(cell.ID);
                         }
                     }
                 }
+                String[] tabId = listId.ToArray();
+                Refuse(tabId);
+                
             }
             Response.Redirect(Request.RawUrl + "?notif=refuse");
         }
@@ -276,32 +281,58 @@ namespace JeanMarcGuaySiteWeb.Admin
                 AppointementFactory af = new AppointementFactory(cnnStr);
                 UserFactory uf = new UserFactory(cnnStr);
                 AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
+                List<String> listId = new List<String>();
                 foreach (TableRow row in tabConfirmed.Rows)
                 {
                     foreach (TableCell cell in row.Cells)
                     {
                         if (cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
                         {
-                            //On le refuse
-                            Appointement appointement = af.Get(Int32.Parse(cell.ID));
-                            af.delete(appointement.appointementId);
-                            User user = uf.Get(appointement.userId);
-                            Availability availability = avf.GetById(appointement.availabilityId);
-                            //On envoie un mail (REFUS)
-                            EmailController ec = new EmailController();
-                            string body = string.Empty;
-                            using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/RefusRDV.html")))
-                            {
-                                body = reader2.ReadToEnd();
-                            }
-                            body = body.Replace("{user}", user.firstname);
-                            body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
-                            ec.SendMail(user.email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
+                            listId.Add(cell.ID);
                         }
                     }
                 }
+                string[] tabId = listId.ToArray();
+                Refuse(tabId);
             }
             Response.Redirect(Request.RawUrl + "?notif=cancel");
+        }
+
+        private void Refuse(string[] tabId)
+        {
+            AppointementFactory af = new AppointementFactory(cnnStr);
+            UserFactory uf = new UserFactory(cnnStr);
+            AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
+            if (tabId.Length > 0)
+            {
+                af.DeleteByArray(tabId);
+                User[] tabUsers = uf.GetAll();
+                Dictionary<int, User> mapUser = new Dictionary<int, User>();
+                foreach (User u in tabUsers)
+                {
+                    mapUser.Add(u.userId, u);
+                }
+                Availability[] tabAvailability = avf.GetAll();
+                Dictionary<int, Availability> mapAvailability = new Dictionary<int, Availability>();
+                foreach (Availability a in tabAvailability)
+                {
+                    mapAvailability.Add(a.availabilityId, a);
+                }
+                Appointement[] tabAppointments = af.GetByArray(tabId);
+                foreach (Appointement a in tabAppointments)
+                {
+                    //On envoie un mail de refus
+                    EmailController ec = new EmailController();
+                    string body = string.Empty;
+                    using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/RefusRDV.html")))
+                    {
+                        body = reader2.ReadToEnd();
+                    }
+                    body = body.Replace("{user}", mapUser[a.userId].firstname);
+                    body = body.Replace("{date}", mapAvailability[a.availabilityId].strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+                    ec.SendMail(mapUser[a.userId].email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
+                }
+            }
         }
     }
 }

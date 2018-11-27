@@ -77,14 +77,12 @@ namespace BusinessLogic.Factories
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    int _id = (Int32)reader["availability_id"];
-                    string _day = reader["name"].ToString();
-                    DateTime _strdt = Convert.ToDateTime(reader["strdt"]);
-                    DateTime _enddt = Convert.ToDateTime(reader["enddt"]);
+                    int _id = (Int32)reader["Availability_id"];
+                    DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
+                    DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
 
                     Availability availability = new Availability();
                     availability.availabilityId = _id;
-                    availability.day = _day;
                     availability.strdt = _strdt;
                     availability.enddt = _enddt;
 
