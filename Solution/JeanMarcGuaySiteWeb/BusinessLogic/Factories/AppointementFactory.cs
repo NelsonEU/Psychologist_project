@@ -111,7 +111,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT a.* FROM appointments a, availabilities av WHERE a.availability_id = av.availability_id AND a.confirmed = false AND deletionDate IS NULL ORDER BY av.schedule";
+                cmd.CommandText = "SELECT a.* FROM appointments a, availabilities av WHERE a.availability_id = av.availability_id AND a.confirmed = false AND deletionDate IS NULL ORDER BY av.Start_time";
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -152,7 +152,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT a.* FROM appointments a, availabilities av WHERE a.availability_id = av.availability_id AND a.confirmed = true AND deletionDate IS NULL ORDER BY av.schedule";
+                cmd.CommandText = "SELECT a.* FROM appointments a, availabilities av WHERE a.availability_id = av.availability_id AND a.confirmed = true AND deletionDate IS NULL ORDER BY av.Start_time";
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())

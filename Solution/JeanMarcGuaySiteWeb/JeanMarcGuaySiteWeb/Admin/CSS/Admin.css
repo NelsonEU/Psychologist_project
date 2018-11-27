@@ -26,13 +26,15 @@
     border-left: 1px black solid;
     border-right: 1px black solid;
 }
-
+.marginAuto {
+    margin:auto;
+}
 .divSujet {
     padding-top: 5px;
     padding-bottom: 5px;
     font-weight: bold;
     background: rgb(4, 23, 31);
-    color:white;
+    color: white;
     border-left: 1px black solid;
     border-right: 1px black solid;
 }

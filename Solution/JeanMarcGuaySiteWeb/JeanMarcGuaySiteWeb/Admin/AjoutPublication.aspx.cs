@@ -62,6 +62,7 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         protected void UploadButton_Click(object sender, EventArgs e)
         {
+            UploadButton.Enabled = false;
             try
             {
                 if (fileUpload.HasFile)
@@ -91,24 +92,30 @@ namespace JeanMarcGuaySiteWeb.Admin
                                     UserFactory uf = new UserFactory(cnnStr);
                                     User[] users = uf.GetAllSubscribed();
 
-                                    foreach (User u in users)
-                                    {
-                                        //Envoyer le email
-                                        EmailController ec = new EmailController();
-                                        string body = string.Empty;
-                                        using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/Notification.html")))
-                                        {
-                                            body = reader.ReadToEnd();
-                                        }
-                                        body = body.Replace("{date}", DateTime.Now.ToString("dd-MM-yyyy"));
-                                        string desabonner = "http://localhost:51001/Desabonnement.aspx?email=" + u.email + "&tkn=" + u.token; //CHANGER CETTE LIGNE!!!
-                                        body = body.Replace("{desabonner}", desabonner);
 
-                                        ec.SendMail(u.email, "Nouvelle(s) publication(s) sur JMGuay.ca", body);
+                                    //Envoyer le email
 
-                                        //update le lastNotificationDate
-                                        uf.notifyById(u.userId);
-                                    }
+                                    //foreach (User u in users)
+                                    //{
+                                    //
+                                    //}
+                                    //
+                                    //EmailController ec = new EmailController();
+                                    //string body = string.Empty;
+                                    //using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/Notification.html")))
+                                    //{
+                                    //    body = reader.ReadToEnd();
+                                    //}
+                                    //body = body.Replace("{date}", DateTime.Now.ToString("dd-MM-yyyy"));
+                                    //string desabonner = "http://localhost:51001/Desabonnement.aspx?email=" + u.email + "&tkn=" + u.token; //CHANGER CETTE LIGNE!!!
+                                    //body = body.Replace("{desabonner}", desabonner);
+                                    //
+                                    //ec.SendMail(u.email, "Nouvelle(s) publication(s) sur JMGuay.ca", body);
+                                    //
+                                    ////update le lastNotificationDate
+                                    //uf.notifyById(u.userId);
+
+
                                 }
                                 // ------------------------------------------------------- //
 
@@ -144,6 +151,10 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 StatusLabel.Style.Add("color", "red");
                 StatusLabel.Text = "Le fichier n'a pas pu être téléversé. L'erreur suivante s'est produite: " + ex.Message;
+            }
+            finally
+            {
+                UploadButton.Enabled = true;
             }
 
 

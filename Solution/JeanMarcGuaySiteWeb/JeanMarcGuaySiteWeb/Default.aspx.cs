@@ -20,17 +20,29 @@ namespace JeanMarcGuaySiteWeb
             SubsectionFactory subFact = new SubsectionFactory(cnnStr);
             Subsection subsection = subFact.Get("test1");
 
-            CategoryFactory cf = new CategoryFactory(cnnStr);
-            Category[] categories = cf.GetAll();
-
-            string toAppend = string.Empty;
-            
-            foreach(Category c in categories)
+            ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
+            Module m = moduleFactory.Get(3);/* Module id 3 = Module des documents PDF */
+            if (m.active == false)
             {
-                toAppend += "<div class=\"text-center text-secondary\"><a href=\"PublicationsCategorie.aspx?cat=" + c.categoryId + "\"><img src=\"" + c.pictureUrl + "\" class=\"imageCarousel mb-2\" /></a><a class=\"link-carousel text-secondary\" href=\"PublicationsCategorie.aspx?cat=" + c.categoryId + "\"> <h2>" + c.name + "</h2></a></div>";
+                //divNonCarousel.Visible = true;
+                divCarousel.Visible = false;
             }
+            else
+            {
+                //divNonCarousel.Visible = false;
+                divCarousel.Visible = true;
+                CategoryFactory cf = new CategoryFactory(cnnStr);
+                Category[] categories = cf.GetAll();
 
-            carouselCategories.InnerHtml = toAppend;
+                string toAppend = string.Empty;
+
+                foreach (Category c in categories)
+                {
+                    toAppend += "<div class=\"text-center text-secondary\"><a href=\"PublicationsCategorie.aspx?cat=" + c.categoryId + "\"><img src=\"" + c.pictureUrl + "\" class=\"imageCarousel mb-2\" /></a><a class=\"link-carousel text-secondary\" href=\"PublicationsCategorie.aspx?cat=" + c.categoryId + "\"> <h2>" + c.name + "</h2></a></div>";
+                }
+
+                carouselCategories.InnerHtml = toAppend;
+            }
 
             /*Verification de connexion pour afficher le bouton "Créer un compte"*/
             if (Session["User"] != null)

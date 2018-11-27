@@ -40,15 +40,6 @@ namespace JeanMarcGuaySiteWeb.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl cardUnconfirmed;
         
         /// <summary>
-        /// Contrôle btnRefuser.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRefuser;
-        
-        /// <summary>
         /// Contrôle btnConfirmer.
         /// </summary>
         /// <remarks>
@@ -58,22 +49,22 @@ namespace JeanMarcGuaySiteWeb.Admin {
         protected global::System.Web.UI.WebControls.Button btnConfirmer;
         
         /// <summary>
-        /// Contrôle notifConfirme.
+        /// Contrôle btnRefuser.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notifConfirme;
+        protected global::System.Web.UI.WebControls.Button btnRefuser;
         
         /// <summary>
-        /// Contrôle notifRefuse.
+        /// Contrôle notifWaiting.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notifRefuse;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notifWaiting;
         
         /// <summary>
         /// Contrôle tabUnconfirmed.
@@ -103,13 +94,13 @@ namespace JeanMarcGuaySiteWeb.Admin {
         protected global::System.Web.UI.WebControls.Button btnAnnuler;
         
         /// <summary>
-        /// Contrôle notifAnnule.
+        /// Contrôle notifConfirmed.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notifAnnule;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notifConfirmed;
         
         /// <summary>
         /// Contrôle tabConfirmed.

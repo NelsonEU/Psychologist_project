@@ -20,25 +20,19 @@
 
         <div class="card mb-3" runat="server" id="cardUnconfirmed">
             <div class="card-header">
-                <i class="fas fa-bullhorn"></i>Rendez-vous en attente
+                <i class="fas fa-bullhorn"></i> Rendez-vous en attente
             </div>
             <div class="card-body container-fluid">
                 <div class="">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        <div class="form-row">
-                            <div class="col-lg-4 col-md-12 form-group">
-                                <input type="search" class="form-control" aria-controls="dataTable" placeholder="Rechercher" id="researchUser" />
-                            </div>
-                            <div class="offset-lg-2 col-lg-6 col-md-12 text-right">
-                                <asp:Button class=" btn btn-danger" runat="server" Text="Refuser" ID="btnRefuser" OnClick="Click_Refuse" />
-                                <asp:Button class=" btn btn-success" runat="server" Text="Confirmer" ID="btnConfirmer" OnClick="Click_Confirm" />
+                        <div class="form-row pb-2">
+                            <div class="col-lg-6 col-md-12">
+                                <asp:Button class=" btn btn-success" runat="server" Text="Confirmer" ID="btnConfirmer" OnClick="Click_Confirm" OnClientClick="ConfirmerRDV()"/>
+                                <asp:Button class=" btn btn-danger" runat="server" Text="Refuser" ID="btnRefuser" OnClick="Click_Refuse" OnClientClick="RefuserRDV()"/>                                
                             </div>
                         </div>
-                        <div class="row" runat="server" visible="false" id="notifConfirme">
-                            <div style="background-color: red">Les rendez-vous sélectionnés ont bien été confirmés.</div>
-                        </div>
-                        <div class="row" runat="server" visible="false" id="notifRefuse">
-                            <div style="background-color: red">Les rendez-vous sélectionnés ont bien été refusés.</div>
+                        <div runat="server" id="notifWaiting" class="row pl-3 pb-2" style="color:forestgreen">
+
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
@@ -62,21 +56,18 @@
 
         <div class="card mb-3" runat="server" id="cardConfirmed">
             <div class="card-header">
-                <i class="fas fa-th-list"></i>Rendez-vous planifiés
+                <i class="fas fa-th-list"></i> Rendez-vous planifiés
             </div>
             <div class="card-body container-fluid">
                 <div class="">
                     <div class="dataTables_wrapper dt-bootstrap4">
-                        <div class="form-row">
-                            <div class="col-lg-4 col-md-12 form-group">
-                                <input type="search" class="form-control" aria-controls="dataTable" placeholder="Rechercher" id="researchConfirmed" />
-                            </div>
-                            <div class="offset-lg-2 col-lg-6 col-md-12 text-right">
-                                <asp:Button class=" btn btn-danger" runat="server" Text="Annuler" ID="btnAnnuler" OnClick="Click_Cancel" />
+                        <div class="form-row pb-2">
+                            <div class="col-lg-6 col-md-12">
+                                <asp:Button class=" btn btn-danger" runat="server" Text="Annuler" ID="btnAnnuler" OnClick="Click_Cancel" OnClientClick="AnnulerRDV()"/>
                             </div>
                         </div>
-                        <div class="row" runat="server" visible="false" id="notifAnnule">
-                            <div style="background-color: red">Les rendez-vous sélectionnés ont bien été annulés.</div>
+                        <div runat="server" id="notifConfirmed" class="row pl-3 pb-2" style="color:forestgreen">
+
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
@@ -98,11 +89,12 @@
 
         </div>
 
-        <div runat="server" id="notifNoRdv">Pas de rendez-vous à afficher</div>
+        <div runat="server" id="notifNoRdv" class="col-3 alert alert-info text-center" role="alert">Aucun rendez-vous à afficher</div>
 
     </div>
 
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
+    <script src="Javascript/Admin.js"></script>
 </asp:Content>

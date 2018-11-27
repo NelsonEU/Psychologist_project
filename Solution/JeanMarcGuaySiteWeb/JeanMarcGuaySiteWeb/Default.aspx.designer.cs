@@ -31,6 +31,15 @@ namespace JeanMarcGuaySiteWeb {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divButtonSavoir;
         
         /// <summary>
+        /// Contrôle divCarousel.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCarousel;
+        
+        /// <summary>
         /// Contrôle carouselCategories.
         /// </summary>
         /// <remarks>
@@ -38,5 +47,14 @@ namespace JeanMarcGuaySiteWeb {
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl carouselCategories;
+        
+        /// <summary>
+        /// Contrôle divNonCarousel.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNonCarousel;
     }
 }

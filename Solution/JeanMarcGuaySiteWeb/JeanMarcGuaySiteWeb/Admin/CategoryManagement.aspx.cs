@@ -103,21 +103,24 @@ namespace JeanMarcGuaySiteWeb.Admin
                         //Supprimer les publications de la catégorie
                         PublicationFactory pf = new PublicationFactory(cnnStr);
                         Publication[] publicationsASupprimer = pf.GetAllByCategoryId(id);
-                        string[] IDsToString = new string[publicationsASupprimer.Length];
-                        string[] PDFs = new string[publicationsASupprimer.Length];
-                        for (int i = 0; i < publicationsASupprimer.Length; i++)
+                        if (publicationsASupprimer.Length > 0)
                         {
-                            IDsToString[i] = publicationsASupprimer[i].publicationId.ToString();
-                            PDFs[i] = publicationsASupprimer[i].url;
+                            string[] IDsToString = new string[publicationsASupprimer.Length];
+                            string[] PDFs = new string[publicationsASupprimer.Length];
+                            for (int i = 0; i < publicationsASupprimer.Length; i++)
+                            {
+                                IDsToString[i] = publicationsASupprimer[i].publicationId.ToString();
+                                PDFs[i] = publicationsASupprimer[i].url;
+                            }
+                            pf.DeleteByArray(IDsToString);
+                            //Supprimer les PDFs
+                            for (int j = 0; j < publicationsASupprimer.Length; j++)
+                            {
+                                string PDFtoDelete = Server.MapPath(PDFs[j]);
+                                File.Delete(PDFtoDelete);
+                            }
                         }
-                        pf.DeleteByArray(IDsToString);
 
-                        //Supprimer les PDFs
-                        for (int j = 0; j < publicationsASupprimer.Length; j++)
-                        {
-                            string PDFtoDelete = Server.MapPath(PDFs[j]);
-                            File.Delete(PDFtoDelete);
-                        }
 
                         //Supprime de la BD (deletionDate)
                         cf.delete(id);

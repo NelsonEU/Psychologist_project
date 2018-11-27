@@ -23,10 +23,14 @@ namespace BusinessLogic.Autres
             int originalWidth = image.Width;
             int originalHeight = image.Height;
 
-            // To preserve the aspect ratio
-            float ratioX = (float)maxWidth / (float)originalWidth;
-            float ratioY = (float)maxHeight / (float)originalHeight;
-            float ratio = Math.Min(ratioX, ratioY);
+            float ratio = 1;
+            if (originalWidth > maxWidth || originalHeight > maxHeight)
+            {
+                // To preserve the aspect ratio
+                float ratioX = (float)maxWidth / (float)originalWidth;
+                float ratioY = (float)maxHeight / (float)originalHeight;
+                ratio = Math.Min(ratioX, ratioY);
+            }
 
             // New width and height based on aspect ratio
             int newWidth = (int)(originalWidth * ratio);

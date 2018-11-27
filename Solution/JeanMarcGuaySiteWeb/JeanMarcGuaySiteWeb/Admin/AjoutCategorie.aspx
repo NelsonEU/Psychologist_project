@@ -28,16 +28,16 @@
                         <label for="fileUpload" class="form-check-label"><b>Image</b> (format jpeg):</label><br />
                         <label for="fileUpload" class="form-check-label textSmaller">Attention, Il est fortement recommendé d'utiliser des images de petite taille. Le format idéal est 500 x 500 px <i id="tooltipImage" class="far fa-question-circle mainAdminColor biggerbiggerText" title="Pour bien formater votre image, vous pouvez utiliser un site web tiers comme https://imageresize.org/ ou bien https://befunky.com/create et n'hésiter pas a réduire un peu la qualité de l'image afin qu'elle prenne moins d'espace."></i></label>
                         <br />
-                        <asp:FileUpload ID="fileUpload" runat="server" class="pt-2" />
+                        <asp:FileUpload ID="fileUpload" runat="server" class="pt-2" style="margin:auto"/>
                     </div>
                 </div>
                 <div class="row text-center">
-                    <div class="col-12">
+                    <div class="col-12 marginAuto" >
                         <asp:Button runat="server" ID="UploadButton" Text="Ajouter" OnClick="UploadButton_Click" CssClass="btn btn-success" />
                     </div>
                 </div>
                 <div class="row text-center pb-4">
-                    <div class="col-12">
+                    <div class="col-12 text-center">
                         <asp:Label runat="server" ID="StatusLabel" Text="" ClientIDMode="Static" />
                     </div>
                 </div>

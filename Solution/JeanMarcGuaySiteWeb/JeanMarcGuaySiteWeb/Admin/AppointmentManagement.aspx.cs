@@ -34,7 +34,33 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
             // ------------------------------------------------------- //
 
-            //
+            if (Request.QueryString["notif"] != null)
+            {
+                switch (Request.QueryString["notif"])
+                {
+                    case "confirm":
+                        notifWaiting.Visible = true;
+                        notifWaiting.InnerText = "Les rendez-vous sélectionnés ont bien été confirmés";
+                        notifConfirmed.Visible = false;
+                        break;
+                    case "refuse":
+                        notifWaiting.Visible = true;
+                        notifWaiting.InnerText = "Les rendez-vous sélectionnés ont bien été refusés";
+                        notifConfirmed.Visible = false;
+                        break;
+                    case "cancel":
+                        notifConfirmed.Visible = true;
+                        notifConfirmed.InnerText = "Les rendez-vous sélectionnés ont bien été annulés";
+                        notifWaiting.Visible = false;
+                        break;
+                }
+            }
+            else
+            {
+                notifConfirmed.Visible = false;
+                notifWaiting.Visible = false;
+            }
+
             UserFactory uf = new UserFactory(cnnStr);
             AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
             AppointementFactory af = new AppointementFactory(cnnStr);
@@ -156,120 +182,126 @@ namespace JeanMarcGuaySiteWeb.Admin
             else{
                 cardConfirmed.Visible = false;
             }
-
-            
-
+  
             //Afficher une notif si il n'y a rien a afficher
             if(cardUnconfirmed.Visible == false && cardConfirmed.Visible == false)
             {
                 notifNoRdv.Visible = true;
             }
-
-
-
         }
 
         protected void Click_Confirm(object sender, EventArgs e)
         {
-            AppointementFactory af = new AppointementFactory(cnnStr);
-            UserFactory uf = new UserFactory(cnnStr);
-            AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
-            foreach (TableRow row in tabUnconfirmed.Rows)
+            string confirmValue = Request.Form["confirm_rdv"];
+            if (confirmValue == "Oui")
             {
-                foreach(TableCell cell in row.Cells)
+                AppointementFactory af = new AppointementFactory(cnnStr);
+                UserFactory uf = new UserFactory(cnnStr);
+                AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
+                foreach (TableRow row in tabUnconfirmed.Rows)
                 {
-                    if(cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
+                    foreach (TableCell cell in row.Cells)
                     {
-                        //On le confirme
-                        Appointement appointement = af.Get(Int32.Parse(cell.ID));
-                        af.confirm(appointement.appointementId);
-                        User user = uf.Get(appointement.userId);
-                        Availability availability = avf.GetById(appointement.availabilityId);
-
-                        //On envoie un mail de confirmation
-                        // Envoi du Email de confirmation d'envoi a l'utilisateur
-                        EmailController ec = new EmailController();
-                        string body = string.Empty;
-                        using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/ConfirmationRDV.html")))
+                        if (cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
                         {
-                            body = reader2.ReadToEnd();
-                        }
-                        body = body.Replace("{user}", user.firstname);
-                        body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));        
-                        ec.SendMail(user.email, "JMGuay.ca - Confirmation du rendez-vous [Message automatique]", body);
+                            //On le confirme
+                            Appointement appointement = af.Get(Int32.Parse(cell.ID));
+                            af.confirm(appointement.appointementId);
+                            User user = uf.Get(appointement.userId);
+                            Availability availability = avf.GetById(appointement.availabilityId);
 
+                            //On envoie un mail de confirmation
+                            // Envoi du Email de confirmation d'envoi a l'utilisateur
+                            EmailController ec = new EmailController();
+                            string body = string.Empty;
+                            using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/ConfirmationRDV.html")))
+                            {
+                                body = reader2.ReadToEnd();
+                            }
+                            body = body.Replace("{user}", user.firstname);
+                            body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+                            ec.SendMail(user.email, "JMGuay.ca - Confirmation du rendez-vous [Message automatique]", body);
+
+                        }
                     }
                 }
             }
-            Response.Redirect(Request.RawUrl);
-            notifConfirme.Visible = true;
+            Response.Redirect(Request.RawUrl + "?notif=confirm");
         }
 
         protected void Click_Refuse(object sender, EventArgs e)
         {
-            AppointementFactory af = new AppointementFactory(cnnStr);
-            UserFactory uf = new UserFactory(cnnStr);
-            AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
-            foreach (TableRow row in tabUnconfirmed.Rows)
-            {
-                foreach (TableCell cell in row.Cells)
-                {
-                    if (cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
-                    {
 
-                        //On le refuse
-                        Appointement appointement = af.Get(Int32.Parse(cell.ID));
-                        af.delete(Int32.Parse(cell.ID));
-                        User user = uf.Get(appointement.userId);
-                        Availability availability = avf.GetById(appointement.availabilityId);
-                        //On envoie un mail (REFUS)
-                        EmailController ec = new EmailController();
-                        string body = string.Empty;
-                        using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/RefusRDV.html")))
+            string confirmValue = Request.Form["refuse_rdv"];
+            if (confirmValue == "Oui")
+            {
+
+                AppointementFactory af = new AppointementFactory(cnnStr);
+                UserFactory uf = new UserFactory(cnnStr);
+                AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
+                foreach (TableRow row in tabUnconfirmed.Rows)
+                {
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        if (cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
                         {
-                            body = reader2.ReadToEnd();
+
+                            //On le refuse
+                            Appointement appointement = af.Get(Int32.Parse(cell.ID));
+                            af.delete(Int32.Parse(cell.ID));
+                            User user = uf.Get(appointement.userId);
+                            Availability availability = avf.GetById(appointement.availabilityId);
+                            //On envoie un mail (REFUS)
+                            EmailController ec = new EmailController();
+                            string body = string.Empty;
+                            using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/RefusRDV.html")))
+                            {
+                                body = reader2.ReadToEnd();
+                            }
+                            body = body.Replace("{user}", user.firstname);
+                            body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+                            ec.SendMail(user.email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
                         }
-                        body = body.Replace("{user}", user.firstname);
-                        body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
-                        ec.SendMail(user.email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
                     }
                 }
             }
-            Response.Redirect(Request.RawUrl);
-            notifRefuse.Visible = true;
+            Response.Redirect(Request.RawUrl + "?notif=refuse");
         }
 
         protected void Click_Cancel(object sender, EventArgs e)
         {
-            AppointementFactory af = new AppointementFactory(cnnStr);
-            UserFactory uf = new UserFactory(cnnStr);
-            AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
-            foreach (TableRow row in tabConfirmed.Rows)
+            string confirmValue = Request.Form["cancel_rdv"];
+            if (confirmValue == "Oui")
             {
-                foreach (TableCell cell in row.Cells)
+                AppointementFactory af = new AppointementFactory(cnnStr);
+                UserFactory uf = new UserFactory(cnnStr);
+                AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
+                foreach (TableRow row in tabConfirmed.Rows)
                 {
-                    if (cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
+                    foreach (TableCell cell in row.Cells)
                     {
-                        //On le refuse
-                        Appointement appointement = af.Get(Int32.Parse(cell.ID));
-                        af.delete(appointement.appointementId);
-                        User user = uf.Get(appointement.userId);
-                        Availability availability = avf.GetById(appointement.availabilityId);
-                        //On envoie un mail (REFUS)
-                        EmailController ec = new EmailController();
-                        string body = string.Empty;
-                        using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/RefusRDV.html")))
+                        if (cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
                         {
-                            body = reader2.ReadToEnd();
+                            //On le refuse
+                            Appointement appointement = af.Get(Int32.Parse(cell.ID));
+                            af.delete(appointement.appointementId);
+                            User user = uf.Get(appointement.userId);
+                            Availability availability = avf.GetById(appointement.availabilityId);
+                            //On envoie un mail (REFUS)
+                            EmailController ec = new EmailController();
+                            string body = string.Empty;
+                            using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/RefusRDV.html")))
+                            {
+                                body = reader2.ReadToEnd();
+                            }
+                            body = body.Replace("{user}", user.firstname);
+                            body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+                            ec.SendMail(user.email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
                         }
-                        body = body.Replace("{user}", user.firstname);
-                        body = body.Replace("{date}", availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
-                        ec.SendMail(user.email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
                     }
                 }
             }
-            Response.Redirect(Request.RawUrl);
-            notifAnnule.Visible = true;
+            Response.Redirect(Request.RawUrl + "?notif=cancel");
         }
     }
 }
