@@ -15,7 +15,9 @@ namespace JeanMarcGuaySiteWeb.Admin
     public partial class AjoutPublication : System.Web.UI.Page
     {
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        static string emailAddress = ConfigurationManager.AppSettings["emailAddress"];
         PublicationFactory pf = new PublicationFactory(cnnStr);
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // -----------Vérification le l'état du module ----------- //
