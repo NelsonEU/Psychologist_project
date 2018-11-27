@@ -85,8 +85,6 @@
     <Content Include="Admin\Javascript\jquery.timepicker.min.js" />
     <Content Include="Admin\Javascript\publicationAdmin.js" />
     <Content Include="Admin\CSS\bootstrap-timepicker.css" />
-    <Content Include="Admin\Javascript\bootstrap-timepicker.js" />
-    <Content Include="Admin\Javascript\DateRangePicker.js" />
     <Content Include="Admin\Javascript\publicationMenu.js" />
     <Content Include="Admin\PublicationsMenu.aspx" />
     <Content Include="Desabonnement.aspx" />
