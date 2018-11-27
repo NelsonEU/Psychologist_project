@@ -31,11 +31,8 @@
                                 <asp:Button class=" btn btn-danger" runat="server" Text="Refuser" ID="btnRefuser" OnClick="Click_Refuse" OnClientClick="RefuserRDV()"/>                                
                             </div>
                         </div>
-                        <div class="row" runat="server" visible="false" id="notifConfirme">
-                            <div style="background-color: red">Les rendez-vous sélectionnés ont bien été confirmés.</div>
-                        </div>
-                        <div class="row" runat="server" visible="false" id="notifRefuse">
-                            <div style="background-color: red">Les rendez-vous sélectionnés ont bien été refusés.</div>
+                        <div runat="server" id="notifWaiting" class="row pl-3 pb-2" style="color:forestgreen">
+
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
@@ -69,8 +66,8 @@
                                 <asp:Button class=" btn btn-danger" runat="server" Text="Annuler" ID="btnAnnuler" OnClick="Click_Cancel" OnClientClick="AnnulerRDV()"/>
                             </div>
                         </div>
-                        <div class="row" runat="server" visible="false" id="notifAnnule">
-                            <div style="background-color: red">Les rendez-vous sélectionnés ont bien été annulés.</div>
+                        <div runat="server" id="notifConfirmed" class="row pl-3 pb-2" style="color:forestgreen">
+
                         </div>
                         <div class="row">
                             <div class="col-sm-12">

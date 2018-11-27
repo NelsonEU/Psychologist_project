@@ -34,7 +34,33 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
             // ------------------------------------------------------- //
 
-            //
+            if (Request.QueryString["notif"] != null)
+            {
+                switch (Request.QueryString["notif"])
+                {
+                    case "confirm":
+                        notifWaiting.Visible = true;
+                        notifWaiting.InnerText = "Les rendez-vous sélectionnés ont bien été confirmés";
+                        notifConfirmed.Visible = false;
+                        break;
+                    case "refuse":
+                        notifWaiting.Visible = true;
+                        notifWaiting.InnerText = "Les rendez-vous sélectionnés ont bien été refusés";
+                        notifConfirmed.Visible = false;
+                        break;
+                    case "cancel":
+                        notifConfirmed.Visible = true;
+                        notifConfirmed.InnerText = "Les rendez-vous sélectionnés ont bien été annulés";
+                        notifWaiting.Visible = false;
+                        break;
+                }
+            }
+            else
+            {
+                notifConfirmed.Visible = false;
+                notifWaiting.Visible = false;
+            }
+
             UserFactory uf = new UserFactory(cnnStr);
             AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
             AppointementFactory af = new AppointementFactory(cnnStr);
@@ -156,17 +182,12 @@ namespace JeanMarcGuaySiteWeb.Admin
             else{
                 cardConfirmed.Visible = false;
             }
-
-            
-
+  
             //Afficher une notif si il n'y a rien a afficher
             if(cardUnconfirmed.Visible == false && cardConfirmed.Visible == false)
             {
                 notifNoRdv.Visible = true;
             }
-
-
-
         }
 
         protected void Click_Confirm(object sender, EventArgs e)
@@ -205,7 +226,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                     }
                 }
             }
-            Response.Redirect(Request.RawUrl);
+            Response.Redirect(Request.RawUrl + "?notif=confirm");
         }
 
         protected void Click_Refuse(object sender, EventArgs e)
@@ -244,7 +265,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                     }
                 }
             }
-            Response.Redirect(Request.RawUrl);
+            Response.Redirect(Request.RawUrl + "?notif=refuse");
         }
 
         protected void Click_Cancel(object sender, EventArgs e)
@@ -280,7 +301,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                     }
                 }
             }
-            Response.Redirect(Request.RawUrl);
+            Response.Redirect(Request.RawUrl + "?notif=cancel");
         }
     }
 }
