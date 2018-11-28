@@ -79,9 +79,6 @@ namespace BusinessLogic.Factories
                     int _id = (Int32)reader["Availability_id"];
                     DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
                     DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
-                    int _id = (Int32)reader["availability_id"];
-                    DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
-                    DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
 
                     Availability availability = new Availability();
                     availability.availabilityId = _id;
