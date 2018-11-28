@@ -14,6 +14,7 @@ namespace JeanMarcGuaySiteWeb.Admin
     {
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
         private AvailabilityFactory uf = new AvailabilityFactory(cnnStr);
+        List<Availability> avList;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,26 +30,40 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 ActivationValidation.Visible = false;
                 PageContent.Visible = true;
+                avList =  uf.GetAll().ToList();
             }
             // ------------------------------------------------------- //
-
+            
             //
+        }
+
+        protected void Load_Avails()
+        {
+            foreach (Availability a in avList)
+            {
+                TableRow row = new TableRow();
+                TableCell cellDate = new TableCell();
+                TableCell cellstrtdt = new TableCell();
+                TableCell cellenddt = new TableCell();
+                TableCell cellSelect = new TableCell();
+                cellDate.Text = a.strdt.Date.ToString();
+                cellstrtdt.Text = a.strdt.TimeOfDay.ToString();
+                cellenddt.Text = a.enddt.TimeOfDay.ToString();
+                CheckBox cb = new CheckBox();
+                cellSelect.Controls.Add(cb);
+                cellSelect.ID = a.availabilityId.ToString();
+                cellSelect.CssClass = "selectUser";
+                row.Cells.Add(cellDate);
+                row.Cells.Add(cellstrtdt);
+                row.Cells.Add(cellenddt);
+                row.Cells.Add(cellSelect);
+                tabUnconfirmed.Rows.Add(row);
+            }
         }
 
         protected void Submit_click(object sender, EventArgs e)
         {
 
-        }
-
-        protected void invisButton_Click(object sender, EventArgs e)
-        {
-            string day = hdnLabelState.Value;
-
-            //verfications
-             //if not blank (btw jdois les rendre read only)
-             //if (StartA <= EndB) and (EndA >= StartB) BAD
-             //Else
-            uf.Add(dayl1.Value, Convert.ToDateTime(time1l1.Value), Convert.ToDateTime(time2l1.Value)); 
         }
     }
 }
