@@ -40,7 +40,7 @@ namespace BusinessLogic.Factories
         #endregion
 
         #region Delete
-        public void delete(int id)
+        public void DeleteByArray(string[] ids)
         {
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
@@ -48,8 +48,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "UPDATE appointments SET deletionDate = current_date() WHERE appointment_id=@id";
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.CommandText = "UPDATE appointments SET deletionDate = current_date() WHERE appointment_id IN (" + String.Join(",", ids) + ")";
                 cmd.ExecuteNonQuery();
             }
             finally
@@ -81,8 +80,8 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
-        #region Confirm
-        public void confirm(int id)
+        #region ConfirmByArray
+        public void confirmByArray(String[] ids)
         {
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
@@ -90,8 +89,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "UPDATE appointments SET confirmed = true WHERE appointment_id=@id";
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.CommandText = "UPDATE appointments SET confirmed = true WHERE appointment_id IN (" + String.Join(",", ids) + ")";
                 cmd.ExecuteNonQuery();
             }
             finally
@@ -173,6 +171,48 @@ namespace BusinessLogic.Factories
                     list.Add(appointement);
                 }
                 reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return list.ToArray();
+        }
+        #endregion
+
+
+        #region GetByArray
+        public Appointement[] GetByArray(string[] ids)
+        {
+            List<Appointement> list = new List<Appointement>();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM appointments WHERE appointment_id IN (" + String.Join(",", ids) + ") AND deletionDate IS NULL";
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Appointement appointement = new Appointement();
+                    int _appointmentId = (Int32)reader["appointment_id"];
+                    int _userId = (Int32)reader["user_id"];
+                    int _availabilityId = (Int32)reader["availability_id"];
+                    bool _confirmed = false;
+                    string _message = reader["message"].ToString();
+                    DateTime creationDate = (DateTime)reader["creationDate"];
+
+                    appointement.appointementId = _appointmentId;
+                    appointement.userId = _userId;
+                    appointement.availabilityId = _availabilityId;
+                    appointement.confirmed = _confirmed;
+                    appointement.message = _message;
+                    list.Add(appointement);
+                }
+                reader.Close();
+
             }
             finally
             {

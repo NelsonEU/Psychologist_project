@@ -15,7 +15,9 @@ namespace JeanMarcGuaySiteWeb.Admin
     public partial class AjoutPublication : System.Web.UI.Page
     {
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        static string emailAddress = ConfigurationManager.AppSettings["emailAddress"];
         PublicationFactory pf = new PublicationFactory(cnnStr);
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // -----------Vérification le l'état du module ----------- //
@@ -89,31 +91,37 @@ namespace JeanMarcGuaySiteWeb.Admin
                                 Module m = moduleFactory.Get(4); /* Module id 4 = Module des abonnements */
                                 if (m.active != false)
                                 {
+                                    //Envoyer le email
                                     UserFactory uf = new UserFactory(cnnStr);
                                     User[] users = uf.GetAllSubscribed();
 
+                                    foreach (User user in users)
+                                    {
+                                        EmailController ec = new EmailController();
+                                        string body = string.Empty;
+                                        using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/Notification.html")))
+                                        {
+                                            body = reader.ReadToEnd();
+                                        }
 
-                                    //Envoyer le email
+                                        //Remplacer la date
+                                        body = body.Replace("{date}", DateTime.Now.ToString("dd-MM-yyyy"));
 
-                                    //foreach (User u in users)
-                                    //{
-                                    //
-                                    //}
-                                    //
-                                    //EmailController ec = new EmailController();
-                                    //string body = string.Empty;
-                                    //using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/Notification.html")))
-                                    //{
-                                    //    body = reader.ReadToEnd();
-                                    //}
-                                    //body = body.Replace("{date}", DateTime.Now.ToString("dd-MM-yyyy"));
-                                    //string desabonner = "http://localhost:51001/Desabonnement.aspx?email=" + u.email + "&tkn=" + u.token; //CHANGER CETTE LIGNE!!!
-                                    //body = body.Replace("{desabonner}", desabonner);
-                                    //
-                                    //ec.SendMail(u.email, "Nouvelle(s) publication(s) sur JMGuay.ca", body);
-                                    //
-                                    ////update le lastNotificationDate
-                                    //uf.notifyById(u.userId);
+                                        //Remplacer les liens
+                                        string strPathAndQuery = HttpContext.Current.Request.Url.PathAndQuery;
+                                        string strUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(strPathAndQuery, "/");
+                                        string lienPublication = strUrl + "Publications.aspx";
+                                        body = body.Replace("{lienPublications}", lienPublication);
+
+                                        string desabonner = strUrl + "Desabonnement.aspx" + "?email=" + user.email + "&tkn=" + user.token;
+                                        body = body.Replace("{desabonner}", desabonner);
+                                        
+                                        ec.SendMail(user.email, "Nouvelle(s) publication(s) sur JMGuay.ca", body);
+                                        
+                                        //update le lastNotificationDate
+                                        uf.notifyById(user.userId); //Requete dans une boucle >:(
+                                    }
+
 
 
                                 }

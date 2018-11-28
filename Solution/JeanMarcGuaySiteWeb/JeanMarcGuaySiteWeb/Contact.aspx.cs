@@ -17,6 +17,7 @@ namespace JeanMarcGuaySiteWeb
     {
 
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        static string emailAddress = ConfigurationManager.AppSettings["emailAddress"];
         User user;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -85,28 +86,24 @@ namespace JeanMarcGuaySiteWeb
                 {
                     body = reader.ReadToEnd();
                 }
-
                 body = body.Replace("{firstname}", user.firstname);
                 body = body.Replace("{lastname}", user.lastname);
                 body = body.Replace("{date}", DateTime.Now.ToString("dd-MM-yyyy"));
                 body = body.Replace("{email}", user.email);
                 body = body.Replace("{subject}", subject);
                 body = body.Replace("{content}", content);
-
-                ec.SendMail("cabinet.jmguay@gmail.com", "Nouveau message de "+user.firstname + " " + user.lastname, body);
-                //
+                ec.SendMail(emailAddress, "Nouveau message de "+user.firstname + " " + user.lastname, body);           
 
                 // Envoi du Email de confirmation d'envoi a l'utilisateur
-                EmailController ec2 = new EmailController();
-                string body2 = string.Empty;
+                body = string.Empty;
                 using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/ConfirmationContact.html")))
                 {
-                    body2 = reader2.ReadToEnd();
+                    body = reader2.ReadToEnd();
                 }
-                body2 = body2.Replace("{date}", DateTime.Now.ToString("dd-MM-yyyy"));
-                body2 = body2.Replace("{subject}", subject);
-                body2 = body2.Replace("{content}", content);
-                ec2.SendMail(user.email, "JMGuay.ca - Confirmation de l'envoi du message [Message automatique]", body2);
+                body = body.Replace("{date}", DateTime.Now.ToString("dd-MM-yyyy"));
+                body = body.Replace("{subject}", subject);
+                body = body.Replace("{content}", content);
+                ec.SendMail(user.email, "JMGuay.ca - Confirmation de l'envoi du message [Message automatique]", body);
 
                 // Redirection à une page de confirmation
                 Response.Redirect("Confirmation.aspx?User=" + id);
