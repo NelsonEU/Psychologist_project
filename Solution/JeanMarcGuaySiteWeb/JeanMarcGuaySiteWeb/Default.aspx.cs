@@ -24,13 +24,13 @@ namespace JeanMarcGuaySiteWeb
             Module m = moduleFactory.Get((int)Module.AllModules.Publications);/* Module id 3 = Module des documents PDF */
             if (m.active == false)
             {
-                //divNonCarousel.Visible = true;
-                divCarousel.Visible = false;
+                divCarouselOuvert.Visible = false;
+                divCarouselFermer.Visible = true;
             }
             else
             {
-                //divNonCarousel.Visible = false;
-                divCarousel.Visible = true;
+                divCarouselOuvert.Visible = true;
+                divCarouselFermer.Visible = false;
                 CategoryFactory cf = new CategoryFactory(cnnStr);
                 Category[] categories = cf.GetAll();
 

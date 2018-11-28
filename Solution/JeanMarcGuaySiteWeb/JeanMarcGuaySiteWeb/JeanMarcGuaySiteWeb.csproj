@@ -129,11 +129,7 @@
     <EmbeddedResource Include="Email\ConfirmationContact.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Images\banner.png" />
     <Content Include="Images\blue-check-mark-png-md.png" />
-    <Content Include="Images\cream_dust.png" />
-    <Content Include="Images\DSC_2726.JPG" />
-    <Content Include="Images\stairs.jpg" />
     <Content Include="Inscription.aspx" />
     <Content Include="Javascripts\animation.js" />
     <Content Include="Javascripts\Carousel.js" />

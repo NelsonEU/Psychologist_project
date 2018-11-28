@@ -80,7 +80,6 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         protected void afficherTableau( Publication[] publications)
         {
-            publicationTable.Rows.Clear();
             for (int i = 1; i < publicationTable.Rows.Count; i++)
             {
                 publicationTable.Rows.RemoveAt(i);

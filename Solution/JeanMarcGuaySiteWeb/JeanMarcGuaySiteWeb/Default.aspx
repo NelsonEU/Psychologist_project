@@ -29,10 +29,10 @@
                         <p>Membre de l'Ordre des Psychologues du Québec, Jean-Marc Guay est un psychologue clinicien de la région du Saguenay. En plus d'être praticien en programmation neuro-linguistique, il est également professeur de psychologie.</p>
                     </div>
                     <div class="row pt-3 divAnimation1" id="paraTrigger">
-                        <p>Vous trouverez sur ce site différentes informations concernant la psychotérapie ainsi que tous les services offerts par le psychologue. Les publications de Jean-Marc sont également mises à votre disposition et sont disponibles dans la section « <a href="Publications.aspx">Publications</a> ».</p>
+                        <p>Vous trouverez sur ce site différentes informations concernant la psychotérapie ainsi que tous les services offerts par le psychologue. différentes publications sous forme de documents PDF sont également mises à votre disposition dans la section « <a href="Publications.aspx">Publications</a> ».</p>
                     </div>
                     <div class="row pt-3 divAnimation1">
-                        <p id="pTrigger">Vous êtes également invités à vous créer un compte sur le site. Cela vous permettra de pouvoir contacter le practicien et, si vous le souhaitez, de vous abonner à ses publications.</p>
+                        <p id="pTrigger">Vous êtes également invités à vous créer un compte sur le site. Cela vous permettra de pouvoir contacter le practicien et, si vous le souhaitez, de vous abonner aux publications.</p>
                     </div>
                     <div class="row pt-3 divAnimation1">
                         <div runat="server" id="divButtonCompte" class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
@@ -80,14 +80,29 @@
             <div id="paraTrigger3"></div>
         </div>
 
-        <div class="container biggerBox" runat="server" id="divCarousel">
+        <div class="container biggerBox" runat="server" id="divCarouselOuvert">
             <div class="row pt-5">
                 <h2 class="underline1 animated slow" id="h2Publications">Publications</h2>
             </div>
-            <div id="carouselCategories" class="carousel_categorie pt-3" runat="server">
+            <div id="carouselCategories" class="carousel_categorie pt-3 animated slow" runat="server" ClientIDMode="static">
 
             </div>
         </div>
+
+        <div class="container evenBiggerBox" runat="server" id="divCarouselFermer" ClientIDMode="static">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <h2 class="underline1 animated slow" id="h2Pourquoi">Pourquoi consulter?</h2>
+                        </div>
+                        <div class="row pt-3" id="divCarouselFermerTexte">
+                            <p>L’un des premiers raisonnements que les gens font lorsqu’ils se rendent compte ou se font dire qu’ils ont besoin d’aide, est de croire qu’ils sont faibles ou inférieurs. En réalité, cela n’a rien à voir puisqu’il peut arriver à tout le monde de vivre à un moment donné des difficultés internes et externes qui dépassent ses capacités d’adaptation. Cet état de fait a souvent pour conséquence de modifier à différents niveaux, l’équilibre interne et externe de la personne.</p>
+                            <p>Le deuxième raisonnement qui est souvent constaté est celui où la personne se demande si elle est devenue anormale. Il est admis que des idées et des émotions latentes peuvent refaire surface, interférer dans le fonctionnement du métabolisme et s’exprimer pour certains, en douleurs physiques.</p>
+                            <p>Finalement, il arrive que d’autres personnes croient que leur mal n’existe pas ou qu’elles souffrent d’une maladie imaginaire. Habituellement, c’est votre médecin qui vous dira le premier que votre problème est psychologique. Mieux que quiconque, il sait que votre souffrance est réelle et légitime. Il est aussi conscient que vous ressentez sincèrement un malaise intérieur, mais il croit que vous devriez rencontrer un psychologue. C’est cette personne qualifiée qui saura vous aider à traverser les difficultés qui se présentent à vous.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <!--
         <div class="container biggerBox" runat="server" id="divNonCarousel">
