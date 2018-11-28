@@ -56,10 +56,10 @@ namespace JeanMarcGuaySiteWeb.Admin
                 Publication[] publications = pf.GetAll();
                 afficherTableau(publications);
             }
-            else
-            {
-                //SelectedIndexChanged(null, null);
-            }
+            //else
+            //{
+            //    SelectedIndexChanged(null, null);
+            //}
 
         }
 
@@ -80,6 +80,7 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         protected void afficherTableau( Publication[] publications)
         {
+            publicationTable.Rows.Clear();
             for (int i = 1; i < publicationTable.Rows.Count; i++)
             {
                 publicationTable.Rows.RemoveAt(i);
