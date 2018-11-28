@@ -21,7 +21,6 @@ namespace JeanMarcGuaySiteWeb.Admin
             // -----------Vérification le l'état du module ----------- //
             ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
             Module m = moduleFactory.Get(1);/* Module id 1 = Module des prises de rendez-vous */
-            AvailabilityFactory f = new AvailabilityFactory(cnnStr);
             if (m.active == false)
             {
                 ActivationValidation.Visible = true;
@@ -31,71 +30,40 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 ActivationValidation.Visible = false;
                 PageContent.Visible = true;
-                resetDays();
-                avList =  f.GetAll().ToList();
-                fillDates();
+                avList =  uf.GetAll().ToList();
             }
             // ------------------------------------------------------- //
-
+            
             //
+        }
+
+        protected void Load_Avails()
+        {
+            foreach (Availability a in avList)
+            {
+                TableRow row = new TableRow();
+                TableCell cellDate = new TableCell();
+                TableCell cellstrtdt = new TableCell();
+                TableCell cellenddt = new TableCell();
+                TableCell cellSelect = new TableCell();
+                cellDate.Text = a.strdt.Date.ToString();
+                cellstrtdt.Text = a.strdt.TimeOfDay.ToString();
+                cellenddt.Text = a.enddt.TimeOfDay.ToString();
+                CheckBox cb = new CheckBox();
+                cellSelect.Controls.Add(cb);
+                cellSelect.ID = a.availabilityId.ToString();
+                cellSelect.CssClass = "selectUser";
+                row.Cells.Add(cellDate);
+                row.Cells.Add(cellstrtdt);
+                row.Cells.Add(cellenddt);
+                row.Cells.Add(cellSelect);
+                tabUnconfirmed.Rows.Add(row);
+            }
         }
 
         protected void Submit_click(object sender, EventArgs e)
         {
 
-        }
-
-        protected void invisButton_Click(object sender, EventArgs e)
-        {
-            string day = hdnLabelState.Value;
-            //verfications
-            //if not blank (btw jdois les rendre read only)
-            //if (StartA <= EndB) and (EndA >= StartB) BAD
-            //Else
-            if (uf.checkifvalid(dayl1.Value, Convert.ToDateTime(time1l1.Value), Convert.ToDateTime(time2l1.Value)))
-            {
-                uf.Add(dayl1.Value, Convert.ToDateTime(time1l1.Value), Convert.ToDateTime(time2l1.Value));
-                dayl1.Value = "";
-                time1l1.Value = null;
-                time2l1.Value = null;
-            }
-            else
-                return; 
-        }
-
-        protected void fillDates()
-        {
-            foreach (Availability av in avList)
-            {
-                switch(av.day)
-                {
-                    case "monday":
-                        lundi.InnerHtml += av.strdt.ToShortTimeString() + " - " + av.enddt.ToShortTimeString() + "x | ";
-                        break;
-                    case "tuesday":
-                        mardi.InnerHtml += av.strdt.ToShortTimeString() + " - " + av.enddt.ToShortTimeString() + "x | ";
-                        break;
-                    case "wednesday":
-                        mercredi.InnerHtml +=  av.strdt.ToShortTimeString() + " - " + av.enddt.ToShortTimeString() + "x | ";
-                        break;
-                    case "thursday":
-                        jeudi.InnerHtml +=  av.strdt.ToShortTimeString() + " - " + av.enddt.ToShortTimeString() + "x | ";
-                        break;
-                    case "friday":
-                        vendredi.InnerHtml += av.strdt.ToShortTimeString() + " - " + av.enddt.ToShortTimeString() + "x | ";
-                        break;
-
-                }
-            }
-        }
-
-        protected void resetDays()
-        {
-            lundi.InnerHtml = "";
-            mardi.InnerHtml = "";
-            mercredi.InnerHtml = "";
-            jeudi.InnerHtml = "";
-            vendredi.InnerHtml = "";
         }
     }
 }

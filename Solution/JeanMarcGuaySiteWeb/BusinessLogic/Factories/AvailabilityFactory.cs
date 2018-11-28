@@ -19,7 +19,7 @@ namespace BusinessLogic.Factories
         #endregion
 
         #region Add
-        public void Add(string day, DateTime strdt, DateTime enddt)
+        public void Add(DateTime strdt, DateTime enddt)
         {
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
@@ -27,8 +27,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "INSERT INTO availabilities(Day, Start_time, End_time) VALUES (@Day, @Start_time, @End_time)";
-                cmd.Parameters.AddWithValue("@Day", day);
+                cmd.CommandText = "INSERT INTO availabilities(Start_time, End_time) VALUES (@Start_time, @End_time)";
                 cmd.Parameters.AddWithValue("@Start_time", strdt);
                 cmd.Parameters.AddWithValue("@End_time", enddt);
                 cmd.ExecuteNonQuery();
@@ -78,13 +77,11 @@ namespace BusinessLogic.Factories
                 while (reader.Read())
                 {
                     int _id = (Int32)reader["availability_id"];
-                    string _day = reader["day"].ToString();
                     DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
                     DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
 
                     Availability availability = new Availability();
                     availability.availabilityId = _id;
-                    availability.day = _day;
                     availability.strdt = _strdt;
                     availability.enddt = _enddt;
 
@@ -137,7 +134,7 @@ namespace BusinessLogic.Factories
         #endregion
 
         #region checkifexit
-        public bool checkifvalid(string Day, DateTime strtd, DateTime enddt)
+        public bool checkifvalid(DateTime strdt, DateTime enddt)
         {
             List<Availability> availabilityList = new List<Availability>();
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
@@ -147,21 +144,19 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM availabilities WHERE day=@day ";
-
-                cmd.Parameters.AddWithValue("@day", Day);
+                cmd.CommandText = "SELECT * FROM availabilities(Start_time, End_time) VALUES (@Start_time, @End_time)";
+                cmd.Parameters.AddWithValue("@Start_time", strdt);
+                cmd.Parameters.AddWithValue("@End_time", enddt);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     int _id = (Int32)reader["availability_id"];
-                    string _day = reader["day"].ToString();
                     DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
                     DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
 
                     Availability availability = new Availability();
                     availability.availabilityId = _id;
-                    availability.day = _day;
                     availability.strdt = _strdt;
                     availability.enddt = _enddt;
 
@@ -175,7 +170,7 @@ namespace BusinessLogic.Factories
             }
 
             bool legit = true;
-            if (strtd > enddt)
+            if (strdt > enddt)
             {
                 legit = false;
             }
@@ -184,10 +179,7 @@ namespace BusinessLogic.Factories
             {
                 foreach (Availability av in availabilityList)
                 {
-                    //if (StartA <= EndB) and (EndA >= StartB) BAD
-
-
-                    if (strtd <= av.enddt && enddt >= av.strdt)
+                    if (strdt <= av.enddt && enddt >= av.strdt)
                     {
                         legit = false;
                     }
