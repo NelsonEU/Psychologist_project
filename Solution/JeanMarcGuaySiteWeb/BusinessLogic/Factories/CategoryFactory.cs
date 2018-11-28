@@ -28,25 +28,12 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM categories WHERE deletionDate IS NULL";
+                cmd.CommandText = "SELECT * FROM categories WHERE deletionDate IS NULL ORDER BY name";
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    int _id = (Int32)reader["category_id"];
-                    string _name = reader["name"].ToString();
-                    string _pictureUrl = reader["picture_url"].ToString();
-                    //string _redirectUrl = reader["redirect_url"].ToString();
-                    string _pictureName = reader["pictureName"].ToString();
-
-                    Category category = new Category();
-                    category.categoryId = _id;
-                    category.name = _name;
-                    category.pictureUrl = _pictureUrl;
-                    //category.urlRedirect = _redirectUrl;
-                    category.pictureName = _pictureName;
-
-                    categoryList.Add(category);
+                    categoryList.Add(CreateCategory(reader));
                 }
                 reader.Close();
             }
@@ -62,7 +49,7 @@ namespace BusinessLogic.Factories
         #region GetCategoryById
         public Category GetCategoryById(int id)
         {
-            Category category = new Category();
+            Category category = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -73,20 +60,9 @@ namespace BusinessLogic.Factories
                 cmd.CommandText = "SELECT * FROM categories WHERE category_id=@id AND deletionDate IS NULL";
                 cmd.Parameters.AddWithValue("@id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int _id = (Int32)reader["category_id"];
-                    string _name = reader["name"].ToString();
-                    string _pictureUrl = reader["picture_url"].ToString();
-                    //string _redirectUrl = reader["redirect_url"].ToString();
-                    string _pictureName = reader["pictureName"].ToString();
-
-                    category.categoryId = _id;
-                    category.name = _name;
-                    category.pictureUrl = _pictureUrl;
-                    //category.urlRedirect = _redirectUrl;
-                    category.pictureName = _pictureName;
-
+                    category = CreateCategory(reader);
                 }
                 reader.Close();
             }
@@ -104,7 +80,7 @@ namespace BusinessLogic.Factories
         public Category GetByFileName(string pictureName)
         {
 
-            Category category = new Category();
+            Category category = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -115,21 +91,9 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@pictureName", pictureName);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                if (reader.Read())
                 {
-
-                    int _id = (Int32)reader["category_id"];
-                    string _name = reader["name"].ToString();
-                    string _pictureUrl = reader["picture_url"].ToString();
-                    //string _redirectUrl = reader["redirect_url"].ToString();
-                    string _pictureName = reader["pictureName"].ToString();
-
-                    category.categoryId = _id;
-                    category.name = _name;
-                    category.pictureUrl = _pictureUrl;
-                    //category.urlRedirect = _redirectUrl;
-                    category.pictureName = _pictureName;
-
+                    category = CreateCategory(reader);
                 }
                 reader.Close();
             }
@@ -207,8 +171,23 @@ namespace BusinessLogic.Factories
 
             return total;
         }
+        #endregion
 
+        #region CreateCategory
+        private Category CreateCategory(MySqlDataReader reader)
+        {
+            int _id = (Int32)reader["category_id"];
+            string _name = reader["name"].ToString();
+            string _pictureUrl = reader["picture_url"].ToString();
+            string _pictureName = reader["pictureName"].ToString();
 
+            Category category = new Category();
+            category.categoryId = _id;
+            category.name = _name;
+            category.pictureUrl = _pictureUrl;
+            category.pictureName = _pictureName;
+            return category;
+        }
         #endregion
     }
 }

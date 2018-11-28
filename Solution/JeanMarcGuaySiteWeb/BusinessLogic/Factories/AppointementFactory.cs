@@ -114,19 +114,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    Appointement appointement = new Appointement();
-                    int _appointmentId = (Int32)reader["appointment_id"];
-                    int _userId = (Int32)reader["user_id"];
-                    int _availabilityId = (Int32)reader["availability_id"];
-                    bool _confirmed = false;
-                    string _message = reader["message"].ToString();
-                    DateTime creationDate = (DateTime)reader["creationDate"];
-
-                    appointement.appointementId = _appointmentId;
-                    appointement.userId = _userId;
-                    appointement.availabilityId = _availabilityId;
-                    appointement.confirmed = _confirmed;
-                    appointement.message = _message;
+                    Appointement appointement = CreateAppointment(reader);
                     list.Add(appointement);
                 }
                 reader.Close();
@@ -155,19 +143,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    Appointement appointement = new Appointement();
-                    int _appointmentId = (Int32)reader["appointment_id"];
-                    int _userId = (Int32)reader["user_id"];
-                    int _availabilityId = (Int32)reader["availability_id"];
-                    bool _confirmed = false;
-                    string _message = reader["message"].ToString();
-                    DateTime creationDate = (DateTime)reader["creationDate"];
-
-                    appointement.appointementId = _appointmentId;
-                    appointement.userId = _userId;
-                    appointement.availabilityId = _availabilityId;
-                    appointement.confirmed = _confirmed;
-                    appointement.message = _message;
+                    Appointement appointement = CreateAppointment(reader);
                     list.Add(appointement);
                 }
                 reader.Close();
@@ -196,19 +172,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    Appointement appointement = new Appointement();
-                    int _appointmentId = (Int32)reader["appointment_id"];
-                    int _userId = (Int32)reader["user_id"];
-                    int _availabilityId = (Int32)reader["availability_id"];
-                    bool _confirmed = false;
-                    string _message = reader["message"].ToString();
-                    DateTime creationDate = (DateTime)reader["creationDate"];
-
-                    appointement.appointementId = _appointmentId;
-                    appointement.userId = _userId;
-                    appointement.availabilityId = _availabilityId;
-                    appointement.confirmed = _confirmed;
-                    appointement.message = _message;
+                    Appointement appointement = CreateAppointment(reader);
                     list.Add(appointement);
                 }
                 reader.Close();
@@ -227,7 +191,7 @@ namespace BusinessLogic.Factories
         public Appointement Get(int id)
         {
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
-            Appointement appointement = new Appointement();
+            Appointement appointement = null;
 
             try
             {
@@ -237,21 +201,9 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int _appointmentId = (Int32)reader["appointment_id"];
-                    int _userId = (Int32)reader["user_id"];
-                    int _availabilityId = (Int32)reader["availability_id"];
-                    bool _confirmed = false;
-                    string _message = reader["message"].ToString();
-                    DateTime creationDate = (DateTime)reader["creationDate"];
-
-                    appointement.appointementId = _appointmentId;
-                    appointement.userId = _userId;
-                    appointement.availabilityId = _availabilityId;
-                    appointement.confirmed = _confirmed;
-                    appointement.message = _message;
-                    
+                    appointement = CreateAppointment(reader);
                 }
                 reader.Close();
             }
@@ -259,6 +211,26 @@ namespace BusinessLogic.Factories
             {
                 cnn.Close();
             }
+            return appointement;
+        }
+        #endregion
+
+        #region CreateAppointment
+        private Appointement CreateAppointment(MySqlDataReader reader)
+        {
+            int _appointmentId = (Int32)reader["appointment_id"];
+            int _userId = (Int32)reader["user_id"];
+            int _availabilityId = (Int32)reader["availability_id"];
+            bool _confirmed = false;
+            string _message = reader["message"].ToString();
+            DateTime creationDate = (DateTime)reader["creationDate"];
+
+            Appointement appointement = new Appointement();
+            appointement.appointementId = _appointmentId;
+            appointement.userId = _userId;
+            appointement.availabilityId = _availabilityId;
+            appointement.confirmed = _confirmed;
+            appointement.message = _message;
             return appointement;
         }
         #endregion

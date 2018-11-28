@@ -19,7 +19,7 @@ namespace JeanMarcGuaySiteWeb
 		{
             // ----------- Vérification le l'état du module ----------- //
             ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
-            Module m = moduleFactory.Get(3);/* Module id 3 = Module des documents PDF */
+            Module m = moduleFactory.Get((int)Module.AllModules.Publications);/* Module id 3 = Module des documents PDF */
             if (m.active == false)
             {
                 Response.Redirect("Default.aspx");
@@ -37,7 +37,7 @@ namespace JeanMarcGuaySiteWeb
 
             // Bouton Abonnement
             btnAbonnements.Visible = false;
-            m = moduleFactory.Get(4);/* Module id 4 = Module des abonnements */
+            m = moduleFactory.Get((int)Module.AllModules.Subscription);/* Module id 4 = Module des abonnements */
             if (m.active == true)
             {
                 if (Session["User"] != null)

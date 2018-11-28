@@ -60,20 +60,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    Request request = new Request();
-                    int _requestId = (Int32)reader["request_id"];
-                    int _userId = (Int32)reader["user_id"];
-                    string _subject = reader["subject"].ToString();
-                    string _content = reader["content"].ToString();
-                    DateTime _creationDate = (DateTime)reader["creationDate"];
-
-                    request.requestId = _requestId;
-                    request.userId = _userId;               
-                    request.subject = _subject;
-                    request.content = _content;
-                    request.creationDate = _creationDate;
-
-                    requestList.Add(request);
+                    requestList.Add(CreateRequest(reader));
                 }
                 reader.Close();
             }
@@ -104,20 +91,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    Request request = new Request();
-                    int _requestId = (Int32)reader["request_id"];
-                    int _userId = (Int32)reader["user_id"];
-                    string _subject = reader["subject"].ToString();
-                    string _content = reader["content"].ToString();
-                    DateTime _creationDate = (DateTime)reader["creationDate"];
-
-                    request.requestId = _requestId;
-                    request.userId = _userId;
-                    request.subject = _subject;
-                    request.content = _content;
-                    request.creationDate = _creationDate;
-
-                    requestList.Add(request);
+                    requestList.Add(CreateRequest(reader));
                 }
                 reader.Close();
             }
@@ -148,20 +122,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    Request request = new Request();
-                    int _requestId = (Int32)reader["request_id"];
-                    int _userId = (Int32)reader["user_id"];
-                    string _subject = reader["subject"].ToString();
-                    string _content = reader["content"].ToString();
-                    DateTime _creationDate = (DateTime)reader["creationDate"];
-
-                    request.requestId = _requestId;
-                    request.userId = _userId;
-                    request.subject = _subject;
-                    request.content = _content;
-                    request.creationDate = _creationDate;
-
-                    requestList.Add(request);
+                    requestList.Add(CreateRequest(reader));
                 }
                 reader.Close();
             }
@@ -192,6 +153,25 @@ namespace BusinessLogic.Factories
             {
                 cnn.Close();
             }
+        }
+        #endregion
+
+        #region CreateRequest 
+        private Request CreateRequest(MySqlDataReader reader)
+        {
+            Request request = new Request();
+            int _requestId = (Int32)reader["request_id"];
+            int _userId = (Int32)reader["user_id"];
+            string _subject = reader["subject"].ToString();
+            string _content = reader["content"].ToString();
+            DateTime _creationDate = (DateTime)reader["creationDate"];
+
+            request.requestId = _requestId;
+            request.userId = _userId;
+            request.subject = _subject;
+            request.content = _content;
+            request.creationDate = _creationDate;
+            return request;
         }
         #endregion
     }

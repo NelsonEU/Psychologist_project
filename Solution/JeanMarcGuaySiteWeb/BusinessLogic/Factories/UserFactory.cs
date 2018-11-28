@@ -69,71 +69,55 @@ namespace BusinessLogic.Factories
         {
 
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
-            User user = new User();
+            User user = null;
 
             try
             {
                 cnn.Open();
 
-                MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT Count(*) FROM users WHERE deletionDate IS NULL AND email=@email";
-                cmd.Parameters.AddWithValue("@email", email);
-                int count = int.Parse(cmd.ExecuteScalar().ToString());
-                cmd.Dispose();
 
-                if (count >= 1)
+                MySqlCommand cmd2 = cnn.CreateCommand();
+                cmd2.CommandText = "SELECT * FROM users WHERE deletionDate IS NULL AND email=@email";
+                cmd2.Parameters.AddWithValue("@email", email);
+                MySqlDataReader reader = cmd2.ExecuteReader();
+                if (reader.Read())
                 {
-                    MySqlCommand cmd2 = cnn.CreateCommand();
-                    cmd2.CommandText = "SELECT * FROM users WHERE deletionDate IS NULL AND email=@email";
-                    cmd2.Parameters.AddWithValue("@email", email);
-                    MySqlDataReader reader = cmd2.ExecuteReader();
-                    while (reader.Read())
+                    user = new User();
+                    int _userId = (Int32)reader["user_id"];
+                    string _lastname = reader["lastname"].ToString();
+                    string _firstname = reader["firstname"].ToString();
+                    string _email = reader["email"].ToString();
+                    string _password = reader["password"].ToString();
+                    bool _admin = (bool)reader["admin"];
+                    bool _subscriber = (bool)reader["subscriber"];
+                    bool _activated = (bool)reader["activated"];
+                    bool _authorized = (bool)reader["authorized"];
+                    DateTime _birthday = (DateTime)reader["birthday"];
+                    if(reader["opt_in"] != DBNull.Value)
                     {
-                        int _userId = (Int32)reader["user_id"];
-                        string _lastname = reader["lastname"].ToString();
-                        string _firstname = reader["firstname"].ToString();
-                        string _email = reader["email"].ToString();
-                        string _password = reader["password"].ToString();
-                        bool _admin = (bool)reader["admin"];
-                        bool _subscriber = (bool)reader["subscriber"];
-                        bool _activated = (bool)reader["activated"];
-                        bool _authorized = (bool)reader["authorized"];
-                        DateTime _birthday = (DateTime)reader["birthday"];
-                        DateTime _optIn;
-                        try
-                        {
-                            _optIn = (DateTime)reader["opt_in"];
-                            user.optIn = _optIn;
-                        }
-                        catch (System.InvalidCastException) { }
-                        DateTime _optOut;
-                        try
-                        {
-                            _optOut = (DateTime)reader["opt_out"];
-                            user.optOut = _optOut;
-                        }
-                        catch (System.InvalidCastException) { }
-                        string _token = reader["token"].ToString();
-
-                        user.userId = _userId;
-                        user.lastname = _lastname;
-                        user.firstname = _firstname;
-                        user.password = _password;
-                        user.email = email;
-                        user.admin = _admin;
-                        user.subscriber = _subscriber;
-                        user.activated = _activated;
-                        user.authorized = _authorized;
-                        user.birthday = _birthday;
-                        user.token = _token;
-
+                        user.optIn = (DateTime)reader["opt_in"];
                     }
-                    reader.Close();
+                    if (reader["opt_out"] != DBNull.Value)
+                    {
+                        user.optOut = (DateTime)reader["opt_out"];
+                    }
+                    string _token = reader["token"].ToString();
+
+                    user.userId = _userId;
+                    user.lastname = _lastname;
+                    user.firstname = _firstname;
+                    user.password = _password;
+                    user.email = email;
+                    user.admin = _admin;
+                    user.subscriber = _subscriber;
+                    user.activated = _activated;
+                    user.authorized = _authorized;
+                    user.birthday = _birthday;
+                    user.token = _token;
+
                 }
-                else
-                {
-                    user = null;
-                }
+                reader.Close();
+
             }
             finally
             {
@@ -206,30 +190,19 @@ namespace BusinessLogic.Factories
                     bool _activated = (bool)reader["activated"];
                     bool _authorized = (bool)reader["authorized"];
                     DateTime _birthday = (DateTime)reader["birthday"];
-                    DateTime _optIn;
-                    try
+                    if (reader["opt_in"] != DBNull.Value)
                     {
-                        _optIn = (DateTime)reader["opt_in"];
-                        user.optIn = _optIn;
+                        user.optIn = (DateTime)reader["opt_in"];
                     }
-                    catch (System.InvalidCastException) { }
-                    DateTime _optOut;
-                    try
+                    if (reader["opt_out"] != DBNull.Value)
                     {
-                        _optOut = (DateTime)reader["opt_out"];
-                        user.optOut = _optOut;
+                        user.optOut = (DateTime)reader["opt_out"];
                     }
-                    
-                    catch (System.InvalidCastException) { }
                     string _token = reader["token"].ToString();
-                    DateTime _lastNotificationDate;
-                    try
+                    if (reader["lastNotificationDate"] != DBNull.Value)
                     {
-                        _lastNotificationDate = (DateTime)reader["lastNotificationDate"];
-                        user.optOut = _lastNotificationDate;
+                        user.lastNotificationDate = (DateTime)reader["lastNotificationDate"];
                     }
-
-                    catch (System.InvalidCastException) { }
 
 
                     user.userId = _userId;
@@ -286,30 +259,19 @@ namespace BusinessLogic.Factories
                     bool _activated = (bool)reader["activated"];
                     bool _authorized = (bool)reader["authorized"];
                     DateTime _birthday = (DateTime)reader["birthday"];
-                    DateTime _optIn;
-                    try
+                    if (reader["opt_in"] != DBNull.Value)
                     {
-                        _optIn = (DateTime)reader["opt_in"];
-                        user.optIn = _optIn;
+                        user.optIn = (DateTime)reader["opt_in"];
                     }
-                    catch (System.InvalidCastException) { }
-                    DateTime _optOut;
-                    try
+                    if (reader["opt_out"] != DBNull.Value)
                     {
-                        _optOut = (DateTime)reader["opt_out"];
-                        user.optOut = _optOut;
+                        user.optOut = (DateTime)reader["opt_out"];
                     }
-
-                    catch (System.InvalidCastException) { }
                     string _token = reader["token"].ToString();
-                    DateTime _lastNotificationDate;
-                    try
+                    if (reader["lastNotificationDate"] != DBNull.Value)
                     {
-                        _lastNotificationDate = (DateTime)reader["lastNotificationDate"];
-                        user.optOut = _lastNotificationDate;
+                        user.lastNotificationDate = (DateTime)reader["lastNotificationDate"];
                     }
-
-                    catch (System.InvalidCastException) { }
 
 
                     user.userId = _userId;
@@ -365,23 +327,19 @@ namespace BusinessLogic.Factories
                     bool _activated = (bool)reader["activated"];
                     bool _authorized = (bool)reader["authorized"];
                     DateTime _birthday = (DateTime)reader["birthday"];
-                    DateTime _optIn;
-                    try
+                    if (reader["opt_in"] != DBNull.Value)
                     {
-                        _optIn = (DateTime)reader["opt_in"];
-                        user.optIn = _optIn;
+                        user.optIn = (DateTime)reader["opt_in"];
                     }
-                    catch (System.InvalidCastException) { }
-                    DateTime _optOut;
-                    try
+                    if (reader["opt_out"] != DBNull.Value)
                     {
-                        _optOut = (DateTime)reader["opt_out"];
-                        user.optOut = _optOut;
+                        user.optOut = (DateTime)reader["opt_out"];
                     }
-
-                    catch (System.InvalidCastException) { }
                     string _token = reader["token"].ToString();
-                    DateTime _lastNotificationDate = (DateTime)reader["lastNotificationDate"];
+                    if (reader["lastNotificationDate"] != DBNull.Value)
+                    {
+                        user.lastNotificationDate = (DateTime)reader["lastNotificationDate"];
+                    }
 
 
                     user.userId = _userId;
@@ -395,7 +353,6 @@ namespace BusinessLogic.Factories
                     user.authorized = _authorized;
                     user.birthday = _birthday;
                     user.token = _token;
-                    user.lastNotificationDate = _lastNotificationDate;
                 }
                 reader.Close();
             }
