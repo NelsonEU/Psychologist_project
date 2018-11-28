@@ -16,6 +16,7 @@ namespace JeanMarcGuaySiteWeb.Admin
     public partial class AppointmentManagement : System.Web.UI.Page
     {
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        static string adresseCabinet = ConfigurationManager.AppSettings["AdresseCabinet"];
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -237,6 +238,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                         }
                         body = body.Replace("{user}", mapUser[a.userId].firstname);
                         body = body.Replace("{date}", mapAvailability[a.availabilityId].strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+                        body = body.Replace("{AdresseCabinet}", adresseCabinet);
                         ec.SendMail(mapUser[a.userId].email, "JMGuay.ca - Confirmation du rendez-vous [Message automatique]", body);
                     }
                 }
@@ -330,6 +332,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                     }
                     body = body.Replace("{user}", mapUser[a.userId].firstname);
                     body = body.Replace("{date}", mapAvailability[a.availabilityId].strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+                    
                     ec.SendMail(mapUser[a.userId].email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
                 }
             }

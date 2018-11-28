@@ -397,7 +397,6 @@ namespace BusinessLogic.Factories
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = "UPDATE users SET deletionDate = NOW() WHERE email=@email";
                 cmd.Parameters.AddWithValue("@email", email);
-                System.Diagnostics.Debug.WriteLine("QUERY: " + cmd.CommandText);
                 cmd.ExecuteNonQuery();
             }
             finally
@@ -532,6 +531,26 @@ namespace BusinessLogic.Factories
             }
         }
 
+        #endregion
+
+        #region NotifyByArray
+        public void NotifyByArray(string[] ids)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                string commande = "Update users SET lastNotificationDate = NOW() WHERE  user_id IN (" + String.Join(",", ids) + ")";
+                cmd.CommandText = commande;
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
         #endregion
 
         #region Update

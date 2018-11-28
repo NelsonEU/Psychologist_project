@@ -100,9 +100,17 @@ namespace JeanMarcGuaySiteWeb
                 {
                     body = reader2.ReadToEnd();
                 }
+                string strPathAndQuery = HttpContext.Current.Request.Url.PathAndQuery;
+                string strUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(strPathAndQuery, "/");
+                string lienAccueil = strUrl + "Default.aspx";     
+
                 body = body.Replace("{date}", DateTime.Now.ToString("dd-MM-yyyy"));
                 body = body.Replace("{subject}", subject);
                 body = body.Replace("{content}", content);
+                body = body.Replace("{lienAccueil}", lienAccueil);
+                body = body.Replace("{lien}", strUrl);
+                body = body.Replace("{emailHost}", emailAddress);
+
                 ec.SendMail(user.email, "JMGuay.ca - Confirmation de l'envoi du message [Message automatique]", body);
 
                 // Redirection à une page de confirmation
