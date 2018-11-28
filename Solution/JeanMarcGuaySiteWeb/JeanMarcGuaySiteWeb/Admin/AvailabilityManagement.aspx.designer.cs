@@ -31,12 +31,48 @@ namespace JeanMarcGuaySiteWeb.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl PageContent;
         
         /// <summary>
-        /// Contrôle tabUnconfirmed.
+        /// Contrôle Ajouter.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tabUnconfirmed;
+        protected global::System.Web.UI.WebControls.Button Ajouter;
+        
+        /// <summary>
+        /// Contrôle date.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField date;
+        
+        /// <summary>
+        /// Contrôle time1.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField time1;
+        
+        /// <summary>
+        /// Contrôle time2.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField time2;
+        
+        /// <summary>
+        /// Contrôle tabAvail.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tabAvail;
     }
 }

@@ -31,6 +31,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                 ActivationValidation.Visible = false;
                 PageContent.Visible = true;
                 avList =  uf.GetAll().ToList();
+                Load_Avails();
             }
             // ------------------------------------------------------- //
             
@@ -39,31 +40,53 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         protected void Load_Avails()
         {
+          //  tabAvail = new Table();
             foreach (Availability a in avList)
             {
                 TableRow row = new TableRow();
                 TableCell cellDate = new TableCell();
                 TableCell cellstrtdt = new TableCell();
                 TableCell cellenddt = new TableCell();
-                TableCell cellSelect = new TableCell();
-                cellDate.Text = a.strdt.Date.ToString();
+                TableCell cellBtn = new TableCell();
+                cellDate.Text = a.strdt.Day+"/"+a.strdt.Month+"/"+a.strdt.Year;
                 cellstrtdt.Text = a.strdt.TimeOfDay.ToString();
                 cellenddt.Text = a.enddt.TimeOfDay.ToString();
-                CheckBox cb = new CheckBox();
-                cellSelect.Controls.Add(cb);
-                cellSelect.ID = a.availabilityId.ToString();
-                cellSelect.CssClass = "selectUser";
+                Button bt = new Button();
+                bt.CssClass = "btn - danger";
+                bt.Text = "Supprimer";
+                bt.ID = a.availabilityId.ToString();
+                bt.Click += new EventHandler(this.Supprimer_Click);
+                cellBtn.Controls.Add(bt);
                 row.Cells.Add(cellDate);
                 row.Cells.Add(cellstrtdt);
                 row.Cells.Add(cellenddt);
-                row.Cells.Add(cellSelect);
-                tabUnconfirmed.Rows.Add(row);
+                row.Cells.Add(cellBtn);
+                tabAvail.Rows.Add(row);
             }
         }
 
         protected void Submit_click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Ajouter_Click(object sender, EventArgs e)
+        {
+            //check si blank
+            //verifications
+            //ajouter a la bd 
+            date.Value.ToString();
+            time1.Value.ToString();
+            time2.Value.ToString();
+
+        }
+
+        protected void Supprimer_Click(object sender, EventArgs e)
+        {
+            //get le id du button 
+            Button test = (Button)sender;
+            test.ID.ToString();
+            //supprimer 
         }
     }
 }
