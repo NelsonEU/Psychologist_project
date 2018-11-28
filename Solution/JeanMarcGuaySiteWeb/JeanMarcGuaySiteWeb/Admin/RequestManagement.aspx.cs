@@ -20,7 +20,7 @@ namespace JeanMarcGuaySiteWeb.Admin
         {
             // -----------Vérification le l'état du module ----------- //
             ModuleFactory moduleFactory = new ModuleFactory(cnnStr);           
-            Module m = moduleFactory.Get(2);/* Module id 2 = Module de prises de contact */
+            Module m = moduleFactory.Get((int)Module.AllModules.Contact);/* Module id 2 = Module de prises de contact */
             if(m.active == false){
                 ActivationValidation.Visible = true;
                 PageContent.Visible = false;

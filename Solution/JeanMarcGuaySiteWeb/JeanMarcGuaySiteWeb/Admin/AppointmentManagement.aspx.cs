@@ -21,7 +21,7 @@ namespace JeanMarcGuaySiteWeb.Admin
         {
             // -----------Vérification le l'état du module ----------- //
             ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
-            Module m = moduleFactory.Get(1);/* Module id 1 = Module des prises de rendez-vous */
+            Module m = moduleFactory.Get((int)Module.AllModules.Appointment);/* Module id 1 = Module des prises de rendez-vous */
             if (m.active == false)
             {
                 ActivationValidation.Visible = true;
