@@ -92,6 +92,11 @@ namespace JeanMarcGuaySiteWeb.Admin
                         {
                             body = reader.ReadToEnd();
                         }
+                        string strPathAndQuery = HttpContext.Current.Request.Url.PathAndQuery;
+                        string strUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(strPathAndQuery, "/");
+                        string lienActivation = strUrl + "Connexion.aspx";
+
+                        body = body.Replace("{lienConnexion}", lienActivation);
                         ec.SendMail(c.ID, "Cabinet Jean-Marc Guay", body);
                     }
                 }

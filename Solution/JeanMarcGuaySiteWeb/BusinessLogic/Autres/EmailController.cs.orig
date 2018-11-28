@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net.Mail;
+using System.IO;
+using System.Reflection;
+using System.Configuration;
+
+namespace BusinessLogic.Autres
+{
+    public class EmailController
+    {
+
+        static string SmtpHost = ConfigurationManager.AppSettings["SmtpHost"];
+        static string emailAddress = ConfigurationManager.AppSettings["emailAddress"];
+        static string password = ConfigurationManager.AppSettings["password"];
+        static int SmtpPort = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpPort"]);
+
+        public void SendMail(string email, string subject, string body)
+        {
+
+            MailMessage mail = new MailMessage();
+            mail.To.Add(email);
+            mail.From = new MailAddress(emailAddress);
+            mail.Subject = subject;
+            mail.IsBodyHtml = true;
+            mail.Body = body;
+            SmtpClient smtp = new SmtpClient();
+<<<<<<< HEAD
+            smtp.Host = SmtpHost;
+            smtp.Credentials = new System.Net.NetworkCredential(emailAddress, password);
+            smtp.Port = SmtpPort;
+=======
+            smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
+            smtp.Credentials = new System.Net.NetworkCredential("cabinet.jmguay@gmail.com", "Jmguay2018!");
+            smtp.Port = 587;
+>>>>>>> 3fc336f3d9fbcd6d67cb6ae3d1912083850252df
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+
+        }
+
+
+
+    }
+}

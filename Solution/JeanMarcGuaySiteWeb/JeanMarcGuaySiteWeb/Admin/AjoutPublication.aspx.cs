@@ -22,7 +22,7 @@ namespace JeanMarcGuaySiteWeb.Admin
         {
             // -----------Vérification le l'état du module ----------- //
             ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
-            Module m = moduleFactory.Get(3); /* Module id 3 = Module des documents PDF */
+            Module m = moduleFactory.Get((int)Module.AllModules.Publications); /* Module id 3 = Module des documents PDF */
             if (m.active == false)
             {
                 ActivationValidation.Visible = true;
@@ -88,12 +88,14 @@ namespace JeanMarcGuaySiteWeb.Admin
                                 // Notification Email aux utilisateurs abonnées
                                 // -----------Vérification le l'état du module ----------- //
                                 ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
-                                Module m = moduleFactory.Get(4); /* Module id 4 = Module des abonnements */
+                                Module m = moduleFactory.Get((int)Module.AllModules.Subscription); /* Module id 4 = Module des abonnements */
                                 if (m.active != false)
                                 {
                                     //Envoyer le email
                                     UserFactory uf = new UserFactory(cnnStr);
                                     User[] users = uf.GetAllSubscribed();
+                                    string[] usersIDs = new string[users.Length];
+                                    int cpt = 0;
 
                                     foreach (User user in users)
                                     {
@@ -116,13 +118,19 @@ namespace JeanMarcGuaySiteWeb.Admin
                                         string desabonner = strUrl + "Desabonnement.aspx" + "?email=" + user.email + "&tkn=" + user.token;
                                         body = body.Replace("{desabonner}", desabonner);
                                         
+                                        //Envoie du mail
                                         ec.SendMail(user.email, "Nouvelle(s) publication(s) sur JMGuay.ca", body);
-                                        
-                                        //update le lastNotificationDate
-                                        uf.notifyById(user.userId); //Requete dans une boucle >:(
+
+                                        //ajout dans le tableau pour update les lastNotificationDates
+                                        usersIDs[cpt] = user.userId.ToString();
+                                        cpt++;                                       
                                     }
 
-
+                                    if (users.Length > 0)
+                                    {
+                                        //Notifications des users avec la liste des IDs 
+                                        uf.NotifyByArray(usersIDs);
+                                    }
 
                                 }
                                 // ------------------------------------------------------- //
