@@ -21,7 +21,7 @@ namespace JeanMarcGuaySiteWeb
         {
             // ----------- Vérification le l'état du module ----------- //
             ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
-            Module m = moduleFactory.Get(3);/* Module id 3 = Module des documents PDF */
+            Module m = moduleFactory.Get((int)Module.AllModules.Publications);/* Module id 3 = Module des documents PDF */
             if (m.active == false)
             {
                 Response.Redirect("Default.aspx");

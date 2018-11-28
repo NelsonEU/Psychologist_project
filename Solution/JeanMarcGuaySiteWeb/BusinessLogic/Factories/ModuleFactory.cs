@@ -35,18 +35,7 @@ namespace BusinessLogic.Factories
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    int _id = (Int32)reader["module_id"];
-                    string _title = reader["title"].ToString();
-                    string _description = reader["description"].ToString();
-                    bool _active = (bool)reader["active"];
-
-                    Module module = new Module();
-                    module.moduleId = _id;
-                    module.title = _title;
-                    module.active = _active;
-                    module.description = _description;
-
-                    moduleList.Add(module);
+                    moduleList.Add(CreateModule(reader));
                 }
                 reader.Close();
             }
@@ -88,7 +77,7 @@ namespace BusinessLogic.Factories
         public Module Get(int id)
         {
 
-            Module module = new Module();
+            Module module = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -99,17 +88,9 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int _id = (Int32)reader["module_id"];
-                    string _title = reader["title"].ToString();
-                    string _description = reader["description"].ToString();
-                    bool _active = (bool)reader["active"];
-
-                    module.moduleId = _id;
-                    module.title = _title;
-                    module.description = _description;
-                    module.active = _active;
+                    module = CreateModule(reader);
                 }
                 reader.Close();
             }
@@ -123,5 +104,20 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+        #region CreateModule
+        private Module CreateModule(MySqlDataReader reader)
+        {
+            Module module = new Module();
+            int _id = (Int32)reader["module_id"];
+            string _title = reader["title"].ToString();
+            string _description = reader["description"].ToString();
+            bool _active = (bool)reader["active"];
+            module.moduleId = _id;
+            module.title = _title;
+            module.description = _description;
+            module.active = _active;
+            return module;
+        }
+        #endregion
     }
 }
