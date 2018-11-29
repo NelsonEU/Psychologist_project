@@ -35,7 +35,7 @@
 
                     <!-- Image -->
                     <div class="col-lg-4 text-center">
-                        <img class="shadow img-thumbnail" id="h2Apropos" src="http://wp2.commonsupport.com/newwp/mindron/wp-content/uploads/2018/02/about.jpg" alt="" />
+                        <img class="shadow img-thumbnail" id="h2Apropos" src="Images/photoService5.jpg" alt="" />
                     </div>
                 </div>
                 <div id="paraTrigger"></div>

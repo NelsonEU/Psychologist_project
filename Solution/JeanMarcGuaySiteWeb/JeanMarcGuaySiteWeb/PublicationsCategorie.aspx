@@ -19,7 +19,7 @@
                 
                 <div class="row">
                     <div class="col-sm-2 mt-2 mb-1">
-                        <a href="Publications.aspx" class="btn mainButton3">Retour aux categories</a>
+                        <a href="Publications.aspx" class="btn mainButton3">Retour aux catégories</a>
                     </div>
                 </div>
                 <div class="row ml-1 mt-2 mb-2" runat="server">

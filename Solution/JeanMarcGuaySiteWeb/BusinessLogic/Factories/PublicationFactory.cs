@@ -23,9 +23,10 @@ namespace BusinessLogic.Factories
         {
 
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
+            MySqlTransaction trans = cnn.BeginTransaction();
 
             try
-            {
+            {               
                 //Requête 1:
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
@@ -46,9 +47,13 @@ namespace BusinessLogic.Factories
                 cmd2.Parameters.AddWithValue("@publication_id", publicationId);
                 cmd2.Parameters.AddWithValue("@category_id", categoryId);
                 cmd2.ExecuteNonQuery();
+            }catch(Exception e)
+            {
+                trans.Rollback();
             }
             finally
             {
+                trans.Commit();
                 cnn.Close();
             }
 

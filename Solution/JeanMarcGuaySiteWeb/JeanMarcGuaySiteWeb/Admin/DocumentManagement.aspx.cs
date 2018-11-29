@@ -56,10 +56,10 @@ namespace JeanMarcGuaySiteWeb.Admin
                 Publication[] publications = pf.GetAll();
                 afficherTableau(publications);
             }
-            else
-            {
-                //SelectedIndexChanged(null, null);
-            }
+            //else
+            //{
+            //    SelectedIndexChanged(null, null);
+            //}
 
         }
 
