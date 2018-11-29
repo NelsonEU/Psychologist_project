@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using BusinessLogic;
 using BusinessLogic.Factories;
 using System.Configuration;
-using System.Linq;
 using System.Data;
 
 namespace JeanMarcGuaySiteWeb.Admin

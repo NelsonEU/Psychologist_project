@@ -8,6 +8,7 @@ using BusinessLogic;
 using BusinessLogic.Factories;
 using System.Configuration;
 using System.IO;
+using System.Data;
 
 namespace JeanMarcGuaySiteWeb.Admin
 {
@@ -54,7 +55,7 @@ namespace JeanMarcGuaySiteWeb.Admin
 
                 //Affiche toutes les publications par défaut
                 Publication[] publications = pf.GetAll();
-                afficherTableau(publications);
+                afficherTableauRepeater(publications);
             }
             //else
             //{
@@ -69,95 +70,116 @@ namespace JeanMarcGuaySiteWeb.Admin
             if (categorie == "Toutes")
             {
                 Publication[] publications = pf.GetAll();
-                afficherTableau(publications);
+                afficherTableauRepeater(publications);
             }
             else
             {
                 Publication[] publications = pf.GetAllByCategoryId(Convert.ToInt32(categorie));
-                afficherTableau(publications);
+                afficherTableauRepeater(publications);
             }
         }
 
         protected void afficherTableau( Publication[] publications)
         {
-            for (int i = 1; i < publicationTable.Rows.Count; i++)
-            {
-                publicationTable.Rows.RemoveAt(i);
-            }
+            //for (int i = 1; i < publicationTable.Rows.Count; i++)
+            //{
+            //    publicationTable.Rows.RemoveAt(i);
+            //}
+            //foreach (Publication publication in publications)
+            //{
+            //    TableRow row = new TableRow();
+            //    TableCell cellTitle = new TableCell();
+            //    TableCell cellFileName = new TableCell();
+            //    TableCell cellTelecharger = new TableCell();
+            //    TableCell cellSupprimer = new TableCell();
+            //
+            //    cellTitle.Text = publication.title;
+            //    cellFileName.Text = publication.fileName;
+            //
+            //    Button buttonDownload = new Button();
+            //    buttonDownload.Text = "Télécharger";
+            //    buttonDownload.Attributes.Add("class", "btn btn-success");
+            //    buttonDownload.Attributes.Add("data-id", publication.publicationId.ToString());
+            //    buttonDownload.Click += new EventHandler(btn_Telecharger_Click);
+            //    cellTelecharger.Controls.Add(buttonDownload);
+            //
+            //    Button buttonSupprimer = new Button();
+            //    buttonSupprimer.Attributes.Add("class", "btn btn-danger btnSuppr");
+            //    buttonSupprimer.Text = "Supprimer";
+            //    buttonSupprimer.Attributes.Add("data-id", publication.publicationId.ToString());
+            //    buttonSupprimer.Click += new EventHandler(btn_Supprimer_Click);
+            //    cellSupprimer.Controls.Add(buttonSupprimer);
+            //
+            //    row.Cells.Add(cellTitle);
+            //    row.Cells.Add(cellFileName);
+            //    row.Cells.Add(cellTelecharger);
+            //    row.Cells.Add(cellSupprimer);
+            //
+            //    //publicationTable.Rows.Add(row);
+            //}
+        }
+
+        protected void afficherTableauRepeater(Publication[] publications)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[4] { new DataColumn("Titre"), new DataColumn("fileName"), new DataColumn("id1"), new DataColumn("id2")});
             foreach (Publication publication in publications)
             {
-                TableRow row = new TableRow();
-                TableCell cellTitle = new TableCell();
-                TableCell cellFileName = new TableCell();
-                TableCell cellTelecharger = new TableCell();
-                TableCell cellSupprimer = new TableCell();
-
-                cellTitle.Text = publication.title;
-                cellFileName.Text = publication.fileName;
-
-                Button buttonDownload = new Button();
-                buttonDownload.Text = "Télécharger";
-                buttonDownload.Attributes.Add("class", "btn btn-success");
-                buttonDownload.Attributes.Add("data-id", publication.publicationId.ToString());
-                buttonDownload.Click += new EventHandler(btn_Telecharger_Click);
-                cellTelecharger.Controls.Add(buttonDownload);
-
-                Button buttonSupprimer = new Button();
-                buttonSupprimer.Attributes.Add("class", "btn btn-danger btnSuppr");
-                buttonSupprimer.Text = "Supprimer";
-                buttonSupprimer.Attributes.Add("data-id", publication.publicationId.ToString());
-                buttonSupprimer.Click += new EventHandler(btn_Supprimer_Click);
-                cellSupprimer.Controls.Add(buttonSupprimer);
-
-                row.Cells.Add(cellTitle);
-                row.Cells.Add(cellFileName);
-                row.Cells.Add(cellTelecharger);
-                row.Cells.Add(cellSupprimer);
-
-                publicationTable.Rows.Add(row);
+                dt.Rows.Add(publication.title, publication.fileName, publication.publicationId.ToString(), publication.publicationId.ToString());
             }
+            rptPublicationTable.DataSource = dt;
+            rptPublicationTable.DataBind();
         }
 
-        protected void btn_Telecharger_Click(object sender, EventArgs e)
+
+
+        protected void rptPublication_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            Button button = (Button)sender;
-            int id = Convert.ToInt32(button.Attributes["data-id"]);
-            Publication publication = pf.Get(id);
-
-            if (File.Exists(Server.MapPath(publication.url)))
+            switch (e.CommandName)
             {
-                Response.ContentType = "Application/pdf";
-                Response.AppendHeader("Content-Disposition", "attachment; filename=" + publication.title + ".pdf");
-                Response.TransmitFile(Server.MapPath(publication.url));
-                Response.End();
-            }
-            else
-            {
-                Response.Redirect(Request.RawUrl + "?erreur=True");
+                case "Delete":
+                {
+                    string confirmValue = Request.Form["confirm_delete"];
+                    if (confirmValue == "Oui")
+                    {
+                        int id = Convert.ToInt32(e.CommandArgument);
+                        Publication publication = pf.Get(id);
+                        pf.delete(id);
+                        try
+                        {
+                            string FileToDelete = Server.MapPath(publication.url);
+                            File.Delete(FileToDelete);
+                        }
+                        finally
+                        {
+                            Response.Redirect(Request.RawUrl);
+                        }
+                    }
+                    break;
+                }
+                case "Download":
+                {
+                    int id = Convert.ToInt32(e.CommandArgument);
+                    Publication publication = pf.Get(id);
+                    if (File.Exists(Server.MapPath(publication.url)))
+                    {
+                        Response.ContentType = "Application/pdf";
+                        Response.AppendHeader("Content-Disposition", "attachment; filename=" + publication.title + ".pdf");
+                        Response.TransmitFile(Server.MapPath(publication.url));
+                        Response.End();
+                    }
+                    else
+                    {
+                        Response.Redirect(Request.RawUrl + "?erreur=True");
+                    }
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
             }
         }
-        protected void btn_Supprimer_Click(object sender, EventArgs e)
-        {
-            string confirmValue = Request.Form["confirm_delete"];
-            if (confirmValue == "Oui")
-            {
-                Button button = (Button)sender;
-                int id = Convert.ToInt32(button.Attributes["data-id"]);
-                Publication publication = pf.Get(id);
-                pf.delete(id);
-                try
-                {
-                    string FileToDelete = Server.MapPath(publication.url);
-                    File.Delete(FileToDelete);
-                }
-                finally
-                {
-                    Response.Redirect(Request.RawUrl);
-                }
-            } 
-        }
-
-       
 
     }
 }

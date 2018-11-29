@@ -29,9 +29,9 @@
                 </div>
             </div>
             <div id="divPublications" runat="server">
-                <div class="row mb-3">
+                <div class="row mb-3">s
                     <div class="col-sm-2 mb-1">
-                        <a href="Publications.aspx" class="btn mainButton3">Retour aux categories</a>
+                        <a href="Publications.aspx" class="btn mainButton3">Retour aux catégories</a>
                     </div>
                     <div class="input-group stylish-input-group offset-sm-4 col-sm-6 col-xs-12">
                         <input type="text" class="form-control" placeholder="Rechercher" id="searchPublications" />

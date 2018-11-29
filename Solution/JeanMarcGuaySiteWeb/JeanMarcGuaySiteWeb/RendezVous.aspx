@@ -14,9 +14,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="rdv">
-        <div class=" pb-1 pt-1 text-center" runat="server" id="divDev">
-            <span><b>Cette section est en cours de développement</b></span>
-        </div>
 
         <div class="container-fluid pt-5" runat="server" id="divConnexion">
             <div class="row pb-1 text-center pb-3">
@@ -49,16 +46,24 @@
             </div>
         </div>
 
-        <div class=" pb-5 text-center" style="padding-top: 125px;" runat="server" id="divRenseignement">
-            <span>
-                <p class="text-center">Cette section apparait lorsque l'utilisateur est connecté et non-autorisé (Renseignements (Vous devez d'abord avoir été autorisé...))</p>
-            </span>
+        <div class="container-fluid pb-5" runat="server" id="divRenseignement">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 col-sm-12 text-center">
+                    <!-- Cette section apparait lorsque l'utilisateur est connecté et non-autorisé -->
+                    <h3>Vous n'êtes pas autorisé(e) à prendre rendez-vous.</h3>
+                    <span>(informations...)</span>
+                </div>
+            </div>
         </div>
 
-        <div class=" pb-5 text-center" style="padding-top: 125px;" runat="server" id="divRendezVous">
-            <span>
-                <p class="text-center">Cette section apparait lorsque l'utilisateur est connecté et autorisé</p>
-            </span>
+        <div class="container-fluid pt-5" runat="server" id="divRendezVous">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 col-sm-12 text-center">
+                    <!-- Cette section apparait lorsque l'utilisateur est connecté et autorisé -->
+                    <h3>Prendre rendez-vous avec Jean-Marc Guay</h3>
+                    <span><b>Attention:</b> le rendez-vous n'est pas confirmé tant que vous n'avez pas reçu un email de confirmation.</span>
+                </div>
+            </div>
         </div>
     </div>
 

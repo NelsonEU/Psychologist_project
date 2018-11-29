@@ -38,7 +38,7 @@
                                     <div class="row text-center divDate">
                                         <div class="col-lg-12 col-sm-12 biggerText">
                                             <span>Message de: <b> <%# Eval("Prenom") %> <%# Eval("Nom") %></b></span>
-                                            <asp:Button runat="server" Text="X" CommandName="Delete" class="buttonX" CommandArgument='<%# Eval("requestId") %>'/>
+                                            <asp:Button runat="server" Text="X" CommandName="Delete" CssClass="buttonX" CommandArgument='<%# Eval("requestId") %>'/>
                                         </div>
                                     </div>
                                     <div class="row text-center divInfo">

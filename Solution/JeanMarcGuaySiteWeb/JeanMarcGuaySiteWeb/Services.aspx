@@ -35,7 +35,7 @@
 
                     <!-- Image -->
                     <div class="col-lg-4 text-center">
-                        <img class="shadow img-thumbnail" id="h2Apropos" src="Images/photoService5.jpg" alt="" />
+                        <img class="shadow img-thumbnail" id="h2Apropos" src="Images/photoService.jpg" alt="" />
                     </div>
                 </div>
                 <div id="paraTrigger"></div>
