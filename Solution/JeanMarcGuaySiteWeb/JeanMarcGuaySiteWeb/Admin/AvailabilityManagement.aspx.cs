@@ -98,6 +98,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                 if (legit)
                 {
                     uf.Add(strdt, enddt);
+                    Response.Redirect(Request.RawUrl);
                 }
 
             }
@@ -114,7 +115,7 @@ namespace JeanMarcGuaySiteWeb.Admin
             Button theButton = (Button)sender;
 
             uf.delete(Convert.ToInt32(theButton.ID));
-
+            Response.Redirect(Request.RawUrl);
 
         }
     }

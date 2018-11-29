@@ -49,9 +49,26 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-               // cmd.CommandText = "IF NOT EXISTS(Select * FROM appointments WHERE availability_id=@id) BEGIN DELETE * FROM availabilities WHERE availability_id=@id END";
+                cmd.CommandText = "Select * FROM appointments WHERE availability_id=@id";
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+               if(reader.HasRows)
+                {
+                    reader.Close();
+                    //nothing 
+                }
+               else
+                {
+                    reader.Close();
+                    cmd = cnn.CreateCommand();
+                    cmd.CommandText = "Delete FROM availabilities WHERE availability_id=@id";
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+
+                
             }
             finally
             {
