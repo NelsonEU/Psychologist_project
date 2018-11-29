@@ -65,28 +65,57 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
         }
 
-        protected void Submit_click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Ajouter_Click(object sender, EventArgs e)
         {
             //check si blank
             //verifications
             //ajouter a la bd 
-            date.Value.ToString();
-            time1.Value.ToString();
-            time2.Value.ToString();
+            String tdate = date.Value.ToString();
+            String ttime1 = time1.Value.ToString();
+            String ttime2 = time2.Value.ToString();
+
+            if (tdate != "" && ttime1 != "" && ttime2 != "" && Convert.ToDateTime(ttime1) < Convert.ToDateTime(ttime2))
+            {
+                int month =  Convert.ToInt32(tdate.Substring(0, 2));
+                int day = Convert.ToInt32(tdate.Substring(3, 2));
+                int year = Convert.ToInt32(tdate.Substring(6, 4));
+                int hour = Convert.ToInt32(ttime1.Substring(0, 2));
+                int minute = Convert.ToInt32(ttime1.Substring(3, 2));
+                int second = 00;
+
+                int month2 = Convert.ToInt32(tdate.Substring(0, 2));
+                int day2 = Convert.ToInt32(tdate.Substring(3, 2));
+                int year2 = Convert.ToInt32(tdate.Substring(6, 4));
+                int hour2 = Convert.ToInt32(ttime2.Substring(0, 2));
+                int minute2 = Convert.ToInt32(ttime2.Substring(3, 2));
+                int second2 = 00;
+                //verif si existe pas deja dans le range
+                DateTime strdt = new DateTime(year, month, day, hour, minute, second);
+                DateTime enddt = new DateTime(year2, month2, day2, hour2, minute2, second2);
+
+                bool legit = uf.checkifvalid(strdt, enddt);
+
+                if (legit)
+                {
+                    uf.Add(strdt, enddt);
+                }
+
+            }
+            else
+            {
+                //invalid
+            }
 
         }
 
         protected void Supprimer_Click(object sender, EventArgs e)
         {
             //get le id du button 
-            Button test = (Button)sender;
-            test.ID.ToString();
-            //supprimer 
+            Button theButton = (Button)sender;
+
+            uf.delete(Convert.ToInt32(theButton.ID));
+
+
         }
     }
 }

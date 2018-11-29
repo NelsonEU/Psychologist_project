@@ -49,7 +49,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "DELETE * FROM availabilities WHERE availability_id=@id";
+               // cmd.CommandText = "IF NOT EXISTS(Select * FROM appointments WHERE availability_id=@id) BEGIN DELETE * FROM availabilities WHERE availability_id=@id END";
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
             }
@@ -133,7 +133,7 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
-        #region checkifexit
+        #region checkifvalid
         public bool checkifvalid(DateTime strdt, DateTime enddt)
         {
             List<Availability> availabilityList = new List<Availability>();
@@ -144,9 +144,7 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM availabilities(Start_time, End_time) VALUES (@Start_time, @End_time)";
-                cmd.Parameters.AddWithValue("@Start_time", strdt);
-                cmd.Parameters.AddWithValue("@End_time", enddt);
+                cmd.CommandText = "SELECT * FROM availabilities";
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())

@@ -5,14 +5,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script> 
         $(document).ready(function () {
-            $('#timepicker1').timepicker({
-                'disableTimeRanges': [
-                ]
-            });
-            $('#timepicker2').timepicker({
-                'disableTimeRanges': [
-                ]
-            });
+            $('#timepicker1').timepicker({ 'timeFormat': 'H:i:s' });
+            $('#timepicker2').timepicker({ 'timeFormat': 'H:i:s' });
             $("#datepicker").datepicker(
                 {
                     onSelect: function (dateText) {
@@ -42,13 +36,24 @@
             <h1>Disponibilités</h1>
         </div>
         </div>
-        <div class="row">
-            <p>Date: <input type="text" id="datepicker"/>Heure Début: <input id="timepicker1" type="text" class="time ui-timepicker-input" autocomplete="off"/>Heure Fin:<input id="timepicker2" type="text" class="time ui-timepicker-input" autocomplete="off"/> <asp:Button id="Ajouter" Text="Submit" runat="server" OnClick="Ajouter_Click" /></p> 
+        <div class="row pb-3">
+            <div class="col-lg-3">
+                Date: <input type="text" id="datepicker" autocomplete="off"/>
+            </div>
+            <div class="col-lg-3">
+                Heure Début: <input id="timepicker1" type="text" class="time ui-timepicker-input" autocomplete="off"/>
+            </div>
+            <div class="col-lg-3">
+                Heure Fin:<input id="timepicker2" type="text" class="time ui-timepicker-input" autocomplete="off"/>
+            </div>
+            <div class="col-lg-3" style="display: flex; justify-content: center;">
+                <asp:Button id="Ajouter" Text="Ajouter" runat="server" OnClick="Ajouter_Click" CssClass="btn btn-blue" />
+            </div>
             <asp:HiddenField ID="date" runat="server" />  
             <asp:HiddenField ID="time1" runat="server" />  
             <asp:HiddenField ID="time2" runat="server" />  
         </div>
-        <div class="row">
+        <div class="row pb-3">
             <div class="col-sm-12">
                 <asp:Table runat="server" ID="tabAvail" aria-describedby="dataTable_info" CssClass="table table-bordered table-hover dataTable dataUsers">
                     <asp:TableHeaderRow>
@@ -70,5 +75,6 @@
     <script src="Javascript/bootstrap-datepicker.js"></script>
     <link href="CSS/jquery.timepicker.min.css" rel="stylesheet" />
     <script src="Javascript/jquery.timepicker.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </asp:Content>
