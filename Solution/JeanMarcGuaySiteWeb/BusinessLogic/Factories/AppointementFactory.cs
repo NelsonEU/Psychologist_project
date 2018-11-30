@@ -223,7 +223,6 @@ namespace BusinessLogic.Factories
             int _availabilityId = (Int32)reader["availability_id"];
             bool _confirmed = false;
             string _message = reader["message"].ToString();
-            DateTime creationDate = (DateTime)reader["creationDate"];
 
             Appointement appointement = new Appointement();
             appointement.appointementId = _appointmentId;

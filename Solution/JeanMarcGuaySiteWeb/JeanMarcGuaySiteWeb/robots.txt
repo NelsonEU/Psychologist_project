@@ -1,0 +1,4 @@
+# Notice: Crawling jmguay.ca is prohibited unless you have express written
+
+User-agent: *
+Disallow: /ms*

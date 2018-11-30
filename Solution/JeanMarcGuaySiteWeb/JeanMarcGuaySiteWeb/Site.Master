@@ -52,7 +52,7 @@
                                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="RendezVous.aspx">Rendez-vous</a>
                             </li>
                             <li class="nav-item mx-0 mx-lg-1" runat="server" id="liAdmin">
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="admin/admin.aspx" id="A1" runat="server">Administration</a>
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="ms/admin.aspx" id="A1" runat="server">Administration</a>
                             </li>
                             <li class="nav-item mx-0 mx-lg-1">
                                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="Connexion.aspx" id="connexionButton" runat="server">Se connecter</a>
@@ -105,7 +105,7 @@
                         </span>
 
 				        <span runat="server" id="liFAdmin">·
-                        <a href="admin/admin.aspx" >Administration</a>
+                        <a href="ms/admin.aspx" >Administration</a>
                         </span>
 				
 
