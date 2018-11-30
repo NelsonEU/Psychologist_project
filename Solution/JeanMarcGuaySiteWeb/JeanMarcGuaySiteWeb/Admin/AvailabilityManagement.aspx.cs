@@ -30,7 +30,7 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 ActivationValidation.Visible = false;
                 PageContent.Visible = true;
-                avList =  uf.GetAll().ToList();
+                avList =  uf.GetAllFree().ToList();
                 Load_Avails();
             }
             // ------------------------------------------------------- //
@@ -100,10 +100,14 @@ namespace JeanMarcGuaySiteWeb.Admin
                     uf.Add(strdt, enddt);
                     Response.Redirect(Request.RawUrl);
                 }
-
+                else
+                {
+                    emsg01.Text = "Date invalide";
+                }
             }
             else
             {
+                emsg01.Text = "Date invalide";
                 //invalid
             }
 
@@ -114,8 +118,12 @@ namespace JeanMarcGuaySiteWeb.Admin
             //get le id du button 
             Button theButton = (Button)sender;
 
-            uf.delete(Convert.ToInt32(theButton.ID));
-            Response.Redirect(Request.RawUrl);
+            bool success = uf.delete(Convert.ToInt32(theButton.ID));
+
+            if (success)
+                Response.Redirect(Request.RawUrl);
+            else
+                emsg01.Text = "Impossible de supprimer la plage de disponibilité puisqu'elle est lié à un rendez-vous";
 
         }
     }

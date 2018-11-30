@@ -8,6 +8,7 @@ using BusinessLogic;
 using BusinessLogic.Factories;
 using BusinessLogic.Autres;
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -58,6 +59,51 @@ namespace JeanMarcGuaySiteWeb
                 }
             }
             // ------------------------------------------------------- //
+
+            //Rempissage des dropdowns
+            if (!Page.IsPostBack)
+            {
+                /*//Feed le DDL des catégories 
+                CategoryFactory cf = new CategoryFactory(cnnStr);
+                Category[] categories = cf.GetAll();
+                DdlCategories.Items.Add(new ListItem("Toutes", "Toutes"));
+                foreach (Category categorie in categories)
+                {
+                    DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
+                }
+
+                //Affiche toutes les publications par défaut
+                Publication[] publications = pf.GetAll();
+                afficherTableauRepeater(publications);*/
+            }
         }
+
+        protected void buttonSubmitClick(object sender, EventArgs e)
+        {
+            int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
+            string date = ddlDate.SelectedValue;
+            string heure = ddlHeureDebut.SelectedValue;
+            string dateHeure = date + " " + heure;
+            string message = txtContent.Text;
+
+            if (message.Length > 200)
+            {
+                notification.Style.Add("color", "red");
+                notification.InnerText = "Le nombre maximum de caractère à été atteint. Veuillez réduire la longueur de votre message.";
+                return;
+            }
+
+            Regex regex = new Regex(@"\w{26,}");
+            if (regex.IsMatch(message))
+            {
+                notification.Style.Add("color", "red");
+                notification.InnerText = "Le message actuel ne peux pas être envoyer. Veuillez vérifier votre message.";
+                return;
+            }
+
+
+            
+        }
+
     }
 }

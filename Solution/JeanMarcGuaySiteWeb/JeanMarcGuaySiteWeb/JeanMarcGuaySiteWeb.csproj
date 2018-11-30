@@ -92,7 +92,9 @@
     <Content Include="Email\ConfirmationRDV.html" />
     <Content Include="Email\Notification.html" />
     <Content Include="Email\RefusRDV.html" />
+    <Content Include="Javascripts\Contact.js" />
     <Content Include="Javascripts\Publications.js" />
+    <Content Include="Javascripts\RendezVous.js" />
     <Content Include="PublicationsCategorie.aspx" />
     <EmbeddedResource Include="Email\ActivationEmail.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

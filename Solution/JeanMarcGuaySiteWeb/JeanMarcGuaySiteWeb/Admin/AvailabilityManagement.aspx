@@ -13,7 +13,7 @@
                         document.getElementById("ContentPlaceHolder1_date").value = $(this).val();
                     }
 
-                });
+                }).attr('readonly','readonly');
 
               $('#timepicker1').on('changeTime', function () {
         document.getElementById("ContentPlaceHolder1_time1").value = $(this).val();
@@ -63,6 +63,11 @@
                         <asp:TableHeaderCell>Supprimer</asp:TableHeaderCell>
                     </asp:TableHeaderRow>
                 </asp:Table>
+            </div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-sm-12">
+                <asp:Label runat="server" ID="emsg01"></asp:Label>
             </div>
         </div>
     </div>
