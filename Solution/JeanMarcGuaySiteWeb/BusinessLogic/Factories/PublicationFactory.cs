@@ -67,7 +67,7 @@ namespace BusinessLogic.Factories
         public Publication Get(int id)
         {
 
-            Publication publication = new Publication();
+            Publication publication = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -78,17 +78,9 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int _publicationId = (Int32)reader["publication_id"];
-                    string _title = reader["title"].ToString();
-                    string _url = reader["url"].ToString();
-                    string _fileName = reader["fileName"].ToString();
-
-                    publication.publicationId = _publicationId;
-                    publication.title = _title;
-                    publication.url = _url;
-                    publication.fileName = _fileName;
+                    publication = CreatePublication(reader);
 
                 }
                 reader.Close();
@@ -120,18 +112,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    Publication publication = new Publication();
-                    int _publicationId = (Int32)reader["publication_id"];
-                    string _title = reader["title"].ToString();
-                    string _url = reader["url"].ToString();
-                    string _fileName = reader["fileName"].ToString();
-
-                    publication.publicationId = _publicationId;
-                    publication.title = _title;
-                    publication.url = _url;
-                    publication.fileName = _fileName;
-
-                    publicationList.Add(publication);
+                    publicationList.Add(CreatePublication(reader));
                 }
                 reader.Close();
             }
@@ -163,18 +144,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    Publication publication = new Publication();
-                    int _publicationId = (Int32)reader["publication_id"];
-                    string _title = reader["title"].ToString();
-                    string _url = reader["url"].ToString();
-                    string _fileName = reader["fileName"].ToString();
-
-                    publication.publicationId = _publicationId;
-                    publication.title = _title;
-                    publication.url = _url;
-                    publication.fileName = _fileName;
-
-                    publicationList.Add(publication);
+                    publicationList.Add(CreatePublication(reader));
                 }
                 reader.Close();
             }
@@ -193,7 +163,7 @@ namespace BusinessLogic.Factories
         public Publication GetByFileName(string fileName)
         {
 
-            Publication publication = new Publication();
+            Publication publication = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -204,17 +174,9 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@fileName", fileName);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int _publicationId = (Int32)reader["publication_id"];
-                    string _title = reader["title"].ToString();
-                    string _url = reader["url"].ToString();
-                    string _fileName = reader["fileName"].ToString();
-
-                    publication.publicationId = _publicationId;
-                    publication.title = _title;
-                    publication.url = _url;
-                    publication.fileName = _fileName;
+                    publication = CreatePublication(reader);
 
                 }
                 reader.Close();
@@ -266,6 +228,23 @@ namespace BusinessLogic.Factories
             {
                 cnn.Close();
             }
+        }
+        #endregion
+
+        #region CreatePublication
+        private Publication CreatePublication(MySqlDataReader reader)
+        {
+            Publication publication = new Publication();
+            int _publicationId = (Int32)reader["publication_id"];
+            string _title = reader["title"].ToString();
+            string _url = reader["url"].ToString();
+            string _fileName = reader["fileName"].ToString();
+
+            publication.publicationId = _publicationId;
+            publication.title = _title;
+            publication.url = _url;
+            publication.fileName = _fileName;
+            return publication;
         }
         #endregion
 

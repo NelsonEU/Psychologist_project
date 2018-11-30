@@ -44,7 +44,7 @@ namespace BusinessLogic.Factories
         public Subsection Get(string name)
         {
 
-            Subsection subsection = new Subsection();
+            Subsection subsection = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -55,17 +55,9 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@name", name);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int _subsectionId = (Int32)reader["subsection_id"];
-                    int _moduleId = (Int32)reader["module_id"];
-                    string _content = reader["content"].ToString();
-                    string _name = reader["name"].ToString();
-
-                    subsection.subsectionId = _subsectionId;                  
-                    subsection.moduleId = _moduleId;
-                    subsection.name = _name;
-                    subsection.content = _content;
+                    subsection = CreateSubsection(reader);
                 }
                 reader.Close();
             }
@@ -96,18 +88,7 @@ namespace BusinessLogic.Factories
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    int _subsectionId = (Int32)reader["subsection_id"];
-                    int _moduleId = (Int32)reader["module_id"];
-                    string _name = reader["name"].ToString();
-                    string _content = reader["content"].ToString();
-
-                    Subsection subsection = new Subsection();
-                    subsection.subsectionId = _subsectionId;
-                    subsection.moduleId = _moduleId;
-                    subsection.name = _name;
-                    subsection.content = _content;
-
-                    subsectionList.Add(subsection);
+                     subsectionList.Add(CreateSubsection(reader));
                 }
                 reader.Close();
             }
@@ -138,18 +119,7 @@ namespace BusinessLogic.Factories
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    int _subsectionId = (Int32)reader["subsection_id"];
-                    int _moduleId = (Int32)reader["module_id"];
-                    string _name = reader["name"].ToString();
-                    string _content = reader["content"].ToString();
-
-                    Subsection subsection = new Subsection();
-                    subsection.subsectionId = _subsectionId;
-                    subsection.moduleId = _moduleId;
-                    subsection.name = _name;
-                    subsection.content = _content;
-
-                    subsectionList.Add(subsection);
+                    subsectionList.Add(CreateSubsection(reader));
                 }
                 reader.Close();
             }
@@ -160,6 +130,23 @@ namespace BusinessLogic.Factories
 
             return subsectionList.ToArray();
 
+        }
+        #endregion
+
+        #region CreateSubsection
+        private Subsection CreateSubsection(MySqlDataReader reader)
+        {
+            Subsection subsection = new Subsection();
+            int _subsectionId = (Int32)reader["subsection_id"];
+            int _moduleId = (Int32)reader["module_id"];
+            string _name = reader["name"].ToString();
+            string _content = reader["content"].ToString();
+
+            subsection.subsectionId = _subsectionId;
+            subsection.moduleId = _moduleId;
+            subsection.name = _name;
+            subsection.content = _content;
+            return subsection;
         }
         #endregion
     }
