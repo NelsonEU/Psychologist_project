@@ -46,12 +46,16 @@
             </div>
         </div>
 
-        <div class="container-fluid pb-5" runat="server" id="divRenseignement">
+        <div class="container-fluid pt-5" runat="server" id="divRenseignement">
             <div class="row">
                 <div class="col-md-8 offset-md-2 col-sm-12 text-center">
                     <!-- Cette section apparait lorsque l'utilisateur est connecté et non-autorisé -->
                     <h3>Vous n'êtes pas autorisé(e) à prendre rendez-vous.</h3>
                     <h5>Un utilisateur doit être manuellement autorisé par le psychologue afin de pouvoir prendre rendez-vous.</h5>
+
+                    <div runat="server" id="divContact" class="pt-5">
+                        <asp:Button ID="btnRedirection" runat="server" Text="Contactez-moi" CssClass="btn mainButton " OnClick="btnRedirection_Click" />
+                    </div>
                 </div>
             </div>
         </div>

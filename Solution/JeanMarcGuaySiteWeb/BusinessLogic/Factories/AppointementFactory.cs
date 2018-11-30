@@ -26,7 +26,7 @@ namespace BusinessLogic.Factories
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "INSERT INTO Appointements(user_id, availability_id, message) VALUES (@user_id, @availability_id, @message)";
+                cmd.CommandText = "INSERT INTO Appointments(user_id, availability_id, message) VALUES (@user_id, @availability_id, @message)";
                 cmd.Parameters.AddWithValue("@user_id", user_id);
                 cmd.Parameters.AddWithValue("@availability_id", availability_id);
                 cmd.Parameters.AddWithValue("@message", message);
@@ -223,7 +223,7 @@ namespace BusinessLogic.Factories
             int _availabilityId = (Int32)reader["availability_id"];
             bool _confirmed = false;
             string _message = reader["message"].ToString();
-            DateTime creationDate = (DateTime)reader["creationDate"];
+            //DateTime creationDate = (DateTime)reader["creationDate"];
 
             Appointement appointement = new Appointement();
             appointement.appointementId = _appointmentId;

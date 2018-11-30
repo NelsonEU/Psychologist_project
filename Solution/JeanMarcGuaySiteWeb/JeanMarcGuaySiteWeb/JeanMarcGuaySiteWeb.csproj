@@ -87,10 +87,12 @@
     <Content Include="Admin\CSS\bootstrap-timepicker.css" />
     <Content Include="Admin\Javascript\publicationMenu.js" />
     <Content Include="Admin\PublicationsMenu.aspx" />
+    <Content Include="ConfirmationRDV.aspx" />
     <Content Include="Desabonnement.aspx" />
     <Content Include="CSS\footer-distributed.css" />
     <Content Include="Email\ConfirmationRDV.html" />
     <Content Include="Email\Notification.html" />
+    <Content Include="Email\PriseRDV.html" />
     <Content Include="Email\RefusRDV.html" />
     <Content Include="Javascripts\Contact.js" />
     <Content Include="Javascripts\Publications.js" />
@@ -256,6 +258,13 @@
     </Compile>
     <Compile Include="Confirmation.aspx.designer.cs">
       <DependentUpon>Confirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmationRDV.aspx.cs">
+      <DependentUpon>ConfirmationRDV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmationRDV.aspx.designer.cs">
+      <DependentUpon>ConfirmationRDV.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connexion.aspx.cs">
       <DependentUpon>Connexion.aspx</DependentUpon>

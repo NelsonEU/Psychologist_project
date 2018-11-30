@@ -10,6 +10,7 @@ using BusinessLogic.Autres;
 using System.Configuration;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using System.IO;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -17,8 +18,10 @@ namespace JeanMarcGuaySiteWeb
     {
 
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        static string emailAddress = ConfigurationManager.AppSettings["emailAddress"];
         AvailabilityFactory af = new AvailabilityFactory(cnnStr);
         User user;
+        string etat = "Contact";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -58,6 +61,13 @@ namespace JeanMarcGuaySiteWeb
                 {
                     divRendezVous.Visible = false;
                     divRenseignement.Visible = true;
+
+                    Module m2 = moduleFactory.Get((int)Module.AllModules.Contact);
+                    if (m2.active == false)
+                    {
+                        etat = "Accueil";
+                        btnRedirection.Text = "Retour à l'accueil";
+                    }
                 }
             }
             // ------------------------------------------------------- //
@@ -117,6 +127,8 @@ namespace JeanMarcGuaySiteWeb
 
         protected void buttonSubmitClick(object sender, EventArgs e)
         {
+            string dateAEnvoyee = ddlDate.SelectedItem.Text;
+
             int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
             Availability availability = af.GetById(availabilityId);
             DateTime date = availability.strdt;
@@ -144,7 +156,48 @@ namespace JeanMarcGuaySiteWeb
 
             Availability newAv = af.splitavail(availabilityId, date2);
             //enrRDV
-            
+            AppointementFactory ap = new AppointementFactory(cnnStr);
+            ap.Add(user.userId, newAv.availabilityId, message);
+
+            //Envoyer Email
+            EmailController ec = new EmailController();
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/PriseRDV.html")))
+            {
+                body = reader.ReadToEnd();
+            }
+
+            body = body.Replace("{date}", dateAEnvoyee);
+            string minuteString;
+            if (minutes == 0)
+            {
+                minuteString = minutes.ToString() + "0";
+            }
+            else
+            {
+                minuteString = minutes.ToString();
+            }
+            body = body.Replace("{heure}", heure.ToString() + "h"+ minuteString);
+            body = body.Replace("{prenom}", user.firstname);
+            body = body.Replace("{nom}", user.lastname);
+            body = body.Replace("{email}", user.email);
+
+            ec.SendMail(emailAddress, "Rendez-vous de " + user.firstname + " " + user.lastname , body);
+
+            // Redirection à une page de confirmation
+            Response.Redirect("ConfirmationRDV.aspx?User=" + user.userId);
+        }
+
+        protected void btnRedirection_Click(object sender, EventArgs e)
+        {
+            if (etat == "Accueil")
+            {
+                Response.Redirect("Accueil.aspx");
+            }
+            else
+            {
+                Response.Redirect("Contact.aspx");
+            }
         }
 
     }

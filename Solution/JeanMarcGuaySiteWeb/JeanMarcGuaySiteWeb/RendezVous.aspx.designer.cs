@@ -31,6 +31,24 @@ namespace JeanMarcGuaySiteWeb {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRenseignement;
         
         /// <summary>
+        /// Contrôle divContact.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divContact;
+        
+        /// <summary>
+        /// Contrôle btnRedirection.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRedirection;
+        
+        /// <summary>
         /// Contrôle divRendezVous.
         /// </summary>
         /// <remarks>
