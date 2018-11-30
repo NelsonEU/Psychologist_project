@@ -49,7 +49,7 @@
         <div class="pb-5 bc-blue">
             <div class="container evenBiggerBox ">
                 <div class="row pt-5">
-                    <h2 class="underline2 animated slow" id="divAnimationbcBlueHead">Approche preconisée</h2>
+                    <h2 class="underline2 animated slow" id="divAnimationbcBlueHead">Approche préconisée</h2>
                 </div>
                 <div id="divAnimationbcBlue" class="animated slow">
                     <div class="row pt-3 slow">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <p class="long-text">De part ses connaissances théoriques et ses expériences professionelles, les interventions sont toujours accomodées en fonction des problèmes et des personnes qu'il rencontre.</p>
+                        <p class="long-text">De par ses connaissances théoriques et ses expériences professionnelles, les interventions sont toujours accommodées en fonction des problèmes et des personnes qu'il rencontre.</p>
                         <p">Le thérapeute prendra en compte tant les sphères émotionnelles et cognitives que comportementales et sociales.</p>
                     </div>
                 </div>
