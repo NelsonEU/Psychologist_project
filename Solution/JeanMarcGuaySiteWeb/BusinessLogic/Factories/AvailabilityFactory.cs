@@ -260,7 +260,7 @@ namespace BusinessLogic.Factories
             //check si vieux.strdate à rendezvous.strdate donne 1 heure ou plus
             ts = rendezvous- vieux.strdt;
 
-            if (ts.Hours > 1)
+            if (ts.Hours >= 1)
            {
                 //Si oui  //Create nouveau de vieux.strdate à rendezvous.strdate
                 af.Add(vieux.strdt, rendezvous);
@@ -271,7 +271,7 @@ namespace BusinessLogic.Factories
             //check si nouveau.enddt à vieux enddt donne 1 heure ou plus
             ts = vieux.enddt - rendezvous.AddHours(1);
 
-            if (ts.Hours > 1)
+            if (ts.Hours >= 1)
             {
                 //Si oui //Create nouveau de nouveau.enddt à vieux enddt
                 af.Add(rendezvous.AddHours(1), vieux.enddt);
