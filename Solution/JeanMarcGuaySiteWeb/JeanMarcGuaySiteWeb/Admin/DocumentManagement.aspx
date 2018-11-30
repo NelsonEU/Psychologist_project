@@ -36,14 +36,24 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-md-12">
-                    <asp:Table runat="server" ID="publicationTable" CssClass="table table-bordered table-hover dataTable text-center" EnableViewState="true">
-                        <asp:TableHeaderRow>
-                            <asp:TableHeaderCell>Titre</asp:TableHeaderCell>
-                            <asp:TableHeaderCell>Nom du fichier</asp:TableHeaderCell>
-                            <asp:TableHeaderCell>Télécharger</asp:TableHeaderCell>
-                            <asp:TableHeaderCell>Supprimer</asp:TableHeaderCell>
-                        </asp:TableHeaderRow>
-                    </asp:Table>
+                    <table id="publicationTable" class="table table-bordered table-hover dataTable text-center">
+                        <tr>
+                            <td><b>Titre</b></td>
+                            <td><b>Nom du fichier</b></td>
+                            <td><b>Télécharger</b></td>
+                            <td><b>Supprimer</b></td>
+                        </tr>
+                        <asp:Repeater ID="rptPublicationTable" runat="server" OnItemCommand="rptPublication_ItemCommand">
+                            <ItemTemplate>
+                                <tr>
+                                    <td><%# Eval("Titre") %></td>
+                                    <td><%# Eval("fileName") %></td>
+                                    <td><asp:Button runat="server" Text="Telecharger" CssClass="btn btn-success" CommandName="Download" CommandArgument='<%# Eval("id1") %>'/> </td>
+                                    <td><asp:Button runat="server" Text="Supprimer" CssClass="btn btn-danger btnSuppr" CommandName="Delete" CommandArgument='<%# Eval("id2") %>'/> </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </table>
                 </div>
             </div>
         </div>

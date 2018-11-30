@@ -82,39 +82,7 @@ namespace BusinessLogic.Factories
                 MySqlDataReader reader = cmd2.ExecuteReader();
                 if (reader.Read())
                 {
-                    user = new User();
-                    int _userId = (Int32)reader["user_id"];
-                    string _lastname = reader["lastname"].ToString();
-                    string _firstname = reader["firstname"].ToString();
-                    string _email = reader["email"].ToString();
-                    string _password = reader["password"].ToString();
-                    bool _admin = (bool)reader["admin"];
-                    bool _subscriber = (bool)reader["subscriber"];
-                    bool _activated = (bool)reader["activated"];
-                    bool _authorized = (bool)reader["authorized"];
-                    DateTime _birthday = (DateTime)reader["birthday"];
-                    if(reader["opt_in"] != DBNull.Value)
-                    {
-                        user.optIn = (DateTime)reader["opt_in"];
-                    }
-                    if (reader["opt_out"] != DBNull.Value)
-                    {
-                        user.optOut = (DateTime)reader["opt_out"];
-                    }
-                    string _token = reader["token"].ToString();
-
-                    user.userId = _userId;
-                    user.lastname = _lastname;
-                    user.firstname = _firstname;
-                    user.password = _password;
-                    user.email = email;
-                    user.admin = _admin;
-                    user.subscriber = _subscriber;
-                    user.activated = _activated;
-                    user.authorized = _authorized;
-                    user.birthday = _birthday;
-                    user.token = _token;
-
+                    user = CreateUser(reader);
                 }
                 reader.Close();
 
@@ -179,45 +147,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    User user = new User();
-                    int _userId = (Int32)reader["user_id"];
-                    string _lastname = reader["lastname"].ToString();
-                    string _firstname = reader["firstname"].ToString();
-                    string _email = reader["email"].ToString();
-                    string _password = reader["password"].ToString();
-                    bool _admin = (bool)reader["admin"];
-                    bool _subscriber = (bool)reader["subscriber"];
-                    bool _activated = (bool)reader["activated"];
-                    bool _authorized = (bool)reader["authorized"];
-                    DateTime _birthday = (DateTime)reader["birthday"];
-                    if (reader["opt_in"] != DBNull.Value)
-                    {
-                        user.optIn = (DateTime)reader["opt_in"];
-                    }
-                    if (reader["opt_out"] != DBNull.Value)
-                    {
-                        user.optOut = (DateTime)reader["opt_out"];
-                    }
-                    string _token = reader["token"].ToString();
-                    if (reader["lastNotificationDate"] != DBNull.Value)
-                    {
-                        user.lastNotificationDate = (DateTime)reader["lastNotificationDate"];
-                    }
-
-
-                    user.userId = _userId;
-                    user.lastname = _lastname;
-                    user.firstname = _firstname;
-                    user.email = _email;
-                    user.password = _password;
-                    user.admin = _admin;
-                    user.subscriber = _subscriber;
-                    user.activated = _activated;
-                    user.authorized = _authorized;
-                    user.birthday = _birthday;
-                    user.token = _token;
-
-                    userList.Add(user);
+                    userList.Add(CreateUser(reader));
                 }
                 reader.Close();
             }
@@ -248,45 +178,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    User user = new User();
-                    int _userId = (Int32)reader["user_id"];
-                    string _lastname = reader["lastname"].ToString();
-                    string _firstname = reader["firstname"].ToString();
-                    string _email = reader["email"].ToString();
-                    string _password = reader["password"].ToString();
-                    bool _admin = (bool)reader["admin"];
-                    bool _subscriber = (bool)reader["subscriber"];
-                    bool _activated = (bool)reader["activated"];
-                    bool _authorized = (bool)reader["authorized"];
-                    DateTime _birthday = (DateTime)reader["birthday"];
-                    if (reader["opt_in"] != DBNull.Value)
-                    {
-                        user.optIn = (DateTime)reader["opt_in"];
-                    }
-                    if (reader["opt_out"] != DBNull.Value)
-                    {
-                        user.optOut = (DateTime)reader["opt_out"];
-                    }
-                    string _token = reader["token"].ToString();
-                    if (reader["lastNotificationDate"] != DBNull.Value)
-                    {
-                        user.lastNotificationDate = (DateTime)reader["lastNotificationDate"];
-                    }
-
-
-                    user.userId = _userId;
-                    user.lastname = _lastname;
-                    user.firstname = _firstname;
-                    user.email = _email;
-                    user.password = _password;
-                    user.admin = _admin;
-                    user.subscriber = _subscriber;
-                    user.activated = _activated;
-                    user.authorized = _authorized;
-                    user.birthday = _birthday;
-                    user.token = _token;
-
-                    userList.Add(user);
+                    userList.Add(CreateUser(reader));
                 }
                 reader.Close();
             }
@@ -304,7 +196,7 @@ namespace BusinessLogic.Factories
         public User Get(int id)
         {
 
-            User user = new User();
+            User user = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -315,44 +207,9 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@user_id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int _userId = (Int32)reader["user_id"];
-                    string _lastname = reader["lastname"].ToString();
-                    string _firstname = reader["firstname"].ToString();
-                    string _email = reader["email"].ToString();
-                    string _password = reader["password"].ToString();
-                    bool _admin = (bool)reader["admin"];
-                    bool _subscriber = (bool)reader["subscriber"];
-                    bool _activated = (bool)reader["activated"];
-                    bool _authorized = (bool)reader["authorized"];
-                    DateTime _birthday = (DateTime)reader["birthday"];
-                    if (reader["opt_in"] != DBNull.Value)
-                    {
-                        user.optIn = (DateTime)reader["opt_in"];
-                    }
-                    if (reader["opt_out"] != DBNull.Value)
-                    {
-                        user.optOut = (DateTime)reader["opt_out"];
-                    }
-                    string _token = reader["token"].ToString();
-                    if (reader["lastNotificationDate"] != DBNull.Value)
-                    {
-                        user.lastNotificationDate = (DateTime)reader["lastNotificationDate"];
-                    }
-
-
-                    user.userId = _userId;
-                    user.lastname = _lastname;
-                    user.firstname = _firstname;
-                    user.email = _email;
-                    user.password = _password;
-                    user.admin = _admin;
-                    user.subscriber = _subscriber;
-                    user.activated = _activated;
-                    user.authorized = _authorized;
-                    user.birthday = _birthday;
-                    user.token = _token;
+                    user = CreateUser(reader);
                 }
                 reader.Close();
             }
@@ -581,6 +438,50 @@ namespace BusinessLogic.Factories
             {
                 cnn.Close();
             }
+        }
+        #endregion
+
+        #region CreateUser
+        private User CreateUser(MySqlDataReader reader)
+        {
+            User user = new User();
+            int _userId = (Int32)reader["user_id"];
+            string _lastname = reader["lastname"].ToString();
+            string _firstname = reader["firstname"].ToString();
+            string _email = reader["email"].ToString();
+            string _password = reader["password"].ToString();
+            bool _admin = (bool)reader["admin"];
+            bool _subscriber = (bool)reader["subscriber"];
+            bool _activated = (bool)reader["activated"];
+            bool _authorized = (bool)reader["authorized"];
+            DateTime _birthday = (DateTime)reader["birthday"];
+            if (reader["opt_in"] != DBNull.Value)
+            {
+                user.optIn = (DateTime)reader["opt_in"];
+            }
+            if (reader["opt_out"] != DBNull.Value)
+            {
+                user.optOut = (DateTime)reader["opt_out"];
+            }
+            string _token = reader["token"].ToString();
+            if (reader["lastNotificationDate"] != DBNull.Value)
+            {
+                user.lastNotificationDate = (DateTime)reader["lastNotificationDate"];
+            }
+
+
+            user.userId = _userId;
+            user.lastname = _lastname;
+            user.firstname = _firstname;
+            user.email = _email;
+            user.password = _password;
+            user.admin = _admin;
+            user.subscriber = _subscriber;
+            user.activated = _activated;
+            user.authorized = _authorized;
+            user.birthday = _birthday;
+            user.token = _token;
+            return user;
         }
         #endregion
     }

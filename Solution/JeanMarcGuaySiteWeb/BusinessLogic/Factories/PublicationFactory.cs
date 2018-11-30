@@ -23,12 +23,13 @@ namespace BusinessLogic.Factories
         {
 
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
-            MySqlTransaction trans = cnn.BeginTransaction();
+            MySqlTransaction trans = null;
 
             try
             {               
                 //Requête 1:
                 cnn.Open();
+                trans = cnn.BeginTransaction();
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = "INSERT INTO publications(title, url, fileName,creationDate) VALUES (@title, @url, @fileName, @creationDate)";
                 cmd.Parameters.AddWithValue("@title", titre);
@@ -41,19 +42,21 @@ namespace BusinessLogic.Factories
                 long publicationId = cmd.LastInsertedId;
 
                 //Requête 2:
-                //cnn.Open();
                 MySqlCommand cmd2 = cnn.CreateCommand();
                 cmd2.CommandText = "INSERT INTO publicationsCategories(publication_id, category_id) VALUES (@publication_id, @category_id)";
                 cmd2.Parameters.AddWithValue("@publication_id", publicationId);
                 cmd2.Parameters.AddWithValue("@category_id", categoryId);
                 cmd2.ExecuteNonQuery();
-            }catch(Exception e)
+
+                trans.Commit();
+            }
+            catch(Exception e)
             {
                 trans.Rollback();
+                throw(e);
             }
             finally
-            {
-                trans.Commit();
+            {   
                 cnn.Close();
             }
 
@@ -64,7 +67,7 @@ namespace BusinessLogic.Factories
         public Publication Get(int id)
         {
 
-            Publication publication = new Publication();
+            Publication publication = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -75,17 +78,9 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int _publicationId = (Int32)reader["publication_id"];
-                    string _title = reader["title"].ToString();
-                    string _url = reader["url"].ToString();
-                    string _fileName = reader["fileName"].ToString();
-
-                    publication.publicationId = _publicationId;
-                    publication.title = _title;
-                    publication.url = _url;
-                    publication.fileName = _fileName;
+                    publication = CreatePublication(reader);
 
                 }
                 reader.Close();
@@ -117,18 +112,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    Publication publication = new Publication();
-                    int _publicationId = (Int32)reader["publication_id"];
-                    string _title = reader["title"].ToString();
-                    string _url = reader["url"].ToString();
-                    string _fileName = reader["fileName"].ToString();
-
-                    publication.publicationId = _publicationId;
-                    publication.title = _title;
-                    publication.url = _url;
-                    publication.fileName = _fileName;
-
-                    publicationList.Add(publication);
+                    publicationList.Add(CreatePublication(reader));
                 }
                 reader.Close();
             }
@@ -160,18 +144,7 @@ namespace BusinessLogic.Factories
 
                 while (reader.Read())
                 {
-                    Publication publication = new Publication();
-                    int _publicationId = (Int32)reader["publication_id"];
-                    string _title = reader["title"].ToString();
-                    string _url = reader["url"].ToString();
-                    string _fileName = reader["fileName"].ToString();
-
-                    publication.publicationId = _publicationId;
-                    publication.title = _title;
-                    publication.url = _url;
-                    publication.fileName = _fileName;
-
-                    publicationList.Add(publication);
+                    publicationList.Add(CreatePublication(reader));
                 }
                 reader.Close();
             }
@@ -190,7 +163,7 @@ namespace BusinessLogic.Factories
         public Publication GetByFileName(string fileName)
         {
 
-            Publication publication = new Publication();
+            Publication publication = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -201,17 +174,9 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@fileName", fileName);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int _publicationId = (Int32)reader["publication_id"];
-                    string _title = reader["title"].ToString();
-                    string _url = reader["url"].ToString();
-                    string _fileName = reader["fileName"].ToString();
-
-                    publication.publicationId = _publicationId;
-                    publication.title = _title;
-                    publication.url = _url;
-                    publication.fileName = _fileName;
+                    publication = CreatePublication(reader);
 
                 }
                 reader.Close();
@@ -263,6 +228,23 @@ namespace BusinessLogic.Factories
             {
                 cnn.Close();
             }
+        }
+        #endregion
+
+        #region CreatePublication
+        private Publication CreatePublication(MySqlDataReader reader)
+        {
+            Publication publication = new Publication();
+            int _publicationId = (Int32)reader["publication_id"];
+            string _title = reader["title"].ToString();
+            string _url = reader["url"].ToString();
+            string _fileName = reader["fileName"].ToString();
+
+            publication.publicationId = _publicationId;
+            publication.title = _title;
+            publication.url = _url;
+            publication.fileName = _fileName;
+            return publication;
         }
         #endregion
 

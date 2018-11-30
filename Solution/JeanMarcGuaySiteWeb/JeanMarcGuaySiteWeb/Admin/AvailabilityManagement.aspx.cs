@@ -52,7 +52,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                 cellstrtdt.Text = a.strdt.TimeOfDay.ToString();
                 cellenddt.Text = a.enddt.TimeOfDay.ToString();
                 Button bt = new Button();
-                bt.CssClass = "btn - danger";
+                bt.CssClass = "btn btn-danger";
                 bt.Text = "Supprimer";
                 bt.ID = a.availabilityId.ToString();
                 bt.Click += new EventHandler(this.Supprimer_Click);

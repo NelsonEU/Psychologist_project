@@ -47,7 +47,7 @@
                 Heure Fin:<input id="timepicker2" type="text" class="time ui-timepicker-input" autocomplete="off"/>
             </div>
             <div class="col-lg-3" style="display: flex; justify-content: center;">
-                <asp:Button id="Ajouter" Text="Ajouter" runat="server" OnClick="Ajouter_Click" CssClass="btn btn-blue" />
+                <asp:Button id="Ajouter" Text="Ajouter" runat="server" OnClick="Ajouter_Click" CssClass="btn btn-success" />
             </div>
             <asp:HiddenField ID="date" runat="server" />  
             <asp:HiddenField ID="time1" runat="server" />  
