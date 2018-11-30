@@ -94,16 +94,7 @@ namespace BusinessLogic.Factories
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    int _id = (Int32)reader["Availability_id"];
-                    DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
-                    DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
-
-                    Availability availability = new Availability();
-                    availability.availabilityId = _id;
-                    availability.strdt = _strdt;
-                    availability.enddt = _enddt;
-
-                    availabilityList.Add(availability);
+                    availabilityList.Add(CreateAvailability(reader));
                 }
                 reader.Close();
             }
@@ -132,16 +123,7 @@ namespace BusinessLogic.Factories
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    int _id = (Int32)reader["Availability_id"];
-                    DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
-                    DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
-
-                    Availability availability = new Availability();
-                    availability.availabilityId = _id;
-                    availability.strdt = _strdt;
-                    availability.enddt = _enddt;
-
-                    availabilityList.Add(availability);
+                    availabilityList.Add(CreateAvailability(reader));
                 }
                 reader.Close();
             }
@@ -158,7 +140,7 @@ namespace BusinessLogic.Factories
         public Availability GetById(int id)
         {
 
-            Availability availability = new Availability();
+            Availability availability = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -168,14 +150,9 @@ namespace BusinessLogic.Factories
                 cmd.CommandText = "SELECT * FROM availabilities WHERE Availability_id=@id";
                 cmd.Parameters.AddWithValue("@id", id);
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int _availabilityId = (Int32)reader["Availability_id"];
-                    DateTime time1 = (DateTime)reader["Start_time"];
-                    DateTime time2 = (DateTime)reader["End_time"];
-                    availability.availabilityId = _availabilityId;
-                    availability.strdt = time1;
-                    availability.enddt = time2;
+                    availability = CreateAvailability(reader);
                 }
                 reader.Close();
             }
@@ -291,7 +268,7 @@ namespace BusinessLogic.Factories
         #region getByDate
         public Availability getByDate(DateTime strtdate, DateTime enddate)
         {
-            Availability availability = new Availability();
+            Availability availability = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -304,16 +281,9 @@ namespace BusinessLogic.Factories
                 cmd.Parameters.AddWithValue("@enddate", enddate);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    int _id = (Int32)reader["Availability_id"];
-                    DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
-                    DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
-
-                    availability.availabilityId = _id;
-                    availability.strdt = _strdt;
-                    availability.enddt = _enddt;
-
+                    availability = CreateAvailability(reader);
                 }
                 reader.Close();
             }
@@ -322,6 +292,21 @@ namespace BusinessLogic.Factories
                 cnn.Close();
             }
 
+            return availability;
+        }
+        #endregion
+
+        #region CreateAvailability
+        private Availability CreateAvailability(MySqlDataReader reader)
+        {
+            Availability availability = new Availability();
+            int _id = (Int32)reader["Availability_id"];
+            DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
+            DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
+
+            availability.availabilityId = _id;
+            availability.strdt = _strdt;
+            availability.enddt = _enddt;
             return availability;
         }
         #endregion
