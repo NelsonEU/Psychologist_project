@@ -421,6 +421,12 @@ h1, h2, h3 {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.mainAdminColor {
+    color: #1d6280;
+}
+.biggerbiggerText {
+    font-size: 14pt;
+}
 .absolute {
     position:absolute !important;
 }

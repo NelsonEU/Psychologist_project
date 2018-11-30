@@ -24,7 +24,3 @@ function dataTableMaison() {
     }
 
 } 
-
-function onClickDownload(id) {
-    alert(id);
-}
