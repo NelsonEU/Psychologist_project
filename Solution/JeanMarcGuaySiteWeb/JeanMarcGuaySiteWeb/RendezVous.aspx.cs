@@ -118,10 +118,13 @@ namespace JeanMarcGuaySiteWeb
         protected void buttonSubmitClick(object sender, EventArgs e)
         {
             int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
-            //VERIFIER SI TOUT N'EST PAS NUL
-            string date = ddlDate.SelectedValue;
-            string heure = ddlHeureDebut.SelectedValue;
-            string dateHeure = date + " " + heure;
+            Availability availability = af.GetById(availabilityId);
+            DateTime date = availability.strdt;
+            string temps = ddlHeureDebut.SelectedValue;
+            int heure = Convert.ToInt32(temps.Substring(0, 2));
+            int minutes = Convert.ToInt32(temps.Substring(3, 2));
+            DateTime date2 = new DateTime(date.Year, date.Month, date.Day, heure, minutes, 00);
+
             string message = txtContent.Text;
 
             if (message.Length > 200)
@@ -139,7 +142,8 @@ namespace JeanMarcGuaySiteWeb
                 return;
             }
 
-
+            Availability newAv = af.splitavail(availabilityId, date2);
+            //enrRDV
             
         }
 
