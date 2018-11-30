@@ -23,12 +23,13 @@ namespace BusinessLogic.Factories
         {
 
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
-            //MySqlTransaction trans = cnn.BeginTransaction();
+            MySqlTransaction trans = null;
 
             try
             {               
                 //Requête 1:
                 cnn.Open();
+                trans = cnn.BeginTransaction();
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = "INSERT INTO publications(title, url, fileName,creationDate) VALUES (@title, @url, @fileName, @creationDate)";
                 cmd.Parameters.AddWithValue("@title", titre);
@@ -41,19 +42,21 @@ namespace BusinessLogic.Factories
                 long publicationId = cmd.LastInsertedId;
 
                 //Requête 2:
-                //cnn.Open();
                 MySqlCommand cmd2 = cnn.CreateCommand();
                 cmd2.CommandText = "INSERT INTO publicationsCategories(publication_id, category_id) VALUES (@publication_id, @category_id)";
                 cmd2.Parameters.AddWithValue("@publication_id", publicationId);
                 cmd2.Parameters.AddWithValue("@category_id", categoryId);
                 cmd2.ExecuteNonQuery();
-            }//catch(Exception e)
-            //{
-            //    trans.Rollback();
-            //}
-            finally
+
+                trans.Commit();
+            }
+            catch(Exception e)
             {
-                //trans.Commit();
+                trans.Rollback();
+                throw(e);
+            }
+            finally
+            {   
                 cnn.Close();
             }
 
