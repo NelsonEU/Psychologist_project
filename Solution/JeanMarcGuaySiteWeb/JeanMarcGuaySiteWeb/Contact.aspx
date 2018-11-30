@@ -67,7 +67,7 @@
         </div>
         <div class="row ">
             <div class="col-md-8 offset-md-2 text-right form-text text-muted">
-                <span>*Vos informations seront inscrits automatiquement. </span>
+                <span>*Vos informations seront inscrites automatiquement. </span>
             </div>
         </div>
         <div class="row pb-3">

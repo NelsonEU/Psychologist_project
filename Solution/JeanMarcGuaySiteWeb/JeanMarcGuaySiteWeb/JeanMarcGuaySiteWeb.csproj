@@ -79,14 +79,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activation.aspx" />
-    <Content Include="Admin\AjoutCategorie.aspx" />
-    <Content Include="Admin\CategoryManagement.aspx" />
-    <Content Include="Admin\Javascript\categorieAdmin.js" />
-    <Content Include="Admin\Javascript\jquery.timepicker.min.js" />
-    <Content Include="Admin\Javascript\publicationAdmin.js" />
-    <Content Include="Admin\CSS\bootstrap-timepicker.css" />
-    <Content Include="Admin\Javascript\publicationMenu.js" />
-    <Content Include="Admin\PublicationsMenu.aspx" />
+    <Content Include="ms\AjoutCategorie.aspx" />
+    <Content Include="ms\CategoryManagement.aspx" />
+    <Content Include="ms\Javascript\categorieAdmin.js" />
+    <Content Include="ms\Javascript\jquery.timepicker.min.js" />
+    <Content Include="ms\Javascript\publicationAdmin.js" />
+    <Content Include="ms\CSS\bootstrap-timepicker.css" />
+    <Content Include="ms\Javascript\publicationMenu.js" />
+    <Content Include="ms\PublicationsMenu.aspx" />
     <Content Include="ConfirmationRDV.aspx" />
     <Content Include="Desabonnement.aspx" />
     <Content Include="CSS\footer-distributed.css" />
@@ -101,27 +101,27 @@
     <EmbeddedResource Include="Email\ActivationEmail.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Content Include="Admin\Admin.aspx" />
-    <Content Include="Admin\AjoutPublication.aspx" />
-    <Content Include="Admin\AppointmentManagement.aspx" />
-    <Content Include="Admin\AvailabilityManagement.aspx" />
-    <Content Include="Admin\CSS\Admin.css" />
-    <Content Include="Admin\CSS\alertify.min.css" />
-    <Content Include="Admin\CSS\Switch.css" />
-    <Content Include="Admin\DocumentManagement.aspx" />
-    <Content Include="Admin\Javascript\pageadmin.js" />
-    <Content Include="Admin\RequestManagement.aspx" />
+    <Content Include="ms\Admin.aspx" />
+    <Content Include="ms\AjoutPublication.aspx" />
+    <Content Include="ms\AppointmentManagement.aspx" />
+    <Content Include="ms\AvailabilityManagement.aspx" />
+    <Content Include="ms\CSS\Admin.css" />
+    <Content Include="ms\CSS\alertify.min.css" />
+    <Content Include="ms\CSS\Switch.css" />
+    <Content Include="ms\DocumentManagement.aspx" />
+    <Content Include="ms\Javascript\pageadmin.js" />
+    <Content Include="ms\RequestManagement.aspx" />
     <Content Include="Confirmation.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="CSS\fonts\ajax-loader.gif" />
     <Content Include="CSS\Carousel.css" />
     <Content Include="CSS\fonts\slick.svg" />
     <Content Include="CSS\Navbar.css" />
-    <Content Include="Admin\CSS\sb-admin.min.css" />
-    <Content Include="Admin\Images\stairs.jpg" />
-    <Content Include="Admin\Javascript\Admin.js" />
-    <Content Include="Admin\ModuleManagement.aspx" />
-    <Content Include="Admin\UserManagement.aspx" />
+    <Content Include="ms\CSS\sb-admin.min.css" />
+    <Content Include="ms\Images\stairs.jpg" />
+    <Content Include="ms\Javascript\Admin.js" />
+    <Content Include="ms\ModuleManagement.aspx" />
+    <Content Include="ms\UserManagement.aspx" />
     <Content Include="Connexion.aspx" />
     <Content Include="CSS\Base.css" />
     <EmbeddedResource Include="Email\ContactEmail.html">
@@ -146,7 +146,7 @@
     <Content Include="RendezVous.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Default.aspx" />
-    <Content Include="Admin\Admin.Master" />
+    <Content Include="ms\Admin.Master" />
     <Content Include="CSS\fonts\slick.eot" />
     <Content Include="CSS\fonts\slick.ttf" />
     <Content Include="CSS\fonts\slick.woff" />
@@ -168,88 +168,88 @@
     <Compile Include="Activation.aspx.designer.cs">
       <DependentUpon>Activation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Admin.Master.cs">
+    <Compile Include="ms\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Admin.Master.designer.cs">
+    <Compile Include="ms\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Admin.aspx.cs">
+    <Compile Include="ms\Admin.aspx.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Admin.aspx.designer.cs">
+    <Compile Include="ms\Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AjoutCategorie.aspx.cs">
+    <Compile Include="ms\AjoutCategorie.aspx.cs">
       <DependentUpon>AjoutCategorie.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\AjoutCategorie.aspx.designer.cs">
+    <Compile Include="ms\AjoutCategorie.aspx.designer.cs">
       <DependentUpon>AjoutCategorie.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AjoutPublication.aspx.cs">
+    <Compile Include="ms\AjoutPublication.aspx.cs">
       <DependentUpon>AjoutPublication.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\AjoutPublication.aspx.designer.cs">
+    <Compile Include="ms\AjoutPublication.aspx.designer.cs">
       <DependentUpon>AjoutPublication.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AppointmentManagement.aspx.cs">
+    <Compile Include="ms\AppointmentManagement.aspx.cs">
       <DependentUpon>AppointmentManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\AppointmentManagement.aspx.designer.cs">
+    <Compile Include="ms\AppointmentManagement.aspx.designer.cs">
       <DependentUpon>AppointmentManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AvailabilityManagement.aspx.cs">
+    <Compile Include="ms\AvailabilityManagement.aspx.cs">
       <DependentUpon>AvailabilityManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\AvailabilityManagement.aspx.designer.cs">
+    <Compile Include="ms\AvailabilityManagement.aspx.designer.cs">
       <DependentUpon>AvailabilityManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\CategoryManagement.aspx.cs">
+    <Compile Include="ms\CategoryManagement.aspx.cs">
       <DependentUpon>CategoryManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\CategoryManagement.aspx.designer.cs">
+    <Compile Include="ms\CategoryManagement.aspx.designer.cs">
       <DependentUpon>CategoryManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\DocumentManagement.aspx.cs">
+    <Compile Include="ms\DocumentManagement.aspx.cs">
       <DependentUpon>DocumentManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\DocumentManagement.aspx.designer.cs">
+    <Compile Include="ms\DocumentManagement.aspx.designer.cs">
       <DependentUpon>DocumentManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\ModuleManagement.aspx.cs">
+    <Compile Include="ms\ModuleManagement.aspx.cs">
       <DependentUpon>ModuleManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\ModuleManagement.aspx.designer.cs">
+    <Compile Include="ms\ModuleManagement.aspx.designer.cs">
       <DependentUpon>ModuleManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\PublicationsMenu.aspx.cs">
+    <Compile Include="ms\PublicationsMenu.aspx.cs">
       <DependentUpon>PublicationsMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\PublicationsMenu.aspx.designer.cs">
+    <Compile Include="ms\PublicationsMenu.aspx.designer.cs">
       <DependentUpon>PublicationsMenu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\RequestManagement.aspx.cs">
+    <Compile Include="ms\RequestManagement.aspx.cs">
       <DependentUpon>RequestManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\RequestManagement.aspx.designer.cs">
+    <Compile Include="ms\RequestManagement.aspx.designer.cs">
       <DependentUpon>RequestManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\UserManagement.aspx.cs">
+    <Compile Include="ms\UserManagement.aspx.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\UserManagement.aspx.designer.cs">
+    <Compile Include="ms\UserManagement.aspx.designer.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Confirmation.aspx.cs">
@@ -345,7 +345,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\pdf\" />
+    <Folder Include="ms\pdf\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

@@ -66,6 +66,7 @@ namespace JeanMarcGuaySiteWeb.Admin
             AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
             AppointementFactory af = new AppointementFactory(cnnStr);
             Appointement[] unconfirmedAppointements = af.GetUnconfirmed();
+            System.Diagnostics.Debug.WriteLine("TAB: " + unconfirmedAppointements.Length);
             Appointement[] confirmedAppointements = af.GetConfirmed();
             notifNoRdv.Visible = false;
             if(unconfirmedAppointements.Length > 0)
