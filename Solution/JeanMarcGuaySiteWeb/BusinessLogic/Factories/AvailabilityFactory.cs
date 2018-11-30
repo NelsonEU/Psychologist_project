@@ -41,7 +41,7 @@ namespace BusinessLogic.Factories
 
         // Remove
         #region Delete
-        public void delete(int id)
+        public bool delete(int id)
         {
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
@@ -57,7 +57,7 @@ namespace BusinessLogic.Factories
                if(reader.HasRows)
                 {
                     reader.Close();
-                    //nothing 
+                    return false;
                 }
                else
                 {
@@ -66,6 +66,7 @@ namespace BusinessLogic.Factories
                     cmd.CommandText = "Delete FROM availabilities WHERE availability_id=@id";
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteNonQuery();
+                    return true;
                 }
 
                 
@@ -89,6 +90,44 @@ namespace BusinessLogic.Factories
 
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = "SELECT * FROM availabilities";
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int _id = (Int32)reader["Availability_id"];
+                    DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
+                    DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
+
+                    Availability availability = new Availability();
+                    availability.availabilityId = _id;
+                    availability.strdt = _strdt;
+                    availability.enddt = _enddt;
+
+                    availabilityList.Add(availability);
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return availabilityList.ToArray();
+        }
+        #endregion
+
+        #region GetAllFree
+        public Availability[] GetAllFree()
+        {
+            List<Availability> availabilityList = new List<Availability>();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM availabilities as b WHERE NOT EXISTS ( SELECT * FROM appointments as a WHERE b.Availability_id = a.availability_id)";
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -201,6 +240,66 @@ namespace BusinessLogic.Factories
                 }
             }
             return legit;
+        }
+        #endregion
+
+        #region splitavail
+        public Availability splitavail(int id, DateTime tdate)
+        {
+            Availability availability = new Availability();
+            AvailabilityFactory af = new AvailabilityFactory(_cnnStr);
+
+            availability = af.GetById(id);
+
+
+            Availability newavailability = new Availability();
+
+            DateTime endtime = new DateTime();
+            endtime = tdate.AddHours(1);
+
+            af.Add(tdate, endtime);
+
+            
+
+
+            return availability;
+        }
+        #endregion
+
+        #region getByStartDate
+        public void getByStrtDate(DateTime strtdate)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM availabilities as b WHERE NOT EXISTS ( SELECT * FROM appointments as a WHERE b.Availability_id = a.availability_id)";
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int _id = (Int32)reader["Availability_id"];
+                    DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
+                    DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
+
+                    Availability availability = new Availability();
+                    availability.availabilityId = _id;
+                    availability.strdt = _strdt;
+                    availability.enddt = _enddt;
+
+                   // availabilityList.Add(availability);
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+          //  return availabilityList.ToArray();
         }
         #endregion
 

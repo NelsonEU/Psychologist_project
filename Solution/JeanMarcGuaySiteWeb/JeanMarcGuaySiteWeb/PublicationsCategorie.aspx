@@ -15,8 +15,7 @@
             <div class="row">              
                 <h2 class="underline1 m-4 text-left" id="titreCategorie" runat="server"></h2>
             </div>
-            <div id="divNotif" runat="server">
-                
+            <div id="divNotif" runat="server">              
                 <div class="row">
                     <div class="col-sm-2 mt-2 mb-1">
                         <a href="Publications.aspx" class="btn mainButton3">Retour aux catégories</a>
@@ -29,7 +28,7 @@
                 </div>
             </div>
             <div id="divPublications" runat="server">
-                <div class="row mb-3">s
+                <div class="row mb-3">
                     <div class="col-sm-2 mb-1">
                         <a href="Publications.aspx" class="btn mainButton3">Retour aux catégories</a>
                     </div>

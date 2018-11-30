@@ -80,7 +80,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                             {
                                 //Vérification que le fichier ne soit pas déjà ajouté
                                 Category categoTest = cf.GetByFileName(fileUpload.PostedFile.FileName);
-                                if (categoTest.pictureName == null)
+                                if (categoTest == null)
                                 {
                                     // Televersement de l'image
                                     string path = "/Images/" + fileUpload.PostedFile.FileName;
