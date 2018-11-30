@@ -9,6 +9,7 @@ using BusinessLogic.Factories;
 using BusinessLogic.Autres;
 using System.Configuration;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -16,6 +17,7 @@ namespace JeanMarcGuaySiteWeb
     {
 
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        AvailabilityFactory af = new AvailabilityFactory(cnnStr);
         User user;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -63,27 +65,66 @@ namespace JeanMarcGuaySiteWeb
             //Rempissage des dropdowns
             if (!Page.IsPostBack)
             {
-                /*//Feed le DDL des catégories 
-                CategoryFactory cf = new CategoryFactory(cnnStr);
-                Category[] categories = cf.GetAll();
-                DdlCategories.Items.Add(new ListItem("Toutes", "Toutes"));
-                foreach (Category categorie in categories)
+                Availability[] availabilities = af.GetAllFree();
+                foreach (Availability availability in availabilities)
                 {
-                    DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
-                }
+                    //Dates
+                    string dateToDisplay = availability.strdt.ToString("D", CultureInfo.CreateSpecificCulture("fr-FR"));
+                    ddlDate.Items.Add(new ListItem(dateToDisplay, availability.availabilityId.ToString()));
 
-                //Affiche toutes les publications par défaut
-                Publication[] publications = pf.GetAll();
-                afficherTableauRepeater(publications);*/
+                    //Heures
+                    //string timeToDisplay = availability.strdt.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR"));
+                    //ddlHeureDebut.Items.Add(new ListItem(timeToDisplay, availability.availabilityId.ToString()));
+                }
+                ddlDate_SelectedIndexChanged(null, null);
             }
+        }
+
+        protected void ddlDate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlHeureDebut.Items.Clear();
+            int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
+            Availability availability = af.GetById(availabilityId);
+
+            DateTime[] heures = splitTime(availability.strdt, availability.enddt);
+
+            foreach (DateTime heure in heures)
+            {
+                string timeToDisplay = heure.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR"));
+                ddlHeureDebut.Items.Add(new ListItem(timeToDisplay));
+            }
+
+        }
+
+        protected DateTime[] splitTime(DateTime debut, DateTime fin)
+        {
+            List<DateTime> listeSplit = new List<DateTime>();
+            DateTime temps = debut;
+
+            while (temps < fin)
+            {
+                TimeSpan ts = new TimeSpan();
+                ts = fin - temps;
+                if (ts.Hours >= 1)
+                {
+                    listeSplit.Add(temps);
+                }
+                temps = temps.AddMinutes(30);
+            }
+
+            return listeSplit.ToArray();
         }
 
         protected void buttonSubmitClick(object sender, EventArgs e)
         {
             int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
-            string date = ddlDate.SelectedValue;
-            string heure = ddlHeureDebut.SelectedValue;
-            string dateHeure = date + " " + heure;
+            Availability availability = af.GetById(availabilityId);
+            DateTime date = availability.strdt;
+            string temps = ddlHeureDebut.SelectedValue;
+            int heure = Convert.ToInt32(temps.Substring(0, 2));
+            int minutes = Convert.ToInt32(temps.Substring(3, 2));
+            DateTime date2 = new DateTime(date.Year, date.Month, date.Day, heure, minutes, 00);
+
             string message = txtContent.Text;
 
             if (message.Length > 200)
@@ -101,7 +142,8 @@ namespace JeanMarcGuaySiteWeb
                 return;
             }
 
-
+            Availability newAv = af.splitavail(availabilityId, date2);
+            //enrRDV
             
         }
 

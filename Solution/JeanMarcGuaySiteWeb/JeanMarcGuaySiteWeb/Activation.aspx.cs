@@ -23,7 +23,7 @@ namespace JeanMarcGuaySiteWeb
                 UserFactory uf = new UserFactory(cnnStr);
                 User u = uf.GetByEmail(email);
                 if (u != null)
-                {
+                { 
                     if (u.token == token)
                     {
                         uf.ActivateByEmail(email);
