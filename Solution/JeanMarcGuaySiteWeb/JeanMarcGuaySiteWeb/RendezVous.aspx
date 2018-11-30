@@ -70,7 +70,7 @@
             <div class="row pt-5">
                 <div class="col-md-4 offset-md-2 col-sm-12 text-center">
                     <asp:Label runat="server" ID="Label1"><b>Date:</b></asp:Label>
-                    <asp:DropDownList runat="server" ID="ddlDate" style="width:100%;"></asp:DropDownList>
+                    <asp:DropDownList runat="server" ID="ddlDate" AutoPostBack="true" OnSelectedIndexChanged="ddlDate_SelectedIndexChanged" style="width:100%;"></asp:DropDownList>
                 </div>
                 <div class="col-md-4 col-sm-12 text-center">
                     <asp:Label runat="server" ID="Label3"><b>Heure:</b></asp:Label>

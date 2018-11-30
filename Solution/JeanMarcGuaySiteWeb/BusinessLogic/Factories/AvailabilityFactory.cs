@@ -244,31 +244,54 @@ namespace BusinessLogic.Factories
         #endregion
 
         #region splitavail
-        public Availability splitavail(int id, DateTime tdate)
+        public Availability splitavail(int id, DateTime rendezvous)
         {
+            
             Availability availability = new Availability();
             AvailabilityFactory af = new AvailabilityFactory(_cnnStr);
 
-            availability = af.GetById(id);
-
-
-            Availability newavailability = new Availability();
-
-            DateTime endtime = new DateTime();
-            endtime = tdate.AddHours(1);
-
-            af.Add(tdate, endtime);
-
+            //Get le vieux by ID
+            Availability vieux = af.GetById(id);
+            //Delete le vieux
+            af.delete(id);
             
+            TimeSpan ts = new TimeSpan();
+
+            //check si vieux.strdate à rendezvous.strdate donne 1 heure ou plus
+            ts = rendezvous- vieux.strdt;
+
+            if (ts.Hours >= 1)
+           {
+                //Si oui  //Create nouveau de vieux.strdate à rendezvous.strdate
+                af.Add(vieux.strdt, rendezvous);
+           }
 
 
-            return availability;
+
+            //check si nouveau.enddt à vieux enddt donne 1 heure ou plus
+            ts = vieux.enddt - rendezvous.AddHours(1);
+
+            if (ts.Hours >= 1)
+            {
+                //Si oui //Create nouveau de nouveau.enddt à vieux enddt
+                af.Add(rendezvous.AddHours(1), vieux.enddt);
+            }
+
+            //Create nouveau de rendezvous à rendezvous+1h
+
+            af.Add(rendezvous, rendezvous.AddHours(1));
+
+            Availability finalav = af.getByDate(rendezvous, rendezvous.AddHours(1));
+
+
+            return finalav;
         }
         #endregion
 
-        #region getByStartDate
-        public void getByStrtDate(DateTime strtdate)
+        #region getByDate
+        public Availability getByDate(DateTime strtdate, DateTime enddate)
         {
+            Availability availability = new Availability();
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
             try
@@ -276,7 +299,9 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM availabilities as b WHERE NOT EXISTS ( SELECT * FROM appointments as a WHERE b.Availability_id = a.availability_id)";
+                cmd.CommandText = "SELECT * FROM availabilities WHERE Start_time = @strtdate AND End_time = @enddate";
+                cmd.Parameters.AddWithValue("@strtdate", strtdate);
+                cmd.Parameters.AddWithValue("@enddate", enddate);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -285,12 +310,10 @@ namespace BusinessLogic.Factories
                     DateTime _strdt = Convert.ToDateTime(reader["Start_time"]);
                     DateTime _enddt = Convert.ToDateTime(reader["End_time"]);
 
-                    Availability availability = new Availability();
                     availability.availabilityId = _id;
                     availability.strdt = _strdt;
                     availability.enddt = _enddt;
 
-                   // availabilityList.Add(availability);
                 }
                 reader.Close();
             }
@@ -299,7 +322,7 @@ namespace BusinessLogic.Factories
                 cnn.Close();
             }
 
-          //  return availabilityList.ToArray();
+            return availability;
         }
         #endregion
 
