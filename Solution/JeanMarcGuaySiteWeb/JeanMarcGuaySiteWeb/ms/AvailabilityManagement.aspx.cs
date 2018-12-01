@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using BusinessLogic;
 using BusinessLogic.Factories;
 using System.Configuration;
+using System.Globalization;
 
 namespace JeanMarcGuaySiteWeb.Admin
 {
@@ -48,7 +49,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                 TableCell cellstrtdt = new TableCell();
                 TableCell cellenddt = new TableCell();
                 TableCell cellBtn = new TableCell();
-                cellDate.Text = a.strdt.Day+"/"+a.strdt.Month+"/"+a.strdt.Year;
+                cellDate.Text = a.strdt.ToString("D", CultureInfo.CreateSpecificCulture("fr-FR"));
                 cellstrtdt.Text = a.strdt.TimeOfDay.ToString();
                 cellenddt.Text = a.enddt.TimeOfDay.ToString();
                 Button bt = new Button();
