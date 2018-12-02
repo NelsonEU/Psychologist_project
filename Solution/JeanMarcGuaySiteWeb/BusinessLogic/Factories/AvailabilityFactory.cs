@@ -118,7 +118,7 @@ namespace BusinessLogic.Factories
                 cnn.Open();
 
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM availabilities as b WHERE NOT EXISTS ( SELECT * FROM appointments as a WHERE b.Availability_id = a.availability_id) AND b.Start_time > NOW()";
+                cmd.CommandText = "SELECT * FROM availabilities as b WHERE NOT EXISTS ( SELECT * FROM appointments as a WHERE b.Availability_id = a.availability_id) AND b.Start_time > NOW() ORDER BY Start_time";
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())

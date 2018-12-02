@@ -17,13 +17,17 @@
         <div class="container" id="publications">
 
             <!-- Page Heading -->
+            <div class="row">
+                    <h2 class="underline1 m-4 text-left">Catégories</h2>            
+            </div>
             <div class="row pb-4">
-                    <h2 class="underline1 m-4 text-left">Catégories
-                    </h2>
-
+                <div class="col-lg-12 text-left">
+                    <h5>Choisissez une des catégories suivantes pour accéder aux publications associées.</h5>
+                </div>
             </div>
 
             <div class="row" id="categoriesPortfolio" runat="server">
+                
             </div>
 
             <!-- /.row -->

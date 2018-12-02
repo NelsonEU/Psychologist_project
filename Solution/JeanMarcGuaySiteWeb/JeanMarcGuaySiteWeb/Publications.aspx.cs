@@ -32,7 +32,7 @@ namespace JeanMarcGuaySiteWeb
             string toAppend = string.Empty;
 
             foreach(Category c in categories){
-                toAppend += "<div class=\"col-lg-4 col-md-6 col-sm-6 col-xs-1 portfolio-item pb-4\"><div class=\"card h-100\"><a href=\"PublicationsCategorie.aspx?cat="+ c.categoryId +"\"><img class=\"card-img-top\" src=\""+ c.pictureUrl + "\" alt=\"\"></a><div class=\"card-body\"><h4 class=\"card-title\"><a href=\"PublicationsCategorie.aspx?cat=" + c.categoryId + "\" >"+ c.name +"</a></h4></div></div></div>";
+                toAppend += "<div class=\"col-lg-4 col-md-6 col-sm-6 col-xs-1 portfolio-item pb-4\"><div class=\"card card2 h-100\"><a href=\"PublicationsCategorie.aspx?cat="+ c.categoryId +"\"><img class=\"card-img-top\" src=\""+ c.pictureUrl + "\" alt=\"\"></a><div class=\"card-body card2-body\"><h4 class=\"card-title\"><a href=\"PublicationsCategorie.aspx?cat=" + c.categoryId + "\" >"+ c.name +"</a></h4></div></div></div>";
             }
 
             // Bouton Abonnement

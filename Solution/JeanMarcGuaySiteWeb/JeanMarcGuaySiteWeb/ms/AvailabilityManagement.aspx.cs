@@ -50,8 +50,8 @@ namespace JeanMarcGuaySiteWeb.Admin
                 TableCell cellenddt = new TableCell();
                 TableCell cellBtn = new TableCell();
                 cellDate.Text = a.strdt.ToString("D", CultureInfo.CreateSpecificCulture("fr-FR"));
-                cellstrtdt.Text = a.strdt.TimeOfDay.ToString();
-                cellenddt.Text = a.enddt.TimeOfDay.ToString();
+                cellstrtdt.Text = a.strdt.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR"));
+                cellenddt.Text = a.enddt.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR"));
                 Button bt = new Button();
                 bt.CssClass = "btn btn-danger";
                 bt.Text = "Supprimer";
@@ -103,12 +103,14 @@ namespace JeanMarcGuaySiteWeb.Admin
                 }
                 else
                 {
-                    emsg01.Text = "Date invalide";
+                    emsg01.Style.Add("color", "red");
+                    emsg01.Text = "Date ou heure invalide";
                 }
             }
             else
             {
-                emsg01.Text = "Date invalide";
+                emsg01.Style.Add("color", "red");
+                emsg01.Text = "Date ou heure invalide";
                 //invalid
             }
 
@@ -124,7 +126,7 @@ namespace JeanMarcGuaySiteWeb.Admin
             if (success)
                 Response.Redirect(Request.RawUrl);
             else
-                emsg01.Text = "Impossible de supprimer la plage de disponibilité puisqu'elle est lié à un rendez-vous";
+                emsg01.Text = "Impossible de supprimer la plage de disponibilité puisqu'elle est liée à un rendez-vous";
 
         }
     }

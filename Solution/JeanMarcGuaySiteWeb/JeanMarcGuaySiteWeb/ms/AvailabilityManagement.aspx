@@ -55,6 +55,11 @@
         </div>
         <div class="row pb-3">
             <div class="col-sm-12">
+                <asp:Label runat="server" ID="emsg01"></asp:Label>
+            </div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-sm-12">
                 <asp:Table runat="server" ID="tabAvail" aria-describedby="dataTable_info" CssClass="table table-bordered table-hover dataTable dataUsers">
                     <asp:TableHeaderRow>
                         <asp:TableHeaderCell>Date</asp:TableHeaderCell>
@@ -63,11 +68,6 @@
                         <asp:TableHeaderCell>Supprimer</asp:TableHeaderCell>
                     </asp:TableHeaderRow>
                 </asp:Table>
-            </div>
-        </div>
-        <div class="row pb-3">
-            <div class="col-sm-12">
-                <asp:Label runat="server" ID="emsg01"></asp:Label>
             </div>
         </div>
     </div>

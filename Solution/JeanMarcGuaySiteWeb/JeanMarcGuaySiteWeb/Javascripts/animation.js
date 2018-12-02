@@ -91,7 +91,7 @@
         $('#h2Publications').addClass('fadeInRight');
         $('#h2Pourquoi').addClass('fadeInRight');
         $('#divCarouselFermerTexte').addClass('fadeInRight');
-        $('#carouselCategories').addClass('fadeInRight');
+        $('#carouselCategories').addClass('fadeIn');
     }, { offset: '50%' });
 
     $('#triggerPremiereRencontreHead').waypoint(function () {

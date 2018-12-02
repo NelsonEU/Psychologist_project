@@ -83,7 +83,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                                 if (categoTest == null)
                                 {
                                     // Televersement de l'image
-                                    string path = "/Images/" + fileUpload.PostedFile.FileName;
+                                    string path = "/Images/Categories/" + fileUpload.PostedFile.FileName;
 
                                     Bitmap imgBitmap = new Bitmap(fileUpload.PostedFile.InputStream);
 

@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
+     <meta name="keywords" content="Jean-Marc Guay, Psychologue, Saguenay, M.A.Ps, Psychologie, Consultation, Approche préconisée, programmation neurolinguistique, pnl" />
+     <meta name="description" content="Membre de l'Ordre des Psychologues du Québec, Jean-Marc Guay est un psychologue clinicien de la région du Saguenay. Vous trouverez sur ce site différentes informations concernant la psychothérapie ainsi que tous les services offerts par le psychologue." />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
