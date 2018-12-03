@@ -76,15 +76,15 @@ namespace JeanMarcGuaySiteWeb.Admin
 
                             //Vérification que le fichier ne soit pas déjà ajouté
                             Publication publiTest = pf.GetByFileName(fileUpload.PostedFile.FileName);
-                            if (publiTest.fileName == null)
-                            {
-                                // Televersement du fichier
-                                string path = "/admin/pdf/" + fileUpload.PostedFile.FileName;
-                                fileUpload.SaveAs(Server.MapPath(path));
 
+                            if (publiTest == null)
+                            {
+
+                                // Televersement du fichier
+                                string path = "/ms/pdf/" + fileUpload.PostedFile.FileName;
+                                fileUpload.SaveAs(Server.MapPath(path));
                                 // Ajout a la BD
                                 pf.Add(Convert.ToInt32(DdlCategories.SelectedValue), txtTitle.Text, path, fileUpload.PostedFile.FileName);
-
                                 // Notification Email aux utilisateurs abonnées
                                 // -----------Vérification le l'état du module ----------- //
                                 ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
