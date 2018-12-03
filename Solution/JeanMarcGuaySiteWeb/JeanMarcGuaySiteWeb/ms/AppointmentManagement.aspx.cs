@@ -308,7 +308,7 @@ namespace JeanMarcGuaySiteWeb.Admin
             AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
             if (tabId.Length > 0)
             {
-                af.DeleteByArray(tabId);
+                
                 User[] tabUsers = uf.GetAll();
                 Dictionary<int, User> mapUser = new Dictionary<int, User>();
                 foreach (User u in tabUsers)
@@ -322,6 +322,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                     mapAvailability.Add(a.availabilityId, a);
                 }
                 Appointement[] tabAppointments = af.GetByArray(tabId);
+                af.DeleteByArray(tabId);
                 foreach (Appointement a in tabAppointments)
                 {
                     //On envoie un mail de refus
