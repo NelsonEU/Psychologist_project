@@ -40,6 +40,15 @@ namespace JeanMarcGuaySiteWeb {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divContact;
         
         /// <summary>
+        /// Contrôle lblcontact.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcontact;
+        
+        /// <summary>
         /// Contrôle btnRedirection.
         /// </summary>
         /// <remarks>
@@ -139,21 +148,30 @@ namespace JeanMarcGuaySiteWeb {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRendezVousPris;
         
         /// <summary>
-        /// Contrôle div2.
+        /// Contrôle lblInfoRDV.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
+        protected global::System.Web.UI.WebControls.Label lblInfoRDV;
         
         /// <summary>
-        /// Contrôle Button1.
+        /// Contrôle lblConfirmation.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Label lblConfirmation;
+        
+        /// <summary>
+        /// Contrôle btnAnnuler.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAnnuler;
     }
 }

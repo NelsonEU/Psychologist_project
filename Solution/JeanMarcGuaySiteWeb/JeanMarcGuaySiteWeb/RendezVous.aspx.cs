@@ -20,6 +20,7 @@ namespace JeanMarcGuaySiteWeb
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
         static string emailAddress = ConfigurationManager.AppSettings["emailAddress"];
         AvailabilityFactory af = new AvailabilityFactory(cnnStr);
+        AppointementFactory apf = new AppointementFactory(cnnStr);
         User user;
         string etat = "Contact";
 
@@ -46,21 +47,46 @@ namespace JeanMarcGuaySiteWeb
                 divConnexion.Visible = true;
                 divRendezVous.Visible = false;
                 divRenseignement.Visible = false;
+                divRendezVousPris.Visible = false;
             }
             // ------------------------------------------------------- //
 
             // ----------- Vérification de l'autorisation ----------- //
             if (user != null)
             {
-                if (user.authorized == true)
+                Appointement appointement = apf.GetByUserId(user.userId);
+                if (appointement != null) //Un rendez-vous déja actif
+                {
+                    divRendezVousPris.Visible = true;
+                    divRendezVous.Visible = false;
+                    divRenseignement.Visible = false;
+
+                    Availability availability = af.GetById(appointement.availabilityId);
+                    lblInfoRDV.Text = availability.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR"));
+
+                    if (appointement.confirmed)
+                    {
+                        lblConfirmation.Style.Add("color", "Green");
+                        lblConfirmation.Text = "Confirmé";
+                    }
+                    else
+                    {
+                        lblConfirmation.Style.Add("color", "Black");
+                        lblConfirmation.Text = "en attente de confirmation";
+                    }
+
+                }
+                else if (user.authorized == true) //aucun rendez-vous actif et autoriser
                 {
                     divRendezVous.Visible = true;
                     divRenseignement.Visible = false;
+                    divRendezVousPris.Visible = false;
                 }
-                else
+                else //aucun rendez-vous actif et non autoriser
                 {
                     divRendezVous.Visible = false;
                     divRenseignement.Visible = true;
+                    divRendezVousPris.Visible = false;
 
                     Module m2 = moduleFactory.Get((int)Module.AllModules.Contact);
                     if (m2.active == false)
@@ -81,10 +107,6 @@ namespace JeanMarcGuaySiteWeb
                     //Dates
                     string dateToDisplay = availability.strdt.ToString("D", CultureInfo.CreateSpecificCulture("fr-FR"));
                     ddlDate.Items.Add(new ListItem(dateToDisplay, availability.availabilityId.ToString()));
-
-                    //Heures
-                    //string timeToDisplay = availability.strdt.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR"));
-                    //ddlHeureDebut.Items.Add(new ListItem(timeToDisplay, availability.availabilityId.ToString()));
                 }
                 ddlDate_SelectedIndexChanged(null, null);
             }
@@ -127,8 +149,6 @@ namespace JeanMarcGuaySiteWeb
 
         protected void buttonSubmitClick(object sender, EventArgs e)
         {
-            string dateAEnvoyee = ddlDate.SelectedItem.Text;
-
             int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
             Availability availability = af.GetById(availabilityId);
             DateTime date = availability.strdt;
@@ -167,7 +187,7 @@ namespace JeanMarcGuaySiteWeb
                 body = reader.ReadToEnd();
             }
 
-            body = body.Replace("{date}", dateAEnvoyee);
+            body = body.Replace("{date}", ddlDate.SelectedItem.Text);
             string minuteString;
             if (minutes == 0)
             {
@@ -200,5 +220,15 @@ namespace JeanMarcGuaySiteWeb
             }
         }
 
+        protected void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            //Annuler le  RDV
+            Appointement appointement = apf.GetByUserId(user.userId);
+            apf.Delete(appointement.appointementId);
+
+            //Envoyer un email
+
+            Response.Redirect("RendezVous.aspx");
+        }
     }
 }

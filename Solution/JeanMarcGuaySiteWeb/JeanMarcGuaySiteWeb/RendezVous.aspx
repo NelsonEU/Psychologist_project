@@ -54,6 +54,7 @@
                     <h5>Un utilisateur doit être manuellement autorisé par le psychologue afin de pouvoir prendre rendez-vous.</h5>
 
                     <div runat="server" id="divContact" class="pt-5">
+                        <asp:label runat="server" ID="lblcontact"></asp:label>
                         <asp:Button ID="btnRedirection" runat="server" Text="Contactez-moi" CssClass="btn mainButton " OnClick="btnRedirection_Click" />
                     </div>
                 </div>
@@ -65,7 +66,7 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2 col-sm-12 text-center">
                     <h3>Prendre rendez-vous avec Jean-Marc Guay</h3>
-                    <h5 class="pt-3"><b>Attention:</b> le rendez-vous n'est pas confirmé tant que vous n'avez pas reçu un email de confirmation. <i id="tooltipImage" class="far fa-question-circle mainAdminColor biggerbiggerText" title="Si vous n'avez pas reçu de email de confirmation la journée du rendez-vous, ne vous présentez pas. N'oubliez pas de vérifier vos spams"></i></h5>
+                    <h5 class="pt-3"><b>Attention:</b> le rendez-vous n'est pas confirmé tant que vous n'avez pas reçu un email de confirmation. <i id="tooltipImage" class="far fa-question-circle mainAdminColor biggerbiggerText" title="Si vous n'avez toujours pas reçu de email de confirmation lors de la journée du rendez-vous, ne vous y présentez pas. Pensez parcontre à venir vérifier régulièrement l'état de votre rendez-vous sur cette page."></i></h5>
                 </div>
             </div>
 
@@ -88,7 +89,7 @@
 
             <div class="row pb-3">
                 <div class="col-md-8 offset-md-2 text-right form-text text-muted">
-                    <span>*Vos informations seront inscrits automatiquement. </span>
+                    <span>*Vos informations seront inscrites automatiquement. </span>
                 </div>
             </div>
 
@@ -114,12 +115,14 @@
             <!-- Cette section apparait lorsque l'utilisateur est connecté, autorisé et a déjà un rendez-vous actif -->
             <div class="row">
                 <div class="col-md-8 offset-md-2 col-sm-12 text-center">
-                    <!-- <h3>Vous n'êtes pas autorisé(e) à prendre rendez-vous.</h3>
-                    <h5>Un utilisateur doit être manuellement autorisé par le psychologue afin de pouvoir prendre rendez-vous.</h5>
-
-                    <div runat="server" id="div2" class="pt-5">
-                        <asp:Button ID="Button1" runat="server" Text="Contactez-moi" CssClass="btn mainButton " OnClick="btnRedirection_Click" />
-                    </div> -->
+                    <h3>Vous avez un rendez-vous actif</h3><br />
+                </div>
+                <div class="col-md-8 offset-md-2 col-sm-12 text-center ">
+                    <h5><b>Date: </b><asp:label runat="server" ID="lblInfoRDV"></asp:label></h5>
+                    <h5><b>État: </b><asp:label runat="server" ID="lblConfirmation"></asp:label></h5>  
+                </div>
+                <div class="col-md-8 offset-md-2 col-sm-12 text-center pt-5">             
+                    <asp:Button runat="server" ID="btnAnnuler" Text="Annuler mon rendez-vous" CssClass="btn btn-danger" OnClick="btnAnnuler_Click"/>                   
                 </div>
             </div>
         </div>

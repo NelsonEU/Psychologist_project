@@ -40,6 +40,27 @@ namespace BusinessLogic.Factories
         #endregion
 
         #region Delete
+        public void Delete(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "UPDATE appointments SET deletionDate = current_date() WHERE appointment_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+
+            }
+        }
+        #endregion
+
+        #region DeleteByArray
         public void DeleteByArray(string[] ids)
         {
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
@@ -215,13 +236,14 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+
         #region CreateAppointment
         private Appointement CreateAppointment(MySqlDataReader reader)
         {
             int _appointmentId = (Int32)reader["appointment_id"];
             int _userId = (Int32)reader["user_id"];
             int _availabilityId = (Int32)reader["availability_id"];
-            bool _confirmed = false;
+            bool _confirmed = (bool)reader["confirmed"];
             string _message = reader["message"].ToString();
 
             Appointement appointement = new Appointement();
@@ -233,5 +255,34 @@ namespace BusinessLogic.Factories
             return appointement;
         }
         #endregion
+
+        #region GetByUserId
+        public Appointement GetByUserId(int userId)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+            Appointement appointement = null;
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT a.* FROM appointments a, availabilities av WHERE a.availability_id = av.availability_id AND a.user_id = @user_id AND av.Start_time > Now() AND deletionDate IS NULL";
+                cmd.Parameters.AddWithValue("@user_id", userId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    appointement = CreateAppointment(reader);
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return appointement;
+        }
+        #endregion
+
     }
 }
