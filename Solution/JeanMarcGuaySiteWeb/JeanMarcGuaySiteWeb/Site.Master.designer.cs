@@ -139,6 +139,15 @@ namespace JeanMarcGuaySiteWeb {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl liFAdmin;
         
         /// <summary>
+        /// Contrôle liFCompte.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liFCompte;
+        
+        /// <summary>
         /// Contrôle additionalJS.
         /// </summary>
         /// <remarks>

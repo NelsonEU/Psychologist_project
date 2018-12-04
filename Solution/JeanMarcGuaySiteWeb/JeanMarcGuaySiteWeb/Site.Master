@@ -95,18 +95,25 @@
                         ·
 				
                         <a href="Services.aspx">Services</a>
+
                         <span runat="server" id="liFooterPublication">·
                         <a href="Publications.aspx" runat="server">Publications</a>
                         </span>
+
                         <span runat="server" id="liFContact">·
                         <a href="Contact.aspx" >Contact</a>
                         </span>
+
                         <span runat="server" id="liFRdv">·
                         <a href="RendezVous.aspx" >Rendez-vous</a>
                         </span>
-
+                   
 				        <span runat="server" id="liFAdmin">·
                         <a href="ms/admin.aspx" >Administration</a>
+                        </span>
+                        
+                        <span runat="server" id="liFCompte">·
+                        <a href="modification.aspx" >Votre compte</a>
                         </span>
 				
 

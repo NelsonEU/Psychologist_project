@@ -26,8 +26,7 @@
                 <div class="row text-center pb-4">
                     <div class="col-12">
                         <label for="fileUpload" class="form-check-label"><b>Image</b> (format jpeg):</label><br />
-                        <label for="fileUpload" class="form-check-label textSmaller">Attention, Il est fortement recommendé d'utiliser des images de petite taille. Le format idéal est 500 x 500 px <i id="tooltipImage" class="far fa-question-circle mainAdminColor biggerbiggerText" title="Pour bien formater votre image, vous pouvez utiliser un site web tiers comme https://imageresize.org/ ou bien https://befunky.com/create et n'hésiter pas a réduire un peu la qualité de l'image afin qu'elle prenne moins d'espace."></i></label>
-                        <br />
+                        <label for="fileUpload" class="form-check-label textSmaller">Attention, Il est recommendé d'utiliser des images de petite taille.</label><br />      
                         <asp:FileUpload ID="fileUpload" runat="server" class="pt-2" style="margin:auto"/>
                     </div>
                 </div>
@@ -43,15 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="rowMaximum" runat="server">
-            <div class="col-8 border">
-                <div class="row text-center pb-4 pt-4">
-                    <div class="col-8 offset-2">
-                        <asp:Label runat="server" ID="lblMaximum">Le nombre maximum de catégorie (10) a été atteint. Vous devez donc en supprimer une pour pouvoir en créer une nouvelle.</asp:Label>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </div>
 
 </asp:Content>

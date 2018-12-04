@@ -71,7 +71,7 @@ namespace JeanMarcGuaySiteWeb
                     }
                     else
                     {
-                        lblConfirmation.Style.Add("color", "Black");
+                        lblConfirmation.Style.Add("color", "orange");
                         lblConfirmation.Text = "en attente de confirmation";
                     }
 
@@ -128,26 +128,27 @@ namespace JeanMarcGuaySiteWeb
         {
             try
             {
-ddlHeureDebut.Items.Clear();
+                ddlHeureDebut.Items.Clear();
                       
-            string availabilityDayString = ddlDate.SelectedValue;
+                string availabilityDayString = ddlDate.SelectedValue;
 
                     
-            DateTime availabilityDay = DateTime.Parse(availabilityDayString, CultureInfo.CreateSpecificCulture("fr-FR"));
-            Availability[] tab = af.GetAllByDate(availabilityDay);
-            foreach(Availability a in tab)
-            {
-                DateTime[] heures = splitTime(a.strdt, a.enddt);
-                foreach (DateTime heure in heures)
+                DateTime availabilityDay = DateTime.Parse(availabilityDayString, CultureInfo.CreateSpecificCulture("fr-FR"));
+                Availability[] tab = af.GetAllByDate(availabilityDay);
+                foreach(Availability a in tab)
                 {
-                    string timeToDisplay = heure.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR"));
-                    ddlHeureDebut.Items.Add(new ListItem(timeToDisplay));
+                    DateTime[] heures = splitTime(a.strdt, a.enddt);
+                    foreach (DateTime heure in heures)
+                    {
+                        string timeToDisplay = heure.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR"));
+                        ddlHeureDebut.Items.Add(new ListItem(timeToDisplay));
+                    }
                 }
-            }
             }catch
             {
                 buttonSubmit.Visible = false;
-                notification.InnerText = "Le psychologue ne propose aucune disponibilité pour le moment.";
+                notification.Style.Add("font-size","15pt;");
+                notification.InnerText = "Le psychologue ne propose aucune disponibilité pour le moment.";               
             }
             
             /*
@@ -188,7 +189,6 @@ ddlHeureDebut.Items.Clear();
         {
             //int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
             //Availability availability = af.GetById(availabilityId);
-
             
             string dateDebut = ddlDate.SelectedValue;
             string[] heureMinutes = ddlHeureDebut.SelectedValue.Split(':');

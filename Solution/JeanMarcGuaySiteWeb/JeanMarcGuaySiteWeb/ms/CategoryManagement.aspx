@@ -15,11 +15,7 @@
 
     <div id="PageContent" runat="server">
         <div class="row">
-            <div class="col-lg-4 col-md-12 left">
-                <asp:Label runat="server" ID="lblNombreCategorie"></asp:Label>
-                <i id="toolTipCategories" class="far fa-question-circle mainAdminColor biggerbiggerText" title="Maximum de 10 catégories et minimum de 3"></i>
-            </div>
-            <div class="col-lg-4 col-md-12 right">
+            <div class="col-lg-8 col-md-12 right">
                 <a href="AjoutCategorie.aspx" class="align-middle lienAdmin"><i class="fas fa-plus"></i> Ajouter une catégorie</a>
             </div>
         </div>

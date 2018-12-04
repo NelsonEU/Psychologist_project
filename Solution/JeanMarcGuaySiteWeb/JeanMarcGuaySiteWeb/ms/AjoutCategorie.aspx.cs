@@ -37,8 +37,8 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
             // ------------------------------------------------------- //
 
-            //Vérifier si il y a moins de 10 catégories
-            int nbCategorie = cf.Count();
+            //Vérifier si il y a moins de 10 catégories (obselete)
+            /*int nbCategorie = cf.Count();
             if (nbCategorie < 10)
             {
                 rowAjout.Visible = true;
@@ -48,7 +48,7 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 rowAjout.Visible = false;
                 rowMaximum.Visible = true;
-            }
+            } */
 
             if (Request.QueryString["conf"] != null)
             {

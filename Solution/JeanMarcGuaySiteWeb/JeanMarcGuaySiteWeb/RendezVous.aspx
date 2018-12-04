@@ -66,7 +66,8 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2 col-sm-12 text-center">
                     <h3>Prendre rendez-vous avec Jean-Marc Guay</h3>
-                    <h5 class="pt-3"><b>Attention:</b> le rendez-vous n'est pas confirmé tant que vous n'avez pas reçu un email de confirmation. <i id="tooltipImage" class="far fa-question-circle mainAdminColor biggerbiggerText" title="Si vous n'avez toujours pas reçu de email de confirmation lors de la journée du rendez-vous, ne vous y présentez pas. Pensez parcontre à venir vérifier régulièrement l'état de votre rendez-vous sur cette page."></i></h5>
+                    <h5 class="pt-3"><b>Attention:</b> le rendez-vous n'est pas confirmé tant que vous n'avez pas reçu un email de confirmation.</h5>
+                    <h5>Vous pouvez aussi consulter cette page afin de voir l'état de votre rendez-vous.</h5>
                 </div>
             </div>
 
@@ -100,7 +101,7 @@
             </div>
 
             <div class="row pb-3">
-                <div class="col-md-2 offset-md-5 text-center" runat="server" id="notification">
+                <div class="col-md-8 offset-md-2 text-center" runat="server" id="notification">
                 </div>
             </div>
 
@@ -120,6 +121,9 @@
                 <div class="col-md-8 offset-md-2 col-sm-12 text-center ">
                     <h5><b>Date: </b><asp:label runat="server" ID="lblInfoRDV"></asp:label></h5>
                     <h5><b>État: </b><asp:label runat="server" ID="lblConfirmation"></asp:label></h5>  
+                </div>
+                <div class="col-md-8 offset-md-2 col-sm-12 text-center pt-5">             
+                    <h5><b>Attention: </b>Le rendez-vous n'est pas fixé tant que l'état de celui-ci n'est pas « Confirmé ». Veuillez donc attendre la réponse du psychologue avant de vous y présenter</h5>               
                 </div>
                 <div class="col-md-8 offset-md-2 col-sm-12 text-center pt-5">             
                     <asp:Button runat="server" ID="btnAnnuler" Text="Annuler mon rendez-vous" CssClass="btn btn-danger" OnClick="btnAnnuler_Click"/>                   

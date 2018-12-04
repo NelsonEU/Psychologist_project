@@ -24,6 +24,10 @@ namespace JeanMarcGuaySiteWeb
             {
                 user = (User)Session["User"];
                 connexionButton.InnerText = "Se Déconnecter";
+                liFCompte.Visible = true;
+            }else
+            {
+                liFCompte.Visible = false;
             }
 
             if (user == null || user.admin == false)

@@ -17,7 +17,6 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
         CategoryFactory cf = new CategoryFactory(cnnStr);
-        int nbCategorie;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,19 +35,15 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
             // ------------------------------------------------------- //
 
-            //afficher le nombre de catégories
-            nbCategorie = cf.Count();
-            lblNombreCategorie.Text = nbCategorie.ToString() + "/10";
-
             //Request.QueryString
-            if (Request.QueryString["Conf"] != null)
+            /*if (Request.QueryString["Conf"] != null)
             {
                 if (Request.QueryString["Conf"] == "False")
                 {
                     notification.Style.Add("color", "red");
                     notification.Text = "Vous avez déjà atteint le nombre minimum de catégories";
                 }
-            }
+            }*/
 
             Category[] categories = cf.GetAll();
             afficherTableau(categories);
@@ -85,8 +80,6 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         private void btn_Supprimer_Click(object sender, EventArgs e)
         {
-            if (nbCategorie > 3)
-            {
                 string confirmValue = Request.Form["confirm_delete"];
                 if (confirmValue == "Oui")
                 {
@@ -130,12 +123,6 @@ namespace JeanMarcGuaySiteWeb.Admin
                     {
                         Response.Redirect(Request.RawUrl);
                     }
-                }
-            }
-            else
-            {
-                //On ne peux pas en supprimer plus car le nombre minimum de catégories est déja atteint.
-                Response.Redirect("CategoryManagement.aspx" + "?Conf=False");
             }
         }
     }

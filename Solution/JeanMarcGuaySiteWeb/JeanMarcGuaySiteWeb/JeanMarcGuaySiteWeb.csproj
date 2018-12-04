@@ -91,6 +91,7 @@
     <Content Include="Images\logoOriginal.png" />
     <Content Include="Images\photoService.jpg" />
     <Content Include="Images\testBanner6.jpg" />
+    <Content Include="modification.aspx" />
     <Content Include="ms\AjoutCategorie.aspx" />
     <Content Include="ms\CategoryManagement.aspx" />
     <Content Include="ms\CSS\jquery.timepicker.min.css" />
@@ -186,6 +187,13 @@
     </Compile>
     <Compile Include="Activation.aspx.designer.cs">
       <DependentUpon>Activation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="modification.aspx.cs">
+      <DependentUpon>modification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modification.aspx.designer.cs">
+      <DependentUpon>modification.aspx</DependentUpon>
     </Compile>
     <Compile Include="ms\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
