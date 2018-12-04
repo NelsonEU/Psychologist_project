@@ -126,30 +126,22 @@ namespace JeanMarcGuaySiteWeb
 
         protected void ddlDate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            ddlHeureDebut.Items.Clear();
+                      
+            string availabilityDayString = ddlDate.SelectedValue;
+
+                    
+            DateTime availabilityDay = DateTime.Parse(availabilityDayString, CultureInfo.CreateSpecificCulture("fr-FR"));
+            Availability[] tab = af.GetAllByDate(availabilityDay);
+            foreach(Availability a in tab)
             {
-                ddlHeureDebut.Items.Clear();
-                          
-                string availabilityDayString = ddlDate.SelectedValue;
-                        
-                DateTime availabilityDay = DateTime.Parse(availabilityDayString);
-                Availability[] tab = af.GetAllByDate(availabilityDay);
-                foreach(Availability a in tab)
+                DateTime[] heures = splitTime(a.strdt, a.enddt);
+                foreach (DateTime heure in heures)
                 {
-                    DateTime[] heures = splitTime(a.strdt, a.enddt);
-                    foreach (DateTime heure in heures)
-                    {
-                        string timeToDisplay = heure.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR"));
-                        ddlHeureDebut.Items.Add(new ListItem(timeToDisplay));
-                    }
+                    string timeToDisplay = heure.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR"));
+                    ddlHeureDebut.Items.Add(new ListItem(timeToDisplay));
                 }
             }
-            catch
-            {
-                notification.InnerText = "Le psychologue ne propose aucune disponibilité pour le moment";
-                buttonSubmit.Visible = false;
-            }
-            
             /*
             int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
             Availability availability = af.GetById(availabilityId);
