@@ -126,7 +126,9 @@ namespace JeanMarcGuaySiteWeb
 
         protected void ddlDate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlHeureDebut.Items.Clear();
+            try
+            {
+ddlHeureDebut.Items.Clear();
                       
             string availabilityDayString = ddlDate.SelectedValue;
 
@@ -142,6 +144,12 @@ namespace JeanMarcGuaySiteWeb
                     ddlHeureDebut.Items.Add(new ListItem(timeToDisplay));
                 }
             }
+            }catch
+            {
+                buttonSubmit.Visible = false;
+                notification.InnerText = "Le psychologue ne propose aucune disponibilité pour le moment.";
+            }
+            
             /*
             int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
             Availability availability = af.GetById(availabilityId);
