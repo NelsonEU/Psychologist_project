@@ -103,11 +103,22 @@ namespace JeanMarcGuaySiteWeb
             if (!Page.IsPostBack)
             {
                 Availability[] availabilities = af.GetAllFree();
+                HashSet<string> set = new HashSet<string>();
                 foreach (Availability availability in availabilities)
                 {
                     //Dates
+                    
                     string dateToDisplay = availability.strdt.ToString("D", CultureInfo.CreateSpecificCulture("fr-FR"));
-                    ddlDate.Items.Add(new ListItem(dateToDisplay, availability.availabilityId.ToString()));
+                    
+
+                    if (!set.Contains(dateToDisplay))
+                    {
+                        ddlDate.Items.Add(new ListItem(dateToDisplay, dateToDisplay));
+                    }
+                    set.Add(dateToDisplay);
+
+                    //ddlDate.Items.Add(new ListItem(dateToDisplay, availability.availabilityId.ToString()));
+
                 }
                 ddlDate_SelectedIndexChanged(null, null);
             }
@@ -116,6 +127,22 @@ namespace JeanMarcGuaySiteWeb
         protected void ddlDate_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlHeureDebut.Items.Clear();
+                      
+            string availabilityDayString = ddlDate.SelectedValue;
+
+                    
+            DateTime availabilityDay = DateTime.Parse(availabilityDayString);
+            Availability[] tab = af.GetAllByDate(availabilityDay);
+            foreach(Availability a in tab)
+            {
+                DateTime[] heures = splitTime(a.strdt, a.enddt);
+                foreach (DateTime heure in heures)
+                {
+                    string timeToDisplay = heure.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR"));
+                    ddlHeureDebut.Items.Add(new ListItem(timeToDisplay));
+                }
+            }
+            /*
             int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
             Availability availability = af.GetById(availabilityId);
 
@@ -126,6 +153,7 @@ namespace JeanMarcGuaySiteWeb
                 string timeToDisplay = heure.ToString("t", CultureInfo.CreateSpecificCulture("fr-FR"));
                 ddlHeureDebut.Items.Add(new ListItem(timeToDisplay));
             }
+            */
 
         }
 
@@ -150,13 +178,21 @@ namespace JeanMarcGuaySiteWeb
 
         protected void buttonSubmitClick(object sender, EventArgs e)
         {
-            int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
-            Availability availability = af.GetById(availabilityId);
-            DateTime date = availability.strdt;
+            //int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
+            //Availability availability = af.GetById(availabilityId);
+
+            
+            string dateDebut = ddlDate.SelectedValue;
+            string[] heureMinutes = ddlHeureDebut.SelectedValue.Split(':');
+            DateTime date = DateTime.Parse(dateDebut);
+            DateTime dateH = date.AddHours(Double.Parse(heureMinutes[0]));
+            DateTime dateM = dateH.AddMinutes(Double.Parse(heureMinutes[1]));        
+            Availability availability = af.getByDate(dateM);
             string temps = ddlHeureDebut.SelectedValue;
+
             int heure = Convert.ToInt32(temps.Substring(0, 2));
             int minutes = Convert.ToInt32(temps.Substring(3, 2));
-            DateTime date2 = new DateTime(date.Year, date.Month, date.Day, heure, minutes, 00);
+            //DateTime date2 = new DateTime(dateDebutDT.Year, dateDebutDT.Month, dateDebutDT.Day, heure, minutes, 00);
 
             string message = txtContent.Text;
 
@@ -175,8 +211,7 @@ namespace JeanMarcGuaySiteWeb
                 return;
             }
 
-            Availability newAv = af.splitavail(availabilityId, date2);
-            //enrRDV
+            Availability newAv = af.splitavail(availability.availabilityId, dateM);
             AppointementFactory ap = new AppointementFactory(cnnStr);
             ap.Add(user.userId, newAv.availabilityId, message);
 

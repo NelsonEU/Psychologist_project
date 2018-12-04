@@ -229,8 +229,8 @@ namespace BusinessLogic.Factories
 
             //Get le vieux by ID
             Availability vieux = af.GetById(id);
-            //Delete le vieux
-            af.delete(id);
+           
+
             
             TimeSpan ts = new TimeSpan();
 
@@ -246,27 +246,35 @@ namespace BusinessLogic.Factories
 
 
             //check si nouveau.enddt à vieux enddt donne 1 heure ou plus
-            ts = vieux.enddt - rendezvous.AddHours(1);
+            TimeSpan ts2 = vieux.enddt - rendezvous.AddHours(1);
 
-            if (ts.Hours >= 1)
+            if (ts2.Hours >= 1)
             {
                 //Si oui //Create nouveau de nouveau.enddt à vieux enddt
                 af.Add(rendezvous.AddHours(1), vieux.enddt);
             }
 
             //Create nouveau de rendezvous à rendezvous+1h
+            if(ts.Hours == 0 && ts2.Hours == 0){
+                
+            }
+            else{
+                //Delete le vieux
+                af.delete(id);
+                //Ajoute le nouveau
+                af.Add(rendezvous, rendezvous.AddHours(1));
+            }
+            
 
-            af.Add(rendezvous, rendezvous.AddHours(1));
-
-            Availability finalav = af.getByDate(rendezvous, rendezvous.AddHours(1));
+            Availability finalav = af.getByBothDates(rendezvous, rendezvous.AddHours(1));
 
 
             return finalav;
         }
         #endregion
 
-        #region getByDate
-        public Availability getByDate(DateTime strtdate, DateTime enddate)
+        #region getByBothDates
+        public Availability getByBothDates(DateTime strtdate, DateTime enddate)
         {
             Availability availability = null;
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
@@ -293,6 +301,69 @@ namespace BusinessLogic.Factories
             }
 
             return availability;
+        }
+        #endregion
+
+        #region getByDate
+        public Availability getByDate(DateTime strtdate)
+        {
+            Availability availability = null;
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM availabilities WHERE Start_time <= @strtdate AND End_time > @strtdate";
+                
+                cmd.Parameters.AddWithValue("@strtdate", strtdate);
+
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    availability = CreateAvailability(reader);
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return availability;
+        }
+        #endregion
+
+        #region GetAllByDate
+        public Availability[] GetAllByDate(DateTime date)
+        {
+            List<Availability> list = new List<Availability>();
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+
+                MySqlCommand cmd = cnn.CreateCommand();
+                
+                cmd.CommandText = "SELECT * FROM availabilities as b WHERE Date(Start_time) = Date(@strtdate) AND NOT EXISTS ( SELECT * FROM appointments as a WHERE b.Availability_id = a.Availability_id AND a.deletionDate IS NULL ) ORDER BY Start_time";
+                cmd.Parameters.AddWithValue("@strtdate", date);
+
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(CreateAvailability(reader));
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return list.ToArray();
         }
         #endregion
 
