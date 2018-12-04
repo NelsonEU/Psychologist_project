@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <Use64BitIISExpress />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,6 +44,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
@@ -57,31 +60,41 @@
     </Reference>
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activation.aspx" />
     <Content Include="Email\AnnulationRDV.html" />
+    <Content Include="Images\Categories\cute.JPG" />
+    <Content Include="Images\Categories\cuteOrange.JPG" />
+    <Content Include="Images\Categories\cuteSquareCow.JPG" />
+    <Content Include="Images\Categories\grosse image.jpg" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\logoOPQ2.jpg" />
+    <Content Include="Images\logoOriginal.png" />
+    <Content Include="Images\photoService.jpg" />
+    <Content Include="Images\testBanner6.jpg" />
     <Content Include="ms\AjoutCategorie.aspx" />
     <Content Include="ms\CategoryManagement.aspx" />
+    <Content Include="ms\CSS\jquery.timepicker.min.css" />
+    <Content Include="ms\Images\logoOriginal2.png" />
     <Content Include="ms\Javascript\Availability.js" />
     <Content Include="ms\Javascript\categorieAdmin.js" />
     <Content Include="ms\Javascript\jquery.timepicker.min.js" />
@@ -120,7 +133,6 @@
     <Content Include="CSS\fonts\slick.svg" />
     <Content Include="CSS\Navbar.css" />
     <Content Include="ms\CSS\sb-admin.min.css" />
-    <Content Include="ms\Images\stairs.jpg" />
     <Content Include="ms\Javascript\Admin.js" />
     <Content Include="ms\ModuleManagement.aspx" />
     <Content Include="ms\UserManagement.aspx" />
@@ -144,6 +156,7 @@
     <Content Include="Javascripts\slick.min.js" />
     <Content Include="packages.config" />
     <Content Include="Publications.aspx" />
+    <Content Include="robots.txt" />
     <Content Include="Services.aspx" />
     <Content Include="RendezVous.aspx" />
     <Content Include="Site.Master" />
@@ -152,6 +165,10 @@
     <Content Include="CSS\fonts\slick.eot" />
     <Content Include="CSS\fonts\slick.ttf" />
     <Content Include="CSS\fonts\slick.woff" />
+    <Content Include="Fonts\Polt-Regular.otf" />
+    <Content Include="Fonts\Sk-Modernist-Regular.otf" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

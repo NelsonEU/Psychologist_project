@@ -109,7 +109,7 @@ namespace JeanMarcGuaySiteWeb
                     //Dates
                     
                     string dateToDisplay = availability.strdt.ToString("D", CultureInfo.CreateSpecificCulture("fr-FR"));
-                    
+                    //CultureInfo.CurrentCulture.DateTimeFormat
 
                     if (!set.Contains(dateToDisplay))
                     {

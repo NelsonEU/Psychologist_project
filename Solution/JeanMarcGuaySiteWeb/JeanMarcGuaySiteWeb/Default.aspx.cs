@@ -17,8 +17,6 @@ namespace JeanMarcGuaySiteWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SubsectionFactory subFact = new SubsectionFactory(cnnStr);
-            Subsection subsection = subFact.Get("test1");
 
             ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
             Module m = moduleFactory.Get((int)Module.AllModules.Publications);/* Module id 3 = Module des documents PDF */
