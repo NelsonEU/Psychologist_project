@@ -8,7 +8,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
     <div class="banner shadow">
-        <div class="va-center animated fadeIn slow">
+        <div class="va-center animated fadeIn slow" style="opacity:0;">
             <h1 class="titleBanner">Jean-Marc Guay</h1>
             <h5 class="titleBanner">Psychologue, M.A.Ps</h5>
         </div>
@@ -24,19 +24,19 @@
             <div class="pb-5">
                 <div class="container biggerBox">
                     <div class="row">
-                        <h2 class="underline1" id="h2Apropos">À propos</h2>
+                        <h2 class="underline1" id="h2Apropos" style="opacity:0;">À propos</h2>
                     </div>
 
-                    <div class="row pt-3 divAnimation1">
+                    <div class="row pt-3 divAnimation1" style="opacity:0;">
                         <p>Membre de l'Ordre des Psychologues du Québec, Jean-Marc Guay est un psychologue clinicien de la région du Saguenay. En plus d'être praticien en programmation neurolinguistique, il est également professeur de psychologie.</p>
                     </div>
-                    <div class="row pt-3 divAnimation1" id="paraTrigger">
+                    <div class="row pt-3 divAnimation1" id="paraTrigger" style="opacity:0;">
                         <p>Vous trouverez sur ce site différentes informations concernant la psychothérapie ainsi que tous les services offerts par le psychologue. Différentes publications sous forme de documents PDF sont également mises à votre disposition dans la section « <a href="Publications.aspx">Publications</a> ».</p>
                     </div>
-                    <div class="row pt-3 divAnimation1">
+                    <div class="row pt-3 divAnimation1" style="opacity:0;">
                         <p id="pTrigger">Vous êtes également invités à vous créer un compte sur le site. Cela vous permettra de pouvoir contacter le praticien et, si vous le souhaitez, de vous abonner aux publications.</p>
                     </div>
-                    <div class="row pt-3 divAnimation1">
+                    <div class="row pt-3 divAnimation1" style="opacity:0;">
                         <div runat="server" id="divButtonCompte" class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center pt-3">
                             <a href="Inscription.aspx" class="btn mainButton">Créer un compte</a>
                         </div>
@@ -50,7 +50,7 @@
         </div>
 
          <div class="container-fluid bc-blue evenBiggerBox" id="evenBiggerBox">
-            <div class="container divAnimation3 animated slow">
+            <div class="container divAnimation3 animated slow" style="opacity:0;">
                 <div class="row">
                     <!-- Texte -->
                     <div class="col-md-6">
@@ -84,9 +84,9 @@
 
         <div class="container biggerBox" runat="server" id="divCarouselOuvert">
             <div class="row pt-5">
-                <h2 class="underline1 animated slow" id="h2Publications">Publications</h2>
+                <h2 class="underline1 animated slow" id="h2Publications" style="opacity:0;">Publications</h2>
             </div>
-            <div id="carouselCategories" class="carousel_categorie pt-3 animated slow" runat="server" ClientIDMode="static">
+            <div id="carouselCategories" class="carousel_categorie pt-3 animated slow" runat="server" ClientIDMode="static" style="opacity:0;">
 
             </div>
         </div>

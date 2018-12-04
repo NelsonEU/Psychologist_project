@@ -77,22 +77,22 @@ namespace JeanMarcGuaySiteWeb.Admin
 
             if (tdate != "" && ttime1 != "" && ttime2 != "" && Convert.ToDateTime(ttime1) < Convert.ToDateTime(ttime2))
             {
-                int month =  Convert.ToInt32(tdate.Substring(0, 2));
-                int day = Convert.ToInt32(tdate.Substring(3, 2));
+                int day =  Convert.ToInt32(tdate.Substring(0, 2));
+                int month = Convert.ToInt32(tdate.Substring(3, 2));
                 int year = Convert.ToInt32(tdate.Substring(6, 4));
                 int hour = Convert.ToInt32(ttime1.Substring(0, 2));
                 int minute = Convert.ToInt32(ttime1.Substring(3, 2));
                 int second = 00;
 
-                int month2 = Convert.ToInt32(tdate.Substring(0, 2));
-                int day2 = Convert.ToInt32(tdate.Substring(3, 2));
+                int day2 = Convert.ToInt32(tdate.Substring(0, 2));
+                int month2 = Convert.ToInt32(tdate.Substring(3, 2));
                 int year2 = Convert.ToInt32(tdate.Substring(6, 4));
                 int hour2 = Convert.ToInt32(ttime2.Substring(0, 2));
                 int minute2 = Convert.ToInt32(ttime2.Substring(3, 2));
-                int second2 = 00;
+
                 //verif si existe pas deja dans le range
                 DateTime strdt = new DateTime(year, month, day, hour, minute, second);
-                DateTime enddt = new DateTime(year2, month2, day2, hour2, minute2, second2);
+                DateTime enddt = new DateTime(year2, month2, day2, hour2, minute2, second);
 
                 bool legit = uf.checkifvalid(strdt, enddt);
 

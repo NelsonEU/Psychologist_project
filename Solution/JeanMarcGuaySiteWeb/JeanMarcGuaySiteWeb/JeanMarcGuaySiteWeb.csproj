@@ -81,6 +81,7 @@
     <Content Include="Activation.aspx" />
     <Content Include="ms\AjoutCategorie.aspx" />
     <Content Include="ms\CategoryManagement.aspx" />
+    <Content Include="ms\Javascript\Availability.js" />
     <Content Include="ms\Javascript\categorieAdmin.js" />
     <Content Include="ms\Javascript\jquery.timepicker.min.js" />
     <Content Include="ms\Javascript\publicationAdmin.js" />

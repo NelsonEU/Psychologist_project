@@ -1,10 +1,14 @@
 ﻿
     $(document).ready(function () {
         $('#scrollDefaultExample').timepicker({
+            'forceRoundTime': true,
+            'scrollDefault': '08:00:00',
             'disableTimeRanges': [
             ]
         });
-    $('#scrollDefaultExample2').timepicker({
+        $('#scrollDefaultExample2').timepicker({
+            'forceRoundTime': true,
+            'scrollDefault': '08:00:00',
         'disableTimeRanges': [
     ]
       });

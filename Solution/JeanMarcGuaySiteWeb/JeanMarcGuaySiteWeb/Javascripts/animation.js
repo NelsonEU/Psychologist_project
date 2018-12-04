@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     // hide our element on page load
-    $('#h2Apropo').css('opacity', 0);
+    //$('#h2Apropo').css('opacity', 0);
     //$('#h2Approche').css('opacity', 0);
     //$('.animatedWA').css('opacity', 0);
     //$('#btnAnimated').css('opacity', 0);
