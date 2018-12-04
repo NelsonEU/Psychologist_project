@@ -93,6 +93,7 @@ namespace JeanMarcGuaySiteWeb
                     {
                         etat = "Accueil";
                         btnRedirection.Text = "Retour à l'accueil";
+                        lblcontact.Text = "";
                     }
                 }
             }
@@ -224,9 +225,23 @@ namespace JeanMarcGuaySiteWeb
         {
             //Annuler le  RDV
             Appointement appointement = apf.GetByUserId(user.userId);
+            Availability availability = af.GetById(appointement.availabilityId);
             apf.Delete(appointement.appointementId);
 
-            //Envoyer un email
+            //Envoyer le email d'annulation a jmGuay
+            EmailController ec = new EmailController();
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/AnnulationRDV.html")))
+            {
+                body = reader.ReadToEnd();
+            }
+
+            body = body.Replace("{date}", availability.strdt.ToString("D", CultureInfo.CreateSpecificCulture("fr-FR")));
+            body = body.Replace("{prenom}", user.firstname);
+            body = body.Replace("{nom}", user.lastname);
+            body = body.Replace("{email}", user.email);
+
+            ec.SendMail(emailAddress, "Annulation du rendez-vous de " + user.firstname + " " + user.lastname, body);
 
             Response.Redirect("RendezVous.aspx");
         }

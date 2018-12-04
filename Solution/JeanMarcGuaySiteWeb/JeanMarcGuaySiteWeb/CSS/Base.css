@@ -7,6 +7,14 @@ a {
 a:hover {
     color: #1d6280;
 }
+::selection{
+    background:#1d6280;
+    color:white;
+}
+::-moz-selection { /* Code for Firefox */
+    background:#1d6280;
+    color:white;
+}
 
 html {
   height: 100%;

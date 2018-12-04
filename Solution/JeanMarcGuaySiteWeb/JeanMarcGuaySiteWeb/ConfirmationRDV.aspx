@@ -20,7 +20,7 @@
     <div class="row text-center pt-3 paddingNav2">
         <div class="col-lg-12">
             <h4>Le rendez-vous à été pris!</h4>
-            <h5>Vous devez par contre attendre la confirmation email<h5>
+            <h5>Vous devez par contre attendre la confirmation email</h5>
         </div>
     </div>
     <div class="row text-center pt-3 pb-5">

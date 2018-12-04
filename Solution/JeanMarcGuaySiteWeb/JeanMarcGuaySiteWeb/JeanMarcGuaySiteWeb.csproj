@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activation.aspx" />
+    <Content Include="Email\AnnulationRDV.html" />
     <Content Include="ms\AjoutCategorie.aspx" />
     <Content Include="ms\CategoryManagement.aspx" />
     <Content Include="ms\Javascript\Availability.js" />

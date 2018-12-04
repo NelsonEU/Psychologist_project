@@ -35,7 +35,7 @@
 
                     <!-- Image -->
                     <div class="col-lg-4 text-center">
-                        <img class="shadow img-thumbnail" id="h2Apropos" src="Images/photoService.jpg" alt="" />
+                        <img class="shadow img-thumbnail" id="h2Apropos" src="Images/photoService.jpg" alt="" style="opacity: 0;"/>
                     </div>
                 </div>
                 <div id="paraTrigger"></div>
@@ -49,9 +49,9 @@
         <div class="pb-5 bc-blue">
             <div class="container evenBiggerBox ">
                 <div class="row pt-5">
-                    <h2 class="underline2 animated slow" id="divAnimationbcBlueHead">Approche préconisée</h2>
+                    <h2 class="underline2 animated slow" id="divAnimationbcBlueHead" style="opacity: 0;">Approche préconisée</h2>
                 </div>
-                <div id="divAnimationbcBlue" class="animated slow">
+                <div id="divAnimationbcBlue" class="animated slow" style="opacity: 0;">
                     <div class="row pt-3 slow">
                         <p id="triggerPremiereRencontreHead">
                             L'approche preconisée au cabinet est celle d'une orientation intégrative.<br />
@@ -88,10 +88,10 @@
         <div class="container evenBiggerBox">
             <div class="row pb-5">
                 <div class="col-md-12">
-                    <div id="PremiereRencontreHead" class="col-md-4 animated slow" style="padding: 0px 0px 0px 0px;">
+                    <div id="PremiereRencontreHead" class="col-md-4 animated slow" style="padding: 0px 0px 0px 0px; opacity:0;">
                         <h2 class="underline1">Première rencontre</h2>
                     </div>
-                    <div class="pt-3 animated slow" id="premiereRencontre">
+                    <div class="pt-3 animated slow" id="premiereRencontre" style="opacity: 0;">
                         <p>Habituellement, le temps alloué pour une rencontre est d’environ une heure. Quant à la fréquence des rencontres, celle-ci peut varier selon les besoins du client. Au début, la fréquence peut être d’une par semaine. Mais au fur et à mesure que la psychothérapie progresse dans le temps, les rencontres sont espacées, d’un commun accord. En ce qui concerne la durée d’une psychothérapie, celle-ci fluctue en fonction de nombreux facteurs dont : 
                         <br /><br /><img src="Images/blue-check-mark-png-md.png"  style="width: 10px; height:10px;"/><b style="line-height: 1.5; margin-inline-start: 7px;"> le problème présenté </b>
                         <br /><img src="Images/blue-check-mark-png-md.png"  style="width: 10px; height:10px;"/><b style="line-height: 1.5; margin-inline-start: 7px;"> la gravité du problème </b>

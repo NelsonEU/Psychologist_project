@@ -54,8 +54,8 @@
                     <h5>Un utilisateur doit être manuellement autorisé par le psychologue afin de pouvoir prendre rendez-vous.</h5>
 
                     <div runat="server" id="divContact" class="pt-5">
-                        <asp:label runat="server" ID="lblcontact"></asp:label>
-                        <asp:Button ID="btnRedirection" runat="server" Text="Contactez-moi" CssClass="btn mainButton " OnClick="btnRedirection_Click" />
+                        <asp:label runat="server" ID="lblcontact" style="font-size: 1.25rem;">Vous pouvez par contre m'envoyer un message</asp:label><br />
+                        <asp:Button ID="btnRedirection" runat="server" Text="Contactez-moi" CssClass="btn mainButton " OnClick="btnRedirection_Click" style="margin-top:10px;"/>
                     </div>
                 </div>
             </div>
