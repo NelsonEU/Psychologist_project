@@ -50,6 +50,7 @@ namespace JeanMarcGuaySiteWeb
                     else
                     {
                         System.Text.RegularExpressions.Regex regexDate = new Regex(@"^\d{2}-\d{2}-\d{4}$");
+                        System.Diagnostics.Debug.WriteLine(birthday.Text);
                         if (!regexDate.IsMatch(birthday.Text))
                         {
                             notification.Style.Add("color", "red");

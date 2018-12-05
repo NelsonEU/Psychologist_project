@@ -18,27 +18,22 @@
                         <div class="col-lg-4 col-md-12 form-group">
                             <input type="search" class="form-control" aria-controls="dataTable" placeholder="Rechercher" id="researchUser" />
                         </div>
-                        <div class="offset-lg-2 col-lg-6 col-md-12 text-right">
-                            <asp:Button class=" btn btn-success" runat="server" Text="Authoriser" OnClick="Click_Authorized" ID="btnAuthoriser" />
-                            <asp:Button class="btn btn-warning" runat="server" Text="Désauthoriser" OnClick="Click_Deauthorized" OnClientClick="ConfirmerDesauthorisation()" ID="btnDesauthoriser" />
-                            <asp:Button class=" btn btn-danger" runat="server" Text="Supprimer" OnClick="Click_Delete" OnClientClick="ConfirmerSuppression()" ID="btnSupprimer" />
-                        </div>
                     </div>
                     <div class="row">
                         <div runat="server" visible="false" id="notif"></div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <asp:Table runat="server" ID="tabUsers" aria-describedby="dataTable_info" CssClass="table table-bordered table-hover dataTable dataUsers">
+                            <asp:table runat="server" id="tabUsers" aria-describedby="dataTable_info" cssclass="table table-bordered table-hover dataTable dataUsers">
                                 <asp:TableHeaderRow>
                                     <asp:TableHeaderCell>Prénom</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Nom</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>E-mail</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Abonné</asp:TableHeaderCell>
-                                    <asp:TableHeaderCell>Autorisé*</asp:TableHeaderCell>
-                                    <asp:TableHeaderCell>Sélectionner</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>Authoriser</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>Supprimer</asp:TableHeaderCell>
                                 </asp:TableHeaderRow>
-                            </asp:Table>
+                            </asp:table>
                         </div>
                     </div>
                 </div>

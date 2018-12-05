@@ -224,7 +224,7 @@ namespace BusinessLogic.Factories
         #endregion
 
         #region Delete
-        public void delete(int id)
+        public void Delete(int id)
         {
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
 
@@ -274,6 +274,28 @@ namespace BusinessLogic.Factories
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = "Update users SET authorized=@authorized WHERE email=@email";
                 cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@authorized", authorized);
+
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
+        #region AuthorizeById
+        public void AuthorizeById(int id, bool authorized)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET authorized=@authorized WHERE user_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
                 cmd.Parameters.AddWithValue("@authorized", authorized);
 
                 cmd.ExecuteNonQuery();

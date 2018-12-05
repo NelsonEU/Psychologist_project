@@ -21,6 +21,10 @@ $(function () {
     });
 });
 
+
+    var width = $('.btnUnauthorize').width();
+    $('.btnAuthorize').width(width);
+
 $(function () {
     $('.btnSupprCategorie').click(function () {
         var confirm_value = document.createElement("INPUT");
@@ -55,9 +59,7 @@ function dataTableMaison() {
     for (var i = 1; i < arrayLength; i++) {
         var line = usersArray[i].innerText.toLowerCase();
         line = line.replace(/\s/g, '');
-        if (i == 1) {
-            console.log(line);
-        }
+
         if (!regex.test(line)) {
             usersArray[i].style.display = "none";
         } else {

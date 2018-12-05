@@ -224,14 +224,11 @@ namespace BusinessLogic.Factories
         public Availability splitavail(int id, DateTime rendezvous)
         {
             
-            Availability availability = new Availability();
+//Availability availability = new Availability();
             AvailabilityFactory af = new AvailabilityFactory(_cnnStr);
 
             //Get le vieux by ID
             Availability vieux = af.GetById(id);
-           
-
-            
             TimeSpan ts = new TimeSpan();
 
             //check si vieux.strdate à rendezvous.strdate donne 1 heure ou plus
@@ -256,7 +253,17 @@ namespace BusinessLogic.Factories
 
             //Create nouveau de rendezvous à rendezvous+1h
             if(ts.Hours == 0 && ts2.Hours == 0){
-                
+                if (!vieux.strdt.Equals(rendezvous))
+                {
+                    //update la startdate
+
+                    UpdateStartDate(vieux.availabilityId, rendezvous);
+                }
+                if (!vieux.enddt.Equals(rendezvous.AddHours(1)))
+                {
+                    //Update la enddate
+                    UpdateEndDate(vieux.availabilityId, rendezvous.AddHours(1));
+                }
             }
             else{
                 //Delete le vieux
@@ -265,13 +272,59 @@ namespace BusinessLogic.Factories
                 af.Add(rendezvous, rendezvous.AddHours(1));
             }
             
-
+            
             Availability finalav = af.getByBothDates(rendezvous, rendezvous.AddHours(1));
 
 
             return finalav;
         }
         #endregion
+
+        #region UpdateStartDate
+        private void UpdateStartDate(int id, DateTime startDate)
+        {
+
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "UPDATE availabilities SET Start_time = @startDate WHERE availability_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@startDate", startDate);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+
+            }
+        }
+        #endregion
+
+        #region UpdateEndDate
+        private void UpdateEndDate(int id, DateTime endDate)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "UPDATE availabilities SET End_time = @endDate WHERE Availability_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@endDate", endDate);
+                int n = cmd.ExecuteNonQuery();
+
+            }
+            finally
+            {
+                cnn.Close();
+
+            }
+        }
+        #endregion 
 
         #region getByBothDates
         public Availability getByBothDates(DateTime strtdate, DateTime enddate)

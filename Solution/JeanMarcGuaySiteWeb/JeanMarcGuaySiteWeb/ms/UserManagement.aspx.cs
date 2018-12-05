@@ -39,9 +39,36 @@ namespace JeanMarcGuaySiteWeb.Admin
                         TableCell cellFirstname = new TableCell();
                         TableCell cellEmail = new TableCell();
                         TableCell cellSubscriber = new TableCell();
-                        TableCell cellAutorizhed = new TableCell();
-                        TableCell cellSelect = new TableCell();
-                        CheckBox cb = new CheckBox();
+                        TableCell cellAuthoriser = new TableCell();
+                        TableCell cellSupprimer = new TableCell();
+
+                        Button buttonSupprimer = new Button();
+                        buttonSupprimer.Attributes.Add("class", "btn btn-danger btnDeleteUser");
+                        buttonSupprimer.Text = "Supprimer";
+                        buttonSupprimer.Attributes.Add("data-id", u.userId.ToString());
+                        buttonSupprimer.Click += new EventHandler(Click_Delete);
+                        cellSupprimer.Controls.Add(buttonSupprimer);
+                        buttonSupprimer.Attributes.Add("data-id", u.userId.ToString());
+                        buttonSupprimer.Click += new EventHandler(Click_Delete);
+                        buttonSupprimer.OnClientClick = "ConfirmerSuppression()";
+
+                        Button buttonAuthorize = new Button();
+                        if (u.authorized)
+                        {
+                            buttonAuthorize.Attributes.Add("class", "btn btn-warning btnUnauthorize");
+                            buttonAuthorize.Click += new EventHandler(Click_Deauthorized);
+                            buttonAuthorize.OnClientClick = "ConfirmerDesauthorisation()";
+                            buttonAuthorize.Text = "Desauthoriser";
+                        }
+                        else
+                        {
+                            buttonAuthorize.Attributes.Add("class", "btn btn-success btnAuthorize");
+                            buttonAuthorize.Click += new EventHandler(Click_Authorized);
+                            buttonAuthorize.Text = "Authoriser";
+                        }
+                        buttonAuthorize.Attributes.Add("data-id", u.userId.ToString());
+
+
                         cellLastname.Text = u.lastname;
                         cellFirstname.Text = u.firstname;
                         cellEmail.Text = u.email;
@@ -53,23 +80,14 @@ namespace JeanMarcGuaySiteWeb.Admin
                         {
                             cellSubscriber.Text = "Non";
                         }
-                        if (u.authorized)
-                        {
-                            cellAutorizhed.Text = "Oui";
-                        }
-                        else
-                        {
-                            cellAutorizhed.Text = "Non";
-                        }
-                        cellSelect.Controls.Add(cb);
-                        cellSelect.ID = u.email;
-                        cellSelect.CssClass = "selectUser";
+                        cellSupprimer.Controls.Add(buttonSupprimer);
+                        cellAuthoriser.Controls.Add(buttonAuthorize);
                         row.Cells.Add(cellFirstname);
                         row.Cells.Add(cellLastname);
                         row.Cells.Add(cellEmail);
                         row.Cells.Add(cellSubscriber);
-                        row.Cells.Add(cellAutorizhed);
-                        row.Cells.Add(cellSelect);
+                        row.Cells.Add(cellAuthoriser);
+                        row.Cells.Add(cellSupprimer);
                         tabUsers.Rows.Add(row);
                     }
                 }
@@ -79,70 +97,53 @@ namespace JeanMarcGuaySiteWeb.Admin
 
         protected void Click_Authorized(object sender, EventArgs e)
         {
-            foreach (TableRow r in tabUsers.Rows)
+            Button button = (Button)sender;
+            int id = Convert.ToInt32(button.Attributes["data-id"]);
+            uf.AuthorizeById(id, true);
+            User u = uf.Get(id);
+            EmailController ec = new EmailController();
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/AuthorisationEmail.html")))
             {
-                foreach (TableCell c in r.Cells)
-                {
-                    if (c.CssClass == "selectUser" && ((CheckBox)c.Controls[0]).Checked)
-                    {
-                        uf.AuthorizeByEmail(c.ID, true);
-                        EmailController ec = new EmailController();
-                        string body = string.Empty;
-                        using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/AuthorisationEmail.html")))
-                        {
-                            body = reader.ReadToEnd();
-                        }
-                        string strPathAndQuery = HttpContext.Current.Request.Url.PathAndQuery;
-                        string strUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(strPathAndQuery, "/");
-                        string lienActivation = strUrl + "Connexion.aspx";
+                body = reader.ReadToEnd();
+            }
+            string strPathAndQuery = HttpContext.Current.Request.Url.PathAndQuery;
+            string strUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(strPathAndQuery, "/");
+            string lienActivation = strUrl + "Connexion.aspx";
 
-                        body = body.Replace("{lienConnexion}", lienActivation);
-                        ec.SendMail(c.ID, "Cabinet Jean-Marc Guay", body);
-                    }
-                }
+            body = body.Replace("{lienConnexion}", lienActivation);
+            ec.SendMail(u.email, "Cabinet Jean-Marc Guay", body);
+            Response.Redirect(Request.RawUrl);
+        }
+
+
+
+
+
+        protected void Click_Delete(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            string confirmValue = Request.Form["confirm_delete"];
+            if (confirmValue == "Oui")
+            {
+                int id = Convert.ToInt32(button.Attributes["data-id"]);
+                uf.Delete(id);
             }
             Response.Redirect(Request.RawUrl);
         }
 
-        protected void Click_Delete(object sender, EventArgs e)
-        {
-            string confirmValue = Request.Form["confirm_delete"];
-            if (confirmValue == "Oui")
-            {
-                foreach (TableRow r in tabUsers.Rows)
-                {
-                    foreach (TableCell c in r.Cells)
-                    {
-                        if (c.CssClass == "selectUser" && ((CheckBox)c.Controls[0]).Checked)
-                        {
-                            uf.DeleteByEmail(c.ID);
-                        }
-                    }
-                }
-
-                Response.Redirect(Request.RawUrl);
-            }
-        }
-
         protected void Click_Deauthorized(object sender, EventArgs e)
         {
+            Button button = (Button)sender;
             string confirmValue = Request.Form["confirm_unauthorized"];
             if (confirmValue == "Oui")
             {
-                foreach (TableRow r in tabUsers.Rows)
-                {
-                    foreach (TableCell c in r.Cells)
-                    {
-                        if (c.CssClass == "selectUser" && ((CheckBox)c.Controls[0]).Checked)
-                        {
-                            uf.AuthorizeByEmail(c.ID, false);
-                        }
-                    }
-                }
-                Response.Redirect(Request.RawUrl);
+                int id = Convert.ToInt32(button.Attributes["data-id"]);
+                uf.AuthorizeById(id, false);
             }
+            Response.Redirect(Request.RawUrl);
         }
     }
-
-
 }
+
+
