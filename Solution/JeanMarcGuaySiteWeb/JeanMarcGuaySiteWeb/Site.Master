@@ -73,7 +73,7 @@
             </asp:ContentPlaceHolder>
 
 
-            <footer class="footer footer-distributed bc-blue">
+            <footer class="footer footer-distributed bc-blue pb-5">
 
                 <div class="footer-right">
 
