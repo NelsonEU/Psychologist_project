@@ -25,6 +25,13 @@ namespace JeanMarcGuaySiteWeb
                 Response.Redirect("Default.aspx");
             }
 
+
+            //Remplir les champs avec les anciennes infos
+            txtFirstname.Text = user.firstname;
+            txtLastname.Text = user.lastname;
+            txtEmail.Text = user.email;
+            birthday.Text = user.birthday.ToString("dd-MM-yyyy");
+
        }
     }
 }

@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
+using System.Globalization;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -48,11 +49,11 @@ namespace JeanMarcGuaySiteWeb
                     }
                     else
                     {
-                        System.Text.RegularExpressions.Regex regexDate = new Regex(@"^\d{2}/\d{2}/\d{4}$");
+                        System.Text.RegularExpressions.Regex regexDate = new Regex(@"^\d{2}-\d{2}-\d{4}$");
                         if (!regexDate.IsMatch(birthday.Text))
                         {
                             notification.Style.Add("color", "red");
-                            notification.InnerText = "La date de naissance doit correspondre à jj/mm/aaaa";
+                            notification.InnerText = "La date de naissance doit correspondre à jj-mm-aaaa";
                             notification.Visible = true;
                         }
                         else if (password.Text.Length < 6)
@@ -69,7 +70,8 @@ namespace JeanMarcGuaySiteWeb
                         }
                         else
                         {
-                            DateTime birthdayDate = Convert.ToDateTime(birthday.Text);
+                            
+                            DateTime birthdayDate = Convert.ToDateTime(DateTime.ParseExact(birthday.Text,"dd-MM-yyyy", CultureInfo.InvariantCulture));
                             string token = rndToken(40);
                             uf.Add(lastname.Text, firstname.Text, email.Text, password.Text, false, subscriber.Checked, false, birthdayDate, token);
                             notification.Style.Add("color", "green");

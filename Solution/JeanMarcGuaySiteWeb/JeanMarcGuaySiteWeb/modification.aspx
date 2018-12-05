@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="modification.aspx.cs" Inherits="JeanMarcGuaySiteWeb.modification" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
 
@@ -11,42 +12,52 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container-fluid">
+    <div class="container-fluid rdv">
 
-        <div class="row text-center">
-            <div class="col-lg-12">
-                prenom
+        <div class="row text-center pt-5">
+            <div class="col-lg-6 offset-lg-3">
+                <label for="txtFirstname">Prénom:</label>
+                <asp:TextBox runat="server" class="form-control" type="text" placeholder="Prénom" ID="txtFirstname" name="firstname" required="required"></asp:TextBox>
             </div>
         </div>
 
-        <div class="row text-center">
-            <div class="col-lg-12">
-                nom
+        <div class="row text-center pt-4">
+            <div class="col-lg-6 offset-lg-3">
+                <label for="txtLastname">Nom:</label>
+                <asp:TextBox runat="server" class="form-control" type="text" placeholder="Nom" ID="txtLastname" name="lastname" required="required"></asp:TextBox>
             </div>
         </div>
 
-        <div class="row text-center">
-            <div class="col-lg-12">
-                courriel
+        <div class="row text-center pt-4">
+            <div class="col-lg-6 offset-lg-3">
+                <label for="txtEmail">Email:</label>
+                <asp:TextBox runat="server" class="form-control" type="email" placeholder="Adresse email" ID="txtEmail" name="email" required="required"></asp:TextBox>
             </div>
         </div>
 
-        <div class="row text-center">
-            <div class="col-lg-12">
-                date de naissance
+        <div class="row text-center pt-4">
+            <div class="col-lg-6 offset-lg-3">
+                    <label for="birthday">Date de naissance:</label>
+                    <asp:TextBox runat="server" class="form-control" ID="birthday" ClientIDMode="Static" name="birthday" AutoCompleteType="Disabled" Style="background: white;" required="required" type="text" placeholder="Date de naissance"></asp:TextBox>
             </div>
         </div>
 
-        <div class="row text-center">
+        <div class="row text-center pt-5">
             <div class="col-lg-12">
-                Confirmer
+                <asp:Button runat="server" ID="btnConfirmer" CssClass="btn mainButton3" text="Confirmer" style="width:200px"/>
             </div>
         </div>
 
-        <div class="row text-center">
+        <div class="row text-center pt-5">
             <div class="col-lg-12">
-                Changer de mot de passe
-            Demande suppression du compte
+                <asp:Button runat="server" ID="Button1" CssClass="btn btn-warning" text="Changer de mot de passe" style="width:300px"/>
+
+            </div>
+        </div>
+
+        <div class="row text-center pt-1">
+            <div class="col-lg-12">
+                <asp:Button runat="server" ID="Button2" CssClass="btn btn-danger" text="Demander la suppression du compte" style="width:300px"/>
             </div>
         </div>
 
@@ -54,4 +65,6 @@
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="Javascripts/Inscription.js"></script>
 </asp:Content>

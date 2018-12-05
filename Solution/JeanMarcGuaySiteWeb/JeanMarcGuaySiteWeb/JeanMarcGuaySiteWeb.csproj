@@ -130,7 +130,6 @@
     <Content Include="Confirmation.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="CSS\fonts\ajax-loader.gif" />
-    <Content Include="CSS\Carousel.css" />
     <Content Include="CSS\fonts\slick.svg" />
     <Content Include="CSS\Navbar.css" />
     <Content Include="ms\CSS\sb-admin.min.css" />

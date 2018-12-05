@@ -34,7 +34,7 @@
                                 <div>
                                     <asp:TextBox runat="server" class="form-control mt-2" type="text" placeholder="Nom" ID="lastname" name="lastname" required="required"></asp:TextBox>
                                 </div>
-                                <label for="email" class="sr-only mt-2">Votre adresse e-mail:</label>
+                                <label for="email" class="sr-only mt-2">Votre adresse email:</label>
                                 <div>
                                     <asp:TextBox runat="server" class="form-control mt-2" type="email" placeholder="Adresse e-mail" ID="email" name="email" required="required"></asp:TextBox>
                                 </div>
