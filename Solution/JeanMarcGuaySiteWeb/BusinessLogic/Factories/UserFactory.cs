@@ -433,26 +433,21 @@ namespace BusinessLogic.Factories
         #endregion
 
         #region Update
-        public void Update(int id, string lastname, string firstname, string email, string password, bool admin, bool subscriber, bool activated)
+        public void Update(int id, string lastname, string firstname, string email, DateTime birthday,  bool subscriber)
         {
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
-            CryptographyHelper ch = new CryptographyHelper();
-            string hashedPassword = ch.HashPassword(password);
 
             try
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "Update users SET lastname = @lastname, firstname = @firstname, email = @email, password = @password, admin = @admin, subscriber = @subscriber";
-
+                cmd.CommandText = "Update users SET firstname = @firstname, lastname = @lastname,  email = @email, subscriber = @subscriber WHERE user_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
                 cmd.Parameters.AddWithValue("@lastname", lastname);
                 cmd.Parameters.AddWithValue("@firstname", firstname);
                 cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@password", hashedPassword);
-                cmd.Parameters.AddWithValue("@admin", admin);
+                cmd.Parameters.AddWithValue("@birthday", birthday);
                 cmd.Parameters.AddWithValue("@subscriber", subscriber);
-                cmd.Parameters.AddWithValue("@activated", activated);
-                cmd.Parameters.AddWithValue("@modificationDate", DateTime.Now);
 
                 cmd.ExecuteNonQuery();
             }

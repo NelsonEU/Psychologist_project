@@ -42,22 +42,28 @@
             </div>
         </div>
 
-        <div class="row text-center pt-5">
-            <div class="col-lg-12">
-                <asp:Button runat="server" ID="btnConfirmer" CssClass="btn mainButton3" text="Confirmer" style="width:200px"/>
+        <div class="row text-center pt-4">
+            <div class="col-lg-6 offset-lg-3">
+                <asp:CheckBox runat="server" ID="chkSubscription" Text="Abonné(e) aux publications" />
             </div>
         </div>
 
         <div class="row text-center pt-5">
             <div class="col-lg-12">
-                <asp:Button runat="server" ID="Button1" CssClass="btn btn-warning" text="Changer de mot de passe" style="width:300px"/>
+                <asp:Button runat="server" ID="btnConfirmer" CssClass="btn mainButton3" text="Confirmer" style="width:200px" OnClick="btnConfirmer_Click"/>
+            </div>
+        </div>
+
+        <div class="row text-center pt-5">
+            <div class="col-lg-12">
+                <asp:Button runat="server" ID="btnMDP" CssClass="btn btn-warning" text="Changer de mot de passe" style="width:300px" OnClick="btnMDP_Click" />
 
             </div>
         </div>
 
         <div class="row text-center pt-1">
             <div class="col-lg-12">
-                <asp:Button runat="server" ID="Button2" CssClass="btn btn-danger" text="Demander la suppression du compte" style="width:300px"/>
+                <asp:Button runat="server" ID="bntSuppr" CssClass="btn btn-danger" text="Demander la suppression du compte" style="width:300px" OnClick="bntSuppr_Click" />
             </div>
         </div>
 

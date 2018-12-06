@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activation.aspx" />
+    <Content Include="ConfirmationChangement.aspx" />
     <Content Include="Email\AnnulationRDV.html" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\logoOPQ2.jpg" />
@@ -182,6 +183,13 @@
     </Compile>
     <Compile Include="Activation.aspx.designer.cs">
       <DependentUpon>Activation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmationChangement.aspx.cs">
+      <DependentUpon>ConfirmationChangement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmationChangement.aspx.designer.cs">
+      <DependentUpon>ConfirmationChangement.aspx</DependentUpon>
     </Compile>
     <Compile Include="modification.aspx.cs">
       <DependentUpon>modification.aspx</DependentUpon>
