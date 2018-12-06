@@ -25,12 +25,7 @@
             <div class="card-body container-fluid">
                 <div class="">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        <div class="form-row pb-2">
-                            <div class="col-lg-6 col-md-12">
-                                <asp:Button class=" btn btn-success" runat="server" Text="Confirmer" ID="btnConfirmer" OnClick="Click_Confirm" OnClientClick="ConfirmerRDV()"/>
-                                <asp:Button class=" btn btn-danger" runat="server" Text="Refuser" ID="btnRefuser" OnClick="Click_Refuse" OnClientClick="RefuserRDV()"/>                                
-                            </div>
-                        </div>
+
                         <div runat="server" id="notifWaiting" class="row pl-3 pb-2" style="color:forestgreen">
 
                         </div>
@@ -43,7 +38,8 @@
                                         <asp:TableHeaderCell>Prénom</asp:TableHeaderCell>
                                         <asp:TableHeaderCell>E-mail</asp:TableHeaderCell>
                                         <asp:TableHeaderCell>Message</asp:TableHeaderCell>
-                                        <asp:TableHeaderCell>Sélectionner</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>Confirmer</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>Refuser</asp:TableHeaderCell>
                                     </asp:TableHeaderRow>
                                 </asp:Table>
                             </div>
@@ -61,11 +57,7 @@
             <div class="card-body container-fluid">
                 <div class="">
                     <div class="dataTables_wrapper dt-bootstrap4">
-                        <div class="form-row pb-2">
-                            <div class="col-lg-6 col-md-12">
-                                <asp:Button class=" btn btn-danger" runat="server" Text="Annuler" ID="btnAnnuler" OnClick="Click_Cancel" OnClientClick="AnnulerRDV()"/>
-                            </div>
-                        </div>
+
                         <div runat="server" id="notifConfirmed" class="row pl-3 pb-2" style="color:forestgreen">
 
                         </div>
@@ -78,7 +70,7 @@
                                         <asp:TableHeaderCell>Prénom</asp:TableHeaderCell>
                                         <asp:TableHeaderCell>E-mail</asp:TableHeaderCell>
                                         <asp:TableHeaderCell>Message</asp:TableHeaderCell>
-                                        <asp:TableHeaderCell>Sélectionner</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>Annuler</asp:TableHeaderCell>
                                     </asp:TableHeaderRow>
                                 </asp:Table>
                             </div>

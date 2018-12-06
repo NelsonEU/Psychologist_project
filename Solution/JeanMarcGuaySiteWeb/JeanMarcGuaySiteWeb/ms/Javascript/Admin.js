@@ -104,7 +104,7 @@ function ConfirmerRDV() {
     confirm_value.type = "hidden";
     confirm_value.name = "confirm_rdv";
 
-    if (confirm("Êtes-vous sur de vouloir confirmer ce(s) rendez-vous ?")) {
+    if (confirm("Êtes-vous sur de vouloir confirmer ce rendez-vous ?")) {
         confirm_value.value = "Oui";
     } else {
         confirm_value.value = "Non";
@@ -118,7 +118,7 @@ function RefuserRDV() {
     confirm_value.type = "hidden";
     confirm_value.name = "refuse_rdv";
 
-    if (confirm("Êtes-vous sur de vouloir refuser ce(s) rendez-vous ?")) {
+    if (confirm("Êtes-vous sur de vouloir refuser ce rendez-vous ?")) {
         confirm_value.value = "Oui";
     } else {
         confirm_value.value = "Non";
@@ -131,7 +131,7 @@ function AnnulerRDV() {
     confirm_value.type = "hidden";
     confirm_value.name = "cancel_rdv";
 
-    if (confirm("Êtes-vous sur de vouloir annuler ce(s) rendez-vous ?")) {
+    if (confirm("Êtes-vous sur de vouloir annuler ce rendez-vous ?")) {
         confirm_value.value = "Oui";
     } else {
         confirm_value.value = "Non";

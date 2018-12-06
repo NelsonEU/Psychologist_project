@@ -60,6 +60,27 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+        #region Delete
+        public void DeleteAndFreeAvail(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "UPDATE appointments SET deletionDate = current_date(), availability_id = null WHERE appointment_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+
+            }
+        }
+        #endregion
+
         #region DeleteByArray
         public void DeleteByArray(string[] ids)
         {
@@ -91,6 +112,26 @@ namespace BusinessLogic.Factories
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandText = "UPDATE appointments SET outdated = true WHERE appointment_id=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
+        #region Confirm
+        public void confirm(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "UPDATE appointments SET confirmed = true WHERE appointment_id = @id";
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
             }

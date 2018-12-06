@@ -269,7 +269,7 @@ namespace JeanMarcGuaySiteWeb
             //Annuler le  RDV
             Appointement appointement = apf.GetByUserId(user.userId);
             Availability availability = af.GetById(appointement.availabilityId);
-            apf.Delete(appointement.appointementId);
+            apf.DeleteAndFreeAvail(appointement.appointementId);
 
             //Envoyer le email d'annulation a jmGuay
             EmailController ec = new EmailController();

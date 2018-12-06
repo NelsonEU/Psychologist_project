@@ -18,6 +18,10 @@ namespace JeanMarcGuaySiteWeb.Admin
         static string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
         static string adresseCabinet = ConfigurationManager.AppSettings["AdresseCabinet"];
 
+        private AppointementFactory af = new AppointementFactory(cnnStr);
+        private UserFactory uf = new UserFactory(cnnStr);
+        private AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // -----------Vérification le l'état du module ----------- //
@@ -41,17 +45,17 @@ namespace JeanMarcGuaySiteWeb.Admin
                 {
                     case "confirm":
                         notifWaiting.Visible = true;
-                        notifWaiting.InnerText = "Les rendez-vous sélectionnés ont bien été confirmés";
+                        notifWaiting.InnerText = "Le rendez-vous sélectionné a bien été confirmé";
                         notifConfirmed.Visible = false;
                         break;
                     case "refuse":
                         notifWaiting.Visible = true;
-                        notifWaiting.InnerText = "Les rendez-vous sélectionnés ont bien été refusés";
+                        notifWaiting.InnerText = "Le rendez-vous sélectionné a bien été refusé";
                         notifConfirmed.Visible = false;
                         break;
                     case "cancel":
                         notifConfirmed.Visible = true;
-                        notifConfirmed.InnerText = "Les rendez-vous sélectionnés ont bien été annulés";
+                        notifConfirmed.InnerText = "Le rendez-vous sélectionné a bien été annulé";
                         notifWaiting.Visible = false;
                         break;
                 }
@@ -69,7 +73,7 @@ namespace JeanMarcGuaySiteWeb.Admin
             System.Diagnostics.Debug.WriteLine("TAB: " + unconfirmedAppointements.Length);
             Appointement[] confirmedAppointements = af.GetConfirmed();
             notifNoRdv.Visible = false;
-            if(unconfirmedAppointements.Length > 0)
+            if (unconfirmedAppointements.Length > 0)
             {
                 bool smth = false;
                 foreach (Appointement a in unconfirmedAppointements)
@@ -94,22 +98,37 @@ namespace JeanMarcGuaySiteWeb.Admin
                         TableCell cellFirstname = new TableCell();
                         TableCell cellEmail = new TableCell();
                         TableCell cellMessage = new TableCell();
-                        TableCell cellSelect = new TableCell();
+                        TableCell cellConfirm = new TableCell();
+                        TableCell cellRefuse = new TableCell();
                         cellDate.Text = dateToDisplay;
                         cellLastname.Text = user.lastname;
                         cellFirstname.Text = user.firstname;
                         cellEmail.Text = user.email;
                         cellMessage.Text = a.message;
                         CheckBox cb = new CheckBox();
-                        cellSelect.Controls.Add(cb);
-                        cellSelect.ID = a.appointementId.ToString();
-                        cellSelect.CssClass = "selectUser";
+                        Button buttonConfirm = new Button();
+                        buttonConfirm.Attributes.Add("class", "btn btn-success");
+                        buttonConfirm.Click += new EventHandler(Click_Confirm);
+                        buttonConfirm.OnClientClick = "ConfirmerRDV()";
+                        buttonConfirm.Text = "Confirmer";
+                        buttonConfirm.Attributes.Add("data-id", a.appointementId.ToString());
+                        cellConfirm.Controls.Add(buttonConfirm);
+                        Button buttonRefuser = new Button();
+                        buttonRefuser.Attributes.Add("class", "btn btn-danger");
+                        buttonRefuser.Click += new EventHandler(Click_Refuse);
+                        buttonRefuser.OnClientClick = "RefuserRDV()";
+                        buttonRefuser.Text = "Refuser";
+                        buttonRefuser.Attributes.Add("data-id", a.appointementId.ToString());
+                        cellRefuse.Controls.Add(buttonRefuser);
+
+
                         row.Cells.Add(cellDate);
                         row.Cells.Add(cellLastname);
                         row.Cells.Add(cellFirstname);
                         row.Cells.Add(cellEmail);
                         row.Cells.Add(cellMessage);
-                        row.Cells.Add(cellSelect);
+                        row.Cells.Add(cellConfirm);
+                        row.Cells.Add(cellRefuse);
                         tabUnconfirmed.Rows.Add(row);
                     }
                 }
@@ -127,17 +146,17 @@ namespace JeanMarcGuaySiteWeb.Admin
                 cardUnconfirmed.Visible = false;
             }
 
-            
-            if(confirmedAppointements.Length > 0)
+
+            if (confirmedAppointements.Length > 0)
             {
                 bool smth = false;
-                foreach(Appointement a in confirmedAppointements)
+                foreach (Appointement a in confirmedAppointements)
                 {
                     int availabilityId = a.availabilityId;
                     Availability availability = avf.GetById(availabilityId);
                     int userId = a.userId;
                     User user = uf.Get(userId);
-                    
+
                     DateTime dateTime = availability.strdt;
                     if (dateTime.CompareTo(DateTime.Now) < 0)
                     {
@@ -152,22 +171,25 @@ namespace JeanMarcGuaySiteWeb.Admin
                         TableCell cellFirstname = new TableCell();
                         TableCell cellEmail = new TableCell();
                         TableCell cellMessage = new TableCell();
-                        TableCell cellSelect = new TableCell();
+                        TableCell cellRefuse = new TableCell();
                         cellDate.Text = dateToDisplay;
                         cellLastname.Text = user.lastname;
                         cellFirstname.Text = user.firstname;
                         cellEmail.Text = user.email;
                         cellMessage.Text = a.message;
-                        CheckBox cb = new CheckBox();
-                        cellSelect.Controls.Add(cb);
-                        cellSelect.ID = a.appointementId.ToString();
-                        cellSelect.CssClass = "selectUser";
+                        Button buttonRefuser = new Button();
+                        buttonRefuser.Attributes.Add("class", "btn btn-danger");
+                        buttonRefuser.Click += new EventHandler(Click_Cancel);
+                        buttonRefuser.OnClientClick = "AnnulerRDV()";
+                        buttonRefuser.Text = "Annuler";
+                        buttonRefuser.Attributes.Add("data-id", a.appointementId.ToString());
+                        cellRefuse.Controls.Add(buttonRefuser); ;
                         row.Cells.Add(cellDate);
                         row.Cells.Add(cellLastname);
                         row.Cells.Add(cellFirstname);
                         row.Cells.Add(cellEmail);
                         row.Cells.Add(cellMessage);
-                        row.Cells.Add(cellSelect);
+                        row.Cells.Add(cellRefuse);
                         tabConfirmed.Rows.Add(row);
                         smth = true;
                     }
@@ -181,12 +203,13 @@ namespace JeanMarcGuaySiteWeb.Admin
                     cardConfirmed.Visible = false;
                 }
             }
-            else{
+            else
+            {
                 cardConfirmed.Visible = false;
             }
-  
+
             //Afficher une notif si il n'y a rien a afficher
-            if(cardUnconfirmed.Visible == false && cardConfirmed.Visible == false)
+            if (cardUnconfirmed.Visible == false && cardConfirmed.Visible == false)
             {
                 notifNoRdv.Visible = true;
             }
@@ -197,52 +220,24 @@ namespace JeanMarcGuaySiteWeb.Admin
             string confirmValue = Request.Form["confirm_rdv"];
             if (confirmValue == "Oui")
             {
-                AppointementFactory af = new AppointementFactory(cnnStr);
-                UserFactory uf = new UserFactory(cnnStr);
-                AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
-                List<String> listId = new List<String>();
-                foreach (TableRow row in tabUnconfirmed.Rows)
+                Button button = (Button)sender;
+                int id = Convert.ToInt32(button.Attributes["data-id"]);
+                Appointement app = af.Get(id);
+                af.confirm(id);
+                User user = uf.Get(app.userId);
+                Availability avail = avf.GetById(app.availabilityId);
+
+                //On envoie un mail de confirmation
+                EmailController ec = new EmailController();
+                string body = string.Empty;
+                using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/ConfirmationRDV.html")))
                 {
-                    foreach (TableCell cell in row.Cells)
-                    {
-                        if (cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
-                        {
-                            listId.Add(cell.ID);
-                        }
-                    }
+                    body = reader2.ReadToEnd();
                 }
-                String[] tabId = listId.ToArray();
-                if(tabId.Length > 0)
-                {
-                    af.confirmByArray(tabId);
-                    User[] tabUsers = uf.GetAll();
-                    Dictionary<int, User> mapUser = new Dictionary<int, User>();
-                    foreach(User u in tabUsers)
-                    {
-                        mapUser.Add(u.userId, u);
-                    }
-                    Availability[] tabAvailability = avf.GetAll();
-                    Dictionary<int, Availability> mapAvailability = new Dictionary<int, Availability>();
-                    foreach (Availability a in tabAvailability)
-                    {
-                        mapAvailability.Add(a.availabilityId, a);
-                    }                  
-                    Appointement[] tabAppointments = af.GetByArray(tabId);
-                    foreach(Appointement a in tabAppointments)
-                    {
-                        //On envoie un mail de confirmation
-                        EmailController ec = new EmailController();
-                        string body = string.Empty;
-                        using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/ConfirmationRDV.html")))
-                        {
-                            body = reader2.ReadToEnd();
-                        }
-                        body = body.Replace("{user}", mapUser[a.userId].firstname);
-                        body = body.Replace("{date}", mapAvailability[a.availabilityId].strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
-                        body = body.Replace("{AdresseCabinet}", adresseCabinet);
-                        ec.SendMail(mapUser[a.userId].email, "JMGuay.ca - Confirmation du rendez-vous [Message automatique]", body);
-                    }
-                }
+                body = body.Replace("{user}", user.firstname);
+                body = body.Replace("{date}", avail.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+                body = body.Replace("{AdresseCabinet}", adresseCabinet);
+                ec.SendMail(user.email, "JMGuay.ca - Confirmation du rendez-vous [Message automatique]", body);
 
             }
             Response.Redirect(Request.RawUrl + "?notif=confirm");
@@ -255,23 +250,10 @@ namespace JeanMarcGuaySiteWeb.Admin
             if (confirmValue == "Oui")
             {
 
-                AppointementFactory af = new AppointementFactory(cnnStr);
-                UserFactory uf = new UserFactory(cnnStr);
-                AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
-                List<String> listId = new List<String>();
-                foreach (TableRow row in tabUnconfirmed.Rows)
-                {
-                    foreach (TableCell cell in row.Cells)
-                    {
-                        if (cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
-                        {
-                            listId.Add(cell.ID);
-                        }
-                    }
-                }
-                String[] tabId = listId.ToArray();
-                Refuse(tabId);
-                
+                Button button = (Button)sender;
+                int id = Convert.ToInt32(button.Attributes["data-id"]);
+                Refuse(id);
+
             }
             Response.Redirect(Request.RawUrl + "?notif=refuse");
         }
@@ -281,63 +263,36 @@ namespace JeanMarcGuaySiteWeb.Admin
             string confirmValue = Request.Form["cancel_rdv"];
             if (confirmValue == "Oui")
             {
-                AppointementFactory af = new AppointementFactory(cnnStr);
-                UserFactory uf = new UserFactory(cnnStr);
-                AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
-                List<String> listId = new List<String>();
-                foreach (TableRow row in tabConfirmed.Rows)
-                {
-                    foreach (TableCell cell in row.Cells)
-                    {
-                        if (cell.CssClass == "selectUser" && ((CheckBox)cell.Controls[0]).Checked)
-                        {
-                            listId.Add(cell.ID);
-                        }
-                    }
-                }
-                string[] tabId = listId.ToArray();
-                Refuse(tabId);
+                Button button = (Button)sender;
+                int id = Convert.ToInt32(button.Attributes["data-id"]);
+                Refuse(id);
             }
             Response.Redirect(Request.RawUrl + "?notif=cancel");
         }
 
-        private void Refuse(string[] tabId)
+        private void Refuse(int id)
         {
-            AppointementFactory af = new AppointementFactory(cnnStr);
-            UserFactory uf = new UserFactory(cnnStr);
-            AvailabilityFactory avf = new AvailabilityFactory(cnnStr);
-            if (tabId.Length > 0)
+
+
+            Appointement app = af.Get(id);
+            User user = uf.Get(app.userId);
+            Availability avail = avf.GetById(app.availabilityId);
+            af.DeleteAndFreeAvail(id);
+
+             
+            //On envoie un mail de refus
+            EmailController ec = new EmailController();
+            string body = string.Empty;
+            using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/RefusRDV.html")))
             {
-                
-                User[] tabUsers = uf.GetAll();
-                Dictionary<int, User> mapUser = new Dictionary<int, User>();
-                foreach (User u in tabUsers)
-                {
-                    mapUser.Add(u.userId, u);
-                }
-                Availability[] tabAvailability = avf.GetAll();
-                Dictionary<int, Availability> mapAvailability = new Dictionary<int, Availability>();
-                foreach (Availability a in tabAvailability)
-                {
-                    mapAvailability.Add(a.availabilityId, a);
-                }
-                Appointement[] tabAppointments = af.GetByArray(tabId);
-                af.DeleteByArray(tabId);
-                foreach (Appointement a in tabAppointments)
-                {
-                    //On envoie un mail de refus
-                    EmailController ec = new EmailController();
-                    string body = string.Empty;
-                    using (StreamReader reader2 = new StreamReader(Server.MapPath("~/Email/RefusRDV.html")))
-                    {
-                        body = reader2.ReadToEnd();
-                    }
-                    body = body.Replace("{user}", mapUser[a.userId].firstname);
-                    body = body.Replace("{date}", mapAvailability[a.availabilityId].strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
-                    
-                    ec.SendMail(mapUser[a.userId].email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
-                }
+                body = reader2.ReadToEnd();
             }
+            body = body.Replace("{user}", user.firstname);
+            body = body.Replace("{date}", avail.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+
+            ec.SendMail(user.email, "JMGuay.ca - Annulation du rendez-vous [Message automatique]", body);
+
+
         }
     }
 }
