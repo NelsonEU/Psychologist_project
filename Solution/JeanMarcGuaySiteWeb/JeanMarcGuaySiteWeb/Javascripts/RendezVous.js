@@ -1,4 +1,9 @@
-﻿$(function () {
+﻿var width = $('.btnConn').width();
+$('.btnInscr').width(width);
+
+$(function () {
+
+
 
     $('#characters').text('0');
     $('#txtContent').keyup(updateCount);

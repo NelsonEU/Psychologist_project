@@ -26,7 +26,7 @@
 
                     <div class="row pb-3">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
-                            <a href="connexion.aspx" class="btn mainButton pr-5 pl-5">Se connecter</a>
+                            <a href="connexion.aspx" class="btn mainButton btnConn pr-5 pl-5">Se connecter</a>
                         </div>
                     </div>
 
@@ -38,7 +38,7 @@
 
                     <div class="row pb-3">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
-                            <a href="inscription.aspx" class="btn mainButton pr-5 pl-5">S'inscrire</a>
+                            <a href="inscription.aspx" class="btn mainButton btnInscr pr-5 pl-5">S'inscrire</a>
                         </div>
                     </div>
 

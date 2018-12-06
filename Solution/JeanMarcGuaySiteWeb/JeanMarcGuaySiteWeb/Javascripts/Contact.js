@@ -1,5 +1,6 @@
 ﻿$(function () {
-
+    var width = $('.btnConn').width();
+    $('.btnInscr').width(width);
     $('#characters').text('0');
     $('#txtContent').keyup(updateCount);
     $('#txtContent').keydown(updateCount);
@@ -13,4 +14,5 @@
         }
         $('#characters').text(cs);
     }
+
 });
