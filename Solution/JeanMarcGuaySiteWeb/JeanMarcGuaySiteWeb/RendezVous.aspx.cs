@@ -190,9 +190,10 @@ namespace JeanMarcGuaySiteWeb
             //int availabilityId = Convert.ToInt32(ddlDate.SelectedValue);
             //Availability availability = af.GetById(availabilityId);
             
-            string dateDebut = ddlDate.SelectedValue;
+            string dateDebut = ddlDate.SelectedValue; //Mercredi 12 decembre 2018
             string[] heureMinutes = ddlHeureDebut.SelectedValue.Split(':');
-            DateTime date = DateTime.Parse(dateDebut);
+            DateTime date;
+            bool convertDate = DateTime.TryParseExact(dateDebut, "dddd d MMMM yyyy", CultureInfo.CreateSpecificCulture("fr-FR"), System.Globalization.DateTimeStyles.None, out date);
             DateTime dateH = date.AddHours(Double.Parse(heureMinutes[0]));
             DateTime dateM = dateH.AddMinutes(Double.Parse(heureMinutes[1]));        
             Availability availability = af.getByDate(dateM);

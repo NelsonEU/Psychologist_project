@@ -82,10 +82,6 @@
   <ItemGroup>
     <Content Include="Activation.aspx" />
     <Content Include="Email\AnnulationRDV.html" />
-    <Content Include="Images\Categories\cute.JPG" />
-    <Content Include="Images\Categories\cuteOrange.JPG" />
-    <Content Include="Images\Categories\cuteSquareCow.JPG" />
-    <Content Include="Images\Categories\grosse image.jpg" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\logoOPQ2.jpg" />
     <Content Include="Images\logoOriginal.png" />
@@ -371,6 +367,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\Categories\" />
     <Folder Include="ms\pdf\" />
   </ItemGroup>
   <ItemGroup>
