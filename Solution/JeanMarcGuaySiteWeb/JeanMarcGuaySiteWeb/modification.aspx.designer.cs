@@ -49,6 +49,15 @@ namespace JeanMarcGuaySiteWeb {
         protected global::System.Web.UI.WebControls.TextBox birthday;
         
         /// <summary>
+        /// Contrôle chkSubscription.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkSubscription;
+        
+        /// <summary>
         /// Contrôle btnConfirmer.
         /// </summary>
         /// <remarks>
@@ -58,21 +67,21 @@ namespace JeanMarcGuaySiteWeb {
         protected global::System.Web.UI.WebControls.Button btnConfirmer;
         
         /// <summary>
-        /// Contrôle Button1.
+        /// Contrôle btnMDP.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnMDP;
         
         /// <summary>
-        /// Contrôle Button2.
+        /// Contrôle bntSuppr.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button bntSuppr;
     }
 }
