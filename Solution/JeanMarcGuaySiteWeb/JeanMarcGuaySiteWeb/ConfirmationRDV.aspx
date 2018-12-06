@@ -25,7 +25,7 @@
     </div>
     <div class="row text-center pt-3 pb-5">
         <div class="col-md-2 offset-md-5">
-            <asp:Button ID="buttonSubmit" runat="server" Text="Retour à l'accueil" CssClass="btn mainButton " OnClick="buttonSubmitClick" />
+            <asp:Button ID="buttonSubmit" runat="server" Text="Etat du rendez-vous" CssClass="btn mainButton text-center " OnClick="buttonSubmitClick" />
         </div>
     </div>
 

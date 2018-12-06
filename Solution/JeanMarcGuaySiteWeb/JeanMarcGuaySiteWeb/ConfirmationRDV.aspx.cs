@@ -39,7 +39,7 @@ namespace JeanMarcGuaySiteWeb
 
         protected void buttonSubmitClick(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("RendezVous.aspx");
         }
 
     }

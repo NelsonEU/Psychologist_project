@@ -12,9 +12,20 @@
 
     <div class="card mb-3">
         <div class="card-body container-fluid">
+
             <div class="">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="form-row pb-4">
+
+                        <div class="col-md-4 col-lg-4 col-xl-4 pb-1">
+                            <input type="search" class="form-control" aria-controls="dataTable" name="deleteUser" placeholder="exemple@mail.com" id="deleteUser" />
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-xl-4">
+                            <asp:button runat="server" id="moad" class="btn btn-danger" text="Supprimer definitivement" />
+                        </div>
+                    </div>
                     <div class="form-row">
+
                         <div class="col-lg-4 col-md-12 form-group">
                             <input type="search" class="form-control" aria-controls="dataTable" placeholder="Rechercher" id="researchUser" />
                         </div>
