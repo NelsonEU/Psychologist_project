@@ -4,6 +4,7 @@ using static BusinessLogic.User;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Net.Mail;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogic;
@@ -30,6 +31,32 @@ namespace JeanMarcGuaySiteWeb.Admin
             }
             else
             {
+                if (Request.QueryString["notif"] != null)
+                {
+                    switch (Request.QueryString["notif"])
+                    {
+                        case "noUser":
+                            notifMOAD.InnerText = "Cet utilisateur n'existe pas.";
+                            notifMOAD.Visible = true;
+                            notifMOAD.Style["color"] = "red";
+                            break;
+                        case "success":
+                            notifMOAD.InnerText = "L'utilisateur a bien ete supprime. Un email de confirmation vous a ete envoye.";
+                            notifMOAD.Visible = true;
+                            notifMOAD.Style["color"] = "green";
+                            break;
+                        case "failure":
+                            notifMOAD.InnerText = "Une erreur s'est produite, veuillez reessayer.";
+                            notifMOAD.Visible = true;
+                            notifMOAD.Style["color"] = "red";
+                            break;
+                        case "unvalid":
+                            notifMOAD.InnerText = "Adresse email invalide.";
+                            notifMOAD.Visible = true;
+                            notifMOAD.Style["color"] = "red";
+                            break;
+                    }
+                }
                 foreach (User u in allUsers)
                 {
                     if (!u.admin)
@@ -116,7 +143,50 @@ namespace JeanMarcGuaySiteWeb.Admin
             Response.Redirect(Request.RawUrl);
         }
 
+        protected void Click_MOAD(object sender, EventArgs e)
+        {
+            string confirmValue = Request.Form["confirm_MOAD"];
+            string notif = String.Empty;
+            if (confirmValue == "Oui")
+            {
+                string mail = textMOAD.Value;
+                try
+                {
+                    MailAddress m = new MailAddress(mail);
+                    User u = uf.GetByEmail(mail);
+                    if(u == null)
+                    {
+                        //Le user n'existe pas
+                        notif = "noUser";
+                    }
+                    else
+                    {
+                        //Le user existe
+                        if (uf.MOAD(u.userId))
+                        {
+                            //Suppression reussie
+                            notif = "success";                          
+                            //Envoyer email de confirmation
+                        }
+                        else
+                        {
+                            //Echec suppression
+                            notif = "failure";
+                        }
+                    }
 
+                }catch(FormatException)
+                {
+                    //Adressse non valide
+                    notif = "unvalid";
+                }
+                finally
+                {
+                    Response.Redirect(Request.RawUrl + "?notif=" + notif);
+                }
+            }
+
+        }
 
 
 

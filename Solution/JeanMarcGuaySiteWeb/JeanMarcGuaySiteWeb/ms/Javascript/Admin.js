@@ -22,8 +22,26 @@ $(function () {
 });
 
 
-    var width = $('.btnUnauthorize').width();
-    $('.btnAuthorize').width(width);
+var width = $('.btnUnauthorize').width();
+$('.btnAuthorize').width(width);
+
+$(function () {
+    $('.clickMOAD').click(function () {
+        var mail = $('#ContentPlaceHolder1_textMOAD').val();
+        //Confirmer la supression
+        var confirm_value = document.createElement("INPUT");
+        confirm_value.type = "hidden";
+        confirm_value.name = "confirm_MOAD";
+
+        if (confirm("Etes-vous sur de vouloir supprimer cet utilisateur ? Toutes ses donnees seront supprimees.")) {
+            confirm_value.value = "Oui";
+        } else {
+            confirm_value.value = "Non";
+        }
+        document.forms[0].appendChild(confirm_value);
+
+    })
+});
 
 $(function () {
     $('.btnSupprCategorie').click(function () {
@@ -79,7 +97,7 @@ function ConfirmerSuppression() {
     } else {
         confirm_value.value = "Non";
     }
- 
+
     document.forms[0].appendChild(confirm_value);
 }
 

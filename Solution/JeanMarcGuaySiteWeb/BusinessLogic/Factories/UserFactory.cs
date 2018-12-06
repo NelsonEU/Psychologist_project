@@ -223,6 +223,44 @@ namespace BusinessLogic.Factories
         }
         #endregion
 
+        #region MOAD
+        public bool MOAD(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+            MySqlTransaction trans = null;
+
+            try
+            {
+                cnn.Open();
+                trans = cnn.BeginTransaction();
+                MySqlCommand cmd1 = cnn.CreateCommand();
+                cmd1.CommandText = "DELETE FROM appointments WHERE user_id = @id";
+                cmd1.Parameters.AddWithValue("@id", id);
+                cmd1.ExecuteNonQuery();
+
+                MySqlCommand cmd2 = cnn.CreateCommand();
+                cmd2.CommandText = "DELETE FROM requests WHERE user_id = @id";
+                cmd2.Parameters.AddWithValue("@id", id);
+                cmd2.ExecuteNonQuery();
+
+                MySqlCommand cmd3 = cnn.CreateCommand();
+                cmd3.CommandText = "DELETE FROM users WHERE user_id = @id";
+                cmd3.Parameters.AddWithValue("@id", id);
+                cmd3.ExecuteNonQuery();
+                trans.Commit();
+                cnn.Close();
+            }
+            catch (Exception e)
+            {
+                trans.Rollback();
+                cnn.Close();
+                return false;
+            }
+            return true;
+
+        }
+        #endregion
+
         #region Delete
         public void Delete(int id)
         {
