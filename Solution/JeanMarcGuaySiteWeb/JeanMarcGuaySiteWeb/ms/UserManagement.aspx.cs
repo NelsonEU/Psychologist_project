@@ -11,6 +11,7 @@ using BusinessLogic;
 using System.Configuration;
 using BusinessLogic.Autres;
 using System.IO;
+using System.Globalization;
 
 namespace JeanMarcGuaySiteWeb.Admin
 {
@@ -165,8 +166,20 @@ namespace JeanMarcGuaySiteWeb.Admin
                         if (uf.MOAD(u.userId))
                         {
                             //Suppression reussie
-                            notif = "success";                          
+                            notif = "success";
                             //Envoyer email de confirmation
+                            EmailController ec = new EmailController();
+                            string body = string.Empty;
+                            using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/DeletionEmail.html")))
+                            {
+                                body = reader.ReadToEnd();
+                            }
+                            body = body.Replace("{emailU}", u.email);
+                            body = body.Replace("{firstname}", u.firstname);
+                            body = body.Replace("{lastname}", u.lastname);
+                            body = body.Replace("{dateC}", DateTime.Now.ToString());
+                            body = body.Replace("{dateE}", DateTime.Now.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+                            ec.SendMail(ConfigurationManager.AppSettings["emailAddress"], "Supression definitive d'un utilisateur", body);
                         }
                         else
                         {
