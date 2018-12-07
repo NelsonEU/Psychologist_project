@@ -28,7 +28,6 @@ namespace JeanMarcGuaySiteWeb
                 Response.Redirect("Default.aspx");
             }
 
-
             //Remplir les champs avec les anciennes infos
             if (!Page.IsPostBack)
             {
@@ -63,7 +62,7 @@ namespace JeanMarcGuaySiteWeb
 
         protected void btnMDP_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Changepw.aspx");
         }
 
         protected void bntSuppr_Click(object sender, EventArgs e)

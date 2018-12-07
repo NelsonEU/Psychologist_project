@@ -18,7 +18,7 @@
     </style>
     <div class="row text-center pt-3 paddingNav2">
         <div class="col-lg-12">
-            <h4>Vous informations ont été changées!</h4>
+            <h4>Vos informations ont été changées!</h4>
         </div>
     </div>
     <div class="row text-center pt-3 pb-5">

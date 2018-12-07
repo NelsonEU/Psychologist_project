@@ -11,9 +11,11 @@
     </div>
 
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container-fluid rdv">
 
+
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <div class="container-fluid rdv" runat="server">
         <div class="row text-center pt-5">
             <div class="col-lg-6 offset-lg-3">
                 <label for="txtFirstname">Prénom:</label>
@@ -66,7 +68,6 @@
                 <asp:Button runat="server" ID="bntSuppr" CssClass="btn btn-danger" text="Demander la suppression du compte" style="width:300px" OnClick="bntSuppr_Click" />
             </div>
         </div>
-
     </div>
 
 </asp:Content>

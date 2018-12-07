@@ -58,6 +58,15 @@ namespace JeanMarcGuaySiteWeb {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl liRendezVous;
         
         /// <summary>
+        /// Contrôle liCompte.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liCompte;
+        
+        /// <summary>
         /// Contrôle liAdmin.
         /// </summary>
         /// <remarks>
