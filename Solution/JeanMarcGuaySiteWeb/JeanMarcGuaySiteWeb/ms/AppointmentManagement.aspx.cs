@@ -238,9 +238,11 @@ namespace JeanMarcGuaySiteWeb.Admin
                 body = body.Replace("{date}", avail.strdt.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
                 body = body.Replace("{AdresseCabinet}", adresseCabinet);
                 ec.SendMail(user.email, "JMGuay.ca - Confirmation du rendez-vous [Message automatique]", body);
-
+                Response.Redirect(Request.RawUrl + "?notif=confirm");
+                return;
             }
-            Response.Redirect(Request.RawUrl + "?notif=confirm");
+            Response.Redirect(Request.RawUrl);
+
         }
 
         protected void Click_Refuse(object sender, EventArgs e)
@@ -253,9 +255,10 @@ namespace JeanMarcGuaySiteWeb.Admin
                 Button button = (Button)sender;
                 int id = Convert.ToInt32(button.Attributes["data-id"]);
                 Refuse(id);
-
+                Response.Redirect(Request.RawUrl + "?notif=refuse");
+                return;
             }
-            Response.Redirect(Request.RawUrl + "?notif=refuse");
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void Click_Cancel(object sender, EventArgs e)
@@ -266,8 +269,10 @@ namespace JeanMarcGuaySiteWeb.Admin
                 Button button = (Button)sender;
                 int id = Convert.ToInt32(button.Attributes["data-id"]);
                 Refuse(id);
+                Response.Redirect(Request.RawUrl + "?notif=cancel");
+                return;
             }
-            Response.Redirect(Request.RawUrl + "?notif=cancel");
+            Response.Redirect(Request.RawUrl);
         }
 
         private void Refuse(int id)
