@@ -1,0 +1,19 @@
+﻿@media screen and (max-width: 550px){
+
+    #ContentPlaceHolder1_tabAvail td{
+        display:block;
+        text-align:center;
+    }
+
+    #ContentPlaceHolder1_tabAvail tr {
+        display: block;
+        margin: 7px;
+        border: solid black 1px;
+        border-collapse:collapse;
+
+    }
+
+    #ContentPlaceHolder1_headerRowAvail {
+        display: none !important;
+    }
+}

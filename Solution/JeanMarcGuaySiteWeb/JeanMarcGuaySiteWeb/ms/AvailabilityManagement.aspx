@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="CSS/bootstrap-timepicker.css" rel="stylesheet" />
     <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/AvailMngt.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script> 
@@ -35,15 +36,15 @@
                     }
 
 
-                }).attr('readonly','readonly');
+                }).attr('readonly', 'readonly');
 
-              $('#timepicker1').on('changeTime', function () {
-        document.getElementById("ContentPlaceHolder1_time1").value = $(this).val();
-    });
+            $('#timepicker1').on('changeTime', function () {
+                document.getElementById("ContentPlaceHolder1_time1").value = $(this).val();
+            });
 
-      $('#timepicker2').on('changeTime', function () {
-        document.getElementById("ContentPlaceHolder1_time2").value = $(this).val();
-    });
+            $('#timepicker2').on('changeTime', function () {
+                document.getElementById("ContentPlaceHolder1_time2").value = $(this).val();
+            });
         });
     </script>
 </asp:Content>
@@ -63,30 +64,22 @@
         <div class="row">
             <div class="col-lg-3">
                 <label for="datepicker">Date:</label>
-            </div>
-            <div class="col-lg-3">
-                <label for="timepicker1">Heure Début:</label>
-            </div>
-            <div class="col-lg-3">
-                <label for="timepicker2">Heure Fin:</label>
-            </div>
-            <div class="col-lg-3">
-            </div>
-        </div>
-        <div class="row pb-3">
-            <div class="col-lg-3">
                 <input type="text" id="datepicker" class="form-control" autocomplete="off" />
             </div>
             <div class="col-lg-3">
-                
+                <label for="timepicker1">Heure Début:</label>
                 <input id="timepicker1" type="text" class="time ui-timepicker-input form-control" autocomplete="off" />
             </div>
             <div class="col-lg-3">
+                <label for="timepicker2">Heure Fin:</label>
                 <input id="timepicker2" type="text" class="time ui-timepicker-input form-control" autocomplete="off" />
             </div>
-            <div class="col-lg-3">
-                <asp:Button ID="Ajouter" Text="Ajouter" runat="server" OnClick="Ajouter_Click" CssClass="btn btn-success" style="width:140px;"/>
+            <div class="col-lg-3 align-bottom">
+                <label> </label><br />
+                <asp:Button ID="Ajouter" Text="Ajouter" runat="server" OnClick="Ajouter_Click" CssClass="btn btn-success" Style="width: 100%; float:none; vertical-align:bottom" />
             </div>
+        </div>
+        <div class="row pb-3 text-center">
         </div>
         <asp:HiddenField ID="date" runat="server" />
         <asp:HiddenField ID="time1" runat="server" />
@@ -99,7 +92,7 @@
         <div class="row pb-3">
             <div class="col-sm-12">
                 <asp:Table runat="server" ID="tabAvail" aria-describedby="dataTable_info" CssClass="table table-bordered table-hover dataTable dataUsers">
-                    <asp:TableHeaderRow>
+                    <asp:TableHeaderRow ID="headerRowAvail" runat="server" >
                         <asp:TableHeaderCell>Date</asp:TableHeaderCell>
                         <asp:TableHeaderCell>Heure début</asp:TableHeaderCell>
                         <asp:TableHeaderCell>Heure fin</asp:TableHeaderCell>
