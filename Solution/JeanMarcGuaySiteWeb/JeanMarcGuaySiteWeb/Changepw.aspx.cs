@@ -24,6 +24,13 @@ namespace JeanMarcGuaySiteWeb
             {
                 Response.Redirect("Default.aspx");
             }
+
+            if(IsPostBack)
+            {
+                notification.Visible = true;
+                notification.Style.Add("color", "red");
+                notification.InnerText = "Un courriel de confirmation a été envoyé dans votre boite de courriel.";
+            }
         }
 
         protected void btnConfirm_Click(object sender, EventArgs e)
@@ -65,6 +72,7 @@ namespace JeanMarcGuaySiteWeb
                     }
                     else
                     {
+                        uf.addNewPassword(curr.userId, txtNewPassword.Text);
                         txtOldPassword.Text = "";
                         txtNewPassword.Text = "";
                         txtConfirm.Text = "";
@@ -79,7 +87,7 @@ namespace JeanMarcGuaySiteWeb
 
                         string strPathAndQuery = HttpContext.Current.Request.Url.PathAndQuery;
                         string strUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace(strPathAndQuery, "/");
-                        string lienActivation = strUrl + "ConfirmationChangement.aspx" + "?email=" + curr.email + "&tkn=" + curr.token;
+                        string lienActivation = strUrl + "ConfirmationChangementMdp.aspx" + "?email=" + curr.email + "&tkn=" + curr.token;
 
                         body = body.Replace("{email}", user.email);
                         body = body.Replace("{lienActivation}", lienActivation);

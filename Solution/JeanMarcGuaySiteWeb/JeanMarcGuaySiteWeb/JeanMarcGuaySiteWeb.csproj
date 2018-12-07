@@ -81,7 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activation.aspx" />
+    <Content Include="Changepw.aspx" />
+    <Content Include="ConfirmationChangementMdp.aspx" />
     <Content Include="ConfirmationChangement.aspx" />
+    <EmbeddedResource Include="Email\ConfirmationPassword.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Email\AnnulationRDV.html" />
     <Content Include="Email\DeletionEmail.html" />
     <Content Include="Images\favicon.ico" />
@@ -186,6 +191,20 @@
     </Compile>
     <Compile Include="Activation.aspx.designer.cs">
       <DependentUpon>Activation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Changepw.aspx.cs">
+      <DependentUpon>Changepw.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Changepw.aspx.designer.cs">
+      <DependentUpon>Changepw.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmationChangementMdp.aspx.cs">
+      <DependentUpon>ConfirmationChangementMdp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmationChangementMdp.aspx.designer.cs">
+      <DependentUpon>ConfirmationChangementMdp.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConfirmationChangement.aspx.cs">
       <DependentUpon>ConfirmationChangement.aspx</DependentUpon>

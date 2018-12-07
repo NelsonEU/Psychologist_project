@@ -24,7 +24,7 @@ namespace BusinessLogic
         public DateTime optOut { get; set; }
         public string token { get; set; } //VARCHAR(40)
         public DateTime lastNotificationDate { get; set; }
-
+        public string newPassword { get; set; } //VARCHAR(150)
 
     }
 }

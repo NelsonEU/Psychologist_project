@@ -252,6 +252,7 @@ namespace BusinessLogic.Factories
             }
             catch (Exception e)
             {
+                e.ToString();
                 trans.Rollback();
                 cnn.Close();
                 return false;
@@ -539,5 +540,51 @@ namespace BusinessLogic.Factories
             return user;
         }
         #endregion
+
+        #region newPassword
+        public void addNewPassword(int id, string newPass)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+            CryptographyHelper ch = new CryptographyHelper();
+            string hashedPassword = ch.HashPassword(newPass);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET nouveauPassword = @newPassword WHERE user_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@newPassword", hashedPassword);
+
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
+        #region setNewPassword
+        public void setNewPassword(int id)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+
+            try
+            {
+                cnn.Open();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "Update users SET password = nouveauPassword WHERE user_id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
+        #endregion
+
     }
 }
