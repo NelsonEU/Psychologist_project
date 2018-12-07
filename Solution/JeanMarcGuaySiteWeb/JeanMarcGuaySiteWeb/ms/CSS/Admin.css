@@ -18,170 +18,190 @@
     border-right: 1px black solid;
     border-top: 1px solid black;
 }
-
-.divInfo {
-    background-color: #212529;
-    color:white;
-    font-size: 10pt;
-    border-left: 1px black solid;
-    border-right: 1px black solid;
-}
-.marginAuto {
-    margin:auto;
-}
-.divSujet {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-weight: bold;
-    background: rgb(4, 23, 31);
-    color: white;
-    border-left: 1px black solid;
-    border-right: 1px black solid;
+@media screen and (max-width: 550px) {
+    #ContentPlaceHolder1_tabUnconfirmed {
+        font-size:small;
+    }
 }
 
-.divContenu {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: black;
-    background-color: #ffffff;
-    border-left: 1px black solid;
-    /*border-right: 1px black solid;*/
-    border-bottom: 1px solid black;
-    min-height:75px;
-    /*border-bottom-left-radius: 5px;
+    .divInfo {
+        background-color: #212529;
+        color: white;
+        font-size: 10pt;
+        border-left: 1px black solid;
+        border-right: 1px black solid;
+    }
+
+    .marginAuto {
+        margin: auto;
+    }
+
+    .divSujet {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: bold;
+        background: rgb(4, 23, 31);
+        color: white;
+        border-left: 1px black solid;
+        border-right: 1px black solid;
+    }
+
+    .divContenu {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: black;
+        background-color: #ffffff;
+        border-left: 1px black solid;
+        /*border-right: 1px black solid;*/
+        border-bottom: 1px solid black;
+        min-height: 75px;
+        /*border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;*/
-}
-.buttonX {
-    text-align: center;
-    background-color: #343a40;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    float: right;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-top: 3px;
-}
-
-.buttonX:hover {
-    background-color: #1d6280;
-}
-.biggerText{
-    font-size:12pt;
-}
-.biggerbiggerText{
-    font-size:14pt;
-}
-
-.box-shadow{ 
-    box-shadow:0 0 90px 5px rgba(207,207,207,.8);
-}
-
-.box-admin {
-    margin:15px;
-    padding:15px;
-    text-align:center;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.box-admin:hover {
-    background-color:rgb(29,98,128,0.2);
-}
-.mainAdminColor {
-    color: #1d6280;
-}
-.hidden{
-    display:none;
-}
-.highlightH4 {
-    color:#1d6280;
-    font-size:22pt;
-}
-.linkRight {
-    width: 100%;
-    text-align: right;
-}
-.notification{
-    color:red;
-    text-align:center;
-}
-.textSmaller {
-    font-size:11pt;
-}
-.ajoutPublication{
-    box-shadow: 4px 4px 12px 0px rgba(0,0,0,0.75);
-}
-
-.headerPublication{
-    background-color: #f7f7f7;
-}
-.right{
-    text-align:right;
-}
-
-.lienAdmin{
-    color: #1d6280;
-}
-.lienAdmin:hover{
-    text-decoration:none;
-}
-
-@media only screen and (max-width: 600px) {
-    alingSmall {
-        text-align:center !important;
-        margin:auto;
-    }
-}
-@media only screen and (max-width: 768px){
-    .right {
-        text-align: left;
-    }
-}
-
-label, input {
-    display: block;
-}
-
-    input.text {
-        margin-bottom: 12px;
-        width: 95%;
-        padding: .4em;
     }
 
-fieldset {
-    padding: 0;
-    border: 0;
-    margin-top: 25px;
-}
-
-h1 {
-    font-size: 2rem;
-    /*margin: .6em 0;*/
-}
-
-div#users-contain {
-    width: 350px;
-    margin: 20px 0;
-}
-
-    div#users-contain table {
-        margin: 1em 0;
-        border-collapse: collapse;
-        width: 100%;
+    .buttonX {
+        text-align: center;
+        background-color: #343a40;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        float: right;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-top: 3px;
     }
 
-        div#users-contain table td, div#users-contain table th {
-            border: 1px solid #eee;
-            padding: .6em 10px;
-            text-align: left;
+        .buttonX:hover {
+            background-color: #1d6280;
         }
 
-.ui-dialog .ui-state-error {
-    padding: .3em;
-}
+    .biggerText {
+        font-size: 12pt;
+    }
 
-.validateTips {
-    border: 1px solid transparent;
-    padding: 0.3em;
-}
+    .biggerbiggerText {
+        font-size: 14pt;
+    }
+
+    .box-shadow {
+        box-shadow: 0 0 90px 5px rgba(207,207,207,.8);
+    }
+
+    .box-admin {
+        margin: 15px;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+        .box-admin:hover {
+            background-color: rgb(29,98,128,0.2);
+        }
+
+    .mainAdminColor {
+        color: #1d6280;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .highlightH4 {
+        color: #1d6280;
+        font-size: 22pt;
+    }
+
+    .linkRight {
+        width: 100%;
+        text-align: right;
+    }
+
+    .notification {
+        color: red;
+        text-align: center;
+    }
+
+    .textSmaller {
+        font-size: 11pt;
+    }
+
+    .ajoutPublication {
+        box-shadow: 4px 4px 12px 0px rgba(0,0,0,0.75);
+    }
+
+    .headerPublication {
+        background-color: #f7f7f7;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .lienAdmin {
+        color: #1d6280;
+    }
+
+        .lienAdmin:hover {
+            text-decoration: none;
+        }
+
+    @media only screen and (max-width: 600px) {
+        alingSmall {
+            text-align: center !important;
+            margin: auto;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .right {
+            text-align: left;
+        }
+    }
+
+    label, input {
+        display: block;
+    }
+
+        input.text {
+            margin-bottom: 12px;
+            width: 95%;
+            padding: .4em;
+        }
+
+    fieldset {
+        padding: 0;
+        border: 0;
+        margin-top: 25px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        /*margin: .6em 0;*/
+    }
+
+    div#users-contain {
+        width: 350px;
+        margin: 20px 0;
+    }
+
+        div#users-contain table {
+            margin: 1em 0;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            div#users-contain table td, div#users-contain table th {
+                border: 1px solid #eee;
+                padding: .6em 10px;
+                text-align: left;
+            }
+
+    .ui-dialog .ui-state-error {
+        padding: .3em;
+    }
+
+    .validateTips {
+        border: 1px solid transparent;
+        padding: 0.3em;
+    }

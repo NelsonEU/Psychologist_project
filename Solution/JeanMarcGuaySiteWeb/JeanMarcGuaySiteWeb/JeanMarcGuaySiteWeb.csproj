@@ -92,7 +92,9 @@
     <Content Include="modification.aspx" />
     <Content Include="ms\AjoutCategorie.aspx" />
     <Content Include="ms\CategoryManagement.aspx" />
+    <Content Include="ms\CSS\AvailMngt.css" />
     <Content Include="ms\CSS\jquery.timepicker.min.css" />
+    <Content Include="ms\CSS\UserMngt.css" />
     <Content Include="ms\Images\logoOriginal2.png" />
     <Content Include="ms\Javascript\Availability.js" />
     <Content Include="ms\Javascript\categorieAdmin.js" />

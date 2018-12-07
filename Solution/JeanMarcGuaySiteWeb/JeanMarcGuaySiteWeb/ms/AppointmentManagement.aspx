@@ -31,7 +31,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <asp:Table runat="server" ID="tabUnconfirmed" aria-describedby="dataTable_info" CssClass="table table-bordered table-hover dataTable dataUsers">
+                                <asp:Table runat="server" ID="tabUnconfirmed" aria-describedby="dataTable_info" CssClass="table table-bordered table-hover table-responsive dataTable dataUsers">
                                     <asp:TableHeaderRow>
                                         <asp:TableHeaderCell>Date</asp:TableHeaderCell>
                                         <asp:TableHeaderCell>Nom</asp:TableHeaderCell>
