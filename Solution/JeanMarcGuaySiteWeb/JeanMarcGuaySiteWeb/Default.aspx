@@ -118,8 +118,8 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="Javascripts/Carousel.js"></script>
-    <script src="Javascripts/animation.js"></script>
+    <script src="Javascripts/Carousel.min.js"></script>
+    <script src="Javascripts/animation.min.js"></script>
     <script src="Javascripts/slick.min.js"></script>
 </asp:Content>
 

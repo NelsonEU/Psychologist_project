@@ -6,7 +6,7 @@
 
     <div class="banner2 pb-5 shadow">
         <div class="va-center2">
-            <h1 class="titleBanner2">Modification du compte</h1>
+            <h1 class="titleBanner2">Mon compte</h1>
         </div>
     </div>
 
@@ -50,28 +50,34 @@
             </div>
         </div>
 
-        <div class="row text-center pt-5">
+        <div class="row text-center pt-4">
             <div class="col-lg-12">
                 <asp:Button runat="server" ID="btnConfirmer" CssClass="btn mainButton3" text="Confirmer" style="width:200px" OnClick="btnConfirmer_Click"/>
             </div>
         </div>
 
-        <div class="row text-center pt-5">
+        <div class="row text-center pt-2">
+            <div class="col-12 text-center">
+                <asp:Label runat="server" ID="StatusLabel" Text="" ClientIDMode="Static" />
+            </div>
+        </div>
+
+        <div class="row text-center pt-2">
             <div class="col-lg-12">
                 <asp:Button runat="server" ID="btnMDP" CssClass="btn btn-warning" text="Changer de mot de passe" style="width:300px" OnClick="btnMDP_Click" />
-
             </div>
         </div>
 
-        <div class="row text-center pt-1">
+        <div class="row text-center pt-1 pb-4">
             <div class="col-lg-12">
-                <asp:Button runat="server" ID="bntSuppr" CssClass="btn btn-danger" text="Demander la suppression du compte" style="width:300px" OnClick="bntSuppr_Click" />
+                <asp:Button runat="server" ID="bntSuppr" CssClass="btn btn-danger" text="Demander la suppression du compte" style="width:300px" OnClick="bntSuppr_Click" ClientIDMode="Static" />
             </div>
         </div>
+
     </div>
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="Javascripts/Inscription.js"></script>
+    <script src="Javascripts/Inscription.min.js"></script>
 </asp:Content>

@@ -89,5 +89,5 @@
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
-    <script src="Javascripts/Contact.js"></script>
+    <script src="Javascripts/Contact.min.js"></script>
 </asp:Content>

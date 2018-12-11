@@ -61,5 +61,5 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-    <script src="Javascript/Admin.js"></script>
+    <script src="Javascript/Admin.min.js"></script>
 </asp:Content>

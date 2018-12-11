@@ -62,6 +62,6 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
-    <script src="Javascript/Admin.js"></script>
-    <script src="Javascript/publicationAdmin.js"></script>
+    <script src="Javascript/Admin.min.js"></script>
+    <script src="Javascript/publicationAdmin.min.js"></script>
 </asp:Content>

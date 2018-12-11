@@ -8,6 +8,8 @@ using BusinessLogic;
 using BusinessLogic.Factories;
 using System.Configuration;
 using System.Globalization;
+using System.IO;
+using BusinessLogic.Autres;
 
 namespace JeanMarcGuaySiteWeb
 {
@@ -45,7 +47,16 @@ namespace JeanMarcGuaySiteWeb
                 }
             }
 
-       }
+            if (Request.QueryString["Conf"] != null)
+            {
+                if (Request.QueryString["Conf"] == "True")
+                {
+                    StatusLabel.Style.Add("color", "green");
+                    StatusLabel.Text = "La demande de suppression à été envoyée.";
+                }
+            }
+
+        }
 
         protected void btnConfirmer_Click(object sender, EventArgs e)
         {
@@ -67,6 +78,21 @@ namespace JeanMarcGuaySiteWeb
 
         protected void bntSuppr_Click(object sender, EventArgs e)
         {
+            //Envoyer email de confirmation
+            EmailController ec = new EmailController();
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/DemandeSuppression.html")))
+            {
+                body = reader.ReadToEnd();
+            }
+            body = body.Replace("{emailU}", user.email);
+            body = body.Replace("{firstname}", user.firstname);
+            body = body.Replace("{lastname}", user.lastname);
+            body = body.Replace("{dateC}", DateTime.Now.ToString());
+            body = body.Replace("{dateE}", DateTime.Now.ToString("f", CultureInfo.CreateSpecificCulture("fr-FR")));
+            ec.SendMail(ConfigurationManager.AppSettings["emailAddress"], "Demande de supression definitive d'un utilisateur", body);
+
+            Response.Redirect("modification.aspx?Conf=True");
 
         }
     }

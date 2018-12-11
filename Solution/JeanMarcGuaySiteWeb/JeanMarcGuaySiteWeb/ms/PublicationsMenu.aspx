@@ -45,6 +45,6 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
-    <script src="Javascript/publicationMenu.js"></script>
+    <script src="Javascript/publicationMenu.min.js"></script>
     
 </asp:Content>

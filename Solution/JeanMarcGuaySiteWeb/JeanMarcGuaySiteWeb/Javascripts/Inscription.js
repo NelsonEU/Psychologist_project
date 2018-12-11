@@ -18,3 +18,20 @@
     
     
 });
+
+
+$(function () {
+    $('#bntSuppr').click(function () {
+        var confirm_value = document.createElement("INPUT");
+        confirm_value.type = "hidden";
+        confirm_value.name = "confirm_delete";
+
+
+        if (confirm("Cette action effectuera une demande de suppression définitive de votre compte et tous les informations associées. Voulez-vous continuer?")) {
+            confirm_value.value = "Oui";
+        } else {
+            confirm_value.value = "Non";
+        }
+        document.forms[0].appendChild(confirm_value);
+    });
+});

@@ -135,5 +135,5 @@
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
-    <script src="Javascripts/RendezVous.js"></script>
+    <script src="Javascripts/RendezVous.min.js"></script>
 </asp:Content>

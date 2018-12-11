@@ -67,5 +67,5 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="Javascripts/Inscription.js"></script>
+    <script src="Javascripts/Inscription.min.js"></script>
 </asp:Content>

@@ -48,5 +48,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="additionalJS" runat="server">
-    <script src="Javascripts/Publications.js"></script>
+    <script src="Javascripts/Publications.min.js"></script>
 </asp:Content>

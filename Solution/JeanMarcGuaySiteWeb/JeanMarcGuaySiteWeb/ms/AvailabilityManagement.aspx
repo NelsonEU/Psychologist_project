@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ms/Admin.Master" AutoEventWireup="true" CodeBehind="AvailabilityManagement.aspx.cs" Inherits="JeanMarcGuaySiteWeb.Admin.AvailabilityManagement" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="CSS/bootstrap-timepicker.css" rel="stylesheet" />
+    <link href="CSS/bootstrap-timepicker.min.css" rel="stylesheet" />
     <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <link href="CSS/AvailMngt.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/AvailMngt.min.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script> 
@@ -107,7 +107,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="additionalJS" runat="server">
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
-    <script src="Javascript/bootstrap-datepicker.js"></script>
+    <script src="Javascript/bootstrap-datepicker.min.js"></script>
     <link href="CSS/jquery.timepicker.min.css" rel="stylesheet" />
     <script src="Javascript/jquery.timepicker.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
