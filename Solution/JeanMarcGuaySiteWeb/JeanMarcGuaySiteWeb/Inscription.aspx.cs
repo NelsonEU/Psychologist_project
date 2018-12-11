@@ -30,7 +30,7 @@ namespace JeanMarcGuaySiteWeb
             if (!string.IsNullOrEmpty(email.Text) && !string.IsNullOrEmpty(password.Text) && !string.IsNullOrEmpty(passwordConfirmation.Text)
                 && !string.IsNullOrEmpty(firstname.Text) && !string.IsNullOrEmpty(lastname.Text))
             {
-                if (email.Text.Length > 50 || lastname.Text.Length > 40 || firstname.Text.Length > 40 || password.Text.Length > 150 || passwordConfirmation.Text.Length > 150)
+                if (email.Text.Length > 50 || lastname.Text.Length > 40 || firstname.Text.Length > 40 || password.Text.Length > 40 || passwordConfirmation.Text.Length > 40)
                 {
                     notification.Style.Add("color", "red");
                     notification.InnerText = "Les données sont trop longues";

@@ -28,7 +28,7 @@ namespace JeanMarcGuaySiteWeb
             if(IsPostBack)
             {
                 notification.Visible = true;
-                notification.Style.Add("color", "red");
+                notification.Style.Add("color", "Green");
                 notification.InnerText = "Un courriel de confirmation a été envoyé dans votre boite de courriel.";
             }
         }

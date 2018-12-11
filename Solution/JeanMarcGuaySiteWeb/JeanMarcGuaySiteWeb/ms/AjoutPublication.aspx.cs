@@ -53,11 +53,21 @@ namespace JeanMarcGuaySiteWeb.Admin
             {
                 CategoryFactory cf = new CategoryFactory(cnnStr);
                 Category[] categories = cf.GetAll();
-            
-                foreach (Category categorie in categories)
+                if (categories.Length == 0)
                 {
-                    DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
+                    UploadButton.Enabled = false;
+                    StatusLabel.Style.Add("color", "red");
+                    StatusLabel.Text = "Aucune catégorie disponible";
                 }
+                else
+                {
+                    foreach (Category categorie in categories)
+                    {
+                        DdlCategories.Items.Add(new ListItem(categorie.name, categorie.categoryId.ToString()));
+                    }
+                }
+            
+                
             }
 
         }

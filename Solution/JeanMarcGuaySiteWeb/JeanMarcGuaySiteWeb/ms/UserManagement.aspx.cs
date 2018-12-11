@@ -42,7 +42,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                             notifMOAD.Style["color"] = "red";
                             break;
                         case "success":
-                            notifMOAD.InnerText = "L'utilisateur a bien ete supprime. Un email de confirmation vous a ete envoye.";
+                            notifMOAD.InnerText = "L'utilisateur a bien été supprimé. Un email de confirmation vous a été envoyé.";
                             notifMOAD.Visible = true;
                             notifMOAD.Style["color"] = "green";
                             break;

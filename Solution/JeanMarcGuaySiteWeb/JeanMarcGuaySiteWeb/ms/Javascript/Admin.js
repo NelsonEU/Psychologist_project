@@ -33,7 +33,7 @@ $(function () {
         confirm_value.type = "hidden";
         confirm_value.name = "confirm_MOAD";
 
-        if (confirm("Etes-vous sur de vouloir supprimer cet utilisateur ? Toutes ses donnees seront supprimees.")) {
+        if (confirm("Êtes-vous sur de vouloir supprimer cet utilisateur? Toutes ses données seront supprimées définitivement.")) {
             confirm_value.value = "Oui";
         } else {
             confirm_value.value = "Non";
@@ -92,7 +92,7 @@ function ConfirmerSuppression() {
     var confirm_value = document.createElement("INPUT");
     confirm_value.type = "hidden";
     confirm_value.name = "confirm_delete";
-    if (confirm("Êtes-vous sur de vouloir supprimer ces utilisateurs ?")) {
+    if (confirm("Êtes-vous sur de vouloir supprimer ces utilisateurs?")) {
         confirm_value.value = "Oui";
     } else {
         confirm_value.value = "Non";
@@ -106,7 +106,7 @@ function ConfirmerDesauthorisation() {
     confirm_value.type = "hidden";
     confirm_value.name = "confirm_unauthorized";
 
-    if (confirm("Êtes-vous sur de vouloir désauthoriser ces utilisateurs ?")) {
+    if (confirm("Êtes-vous sur de vouloir désauthoriser ces utilisateurs?")) {
         confirm_value.value = "Oui";
     } else {
         confirm_value.value = "Non";
@@ -122,7 +122,7 @@ function ConfirmerRDV() {
     confirm_value.type = "hidden";
     confirm_value.name = "confirm_rdv";
 
-    if (confirm("Êtes-vous sur de vouloir confirmer ce rendez-vous ?")) {
+    if (confirm("Êtes-vous sur de vouloir confirmer ce rendez-vous?")) {
         confirm_value.value = "Oui";
     } else {
         confirm_value.value = "Non";
@@ -136,7 +136,7 @@ function RefuserRDV() {
     confirm_value.type = "hidden";
     confirm_value.name = "refuse_rdv";
 
-    if (confirm("Êtes-vous sur de vouloir refuser ce rendez-vous ?")) {
+    if (confirm("Êtes-vous sur de vouloir refuser ce rendez-vous?")) {
         confirm_value.value = "Oui";
     } else {
         confirm_value.value = "Non";
@@ -149,7 +149,7 @@ function AnnulerRDV() {
     confirm_value.type = "hidden";
     confirm_value.name = "cancel_rdv";
 
-    if (confirm("Êtes-vous sur de vouloir annuler ce rendez-vous ?")) {
+    if (confirm("Êtes-vous sur de vouloir annuler ce rendez-vous?")) {
         confirm_value.value = "Oui";
     } else {
         confirm_value.value = "Non";

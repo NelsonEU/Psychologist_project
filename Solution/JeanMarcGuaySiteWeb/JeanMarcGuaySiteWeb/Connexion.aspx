@@ -32,20 +32,20 @@
 
                                 <label for="email" class="sr-only mt-4">Votre adresse e-mail:</label>
                                 <div>
-                                    <asp:TextBox runat="server" class="form-control mt-4" type="email" placeholder="Adresse e-mail" ID="email" name="email" required="required autofocus"></asp:TextBox>
+                                    <asp:TextBox runat="server" class="form-control mt-4" type="email" placeholder="Adresse e-mail" ID="email" name="email" required="required autofocus" MaxLength="50"></asp:TextBox>
                                 </div>
 
 
                                 <label for="password" class="sr-only mt-2">Votre mot de passe:</label>
                                 <div>
-                                    <asp:TextBox runat="server" class="form-control mt-2" type="password" placeholder="Mot de passe" ID="password" name="password" required="required"></asp:TextBox>
+                                    <asp:TextBox runat="server" class="form-control mt-2" type="password" placeholder="Mot de passe" ID="password" name="password" required="required" MaxLength="40"></asp:TextBox>
                                 </div>
 
                                 <div runat="server" class="text-center mt-2" id="notification" visible="false">
                                 </div>
                                 <asp:Button ID="submit" class="mt-4 btn btn-lg mainButton2 btn-block" Text="Se connecter" runat="server" OnClick="Submit_click" />
                                 <div class="mt-2 mb-3">
-                                    Pas encore de compte ? <a href="Inscription.aspx">Cliquez ici !</a>
+                                    Pas encore de compte? <a href="Inscription.aspx">Cliquez ici !</a>
                                 </div>
                             </div>
                         </div>

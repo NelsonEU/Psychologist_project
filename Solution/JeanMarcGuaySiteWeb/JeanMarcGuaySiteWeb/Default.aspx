@@ -8,9 +8,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
     <div class="banner shadow">
-        <div class="va-center animated fadeIn slow" style="opacity:0;"><br />
+        <div class="va-center animated fadeIn slow" style="opacity:0;"><br/>
             <h1 class="titleBanner">Jean-Marc Guay</h1>
-            <h5 class="titleBanner">Psychologue, M.A.Ps</h5><br />
+            <h5 class="titleBanner">Psychologue, M.A.Ps</h5><br/>
             <img src="Images/ordre_psy_blanc.png" width="275" />
         </div>
     </div>

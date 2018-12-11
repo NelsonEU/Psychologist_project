@@ -28,15 +28,15 @@
                                 <h3 class="card-title text-center">Créer un compte</h3>
                                 <label for="firstname" class="sr-only mt-4">Votre prénom:</label>
                                 <div>
-                                    <asp:TextBox runat="server" class="form-control mt-4" type="text" placeholder="Prénom" ID="firstname" name="firstname" required="required"></asp:TextBox>
+                                    <asp:TextBox runat="server" class="form-control mt-4" type="text" placeholder="Prénom" ID="firstname" name="firstname" required="required" MaxLength="40"></asp:TextBox>
                                 </div>
                                 <label for="lastname" class="sr-only mt-2">Votre nom:</label>
                                 <div>
-                                    <asp:TextBox runat="server" class="form-control mt-2" type="text" placeholder="Nom" ID="lastname" name="lastname" required="required"></asp:TextBox>
+                                    <asp:TextBox runat="server" class="form-control mt-2" type="text" placeholder="Nom" ID="lastname" name="lastname" required="required" MaxLength="40"></asp:TextBox>
                                 </div>
                                 <label for="email" class="sr-only mt-2">Votre adresse email:</label>
                                 <div>
-                                    <asp:TextBox runat="server" class="form-control mt-2" type="email" placeholder="Adresse e-mail" ID="email" name="email" required="required"></asp:TextBox>
+                                    <asp:TextBox runat="server" class="form-control mt-2" type="email" placeholder="Adresse e-mail" ID="email" name="email" required="required" MaxLength="50"></asp:TextBox>
                                 </div>
                                 <label for="birthday" class="sr-only mt-2">Votre date de naissance:</label>
                                 <div>
@@ -44,11 +44,11 @@
                                 </div>
                                 <label for="password" class="sr-only mt-2">Mot de passe:</label>
                                 <div>
-                                    <asp:TextBox runat="server" class="form-control mt-2" type="password" placeholder="Mot de passe" ID="password" name="password" required="required"></asp:TextBox>
+                                    <asp:TextBox runat="server" class="form-control mt-2" type="password" placeholder="Mot de passe" ID="password" name="password" required="required" MaxLength="40"></asp:TextBox>
                                 </div>
                                 <label for="password" class="sr-only mt-2">Confirmation du mot de passe:</label>
                                 <div>
-                                    <asp:TextBox runat="server" class="form-control mt-2" type="password" placeholder="Confirmation du mot de passe" ID="passwordConfirmation" name="password" required="required"></asp:TextBox>
+                                    <asp:TextBox runat="server" class="form-control mt-2" type="password" placeholder="Confirmation du mot de passe" ID="passwordConfirmation" MaxLength="40" name="password" required="required"></asp:TextBox>
                                 </div>
                                 <div class="form-group text-center mt-2">
                                     <asp:CheckBox runat="server" TabIndex="3" class="" name="subscriber" ID="subscriber" />
