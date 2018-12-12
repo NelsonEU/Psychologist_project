@@ -86,7 +86,7 @@ namespace JeanMarcGuaySiteWeb.Admin
                             buttonAuthorize.Attributes.Add("class", "btn btn-warning btnUnauthorize");
                             buttonAuthorize.Click += new EventHandler(Click_Deauthorized);
                             buttonAuthorize.OnClientClick = "ConfirmerDesauthorisation";
-                            buttonAuthorize.Text = "Desauthoriser";
+                            buttonAuthorize.Text = "Désauthoriser";
                         }
                         else
                         {
