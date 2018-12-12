@@ -58,7 +58,7 @@ namespace JeanMarcGuaySiteWeb
             if (content.Length > 500)
             {
                 notification.Style.Add("color", "red");
-                notification.InnerText = "Le nombre maximum de caractère à été atteint. Veuillez réduire la longueur de votre message.";
+                notification.InnerText = "Le nombre maximum de caractère a été atteint. Veuillez réduire la longueur de votre message.";
                 return;
             }
 
