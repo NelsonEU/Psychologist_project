@@ -68,6 +68,7 @@ namespace JeanMarcGuaySiteWeb
                     {
                         lblConfirmation.Style.Add("color", "Green");
                         lblConfirmation.Text = "Confirmé";
+                        lblNotice.Text = "";
                     }
                     else
                     {
