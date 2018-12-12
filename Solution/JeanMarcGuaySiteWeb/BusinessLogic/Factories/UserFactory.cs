@@ -26,31 +26,56 @@ namespace BusinessLogic.Factories
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
             CryptographyHelper ch = new CryptographyHelper();
             string hashedPassword = ch.HashPassword(password);
-
+            User user = GetDeletedByEmail(email);
             try
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "INSERT INTO users(lastname, firstname, email, password, admin, subscriber, activated , creationDate, birthday, opt_in, token) VALUES (@lastname, @firstname, @email, @password, @admin, @subscriber, @activated , @creationDate, @birthday, @opt_in, @token)";
-                cmd.Parameters.AddWithValue("@lastname", lastname);
-                cmd.Parameters.AddWithValue("@firstname", firstname);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@password", hashedPassword);
-                cmd.Parameters.AddWithValue("@admin", admin);
-                cmd.Parameters.AddWithValue("@subscriber", subscriber);
-                cmd.Parameters.AddWithValue("@activated", activated);
-                cmd.Parameters.AddWithValue("@creationDate", DateTime.Now);
-                cmd.Parameters.AddWithValue("@birthday", birthday);
-                if (subscriber)
-                {
-                    cmd.Parameters.AddWithValue("@opt_in", DateTime.Now);
+                //Cet utilisateur (email) n'existe pas dans la BD
+                if (user == null)
+                {             
+                    cmd.CommandText = "INSERT INTO users(lastname, firstname, email, password, admin, subscriber, activated , creationDate, birthday, opt_in, token) VALUES (@lastname, @firstname, @email, @password, @admin, @subscriber, @activated , @creationDate, @birthday, @opt_in, @token)";
+                    cmd.Parameters.AddWithValue("@lastname", lastname);
+                    cmd.Parameters.AddWithValue("@firstname", firstname);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
+                    cmd.Parameters.AddWithValue("@admin", admin);
+                    cmd.Parameters.AddWithValue("@subscriber", subscriber);
+                    cmd.Parameters.AddWithValue("@activated", activated);
+                    cmd.Parameters.AddWithValue("@creationDate", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@birthday", birthday);
+                    if (subscriber)
+                    {
+                        cmd.Parameters.AddWithValue("@opt_in", DateTime.Now);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@opt_in", DBNull.Value);
+                    }
+                    cmd.Parameters.AddWithValue("@token", token);
+                    cmd.ExecuteNonQuery();
                 }
+                //L'email existe deja dans la BD mais le compte est soft delete (deletionDate IS NOT NULL)
                 else
                 {
-                    cmd.Parameters.AddWithValue("@opt_in", DBNull.Value);
+                    cmd.CommandText = "Update users SET firstname = @firstname, lastname = @lastname, password=@password, subscriber = @subscriber, birthday=@birthday, opt_in=@opt_in, token=@token, activated=0, deletionDate = NULL WHERE email = @email";
+                    cmd.Parameters.AddWithValue("@lastname", lastname);
+                    cmd.Parameters.AddWithValue("@firstname", firstname);
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
+                    cmd.Parameters.AddWithValue("@subscriber", subscriber);
+                    cmd.Parameters.AddWithValue("@birthday", birthday);
+                    if (subscriber)
+                    {
+                        cmd.Parameters.AddWithValue("@opt_in", DateTime.Now);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@opt_in", DBNull.Value);
+                    }
+                    cmd.Parameters.AddWithValue("@token", token);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.ExecuteNonQuery();
                 }
-                cmd.Parameters.AddWithValue("@token", token);
-                cmd.ExecuteNonQuery();
             }
             finally
             {
@@ -188,6 +213,36 @@ namespace BusinessLogic.Factories
             }
 
             return userList.ToArray();
+
+        }
+        #endregion
+
+        #region GetDeletedByEmail
+        public User GetDeletedByEmail(string email)
+        {
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+            User user = null;
+            try
+            {
+                cnn.Open();
+                user = new User();
+                MySqlCommand cmd = cnn.CreateCommand();
+                cmd.CommandText = "SELECT * FROM users WHERE email=@email AND deletionDate IS NOT NULL";
+                cmd.Parameters.AddWithValue("@email", email);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    user = CreateUser(reader);
+                }
+                reader.Close();
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return user;
 
         }
         #endregion

@@ -15,18 +15,6 @@
 
             <div class="">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                    <div class="form-row pb-4">
-
-                        <div class="col-md-4 col-lg-4 col-xl-4 pb-1">
-                            <input type="email" class="form-control" aria-controls="dataTable" name="deleteUser" placeholder="exemple@mail.com" id="textMOAD" runat="server"/>
-                        </div>
-                        <div class="col-md-4 col-lg-4 col-xl-4">
-                            <asp:button runat="server" id="Click_Moad" class="btn btn-danger clickMOAD" text="Supprimer definitivement" OnClick="Click_MOAD"/>
-                        </div>
-                        <div class="col-12 notifMOAD" runat="server" id="notifMOAD" visible="false">
-                        </div>
-                    </div>
-                    
                     <div class="form-row">
 
                         <div class="col-lg-4 col-md-12 form-group">
@@ -50,7 +38,17 @@
                             </asp:table>
                         </div>
                     </div>
+                    <div class="form-row pt-3">
 
+                        <div class="col-md-4 col-lg-4 col-xl-4 pb-1">
+                            <input type="email" class="form-control" aria-controls="dataTable" name="deleteUser" placeholder="exemple@mail.com" id="textMOAD" runat="server" />
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-xl-4">
+                            <asp:button runat="server" id="Click_Moad" class="btn btn-danger clickMOAD" text="Supprimer definitivement" onclick="Click_MOAD" />
+                        </div>
+                        <div class="col-12 notifMOAD" runat="server" id="notifMOAD" visible="false">
+                        </div>
+                    </div>
 
 
                 </div>
