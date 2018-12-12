@@ -154,10 +154,10 @@ namespace JeanMarcGuaySiteWeb.Admin
                 try
                 {
                     MailAddress m = new MailAddress(mail);
-                    User u = uf.GetByEmail(mail);
+                    User u = uf.GetDeletedOrNot(mail);
                     if(u == null)
                     {
-                        //Le user n'existe pas
+                        //Le user n'existe pas                   
                         notif = "noUser";
                     }
                     else

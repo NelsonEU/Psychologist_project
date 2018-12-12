@@ -26,14 +26,18 @@ namespace BusinessLogic.Factories
             MySqlConnection cnn = new MySqlConnection(_cnnStr);
             CryptographyHelper ch = new CryptographyHelper();
             string hashedPassword = ch.HashPassword(password);
+            System.Diagnostics.Debug.WriteLine(email);
+
             User user = GetDeletedByEmail(email);
+
             try
             {
                 cnn.Open();
                 MySqlCommand cmd = cnn.CreateCommand();
                 //Cet utilisateur (email) n'existe pas dans la BD
                 if (user == null)
-                {             
+                {
+                    System.Diagnostics.Debug.WriteLine("NULL USER NULL");
                     cmd.CommandText = "INSERT INTO users(lastname, firstname, email, password, admin, subscriber, activated , creationDate, birthday, opt_in, token) VALUES (@lastname, @firstname, @email, @password, @admin, @subscriber, @activated , @creationDate, @birthday, @opt_in, @token)";
                     cmd.Parameters.AddWithValue("@lastname", lastname);
                     cmd.Parameters.AddWithValue("@firstname", firstname);
@@ -58,6 +62,7 @@ namespace BusinessLogic.Factories
                 //L'email existe deja dans la BD mais le compte est soft delete (deletionDate IS NOT NULL)
                 else
                 {
+                    System.Diagnostics.Debug.WriteLine("NOT NULL: " + user.ToString());
                     cmd.CommandText = "Update users SET firstname = @firstname, lastname = @lastname, password=@password, subscriber = @subscriber, birthday=@birthday, opt_in=@opt_in, token=@token, activated=0, deletionDate = NULL WHERE email = @email";
                     cmd.Parameters.AddWithValue("@lastname", lastname);
                     cmd.Parameters.AddWithValue("@firstname", firstname);
@@ -103,6 +108,45 @@ namespace BusinessLogic.Factories
 
                 MySqlCommand cmd2 = cnn.CreateCommand();
                 cmd2.CommandText = "SELECT * FROM users WHERE deletionDate IS NULL AND email=@email";
+                cmd2.Parameters.AddWithValue("@email", email);
+                MySqlDataReader reader = cmd2.ExecuteReader();
+                if (reader.Read())
+                {
+                    user = CreateUser(reader);
+                }
+                reader.Close();
+
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return user;
+
+        }
+
+        #endregion
+
+        #region GetDeletedOrNot
+
+        /* Check if there is already a user associated with this email address */
+        /* Returns user = null if no user is associated with this email  */
+
+        public User GetDeletedOrNot (string email)
+
+        {
+
+            MySqlConnection cnn = new MySqlConnection(_cnnStr);
+            User user = null;
+
+            try
+            {
+                cnn.Open();
+
+
+                MySqlCommand cmd2 = cnn.CreateCommand();
+                cmd2.CommandText = "SELECT * FROM users WHERE email=@email";
                 cmd2.Parameters.AddWithValue("@email", email);
                 MySqlDataReader reader = cmd2.ExecuteReader();
                 if (reader.Read())
@@ -225,12 +269,11 @@ namespace BusinessLogic.Factories
             try
             {
                 cnn.Open();
-                user = new User();
                 MySqlCommand cmd = cnn.CreateCommand();
-                cmd.CommandText = "SELECT * FROM users WHERE email=@email AND deletionDate IS NOT NULL";
+                cmd.CommandText = "SELECT * FROM users WHERE deletionDate IS NOT NULL AND email=@email";
                 cmd.Parameters.AddWithValue("@email", email);
                 MySqlDataReader reader = cmd.ExecuteReader();
-
+                
                 if (reader.Read())
                 {
                     user = CreateUser(reader);
