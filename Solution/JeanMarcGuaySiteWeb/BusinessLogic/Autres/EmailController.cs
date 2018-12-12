@@ -13,10 +13,12 @@ namespace BusinessLogic.Autres
     public class EmailController
     {
 
+        //Changer dans web.config
         static string SmtpHost = ConfigurationManager.AppSettings["SmtpHost"];
         static string emailAddress = ConfigurationManager.AppSettings["emailAddress"];
         static string password = ConfigurationManager.AppSettings["password"];
         static int SmtpPort = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpPort"]);
+        static bool EnableSSL = Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSSL"]);
 
         public void SendMail(string email, string subject, string body)
         {
@@ -31,7 +33,7 @@ namespace BusinessLogic.Autres
             smtp.Host = SmtpHost;
             smtp.Credentials = new System.Net.NetworkCredential(emailAddress, password);
             smtp.Port = SmtpPort;
-            smtp.EnableSsl = true;
+            smtp.EnableSsl = EnableSSL;
             smtp.Send(mail);
 
         }

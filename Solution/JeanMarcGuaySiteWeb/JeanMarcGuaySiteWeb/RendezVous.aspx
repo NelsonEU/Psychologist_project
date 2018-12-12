@@ -123,7 +123,7 @@
                     <h5><b>État: </b><asp:label runat="server" ID="lblConfirmation"></asp:label></h5>  
                 </div>
                 <div class="col-md-8 offset-md-2 col-sm-12 text-center pt-5">             
-                    <h5><b>Attention: </b>Le rendez-vous n'est pas fixé tant que l'état de celui-ci n'est pas « Confirmé ». Veuillez donc attendre la réponse du psychologue avant de vous y présenter</h5>               
+                    <h5><asp:label runat="server" ID="lblNotice"><b>Attention: </b>Le rendez-vous n'est pas fixé tant que l'état de celui-ci n'est pas « Confirmé ». Veuillez donc attendre la réponse du psychologue avant de vous y présenter</asp:label></h5>               
                 </div>
                 <div class="col-md-8 offset-md-2 col-sm-12 text-center pt-5">             
                     <asp:Button runat="server" ID="btnAnnuler" Text="Annuler mon rendez-vous" CssClass="btn btn-danger" OnClick="btnAnnuler_Click"/>                   
