@@ -98,6 +98,7 @@
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\logoOPQ2.jpg" />
     <Content Include="Images\logoOriginal.png" />
+    <Content Include="Images\ordre_psy_blanc.png" />
     <Content Include="Images\photoService.jpg" />
     <Content Include="Images\testBanner6.jpg" />
     <Content Include="Javascripts\animation.min.js" />
@@ -116,6 +117,7 @@
     <Content Include="ms\CSS\bootstrap-timepicker.min.css" />
     <Content Include="ms\CSS\jquery.timepicker.min.css" />
     <Content Include="ms\CSS\Switch.min.css" />
+    <Content Include="ms\Images\favicon.ico" />
     <Content Include="ms\Images\logoOriginal2.png" />
     <Content Include="ms\Javascript\Admin.min.js" />
     <Content Include="ms\Javascript\Availability.js" />
@@ -196,6 +198,7 @@
     <Content Include="Fonts\Sk-Modernist-Regular.otf" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
