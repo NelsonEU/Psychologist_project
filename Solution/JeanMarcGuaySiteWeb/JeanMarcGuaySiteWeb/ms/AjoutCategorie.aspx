@@ -14,7 +14,9 @@
     </div>
 
     <div id="PageContent" runat="server">
+
         <a href="CategoryManagement.aspx" class="lienAdmin">Liste des catégories</a>
+        
         <div class="row" id="rowAjout" runat="server">
             <div class="col-8 border">
                 <div class="row text-center pb-4 pt-4">
@@ -26,7 +28,7 @@
                 <div class="row text-center pb-4">
                     <div class="col-12">
                         <label for="fileUpload" class="form-check-label"><b>Image</b> (format jpeg):</label><br />
-                        <label for="fileUpload" class="form-check-label textSmaller">Attention, Il est recommendé d'utiliser des images de petite taille.</label><br />      
+                        <label for="fileUpload" class="form-check-label textSmaller">Attention, Il est recommandé d'utiliser des images de petite taille.</label><br />      
                         <asp:FileUpload ID="fileUpload" runat="server" class="pt-2" style="margin:auto"/>
                     </div>
                 </div>
@@ -42,7 +44,7 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
 
 </asp:Content>

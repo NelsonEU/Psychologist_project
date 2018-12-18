@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="BannerPlaceHolder" runat="server">
     <div class="banner2 pb-5 shadow">
         <div class="va-center2">
-            <h1 class="titleBanner2">Modification du compte</h1>
+            <h1 class="titleBanner2">Mon compte</h1>
         </div>
     </div>
 </asp:Content>

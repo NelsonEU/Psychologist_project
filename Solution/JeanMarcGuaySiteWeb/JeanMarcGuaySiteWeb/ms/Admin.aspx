@@ -31,7 +31,7 @@
 
         <div class="col-md box-admin box-shadow" id="divUtili" runat="server" ClientIDMode="static">
             <h5>Gestion des <br /><span class="highlightH4">Utilisateurs</span></h5><br />
-            <p>Page permettant de <b>Visualiser</b> la liste des utilisateurs et permet de performer des actions telque: <b>Autoriser ou Supprimer</b> des utilisateurs</p>
+            <p>Page permettant de <b>Visualiser</b> la liste des utilisateurs et permet de performer des actions tel que: <b>Autoriser ou Supprimer</b> des utilisateurs</p>
         </div>
 
         <div class="col-md box-admin box-shadow" id="divModules" runat="server" ClientIDMode="static">

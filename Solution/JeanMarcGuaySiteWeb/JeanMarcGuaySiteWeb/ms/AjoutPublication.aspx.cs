@@ -40,11 +40,11 @@ namespace JeanMarcGuaySiteWeb.Admin
                 if (Request.QueryString["conf"] == "true")
                 {
                     StatusLabel.Style.Add("color", "green");
-                    StatusLabel.Text = "Le fichier à été téléversé avec succès";
+                    StatusLabel.Text = "Le fichier a été téléversé avec succès";
                 }else if (Request.QueryString["conf"] == "false")
                 {
                     StatusLabel.Style.Add("color", "red");
-                    StatusLabel.Text = "Ce fichier à déjà été téléversé";
+                    StatusLabel.Text = "Ce fichier a déjà été téléversé";
                 }
             }
 

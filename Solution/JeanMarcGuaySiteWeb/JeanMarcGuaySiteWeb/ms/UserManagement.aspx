@@ -32,7 +32,7 @@
                                     <asp:TableHeaderCell>Nom</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>E-mail</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Abonné</asp:TableHeaderCell>
-                                    <asp:TableHeaderCell>Authoriser</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>Autoriser</asp:TableHeaderCell>
                                     <asp:TableHeaderCell>Supprimer</asp:TableHeaderCell>
                                 </asp:TableHeaderRow>
                             </asp:table>

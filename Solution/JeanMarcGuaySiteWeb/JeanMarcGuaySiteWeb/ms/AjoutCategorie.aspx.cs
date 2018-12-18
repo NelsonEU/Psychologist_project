@@ -55,12 +55,12 @@ namespace JeanMarcGuaySiteWeb.Admin
                 if (Request.QueryString["Conf"] == "True")
                 {
                     StatusLabel.Style.Add("color", "green");
-                    StatusLabel.Text = "La catégorie à été créée avec succès";
+                    StatusLabel.Text = "La catégorie a été créée avec succès";
                 }
                 else if (Request.QueryString["Conf"] == "False")
                 {
                     StatusLabel.Style.Add("color", "red");
-                    StatusLabel.Text = "Une des catégorie à déjà cette image";
+                    StatusLabel.Text = "Une des catégorie a déjà cette image";
                 }
             }
 

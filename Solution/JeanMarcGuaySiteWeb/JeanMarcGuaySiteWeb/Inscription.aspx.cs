@@ -19,10 +19,41 @@ namespace JeanMarcGuaySiteWeb
     public partial class Inscription : System.Web.UI.Page
     {
         private string cnnStr = ConfigurationManager.ConnectionStrings["cnn"].ConnectionString;
+        private bool verifNotification = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             notification.Visible = false;
+
+            // -----------Vérification le l'état des modules ----------- //
+            ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
+            Module m = moduleFactory.Get((int)Module.AllModules.Publications);
+            if (m.active == true)
+            {
+                m = moduleFactory.Get((int)Module.AllModules.Subscription);
+                if (m.active == true)
+                {
+                    subscriber.Visible = true;
+                    lblSubscriber.Visible = true;
+                    verifNotification = true;
+                }
+                else
+                {
+                    subscriber.Visible = false;
+                    lblSubscriber.Visible = false;
+                    verifNotification = false;
+                }
+            }
+            else
+            {
+                subscriber.Visible = false;
+                lblSubscriber.Visible = false;
+                verifNotification = false;
+            }
+
+            
+            // ------------------------------------------------------- //
+
         }
 
         protected void Submit_click(object sender, EventArgs e)
@@ -71,10 +102,18 @@ namespace JeanMarcGuaySiteWeb
                         }
                         else
                         {
-                            
+                            bool sub;
+                            if (verifNotification == true)
+                            {
+                                sub = subscriber.Checked;
+                            }
+                            else
+                            {
+                                sub = false;
+                            }
                             DateTime birthdayDate = Convert.ToDateTime(DateTime.ParseExact(birthday.Text,"dd-MM-yyyy", CultureInfo.InvariantCulture));
                             string token = rndToken(40);
-                            uf.Add(lastname.Text, firstname.Text, email.Text, password.Text, false, subscriber.Checked, false, birthdayDate, token);
+                            uf.Add(lastname.Text, firstname.Text, email.Text, password.Text, false, sub, false, birthdayDate, token);
                             notification.Style.Add("color", "green");
                             notification.InnerText = "Bienvenue ! Un e-mail vous a été envoyé afin de confirmer votre inscription";
                             notification.Visible = true;

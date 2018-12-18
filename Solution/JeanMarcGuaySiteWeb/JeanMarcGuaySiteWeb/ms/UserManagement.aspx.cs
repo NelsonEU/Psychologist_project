@@ -86,13 +86,13 @@ namespace JeanMarcGuaySiteWeb.Admin
                             buttonAuthorize.Attributes.Add("class", "btn btn-warning btnUnauthorize");
                             buttonAuthorize.Click += new EventHandler(Click_Deauthorized);
                             buttonAuthorize.OnClientClick = "ConfirmerDesauthorisation()";
-                            buttonAuthorize.Text = "Désauthoriser";
+                            buttonAuthorize.Text = "Désautoriser";
                         }
                         else
                         {
                             buttonAuthorize.Attributes.Add("class", "btn btn-success btnAuthorize");
                             buttonAuthorize.Click += new EventHandler(Click_Authorized);
-                            buttonAuthorize.Text = "Authoriser";
+                            buttonAuthorize.Text = "Autoriser";
                         }
                         buttonAuthorize.Attributes.Add("data-id", u.userId.ToString());
 

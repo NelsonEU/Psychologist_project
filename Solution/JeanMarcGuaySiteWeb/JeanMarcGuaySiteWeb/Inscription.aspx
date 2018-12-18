@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="form-group text-center mt-2">
                                     <asp:CheckBox runat="server" TabIndex="3" class="" name="subscriber" ID="subscriber" />
-                                    <label for="remember">S'abonner aux publications</label>
+                                    <asp:label runat="server" for="remember" id="lblSubscriber">S'abonner aux publications</asp:label>
                                 </div>
                                 <div runat="server" id="notification" visible="false">
                                 </div>
