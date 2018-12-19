@@ -258,7 +258,7 @@ namespace JeanMarcGuaySiteWeb
         {
             if (etat == "Accueil")
             {
-                Response.Redirect("Accueil.aspx");
+                Response.Redirect("Default.aspx");
             }
             else
             {
