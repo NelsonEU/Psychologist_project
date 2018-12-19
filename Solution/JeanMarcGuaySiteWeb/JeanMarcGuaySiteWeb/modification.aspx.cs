@@ -47,6 +47,27 @@ namespace JeanMarcGuaySiteWeb
                 }
             }
 
+            // -----------Vérification le l'état des modules ----------- //
+            ModuleFactory moduleFactory = new ModuleFactory(cnnStr);
+            Module m = moduleFactory.Get((int)Module.AllModules.Publications);
+            if (m.active == true)
+            {
+                m = moduleFactory.Get((int)Module.AllModules.Subscription);
+                if (m.active == true)
+                {
+                    chkSubscription.Visible = true;
+                }
+                else
+                {
+                    chkSubscription.Visible = false;
+                }
+            }
+            else
+            {
+                chkSubscription.Visible = false;
+            }
+            // ------------------------------------------------------- //
+
             if (Request.QueryString["Conf"] != null)
             {
                 if (Request.QueryString["Conf"] == "True")
