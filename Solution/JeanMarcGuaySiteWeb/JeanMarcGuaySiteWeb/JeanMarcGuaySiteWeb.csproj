@@ -207,6 +207,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sitemap.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
